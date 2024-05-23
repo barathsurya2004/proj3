@@ -7,37 +7,79 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 export function QMark(props) {
-  const qMark = useRef();
+  const qMarkScale = useRef();
+  const qMarkPos = useRef();
+  const lightRef = useRef();
   useGSAP(() => {
-    gsap.to(qMark.current.position, {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-move-start",
+        start: "top bottom",
+        end: "top top",
+        scrub: 0.5,
+      },
+    });
+    tl.to(qMarkPos.current.position, {
+      x: 0.9,
+      y: 0.3,
+      duration: 1,
+      ease: "expo.in",
+    }).to(qMarkPos.current.position, {
+      x: 3,
       y: -3,
-      x: 3.5,
       z: 0,
-      scrollTrigger: {
-        trigger: ".scroll-move-start",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
+      duration: 4,
+      ease: "expo.out",
     });
-    gsap.to(qMark.current.scale, {
-      y: 20,
-      x: 20,
-      z: 20,
-      scrollTrigger: {
-        trigger: ".scroll-move-start",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
+    gsap.fromTo(
+      qMarkScale.current.scale,
+      {
+        x: 0.025,
+        y: 0.025,
+        z: 0.025,
       },
-    });
+      {
+        x: 0.45,
+        y: 0.45,
+        z: 0.45,
+        scrollTrigger: {
+          trigger: ".scroll-move-start",
+          start: "top bottom",
+          end: "top top",
+          scrub: 0.5,
+        },
+        ease: "expo.inOut",
+      }
+    );
+    gsap.fromTo(
+      lightRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 3,
+      },
+      {
+        x: 1 * 2,
+        y: 2 * 2.8672,
+        z: 2 * 1.58927,
+        scrollTrigger: {
+          trigger: ".scroll-move-start",
+          start: "top bottom",
+          end: "top top",
+          scrub: 0.5,
+        },
+      }
+    );
   });
   const { nodes, materials } = useGLTF("/models/q_mark.glb");
   return (
-    <group {...props} ref={qMark} dispose={null} position={[0.3, -1.13, 0]}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.025}>
+    <group {...props} ref={qMarkPos} dispose={null} position={[0.3, -1.13, 0]}>
+      {/* <ambientLight intensity={0.5} /> */}
+      <pointLight ref={lightRef} intensity={15} color={"#FFEDDE"} />
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.025} ref={qMarkScale}>
         <mesh
           geometry={nodes.svgMeshShape3.geometry}
           position={[-4.752, -0.788, -2]}
