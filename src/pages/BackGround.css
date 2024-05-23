@@ -35,7 +35,7 @@
     width: 0%;
 }
 video{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -43,15 +43,15 @@ video{
     mix-blend-mode: luminosity;
 }
 .back-vid{
-    opacity: 19%;
+    opacity: 25%;
     z-index: -10;
     }
 .fore-vid{
     z-index: 999;
-    opacity: 10%;
+    opacity: 15%;
 }
 .vid-helper{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

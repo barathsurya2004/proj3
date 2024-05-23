@@ -5,20 +5,46 @@ Command: npx gltfjsx@6.2.16 q_mark.glb
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export function QMark(props) {
+  const qMark = useRef();
+  useGSAP(() => {
+    gsap.to(qMark.current.position, {
+      y: -3,
+      x: 3.5,
+      z: 0,
+      scrollTrigger: {
+        trigger: ".scroll-move-start",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+    gsap.to(qMark.current.scale, {
+      y: 20,
+      x: 20,
+      z: 20,
+      scrollTrigger: {
+        trigger: ".scroll-move-start",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  });
   const { nodes, materials } = useGLTF("/models/q_mark.glb");
   return (
-    <group {...props} dispose={null} scale={0.02} position={[0.3, -1.13, 0]}>
-      <ambientLight />
-
-      <group rotation={[Math.PI / 2, 0, 0]}>
+    <group {...props} ref={qMark} dispose={null} position={[0.3, -1.13, 0]}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.025}>
         <mesh
           geometry={nodes.svgMeshShape3.geometry}
-          material={materials["aiStandardSurface2.001"]}
           position={[-4.752, -0.788, -2]}
           scale={[1, 1.575, 1]}
-        />
+        >
+          <meshStandardMaterial color={"#F2D8A0"} roughness={0.85} />
+        </mesh>
       </group>
     </group>
   );

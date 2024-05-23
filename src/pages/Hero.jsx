@@ -3,6 +3,7 @@ import "./Hero.css";
 import { CustomEase, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import CircularText from "../components/CircularText";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -71,6 +72,33 @@ const Hero = () => {
           single day!
         </p>
         <p>Apart from all this, is there more to food</p>
+      </div>
+      <div className="scroll-move-start">
+        <div>
+          {/* <CircularText
+            texts={[
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+              "Is food the same for all",
+            ]}
+            radius={1450 / 2}
+          />*/}
+        </div>
       </div>
     </div>
   );

@@ -18,3 +18,8 @@
 .hero-content p{
     margin-bottom: 5px;
 }
+.scroll-move-start{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
