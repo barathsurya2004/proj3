@@ -2,18 +2,19 @@ import { useGSAP } from "@gsap/react";
 import "./CircularText.css"; // Ensure to import the CSS file
 import gsap from "gsap";
 import { Draggable } from "gsap/all";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 gsap.registerPlugin(Draggable);
 const CircularText = ({ texts, radius }) => {
+  const [minRotation, setMinRotation] = useState(180);
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
       inertia: true,
       bounds: {
-        minRotation: 100,
+        minRotation: minRotation,
       },
     });
-  }, []);
+  }, [minRotation]);
   useGSAP(() => {
     gsap.fromTo(
       ".circle-container",
@@ -26,6 +27,8 @@ const CircularText = ({ texts, radius }) => {
         scrollTrigger: {
           trigger: ".draggable-circle",
           start: "top center",
+          onEnter: () => setMinRotation(100),
+          onLeaveBack: () => setMinRotation(180),
           end: "top 5%",
           toggleActions: "play none none reverse",
         },
