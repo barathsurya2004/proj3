@@ -15,11 +15,23 @@ const App = () => {
         setBool(false);
       },
     });
+    gsap.fromTo(
+      ".webgl-canvas",
+      { opacity: 0, y: 30 },
+      {
+        y: 0,
+        delay: 7,
+        opacity: 1,
+        duration: 0.5,
+      }
+    );
   });
   return (
     <>
       <BackGround />
-      <QuestionMarkCanvas />
+      <div className="webgl-canvas">
+        <QuestionMarkCanvas />
+      </div>
       {bool ? <Loader /> : <AfterLoad />}
     </>
   );
