@@ -1,18 +1,65 @@
 import { useGSAP } from "@gsap/react";
 import "./CircularText.css"; // Ensure to import the CSS file
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger);
+import { Draggable } from "gsap/all";
+import { useEffect } from "react";
+gsap.registerPlugin(Draggable);
 const CircularText = ({ texts, radius }) => {
-  const angleIncrement = 360 / texts.length;
-
+  useEffect(() => {
+    Draggable.create("#drag", {
+      type: "rotation",
+      inertia: true,
+      bounds: {
+        minRotation: 100,
+      },
+    });
+  }, []);
+  useGSAP(() => {
+    gsap.fromTo(
+      ".circle-container",
+      {
+        rotation: 180,
+      },
+      {
+        rotation: 60,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: ".draggable-circle",
+          start: "top center",
+          end: "top 5%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
   return (
-    <div className="circular-text-container">
-      {texts.map((text, index) => (
-        <div key={index} className="circular-text">
-          {text}
-        </div>
-      ))}
+    <div
+      id="drag"
+      className="circle-container"
+      style={{
+        height: `${radius * 2}px`,
+        width: `${radius * 2}px`,
+      }}
+    >
+      {texts.map((word, index) => {
+        const angle = 20 * index; // Angle for each word
+
+        return (
+          <div key={index} className="word">
+            <div
+              style={{
+                height: "1px",
+                width: "1px",
+                borderRadius: "50%",
+                transform: `rotate(${-angle}deg) translate(${radius}px) `,
+                margin: 0,
+              }}
+            >
+              {word}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

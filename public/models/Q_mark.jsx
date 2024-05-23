@@ -26,13 +26,11 @@ export function QMark(props) {
       x: 0.9,
       y: 0.3,
       duration: 1,
-      ease: "expo.in",
     }).to(qMarkPos.current.position, {
       x: 3,
       y: -3,
       z: 0,
       duration: 4,
-      ease: "expo.out",
     });
     gsap.fromTo(
       qMarkScale.current.scale,
@@ -51,7 +49,6 @@ export function QMark(props) {
           end: "top top",
           scrub: 0.5,
         },
-        ease: "expo.inOut",
       }
     );
     gsap.fromTo(

@@ -100,6 +100,19 @@ const Hero = () => {
           />*/}
         </div>
       </div>
+      <div className="draggable-circle">
+        <CircularText
+          texts={[
+            "Is food only for the body",
+            "Do food have habits",
+            "Is food geo-taggeed",
+            "Does food influence life",
+            "Does food have mood",
+            "Whats a meal and a feast",
+          ]}
+          radius={1450 / 2}
+        />
+      </div>
     </div>
   );
 };

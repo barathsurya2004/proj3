@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     background-color: white;
+ 
 }
 .hero-content{
     width: 100vw;
@@ -22,4 +23,10 @@
     position: relative;
     height: 100vh;
     width: 100vw;
+}
+.draggable-circle{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
