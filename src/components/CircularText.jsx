@@ -23,10 +23,10 @@ const CircularText = ({ texts, radius }) => {
       },
       {
         rotation: 60,
-        duration: 0.5,
+        duration: 0.3,
         scrollTrigger: {
           trigger: ".draggable-circle",
-          start: "top center",
+          start: "center 50%",
           onEnter: () => setMinRotation(100),
           onLeaveBack: () => setMinRotation(180),
           end: "top 5%",

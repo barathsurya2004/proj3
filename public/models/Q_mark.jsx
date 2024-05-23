@@ -18,7 +18,7 @@ export function QMark(props) {
       scrollTrigger: {
         trigger: ".scroll-move-start",
         start: "top bottom",
-        end: "top top",
+        end: "top center",
         scrub: 0.5,
       },
     });
@@ -46,7 +46,7 @@ export function QMark(props) {
         scrollTrigger: {
           trigger: ".scroll-move-start",
           start: "top bottom",
-          end: "top top",
+          end: "top center",
           scrub: 0.5,
         },
       }

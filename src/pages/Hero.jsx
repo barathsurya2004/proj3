@@ -4,6 +4,7 @@ import { CustomEase, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CircularText from "../components/CircularText";
+import CircularAnimation from "../components/CircularAnimation";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -75,29 +76,16 @@ const Hero = () => {
       </div>
       <div className="scroll-move-start">
         <div>
-          {/* <CircularText
-            texts={[
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
-              "Is food the same for all",
+          <CircularAnimation
+            words={[
+              "Is food only for the body",
+              "Do food have habits",
+              "Is food geo-taggeed",
+              "Does food influence life",
+              "Does food have mood",
+              "Whats a meal and a feast",
             ]}
-            radius={1450 / 2}
-          />*/}
+          />
         </div>
       </div>
       <div className="draggable-circle">
@@ -113,6 +101,13 @@ const Hero = () => {
           radius={1450 / 2}
         />
       </div>
+      <div
+        className="dummy"
+        style={{
+          height: "100vh",
+          width: "100vw",
+        }}
+      ></div>
     </div>
   );
 };
