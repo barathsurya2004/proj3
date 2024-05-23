@@ -1,0 +1,60 @@
+.bg-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background-color:#101010;
+}
+.vertical-lines{
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.grid-lines-verti{
+    background-color: #1E1E1E;
+    width: 2px;
+    height: 0%;
+}
+.horizontal-lines{
+    z-index: -1;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.grid-lines-hori{
+    background-color: #1E1E1E;
+    height: 2px;
+    width: 0%;
+}
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: luminosity;
+}
+.back-vid{
+    opacity: 19%;
+    z-index: -10;
+    }
+.fore-vid{
+    z-index: 999;
+    opacity: 10%;
+}
+.vid-helper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
