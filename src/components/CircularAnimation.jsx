@@ -14,7 +14,7 @@ const CircularAnimation = ({ words }) => {
           rotation: 0,
         },
         {
-          rotation: -60,
+          rotation: -90,
           scrollTrigger: {
             trigger: word,
             start: "center center",
@@ -36,6 +36,7 @@ const CircularAnimation = ({ words }) => {
         alignItems: "start",
         justifyContent: "space-between",
         width: "100vw",
+        paddingTop: "50vh",
         paddingLeft: "175px",
       }}
     >

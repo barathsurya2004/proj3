@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 gsap.registerPlugin(Draggable);
 const CircularText = ({ texts, radius }) => {
   const [minRotation, setMinRotation] = useState(180);
+  const [zIndex, setZIndex] = useState(0);
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
@@ -26,9 +27,15 @@ const CircularText = ({ texts, radius }) => {
         duration: 0.3,
         scrollTrigger: {
           trigger: ".draggable-circle",
-          start: "center 50%",
-          onEnter: () => setMinRotation(100),
-          onLeaveBack: () => setMinRotation(180),
+          start: "center 40%",
+          onEnter: () => {
+            setMinRotation(100);
+            setZIndex(1000);
+          },
+          onLeaveBack: () => {
+            setMinRotation(180);
+            setZIndex(0);
+          },
           end: "top 5%",
           toggleActions: "play none none reverse",
         },
@@ -40,8 +47,9 @@ const CircularText = ({ texts, radius }) => {
       id="drag"
       className="circle-container"
       style={{
-        height: `${radius * 2}px`,
-        width: `${radius * 2}px`,
+        height: `${radius * 2 + 1500}px`,
+        width: `${radius * 2 + 1500}px`,
+        zIndex: zIndex,
       }}
     >
       {texts.map((word, index) => {
