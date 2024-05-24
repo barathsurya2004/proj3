@@ -65,9 +65,18 @@ export function QMark(props) {
     if (rotation) {
       qMarkPos.current.rotation.y += 0.01;
     } else {
-      if (qMarkPos.current.rotation.y % (2 * Math.PI) < 2 * Math.PI - 0.05) {
+      if (
+        qMarkPos.current.rotation.y % (2 * Math.PI) < 2 * Math.PI - 0.05 &&
+        qMarkPos.current.rotation.y % (2 * Math.PI) > 0.05
+      ) {
         // console.log(qMarkPos.current.rotation.y % (2 * Math.PI));
-        qMarkPos.current.rotation.y -= 0.03;
+        gsap.to(qMarkPos.current.rotation, {
+          y:
+            Math.floor(qMarkPos.current.rotation.y / (2 * Math.PI)) *
+            2 *
+            Math.PI,
+          duration: 0.5,
+        });
       }
     }
   });
