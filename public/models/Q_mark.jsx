@@ -82,7 +82,7 @@ export function QMark(props) {
   });
   const { nodes, materials } = useGLTF("/models/q_mark.glb");
   return (
-    <group {...props} ref={qMarkPos} dispose={null} position={[0.3, -1.13, 0]}>
+    <group {...props} ref={qMarkPos} dispose={null} position={[0.3, -1.1, 0]}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.025} ref={qMarkScale}>
         <mesh
           geometry={nodes.svgMeshShape3.geometry}
