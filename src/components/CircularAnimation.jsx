@@ -12,13 +12,15 @@ const CircularAnimation = ({ words }) => {
         word,
         {
           rotation: 0,
+          y: 0,
         },
         {
-          rotation: -90,
+          rotation: -110,
+          y: 1000,
           scrollTrigger: {
             trigger: word,
             start: "center center",
-            end: "top top",
+            end: "+=2500",
             toggleActions: "play none none reverse",
             scrub: true,
           },

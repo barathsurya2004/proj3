@@ -27,7 +27,7 @@ const CircularText = ({ texts, radius }) => {
         duration: 0.3,
         scrollTrigger: {
           trigger: ".draggable-circle",
-          start: "center 40%",
+          start: "center center",
           onEnter: () => {
             setMinRotation(100);
             setZIndex(1000);

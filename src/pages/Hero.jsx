@@ -108,6 +108,13 @@ const Hero = () => {
           width: "100vw",
         }}
       ></div>
+      <div
+        className="dummy"
+        style={{
+          height: "100vh",
+          width: "100vw",
+        }}
+      ></div>
     </div>
   );
 };

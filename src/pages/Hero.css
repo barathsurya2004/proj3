@@ -21,7 +21,7 @@
 }
 .scroll-move-start{
     position: relative;
-    height: 100vh;
+    height: 2500px;
     width: 100vw;
 }
 .draggable-circle{
