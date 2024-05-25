@@ -25,9 +25,8 @@ const CircularText = ({ texts, radius }) => {
         rotation: angle * 10 + 45,
       },
       {
-        rotation: angle * 10 - 45,
+        rotation: angle * 10 - 60,
         scrollTrigger: {
-          markers: true,
           trigger: ".draggable-circle",
           start: "top bottom",
           onEnter: () => {
@@ -42,7 +41,7 @@ const CircularText = ({ texts, radius }) => {
           onEnterBack: () => {
             setIsWordVisible(10);
           },
-          end: "+=2600",
+          end: "+=2650",
           scrub: true,
           toggleActions: "play none none reverse",
         },
@@ -54,8 +53,8 @@ const CircularText = ({ texts, radius }) => {
       id="drag"
       className="circle-container"
       style={{
-        height: `${radius * 2 + 1500}px`,
-        width: `${radius * 2 + 1500}px`,
+        height: `${radius * 2 + 1480}px`,
+        width: `${radius * 2 + 1480}px`,
         zIndex: zIndex,
       }}
     >

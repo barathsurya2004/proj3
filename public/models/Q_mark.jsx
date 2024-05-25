@@ -75,7 +75,7 @@ export function QMark(props) {
             Math.floor(qMarkPos.current.rotation.y / (2 * Math.PI)) *
             2 *
             Math.PI,
-          duration: 0.5,
+          duration: 1,
         });
       }
     }
