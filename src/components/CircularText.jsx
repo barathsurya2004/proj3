@@ -22,7 +22,7 @@ const CircularText = ({ texts, radius }) => {
     gsap.fromTo(
       ".circle-container",
       {
-        rotation: angle * 10 + 90,
+        rotation: angle * 10 + 45,
       },
       {
         rotation: angle * 10 - 45,
@@ -42,7 +42,7 @@ const CircularText = ({ texts, radius }) => {
           onEnterBack: () => {
             setIsWordVisible(10);
           },
-          end: "top top",
+          end: "+=2600",
           scrub: true,
           toggleActions: "play none none reverse",
         },

@@ -55,7 +55,7 @@ export function QMark(props) {
     gsap.to(qMarkPos.current.rotation, {
       scrollTrigger: {
         trigger: ".scroll-move-start",
-        start: "center center",
+        start: "50vh top",
         onEnter: () => setRotation(true),
         onLeaveBack: () => setRotation(false),
       },
