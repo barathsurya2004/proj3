@@ -2,5 +2,9 @@
     transform-origin: -412.5px;
     font-size: 55px;
     white-space: nowrap;
-    margin: 115px 0;
+    margin: 55px 0;
+}
+.word-cont{
+    display: inline;
+    transform-origin:  0 0;
 }

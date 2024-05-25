@@ -5,38 +5,45 @@ import { Draggable } from "gsap/all";
 import { useEffect, useState } from "react";
 gsap.registerPlugin(Draggable);
 const CircularText = ({ texts, radius }) => {
-  const [minRotation, setMinRotation] = useState(180);
+  texts = [...texts, ...texts, ...texts];
+  texts.reverse();
+  console.log(texts);
   const [zIndex, setZIndex] = useState(0);
+  const [angle, setAngle] = useState(360 / texts.length);
+  const [isWordVisible, setIsWordVisible] = useState(10);
+  let fontsize = 55;
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
       inertia: true,
-      bounds: {
-        minRotation: minRotation,
-      },
     });
-  }, [minRotation]);
+  }, []);
   useGSAP(() => {
     gsap.fromTo(
       ".circle-container",
       {
-        rotation: 180,
+        rotation: angle * 10 + 90,
       },
       {
-        rotation: 60,
-        duration: 0.3,
+        rotation: angle * 10 - 90,
         scrollTrigger: {
+          markers: true,
           trigger: ".draggable-circle",
-          start: "center center",
+          start: "center 60%",
           onEnter: () => {
-            setMinRotation(100);
             setZIndex(1000);
           },
           onLeaveBack: () => {
-            setMinRotation(180);
             setZIndex(0);
           },
-          end: "top 5%",
+          onLeave: () => {
+            setIsWordVisible(texts.length);
+          },
+          onEnterBack: () => {
+            setIsWordVisible(10);
+          },
+          end: "bottom top",
+          scrub: true,
           toggleActions: "play none none reverse",
         },
       }
@@ -53,8 +60,11 @@ const CircularText = ({ texts, radius }) => {
       }}
     >
       {texts.map((word, index) => {
-        const angle = 20 * index; // Angle for each word
-
+        if (index > isWordVisible) {
+          fontsize = 0;
+        } else {
+          fontsize = 55;
+        }
         return (
           <div key={index} className="word">
             <div
@@ -62,8 +72,11 @@ const CircularText = ({ texts, radius }) => {
                 height: "1px",
                 width: "1px",
                 borderRadius: "50%",
-                transform: `rotate(${-angle}deg) translate(${radius}px) `,
+                transform: `rotate(${
+                  -angle * index
+                }deg) translate(${radius}px) `,
                 margin: 0,
+                fontSize: `${fontsize}px`,
               }}
             >
               {word}

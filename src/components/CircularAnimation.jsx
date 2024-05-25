@@ -44,7 +44,7 @@ const CircularAnimation = ({ words }) => {
     >
       {words.map((word, index) => (
         <div key={index} className="word1">
-          {word}
+          <div className="word-cont">{word}</div>
         </div>
       ))}
     </div>
