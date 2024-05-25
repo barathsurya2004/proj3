@@ -25,11 +25,11 @@ const CircularText = ({ texts, radius }) => {
         rotation: angle * 10 + 90,
       },
       {
-        rotation: angle * 10 - 90,
+        rotation: angle * 10 - 45,
         scrollTrigger: {
           markers: true,
           trigger: ".draggable-circle",
-          start: "center 60%",
+          start: "top bottom",
           onEnter: () => {
             setZIndex(1000);
           },
@@ -42,7 +42,7 @@ const CircularText = ({ texts, radius }) => {
           onEnterBack: () => {
             setIsWordVisible(10);
           },
-          end: "bottom top",
+          end: "top top",
           scrub: true,
           toggleActions: "play none none reverse",
         },
