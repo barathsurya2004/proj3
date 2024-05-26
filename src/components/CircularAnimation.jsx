@@ -8,6 +8,16 @@ const CircularAnimation = ({ words }) => {
   useEffect(() => {
     var wordss = gsap.utils.toArray(".word1");
     wordss.forEach((word, index) => {
+      gsap.to(word, {
+        opacity: 1,
+        duration: 0.1,
+        scrollTrigger: {
+          trigger: word,
+          start: "center 58%",
+          end: "center 42%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
       gsap.fromTo(
         word,
         {

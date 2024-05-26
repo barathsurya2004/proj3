@@ -3,6 +3,7 @@
     font-size: 55px;
     white-space: nowrap;
     margin: 55px 0;
+    opacity: 0.3;
 }
 .word-cont{
     display: inline;

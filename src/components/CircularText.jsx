@@ -2,22 +2,37 @@ import { useGSAP } from "@gsap/react";
 import "./CircularText.css"; // Ensure to import the CSS file
 import gsap from "gsap";
 import { Draggable } from "gsap/all";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 gsap.registerPlugin(Draggable);
+
 const CircularText = ({ texts, radius }) => {
+  const [pressed, setPressed] = useState(false);
+  const pressedRef = useRef(pressed);
+  const zIndexRef = useRef(0);
+
+  useEffect(() => {
+    pressedRef.current = pressed;
+  }, [pressed]);
+
   texts = [...texts, ...texts, ...texts];
   texts.reverse();
-  console.log(texts);
-  const [zIndex, setZIndex] = useState(0);
+
   const [angle, setAngle] = useState(360 / texts.length);
   const [isWordVisible, setIsWordVisible] = useState(10);
   let fontsize = 55;
+
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
-      inertia: true,
+      onPress: () => setPressed(true),
+      onRelease: () => {
+        console.log("released");
+        setPressed(false);
+      },
     });
   }, []);
+
   useGSAP(() => {
     gsap.fromTo(
       ".circle-container",
@@ -30,10 +45,10 @@ const CircularText = ({ texts, radius }) => {
           trigger: ".draggable-circle",
           start: "top bottom",
           onEnter: () => {
-            setZIndex(1000);
+            zIndexRef.current = 1000;
           },
           onLeaveBack: () => {
-            setZIndex(0);
+            zIndexRef.current = 0;
           },
           onLeave: () => {
             setIsWordVisible(texts.length);
@@ -48,6 +63,7 @@ const CircularText = ({ texts, radius }) => {
       }
     );
   });
+
   return (
     <div
       id="drag"
@@ -55,7 +71,7 @@ const CircularText = ({ texts, radius }) => {
       style={{
         height: `${radius * 2 + 1480}px`,
         width: `${radius * 2 + 1480}px`,
-        zIndex: zIndex,
+        zIndex: zIndexRef.current,
       }}
     >
       {texts.map((word, index) => {
