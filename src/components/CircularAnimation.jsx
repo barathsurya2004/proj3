@@ -47,7 +47,7 @@ const CircularAnimation = ({ words }) => {
         flexDirection: "column",
         alignItems: "start",
         justifyContent: "space-between",
-        width: "100vw",
+        width: "100%",
         paddingTop: "50vh",
         paddingLeft: "175px",
       }}

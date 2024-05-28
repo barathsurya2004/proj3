@@ -8,12 +8,6 @@ const QuestionMarkCanvas = () => {
       <Canvas>
         <ambientLight intensity={1} />
 
-        {/* <OrthographicCamera
-          makeDefault
-          zoom={150}
-          far={2000}
-          position={[0, 0, 100]}
-        /> */}
         <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
         <pointLight intensity={20} color={"#FFEDDE"} position={[5, 3, 3]} />
         <QMark />

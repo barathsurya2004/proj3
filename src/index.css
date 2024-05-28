@@ -1,16 +1,9 @@
-body {
+body,html {
   margin: 0;
   padding: 0;
 }
-#root{
-  height: 100vh;
-  width: 100vw;
-
-}
-
 *{
   box-sizing: border-box;
      color: #F2D8A0;
-
   font-family: 'Filson Pro Regular';
 }

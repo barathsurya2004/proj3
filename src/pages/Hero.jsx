@@ -59,25 +59,43 @@ const Hero = () => {
     );
   });
   return (
-    <div className="hero-container">
-      <div className="white-flash" />
-      <div className="hero-content">
-        <p>
-          Food is something we consume and interact with every day. We typically
-          eat every 4-6 hours, enjoying a variety of foods. We have emotional
-          connections to certain meals; many times, we crave food made by our
-          moms or from home. We share food, enjoy food, waste food, and strive
-          for food. Often, we don't know how it's made or the effort involved;
-          we just eat and repeat the cycle when hunger strikes again. This cycle
-          of consumption, repeats itself tirelessly, every single meal, every
-          single day!
-        </p>
-        <p>Apart from all this, is there more to food</p>
-      </div>
-      <div className="scroll-move-start">
-        <div>
-          <CircularAnimation
-            words={[
+    <>
+      <div className="hero-container">
+        <div className="white-flash" />
+        <div className="hero-content">
+          <p>
+            Food is something we consume and interact with every day. We
+            typically eat every 4-6 hours, enjoying a variety of foods. We have
+            emotional connections to certain meals; many times, we crave food
+            made by our moms or from home. We share food, enjoy food, waste
+            food, and strive for food. Often, we don't know how it's made or the
+            effort involved; we just eat and repeat the cycle when hunger
+            strikes again. This cycle of consumption, repeats itself tirelessly,
+            every single meal, every single day!
+          </p>
+          <p>Apart from all this, is there more to food</p>
+        </div>
+        <div className="scroll-move-start">
+          <div>
+            <CircularAnimation
+              words={[
+                "Is food the same for all",
+                "Is food only for the body",
+                "Do food have habits",
+                "Is food geo-taggeed",
+                "Does food influence life",
+                "Does food have mood",
+                "Whats a meal and a feast",
+                "What is good food for you",
+                "Where is your food from",
+                "Does food have history",
+              ]}
+            />
+          </div>
+        </div>
+        <div className="draggable-circle">
+          <CircularText
+            texts={[
               "Is food the same for all",
               "Is food only for the body",
               "Do food have habits",
@@ -89,41 +107,18 @@ const Hero = () => {
               "Where is your food from",
               "Does food have history",
             ]}
+            radius={1450 / 2}
           />
         </div>
+        <div
+          className="dumm"
+          style={{
+            width: "100%",
+            height: "300vh",
+          }}
+        ></div>
       </div>
-      <div className="draggable-circle">
-        <CircularText
-          texts={[
-            "Is food the same for all",
-            "Is food only for the body",
-            "Do food have habits",
-            "Is food geo-taggeed",
-            "Does food influence life",
-            "Does food have mood",
-            "Whats a meal and a feast",
-            "What is good food for you",
-            "Where is your food from",
-            "Does food have history",
-          ]}
-          radius={1450 / 2}
-        />
-      </div>
-      <div
-        className="dummy"
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-      ></div>
-      <div
-        className="dummy"
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-      ></div>
-    </div>
+    </>
   );
 };
 

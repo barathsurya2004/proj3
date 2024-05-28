@@ -9,12 +9,6 @@ import QuestionMarkCanvas from "./pages/QuestionMarkCanvas";
 const App = () => {
   const [bool, setBool] = useState(false);
   useGSAP(() => {
-    // gsap.to(".loader", {
-    //   delay: 5.5,
-    //   onComplete: () => {
-    //     setBool(false);
-    //   },
-    // });
     gsap.fromTo(
       ".webgl-canvas",
       { opacity: 0, y: 30 },
