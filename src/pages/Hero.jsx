@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Hero.css";
 import { CustomEase, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
@@ -8,6 +8,7 @@ import CircularAnimation from "../components/CircularAnimation";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
+  const [radius, setRadius] = useState(725);
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
@@ -107,7 +108,7 @@ const Hero = () => {
               "Where is your food from",
               "Does food have history",
             ]}
-            radius={1450 / 2}
+            radius={radius}
           />
         </div>
         <div
@@ -117,6 +118,7 @@ const Hero = () => {
             height: "300vh",
           }}
         ></div>
+        <div className="wheel-burst"></div>
       </div>
     </>
   );

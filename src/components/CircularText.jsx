@@ -10,23 +10,18 @@ const CircularText = ({ texts, radius }) => {
   const [pressed, setPressed] = useState(false);
   const pressedRef = useRef(pressed);
   const zIndexRef = useRef(0);
-
-  useEffect(() => {
-    pressedRef.current = pressed;
-  }, [pressed]);
+  const [change, setChange] = useState(0);
 
   texts = [...texts, ...texts, ...texts];
   texts.reverse();
-
-  const [angle, setAngle] = useState(360 / texts.length);
-  const [isWordVisible, setIsWordVisible] = useState(10);
-  let fontsize = 55;
-
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
     });
   }, []);
+  const [angle, setAngle] = useState(360 / texts.length);
+  const [isWordVisible, setIsWordVisible] = useState(10);
+  let fontsize = 55;
 
   useGSAP(() => {
     gsap.fromTo(
@@ -42,21 +37,43 @@ const CircularText = ({ texts, radius }) => {
           onEnter: () => {
             zIndexRef.current = 1000;
           },
-          onLeaveBack: () => {
-            zIndexRef.current = 0;
-          },
-          onLeave: () => {
-            setIsWordVisible(texts.length);
-          },
-          onEnterBack: () => {
-            setIsWordVisible(10);
-          },
+
           end: "+=2650",
           scrub: true,
           toggleActions: "play none none reverse",
         },
       }
     );
+    gsap.to(".circle-container", {
+      scrollTrigger: {
+        trigger: ".draggable-circle",
+        start: "top -30%",
+        onEnter: () => {
+          setIsWordVisible(texts.length);
+          zIndexRef.current = 1000;
+        },
+        onLeaveBack: () => {
+          zIndexRef.current = 0;
+          setIsWordVisible(10);
+        },
+        end: "top top",
+      },
+    });
+
+    gsap.to(".circle-container", {
+      scrollTrigger: {
+        trigger: ".wheel-burst",
+        start: "top bottom",
+        end: "top top",
+        onEnter: () => {
+          zIndexRef.current = 0;
+        },
+        onUpdate: (progress) => {
+          console.log(progress.progress);
+          setChange(progress.progress);
+        },
+      },
+    });
   });
 
   return (
@@ -82,9 +99,9 @@ const CircularText = ({ texts, radius }) => {
               style={{
                 height: "1px",
                 width: "1px",
-                transform: `rotate(${
-                  -angle * index
-                }deg) translate(${radius}px) `,
+                transform: `rotate(${-angle * index}deg) translate(${
+                  radius + 2000 * change
+                }px) `,
                 margin: 0,
                 fontSize: `${fontsize}px`,
               }}

@@ -25,12 +25,12 @@ const CircularAnimation = ({ words }) => {
           y: 0,
         },
         {
-          rotation: -110,
-          y: 1000,
+          rotation: -180,
+          y: 1200,
           scrollTrigger: {
             trigger: word,
             start: "center center",
-            end: "+=2500",
+            end: "+=3200",
             toggleActions: "play none none reverse",
             scrub: true,
           },
@@ -49,7 +49,7 @@ const CircularAnimation = ({ words }) => {
         justifyContent: "space-between",
         width: "100%",
         paddingTop: "50vh",
-        paddingLeft: "175px",
+        paddingLeft: "173px",
       }}
     >
       {words.map((word, index) => (
