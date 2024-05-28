@@ -68,6 +68,9 @@ const CircularText = ({ texts, radius }) => {
         onEnter: () => {
           zIndexRef.current = 0;
         },
+        onLeaveBack: () => {
+          zIndexRef.current = 1000;
+        },
         onUpdate: (progress) => {
           console.log(progress.progress);
           setChange(progress.progress);
