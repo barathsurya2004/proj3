@@ -25,11 +25,6 @@ const CircularText = ({ texts, radius }) => {
   useEffect(() => {
     Draggable.create("#drag", {
       type: "rotation",
-      onPress: () => setPressed(true),
-      onRelease: () => {
-        console.log("released");
-        setPressed(false);
-      },
     });
   }, []);
 
@@ -37,7 +32,7 @@ const CircularText = ({ texts, radius }) => {
     gsap.fromTo(
       ".circle-container",
       {
-        rotation: angle * 10 + 45,
+        rotation: angle * 10 + 55,
       },
       {
         rotation: angle * 10 - 60,
@@ -71,6 +66,7 @@ const CircularText = ({ texts, radius }) => {
       style={{
         height: `${radius * 2 + 1480}px`,
         width: `${radius * 2 + 1480}px`,
+
         zIndex: zIndexRef.current,
       }}
     >
@@ -86,7 +82,6 @@ const CircularText = ({ texts, radius }) => {
               style={{
                 height: "1px",
                 width: "1px",
-                borderRadius: "50%",
                 transform: `rotate(${
                   -angle * index
                 }deg) translate(${radius}px) `,

@@ -1,11 +1,9 @@
 .circle-container {
   position: fixed;
+left: -1960px;
 
+top: -925px;
 
-left: -2005px;
-  top:-970px;
-  /* border: 1px solid white; */
-  border-radius: 50%;
   z-index: 1000;
   transform-origin: center center;
 }
@@ -16,6 +14,6 @@ left: -2005px;
   left: 50%;
   font-size: 55px;
   white-space: nowrap;
-  transform-origin: left right;
+
 
 }
