@@ -49,7 +49,7 @@ const CircularAnimation = ({ words }) => {
         justifyContent: "space-between",
         width: "100%",
         paddingTop: "50vh",
-        paddingLeft: `${window.innerHeight * 0.1601}px`,
+        paddingLeft: `${(window.innerWidth * 173) / 1920}px`,
       }}
     >
       {words.map((word, index) => (
