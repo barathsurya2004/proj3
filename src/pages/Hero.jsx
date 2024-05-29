@@ -114,7 +114,7 @@ const Hero = () => {
           />
         </div>
         <div
-          className="dumm"
+          className="drag-space"
           style={{
             width: "100%",
             height: "300vh",

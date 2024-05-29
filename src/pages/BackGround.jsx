@@ -28,7 +28,7 @@ const BackGround = () => {
   });
   return (
     <>
-      <div className="vid-helper" />
+      {/* <div className="vid-helper" /> */}
       <video
         disablePictureInPicture
         disableRemotePlayback
