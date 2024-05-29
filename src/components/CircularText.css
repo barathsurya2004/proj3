@@ -1,8 +1,8 @@
 .circle-container {
   position: fixed;
-left: -2015px;
+left: -142vh;
 
-top: -925px;
+top: -116vh;
 
   z-index: 1000;
   transform-origin: center center;

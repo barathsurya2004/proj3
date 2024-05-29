@@ -11,7 +11,7 @@ const CircularText = ({ texts, radius }) => {
   const pressedRef = useRef(pressed);
   const zIndexRef = useRef(0);
   const [change, setChange] = useState(0);
-
+  radius = (window.innerHeight * radius) / 1080;
   texts = [...texts, ...texts, ...texts];
   texts.reverse();
   useEffect(() => {
@@ -86,7 +86,7 @@ const CircularText = ({ texts, radius }) => {
       style={{
         height: `${radius * 2 + 1480}px`,
         width: `${radius * 2 + 1480}px`,
-
+        top: `${-radius - (window.innerHeight * 80) / 1080}px`,
         zIndex: zIndexRef.current,
       }}
     >
@@ -94,7 +94,7 @@ const CircularText = ({ texts, radius }) => {
         if (index > isWordVisible) {
           fontsize = 0;
         } else {
-          fontsize = 55;
+          fontsize = (window.innerHeight * 55) / 1080;
         }
         return (
           <div key={index} className="word">

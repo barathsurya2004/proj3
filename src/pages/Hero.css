@@ -13,11 +13,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 460px;
-    font-size: 27px;
+    font-size: 2.5vh;
+    align-items: center;
+ }
+ .alignn{
+    width: 93.083vh;
  }
 .hero-content p{
-    margin-bottom: 5px;
+    margin-bottom: 0.4629vh;
 }
 .scroll-move-start{
     position: relative;

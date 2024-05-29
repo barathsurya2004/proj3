@@ -64,17 +64,19 @@ const Hero = () => {
       <div className="hero-container">
         <div className="white-flash" />
         <div className="hero-content">
-          <p>
-            Food is something we consume and interact with every day. We
-            typically eat every 4-6 hours, enjoying a variety of foods. We have
-            emotional connections to certain meals; many times, we crave food
-            made by our moms or from home. We share food, enjoy food, waste
-            food, and strive for food. Often, we don't know how it's made or the
-            effort involved; we just eat and repeat the cycle when hunger
-            strikes again. This cycle of consumption, repeats itself tirelessly,
-            every single meal, every single day!
-          </p>
-          <p>Apart from all this, is there more to food</p>
+          <div className="alignn">
+            <p>
+              Food is something we consume and interact with every day. We
+              typically eat every 4-6 hours, enjoying a variety of foods. We
+              have emotional connections to certain meals; many times, we crave
+              food made by our moms or from home. We share food, enjoy food,
+              waste food, and strive for food. Often, we don't know how it's
+              made or the effort involved; we just eat and repeat the cycle when
+              hunger strikes again. This cycle of consumption, repeats itself
+              tirelessly, every single meal, every single day!
+            </p>
+            <p>Apart from all this, is there more to food</p>
+          </div>
         </div>
         <div className="scroll-move-start">
           <div>
