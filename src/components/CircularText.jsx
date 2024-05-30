@@ -3,6 +3,7 @@ import "./CircularText.css";
 import { Draggable, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import AlphaMask from "./AlphaMask";
 gsap.registerPlugin(Draggable);
 gsap.registerPlugin(ScrollTrigger);
 const CircularText = ({ texts, radius }) => {
@@ -11,6 +12,8 @@ const CircularText = ({ texts, radius }) => {
   texts = [...texts, ...texts, ...texts];
   const [zIndex, setZIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [alphaMaskVisible, setAlphaMaskVisible] = useState(false);
+
   useGSAP(() => {
     Draggable.create("#drag", {
       type: "rotation",
@@ -52,9 +55,11 @@ const CircularText = ({ texts, radius }) => {
         end: "top top",
         onEnter: () => {
           setZIndex(0);
+          setAlphaMaskVisible(true);
         },
         onLeaveBack: () => {
           setZIndex(1000);
+          setAlphaMaskVisible(false);
         },
         onUpdate: (progress) => {
           setChange(progress.progress);
@@ -73,6 +78,9 @@ const CircularText = ({ texts, radius }) => {
         zIndex: zIndex,
       }}
     >
+      {alphaMaskVisible ? (
+        <AlphaMask radius={radius + change * window.innerWidth * 2} />
+      ) : null}
       <div className="circle-container" style={{}}>
         <div
           id="drag"
@@ -86,7 +94,7 @@ const CircularText = ({ texts, radius }) => {
         >
           {texts.map((text, index) => {
             const angle = (index * 360) / texts.length;
-            let fontSize;
+            let fontSize = 0.05095;
             if (index > visibleCount) fontSize = "0";
             return (
               <div className="circle-text" key={index}>
@@ -96,7 +104,9 @@ const CircularText = ({ texts, radius }) => {
                       radius + window.innerWidth * change
                     }px) `,
                     transformOrigin: `left center`,
-                    fontSize: fontSize,
+                    fontSize:
+                      fontSize * window.innerHeight +
+                      change * window.innerHeight * 0.1,
                   }}
                 >
                   {text}

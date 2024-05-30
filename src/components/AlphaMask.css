@@ -1,0 +1,25 @@
+   .torus {
+            position: relative;
+            width:var(--radius-outer); /* Outer circle diameter */
+            height:var(--radius-outer);
+            border-radius: 50%;
+            background: conic-gradient(from 0deg at 50% 50%, red, orange, yellow, green, blue, indigo, violet, red);
+            clip-path: circle(50% at 50% 50%); /* Clip the outer circle */
+            mix-blend-mode:lighten;
+        }
+
+        .torus::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--radius-inner); /* Inner circle diameter */
+            height: var(--radius-inner); /* Inner circle diameter */
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.945); /* Color matching the background or transparency */
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .alpha-mask{
+            position: absolute;
+        }

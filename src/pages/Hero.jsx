@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CircularText from "../components/CircularText";
 import CircularAnimation from "../components/CircularAnimation";
+import AlphaMask from "../components/AlphaMask";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
