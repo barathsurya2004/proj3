@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Hero.css";
 import { CustomEase, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
@@ -6,10 +6,13 @@ import { useGSAP } from "@gsap/react";
 import CircularText from "../components/CircularText";
 import CircularAnimation from "../components/CircularAnimation";
 import AlphaMask from "../components/AlphaMask";
+import Card from "./Card";
+import { Context } from "../context";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
   const [radius, setRadius] = useState(725);
+  const { q_mark, setQMark } = useContext(Context);
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
@@ -18,6 +21,7 @@ const Hero = () => {
         opacity: 0,
       },
       {
+        delay: 5,
         opacity: 1,
         duration: 0.03,
         ease: CustomEase.create("custom", "M0,0 C0.5,0 0.5,1 1,1 "),
@@ -122,6 +126,9 @@ const Hero = () => {
           }}
         ></div>
         <div className="wheel-burst"></div>
+        <div className="pumpkin">
+          <Card />
+        </div>
       </div>
     </>
   );

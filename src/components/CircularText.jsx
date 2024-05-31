@@ -10,7 +10,7 @@ const CircularText = ({ texts, radius }) => {
   radius = (window.innerWidth * radius) / 1920;
   const [change, setChange] = useState(0);
   texts = [...texts, ...texts, ...texts];
-  const [zIndex, setZIndex] = useState(0);
+  const [zIndex, setZIndex] = useState(10);
   const [visibleCount, setVisibleCount] = useState(10);
   const [alphaMaskVisible, setAlphaMaskVisible] = useState(false);
 
@@ -42,7 +42,7 @@ const CircularText = ({ texts, radius }) => {
             setVisibleCount(texts.length);
           },
           onEnterBack: () => {
-            setZIndex(0);
+            setZIndex(10);
             setVisibleCount(10);
           },
         },
@@ -78,9 +78,9 @@ const CircularText = ({ texts, radius }) => {
         zIndex: zIndex,
       }}
     >
-      {alphaMaskVisible ? (
+      {/* {alphaMaskVisible ? (
         <AlphaMask radius={radius + change * window.innerWidth * 2} />
-      ) : null}
+      ) : null} */}
       <div className="circle-container" style={{}}>
         <div
           id="drag"

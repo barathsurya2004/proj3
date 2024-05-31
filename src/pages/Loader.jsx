@@ -2,12 +2,14 @@ import "./Loader.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/all";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../context";
 gsap.registerPlugin(CustomEase);
 const Loader = () => {
   let count = 0;
   const [i, setI] = useState(0);
   let index = 0;
+  const { loading, setLoading } = useContext(Context);
   const content = [
     "we are what we eat",
     "food and travels, best buds forever",
@@ -20,6 +22,9 @@ const Loader = () => {
       {
         width: "100%",
         duration: 5,
+        onComplete: () => {
+          setLoading(false);
+        },
         ease: CustomEase.create("custom", "M0,0 C1,0 0.61873,1 1,1 "),
       }
     );
@@ -37,6 +42,12 @@ const Loader = () => {
         count += 1;
       },
       yoyo: true,
+    });
+    gsap.to(".loader", {
+      opacity: 0,
+      zIndex: -100,
+      duration: 0.1,
+      delay: 5,
     });
   });
   return (

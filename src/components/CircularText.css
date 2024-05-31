@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 .circle-text{
     top: 50%;
@@ -13,5 +14,6 @@ position: absolute;
 font-size: 5.095vh;
 text-wrap: nowrap;
 white-space: nowrap;
+z-index: 2;
 }
 

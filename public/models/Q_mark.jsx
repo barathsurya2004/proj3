@@ -18,20 +18,20 @@ export function QMark(props) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".scroll-move-start",
-        start: "top bottom",
-        end: "top center",
+        start: "top 80%",
+        end: "top 30%",
         scrub: 0.5,
       },
     });
     tl.to(qMarkPos.current.position, {
-      x: 0.9,
-      y: 0.3,
+      x: 1.3,
+      y: -0.5,
       duration: 1,
     }).to(qMarkPos.current.position, {
       x: 3,
       y: -3,
       z: 0,
-      duration: 4,
+      duration: 3,
     });
     gsap.fromTo(
       qMarkScale.current.scale,
@@ -46,8 +46,8 @@ export function QMark(props) {
         z: 0.45,
         scrollTrigger: {
           trigger: ".scroll-move-start",
-          start: "top bottom",
-          end: "top center",
+          start: "top 80%",
+          end: "top 30%",
           scrub: 0.5,
         },
       }

@@ -43,7 +43,6 @@ video{
     height: 100%;
     mix-blend-mode: luminosity;
     object-fit: cover;
-    pointer-events: none;
 
 }
 .back-vid{
