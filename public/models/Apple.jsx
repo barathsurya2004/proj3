@@ -5,11 +5,34 @@ Command: npx gltfjsx@6.2.18 Apple.glb
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { CustomEase } from "gsap/all";
+gsap.registerPlugin(CustomEase);
 export function AppleModel(props) {
+  const rotRef = useRef();
+  useGSAP(() => {
+    // console.log(rotRef.current);
+    gsap.to(rotRef.current.rotation, {
+      y: Math.PI * 4,
+      // repeatDelay: 1.2,
+      duration: 2 * 1.0833,
+      repeat: -1,
+      ease: CustomEase.create(
+        "custom",
+        "M0,0 C0.21646,-0.01306 0.7997,1.00046 1,1 "
+      ),
+    });
+  });
   const { nodes, materials } = useGLTF("/models/Apple.glb");
   return (
-    <group {...props} dispose={null} scale={6} position={[3, 0, 0]}>
+    <group
+      {...props}
+      ref={rotRef}
+      dispose={null}
+      scale={6}
+      position={[3, 0, 0]}
+    >
       <mesh geometry={nodes.Cube020.geometry} material={materials.DarkRed} />
       <mesh
         geometry={nodes.Cube020_1.geometry}

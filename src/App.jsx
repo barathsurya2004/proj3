@@ -44,7 +44,7 @@ const App = () => {
         opacity: 0,
         duration: 0.1,
         scrollTrigger: {
-          trigger: ".what-is-",
+          trigger: ".what-is-food",
           start: "top bottom",
           toggleActions: "play none none reverse",
         },

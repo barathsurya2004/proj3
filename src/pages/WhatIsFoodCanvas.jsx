@@ -7,8 +7,14 @@ import { ChickenLeg } from "../../public/models/ChickenLeg";
 import { CookingPot } from "../../public/models/CookingPot2_Soup";
 import { Cupcake } from "../../public/models/Cupcake";
 import { Pancakes } from "../../public/models/Pancakes_Stack";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { CustomEase } from "gsap/all";
+gsap.registerPlugin(CustomEase);
 const WhatIsFoodCanvas = () => {
+  const rotRef = useRef();
+
   return (
     <div className="foods-canvas canvas">
       <Canvas>
@@ -19,12 +25,14 @@ const WhatIsFoodCanvas = () => {
           color={"#FFEDDE"}
           position={[4, 3, 3]}
         />
-        {/* <AppleModel /> */}
-        {/* <BurgerLarge /> */}
-        {/* <ChickenLeg /> */}
-        {/* <CookingPot /> */}
-        {/* <Cupcake /> */}
-        <Pancakes />
+        <group dispose={null}>
+          <AppleModel />
+          {/* <BurgerLarge /> */}
+          {/* <ChickenLeg /> */}
+          {/* <CookingPot /> */}
+          {/* <Cupcake /> */}
+          {/* <Pancakes /> */}
+        </group>
       </Canvas>
     </div>
   );
