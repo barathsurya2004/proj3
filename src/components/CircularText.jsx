@@ -10,7 +10,7 @@ const CircularText = ({ texts, radius }) => {
   radius = (window.innerWidth * radius) / 1920;
   const [change, setChange] = useState(0);
   texts = [...texts, ...texts, ...texts];
-  const [zIndex, setZIndex] = useState(10);
+  const [zIndex, setZIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(10);
   const [alphaMaskVisible, setAlphaMaskVisible] = useState(false);
 
@@ -58,7 +58,7 @@ const CircularText = ({ texts, radius }) => {
           setAlphaMaskVisible(true);
         },
         onLeaveBack: () => {
-          setZIndex(1000);
+          setZIndex(800);
           setAlphaMaskVisible(false);
         },
         onUpdate: (progress) => {
@@ -71,7 +71,7 @@ const CircularText = ({ texts, radius }) => {
     <div
       style={{
         position: "fixed",
-        top: 0,
+        top: (-26 * window.innerHeight) / 1080,
         left: 0,
         width: "100%",
         height: "100vh",

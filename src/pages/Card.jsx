@@ -1,9 +1,18 @@
 import "./Card.css";
 
-const Card = () => {
+const Card = ({ content }) => {
   return (
-    <div className="card">
-      <h1>food is love</h1>
+    <div className="card-trigger">
+      <div className="card">
+        <h1
+          style={{
+            marginLeft: (175 * window.innerWidth) / 1920,
+            fontSize: (55 * window.innerHeight) / 1080,
+          }}
+        >
+          {content}
+        </h1>
+      </div>
     </div>
   );
 };

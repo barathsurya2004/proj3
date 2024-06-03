@@ -63,6 +63,17 @@ const Hero = () => {
         },
       }
     );
+    gsap.to(".question", {
+      opacity: 1,
+      left: 0,
+      scrollTrigger: {
+        trigger: ".question-trigger",
+        start: "top bottom",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+      },
+    });
   });
   return (
     <>
@@ -126,8 +137,36 @@ const Hero = () => {
           }}
         ></div>
         <div className="wheel-burst"></div>
-        <div className="pumpkin">
-          <Card />
+        <div className="what-is-food">
+          <div
+            className="question-trigger"
+            style={{
+              width: "100%",
+              height: "100vh",
+            }}
+          >
+            <div
+              className="question"
+              style={{
+                height: "100vh",
+                width: "100%",
+                position: "fixed",
+                top: 0,
+                left: "-100vh",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <h1
+                style={{
+                  marginLeft: (175 * window.innerWidth) / 1920,
+                  fontSize: (55 * window.innerHeight) / 1080,
+                }}
+              >
+                What is food
+              </h1>
+            </div>
+          </div>
         </div>
       </div>
     </>

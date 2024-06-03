@@ -8,8 +8,8 @@ import AfterLoad from "./pages/AfterLoad";
 import QuestionMarkCanvas from "./pages/QuestionMarkCanvas";
 import { useContext } from "react";
 import { Context } from "./context";
-import PumpkinCanvas from "./pages/PumpkinCanvas";
 import { useProgress } from "@react-three/drei";
+import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
 const App = () => {
   const { q_mark, loading } = useContext(Context);
   const [loadingFreze, setLoadingFreze] = useState(true);
@@ -44,18 +44,18 @@ const App = () => {
         opacity: 0,
         duration: 0.1,
         scrollTrigger: {
-          trigger: ".pumpkin",
+          trigger: ".what-is-",
           start: "top bottom",
           toggleActions: "play none none reverse",
         },
         immediateRender: false,
       }
     );
-    gsap.to(".pumpkin-canvas", {
+    gsap.to(".foods-canvas", {
       opacity: 1,
       duration: 0.1,
       scrollTrigger: {
-        trigger: ".pumpkin",
+        trigger: ".what-is-food",
         start: "top bottom",
         toggleActions: "play none none reverse",
       },
@@ -72,7 +72,7 @@ const App = () => {
         <BackGround />
         <div className="webgl-canvas">
           <QuestionMarkCanvas />
-          <PumpkinCanvas />
+          <WhatIsFoodCanvas />
         </div>
         <Loader />
         <AfterLoad />

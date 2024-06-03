@@ -1,4 +1,18 @@
 .card{
+    position: fixed;
+    top: 0;
+    left: -50vw;
     height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.card-trigger{
+    width: 100%;
+    height: 100vh;
+}
+h1{
+    margin:0;
+    
 }
