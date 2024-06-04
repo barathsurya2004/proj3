@@ -1,6 +1,11 @@
 @font-face {
   font-family: 'Filson Pro Regular';
   src: url('../public/fonts/filson/FILSONPROREGULAR.OTF');
+
+}
+@font-face {
+  font-family: 'TTtravels Next Bold';
+  src: url('../public/fonts/TTtravels/TTTRAVELSNEXTBOLD.OTF');
 }
 .canvas{
   position: absolute;

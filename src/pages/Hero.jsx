@@ -8,6 +8,7 @@ import CircularAnimation from "../components/CircularAnimation";
 import AlphaMask from "../components/AlphaMask";
 import Card from "./Card";
 import { Context } from "../context";
+import Definition from "./Definition";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -63,7 +64,7 @@ const Hero = () => {
         },
       }
     );
-    gsap.to(".question", {
+    gsap.to(".question-text", {
       opacity: 1,
       left: 0,
       scrollTrigger: {
@@ -74,6 +75,24 @@ const Hero = () => {
         scrub: true,
       },
     });
+    gsap.fromTo(
+      ".question-text",
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0.5,
+        top: "15.4351vh",
+        scrollTrigger: {
+          trigger: ".definition",
+          start: "top bottom",
+          end: "top top",
+          toggleActions: "play none none reverse",
+          scrub: true,
+        },
+        immediateRender: false,
+      }
+    );
   });
   return (
     <>
@@ -152,7 +171,6 @@ const Hero = () => {
                 width: "100%",
                 position: "fixed",
                 top: 0,
-                left: "-100vh",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -162,11 +180,21 @@ const Hero = () => {
                   marginLeft: (175 * window.innerWidth) / 1920,
                   fontSize: (55 * window.innerHeight) / 1080,
                 }}
+                className="question-text"
               >
                 What is food
               </h1>
             </div>
           </div>
+        </div>
+        <div
+          className="definition"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <Definition />
         </div>
       </div>
     </>

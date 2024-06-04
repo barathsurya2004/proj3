@@ -15,7 +15,7 @@ export function AppleModel(props) {
     // console.log(rotRef.current);
     gsap.to(rotRef.current.rotation, {
       y: Math.PI * 4,
-      // repeatDelay: 1.2,
+
       duration: 2 * 1.0833,
       repeat: -1,
       ease: CustomEase.create(
