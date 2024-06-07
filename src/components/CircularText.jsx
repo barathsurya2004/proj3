@@ -106,7 +106,7 @@ const CircularText = ({ texts, radius }) => {
                     transformOrigin: `left center`,
                     fontSize:
                       fontSize * window.innerHeight +
-                      change * window.innerHeight * 0.1,
+                      change * window.innerHeight * 0.05,
                   }}
                 >
                   {text}

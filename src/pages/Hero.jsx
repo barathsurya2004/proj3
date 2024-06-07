@@ -111,8 +111,7 @@ const Hero = () => {
       }
     );
     gsap.to(".card-content", {
-      bottom: 0,
-
+      left: 0,
       scrollTrigger: {
         trigger: ".food-is",
         start: "top 80%",
@@ -126,7 +125,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-art",
         start: "top bottom",
-        end: "top top",
+        end: "top 40%",
         scrub: true,
       },
     });
@@ -145,7 +144,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-adventure",
         start: "top bottom",
-        end: "top top",
+        end: "top 40%",
         scrub: true,
       },
     });
@@ -164,7 +163,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
         start: "top bottom",
-        end: "top top",
+        end: "top 40%",
         scrub: true,
       },
     });
@@ -183,7 +182,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-culture",
         start: "top bottom",
-        end: "top top",
+        end: "top 40%",
         scrub: true,
       },
     });
