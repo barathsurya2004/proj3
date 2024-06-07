@@ -2,27 +2,35 @@
 .card-trigger{
     width: 100%;
     height: 100vh;
+    position:relative;
     }
     .card-trigger *{
         
         font-family: 'TTtravels Next Bold';
         font-size: 13.33vh;
         margin: 0;
-        white-space: nowrap;
         }
         .card-content{
             margin-left: 13.02vw;
             padding-top: 26vh;
-            
+            height: 100%;
+            width: 100%;
             position: fixed;
-            left: -100vw;
-            top: 0;
+            bottom: -100vh;
             
-        }
-        .topic{
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            margin-left: 13.02vw;
-    left: 100vw;
+            }
+            .topic{
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 13.02vw;
+                left: -100vw;
+            }
+.love{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.beyond-time{
+    transform: translateY(-25%);
 }

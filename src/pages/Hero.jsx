@@ -111,7 +111,7 @@ const Hero = () => {
       }
     );
     gsap.to(".card-content", {
-      left: 0,
+      bottom: 0,
 
       scrollTrigger: {
         trigger: ".food-is",
@@ -120,6 +120,115 @@ const Hero = () => {
         scrub: true,
       },
     });
+    gsap.to(".love", {
+      y: -200,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".food-is-art",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".art", {
+      left: 0,
+      scrollTrigger: {
+        trigger: ".food-is-art",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".art", {
+      y: -200,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".food-is-adventure",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".adventure", {
+      left: 0,
+      scrollTrigger: {
+        trigger: ".food-is-adventure",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".adventure", {
+      y: -200,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".food-is-beyond-time",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".beyond-time", {
+      left: 0,
+      scrollTrigger: {
+        trigger: ".food-is-beyond-time",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".beyond-time", {
+      y: -200,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".food-is-culture",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.to(".culture", {
+      left: 0,
+      scrollTrigger: {
+        trigger: ".food-is-culture",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    gsap.fromTo(
+      ".definition-container",
+      {
+        y: "10vh",
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".definition",
+          start: "top 80%",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".definition-container",
+      {
+        y: 0,
+      },
+      {
+        y: "-100vh",
+        scrollTrigger: {
+          trigger: ".food-is",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+      }
+    );
   });
   return (
     <>
@@ -179,7 +288,7 @@ const Hero = () => {
           className="drag-space"
           style={{
             width: "100%",
-            height: "300vh",
+            height: "200vh",
           }}
         ></div>
         <div className="wheel-burst"></div>
@@ -223,6 +332,7 @@ const Hero = () => {
         >
           <Definition />
         </div>
+        <div className="buffer"></div>
         <div className="food-is">
           <Card />
         </div>
@@ -230,7 +340,35 @@ const Hero = () => {
           className="food-is-love"
           style={{
             width: "100%",
-            height: "100vh",
+            height: "150vh",
+          }}
+        ></div>
+        <div
+          className="food-is-art"
+          style={{
+            width: "100%",
+            height: "150vh",
+          }}
+        ></div>
+        <div
+          className="food-is-adventure"
+          style={{
+            width: "100%",
+            height: "150vh",
+          }}
+        ></div>
+        <div
+          className="food-is-beyond-time"
+          style={{
+            width: "100%",
+            height: "150vh",
+          }}
+        ></div>
+        <div
+          className="food-is-culture"
+          style={{
+            width: "100%",
+            height: "150vh",
           }}
         ></div>
       </div>

@@ -16,7 +16,8 @@ const Card = ({ content }) => {
           <h2>adventure</h2>
         </div>
         <div className="beyond-time topic">
-          <h2>beyond time</h2>
+          <h2>beyond</h2>
+          <h2>time</h2>
         </div>
         <div className="culture topic">
           <h2>culture</h2>
