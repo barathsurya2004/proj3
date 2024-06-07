@@ -111,7 +111,7 @@ const Hero = () => {
       }
     );
     gsap.to(".card-content", {
-      left: 0,
+      bottom: 0,
       scrollTrigger: {
         trigger: ".food-is",
         start: "top 80%",
@@ -120,7 +120,7 @@ const Hero = () => {
       },
     });
     gsap.to(".love", {
-      y: -200,
+      x: -100,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-art",
@@ -139,7 +139,7 @@ const Hero = () => {
       },
     });
     gsap.to(".art", {
-      y: -200,
+      x: -100,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-adventure",
@@ -158,7 +158,7 @@ const Hero = () => {
       },
     });
     gsap.to(".adventure", {
-      y: -200,
+      x: -100,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
@@ -177,7 +177,7 @@ const Hero = () => {
       },
     });
     gsap.to(".beyond-time", {
-      y: -200,
+      x: -100,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-culture",
