@@ -3,15 +3,24 @@ import "./Card.css";
 const Card = ({ content }) => {
   return (
     <div className="card-trigger">
-      <div className="card">
-        <h1
-          style={{
-            marginLeft: (175 * window.innerWidth) / 1920,
-            fontSize: (55 * window.innerHeight) / 1080,
-          }}
-        >
-          {content}
-        </h1>
+      <div className="card-content">
+        <h1>food is </h1>
+
+        <div className="love">
+          <h2>love</h2>
+        </div>
+        <div className="topic art">
+          <h2>art</h2>
+        </div>
+        <div className="adventure topic">
+          <h2>adventure</h2>
+        </div>
+        <div className="beyond-time topic">
+          <h2>beyond time</h2>
+        </div>
+        <div className="culture topic">
+          <h2>culture</h2>
+        </div>
       </div>
     </div>
   );

@@ -93,6 +93,33 @@ const Hero = () => {
         immediateRender: false,
       }
     );
+    gsap.fromTo(
+      ".question-text",
+      {
+        top: "15.4351vh",
+      },
+      {
+        top: "-84.5649vh",
+        scrollTrigger: {
+          trigger: ".food-is",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+    gsap.to(".card-content", {
+      left: 0,
+
+      scrollTrigger: {
+        trigger: ".food-is",
+        start: "top 80%",
+        end: "top top",
+        scrub: true,
+      },
+    });
   });
   return (
     <>
@@ -196,6 +223,16 @@ const Hero = () => {
         >
           <Definition />
         </div>
+        <div className="food-is">
+          <Card />
+        </div>
+        <div
+          className="food-is-love"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        ></div>
       </div>
     </>
   );
