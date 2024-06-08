@@ -1,20 +1,16 @@
 import { Canvas } from "@react-three/fiber";
-import { Pumpkin } from "../../public/models/Pumpkin";
+
 import { PerspectiveCamera } from "@react-three/drei";
-import { AppleModel } from "../../public/models/Apple";
-import { BurgerLarge } from "../../public/models/BurgerLarge";
-import { ChickenLeg } from "../../public/models/ChickenLeg";
-import { CookingPot } from "../../public/models/CookingPot2_Soup";
-import { Cupcake } from "../../public/models/Cupcake";
-import { Pancakes } from "../../public/models/Pancakes_Stack";
-import { useGSAP } from "@gsap/react";
+import { AppleAnim } from "../../public/models/Apple";
+
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { CustomEase } from "gsap/all";
+import { BurgerAnim } from "../../public/models/Burger";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(CustomEase);
+gsap.registerPlugin(useGSAP);
 const WhatIsFoodCanvas = () => {
-  const rotRef = useRef();
-
   return (
     <div className="foods-canvas canvas">
       <Canvas>
@@ -25,13 +21,8 @@ const WhatIsFoodCanvas = () => {
           color={"#FFEDDE"}
           position={[4, 3, 3]}
         />
-        <group dispose={null}>
-          <AppleModel />
-          {/* <BurgerLarge /> */}
-          {/* <ChickenLeg /> */}
-          {/* <CookingPot /> */}
-          {/* <Cupcake /> */}
-          {/* <Pancakes /> */}
+        <group dispose={null} scale={5} position={[3, 0, 0]}>
+          <AppleAnim />
         </group>
       </Canvas>
     </div>

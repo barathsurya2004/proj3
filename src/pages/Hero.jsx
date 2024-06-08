@@ -125,7 +125,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-art",
         start: "top bottom",
-        end: "top 40%",
+        end: "top 80%",
         scrub: true,
       },
     });
@@ -144,7 +144,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-adventure",
         start: "top bottom",
-        end: "top 40%",
+        end: "top 80%",
         scrub: true,
       },
     });
@@ -163,7 +163,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
         start: "top bottom",
-        end: "top 40%",
+        end: "top 80%",
         scrub: true,
       },
     });
@@ -182,7 +182,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".food-is-culture",
         start: "top bottom",
-        end: "top 40%",
+        end: "top 80%",
         scrub: true,
       },
     });

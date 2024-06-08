@@ -1,7 +1,7 @@
 import Loader from "./pages/Loader";
 import "./App.css";
 import BackGround from "./pages/BackGround";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AfterLoad from "./pages/AfterLoad";
@@ -13,6 +13,7 @@ import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
 const App = () => {
   const { q_mark, loading } = useContext(Context);
   const [loadingFreze, setLoadingFreze] = useState(true);
+
   useEffect(() => {
     if (!loading) {
       gsap.to(".afterload-container", {
@@ -59,6 +60,9 @@ const App = () => {
         start: "top bottom",
         toggleActions: "play none none reverse",
       },
+    });
+    const tl = gsap.timeline({
+      repeat: -1,
     });
   });
   return (
