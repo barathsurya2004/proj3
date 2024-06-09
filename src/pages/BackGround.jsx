@@ -3,9 +3,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/all";
 import { useEffect, useState } from "react";
+import image from "../assets/Asset 3.png";
 gsap.registerPlugin(CustomEase);
 const BackGround = () => {
-  const hori = 1000;
+  const hori = 8;
   const verti = (16 / 9) * (8 + 1) - 1;
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
@@ -36,6 +37,20 @@ const BackGround = () => {
   return (
     <>
       <div className="vid-helper" />
+      <div
+        className="guide"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+          zIndex: 100,
+          margin: 0,
+        }}
+      >
+        <img src={image} alt="guide" style={{ width: "100%", margin: 0 }} />
+      </div>
       <video
         disablePictureInPicture
         disableRemotePlayback
@@ -61,10 +76,7 @@ const BackGround = () => {
               className="grid-lines-hori"
               key={index}
               style={{
-                top: `${
-                  ((window.innerHeight / 8) * index - scrollY) %
-                  window.innerHeight
-                }px`,
+                top: `${(window.innerHeight / 8) * index}px`,
               }}
             ></div>
           ))}
