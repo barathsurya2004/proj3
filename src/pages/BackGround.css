@@ -28,12 +28,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 .grid-lines-hori{
     background-color: #1E1E1E;
     height: 2px;
     width: 0%;
+    position: fixed;
 }
 video{
     position: fixed;

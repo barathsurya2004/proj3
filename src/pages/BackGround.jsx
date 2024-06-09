@@ -2,10 +2,17 @@ import "./BackGround.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/all";
+import { useEffect, useState } from "react";
 gsap.registerPlugin(CustomEase);
 const BackGround = () => {
-  const hori = 8;
-  const verti = (16 / 9) * (hori + 1) - 1;
+  const hori = 1000;
+  const verti = (16 / 9) * (8 + 1) - 1;
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      setScrollY(window.scrollY);
+    });
+  });
   useGSAP(() => {
     gsap.to(".grid-lines-hori", {
       width: "100%",
@@ -50,7 +57,16 @@ const BackGround = () => {
       <div className="bg-container">
         <div className="horizontal-lines">
           {Array.from({ length: hori }, (item, index) => (
-            <div className="grid-lines-hori" key={index}></div>
+            <div
+              className="grid-lines-hori"
+              key={index}
+              style={{
+                top: `${
+                  ((window.innerHeight / 8) * index - scrollY) %
+                  window.innerHeight
+                }px`,
+              }}
+            ></div>
           ))}
         </div>
         <div className="vertical-lines">
