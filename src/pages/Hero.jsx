@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CircularText from "../components/CircularText";
 import CircularAnimation from "../components/CircularAnimation";
-import AlphaMask from "../components/AlphaMask";
 import Card from "./Card";
 import { Context } from "../context";
 import Definition from "./Definition";
@@ -323,6 +322,68 @@ const Hero = () => {
         scrub: true,
       },
     });
+    gsap.to(".cusines-of-world-title", {
+      y: -50,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".cuisines-of-india",
+        start: "top bottom",
+        end: "top 50%",
+        scrub: true,
+      },
+    });
+    gsap.fromTo(
+      ".cuisines-of-india-title",
+      {
+        x: -50,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".cuisines-of-india",
+          start: "top 50%",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".cuisines-of-india-title",
+      {
+        x: 0,
+        opacity: 1,
+      },
+      {
+        x: -50,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top bottom",
+          end: "top 50%",
+          scrub: true,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".cuisines-of-tn-title",
+      {
+        x: -50,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 50%",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
   });
   return (
     <>
@@ -514,7 +575,7 @@ const Hero = () => {
           className="cusines-of-world"
           style={{
             width: "100%",
-            height: "100vh",
+            height: "150vh",
           }}
         >
           <div
@@ -563,6 +624,118 @@ const Hero = () => {
                   World
                 </span>
               </h3>
+            </div>
+          </div>
+        </div>
+        <div
+          className="cuisines-of-india"
+          style={{
+            width: "100%",
+            height: "150vh",
+          }}
+        >
+          <div
+            className="cuisines-of-india-title"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100vh",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 122 * (window.innerHeight / 1080),
+                left: 167 * (window.innerWidth / 1920),
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: (144 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Bold",
+                  margin: 0,
+                }}
+              >
+                Cuisines
+              </h2>
+              <h3
+                style={{
+                  fontSize: (89 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Demibold Italic",
+                  margin: 0,
+                }}
+              >
+                of
+                <span
+                  style={{
+                    fontSize: (144 * window.innerHeight) / 1080,
+                    fontFamily: "TTtravels Next Demibold Italic",
+                  }}
+                >
+                  India
+                </span>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div
+          className="cuisines-of-tn"
+          style={{
+            width: "100%",
+            height: "150vh",
+          }}
+        >
+          <div
+            className="cuisines-of-tn-title"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100vh",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 70 * (window.innerHeight / 1080),
+                left: 175 * (window.innerWidth / 1920),
+                display: "flex",
+                flexDirection: "column",
+                lineHeight: 1.2,
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: (144 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Demibold Italic",
+                  margin: 0,
+                }}
+              >
+                Tamil
+              </h2>
+              <h2
+                style={{
+                  fontSize: (144 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Demibold Italic",
+                  margin: 0,
+                }}
+              >
+                Nadu's
+              </h2>
+              <h2
+                style={{
+                  fontSize: (144 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Bold",
+                  margin: 0,
+                }}
+              >
+                Cuisines
+              </h2>
             </div>
           </div>
         </div>

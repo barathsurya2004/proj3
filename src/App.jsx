@@ -11,7 +11,7 @@ import { Context } from "./context";
 import { useProgress } from "@react-three/drei";
 import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
 import GlobeCanvas from "./pages/GlobeCanvas";
-import image from "./assets/Artboard 11.png";
+import image from "./assets/delete/Artboard 1_1.png";
 const App = () => {
   const { q_mark, loading } = useContext(Context);
   const [loadingFreze, setLoadingFreze] = useState(true);

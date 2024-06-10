@@ -3,7 +3,6 @@ import "./CircularText.css";
 import { Draggable, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import AlphaMask from "./AlphaMask";
 gsap.registerPlugin(Draggable);
 gsap.registerPlugin(ScrollTrigger);
 const CircularText = ({ texts, radius }) => {
@@ -78,9 +77,6 @@ const CircularText = ({ texts, radius }) => {
         zIndex: zIndex,
       }}
     >
-      {/* {alphaMaskVisible ? (
-        <AlphaMask radius={radius + change * window.innerWidth * 2} />
-      ) : null} */}
       <div className="circle-container" style={{}}>
         <div
           id="drag"
