@@ -11,7 +11,8 @@ import { Context } from "./context";
 import { useProgress } from "@react-three/drei";
 import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
 import GlobeCanvas from "./pages/GlobeCanvas";
-import image from "./assets/delete/Artboard 1_1.png";
+import image from "./assets/delete/Artboard 8.png";
+import FoodIsCanvas from "./pages/FoodIsCanvas";
 const App = () => {
   const { q_mark, loading } = useContext(Context);
   const [loadingFreze, setLoadingFreze] = useState(true);
@@ -90,8 +91,9 @@ const App = () => {
       </div>
       <div className="webgl-canvas">
         <QuestionMarkCanvas />
-        <WhatIsFoodCanvas />
-        <GlobeCanvas />
+        {/* <WhatIsFoodCanvas /> */}
+        {/* <GlobeCanvas /> */}
+        <FoodIsCanvas />
       </div>
       <Loader />
       <AfterLoad />

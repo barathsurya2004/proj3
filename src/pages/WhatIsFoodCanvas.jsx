@@ -6,7 +6,6 @@ import { AppleAnim } from "../../public/models/Apple";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { CustomEase } from "gsap/all";
-import { BurgerAnim } from "../../public/models/Burger";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(useGSAP);
