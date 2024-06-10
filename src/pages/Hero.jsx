@@ -228,6 +228,101 @@ const Hero = () => {
         ease: "none",
       }
     );
+    gsap.fromTo(
+      ".card-content",
+      {
+        bottom: 0,
+      },
+      {
+        bottom: 175 * (window.innerHeight / 1080),
+        scrollTrigger: {
+          trigger: ".food-is-culture-definition",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.to(".culture", {
+      y: -245 * (window.innerHeight / 1080),
+      scrollTrigger: {
+        trigger: ".food-is-culture-definition",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+      immediateRender: false,
+    });
+    gsap.fromTo(
+      ".culture-definition",
+      {
+        opacity: 0,
+        y: 30,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".food-is-culture-definition",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".card-content",
+      {
+        bottom: 175 * (window.innerHeight / 1080),
+      },
+      {
+        bottom: window.innerHeight + 175 * (window.innerHeight / 1080),
+        scrollTrigger: {
+          trigger: ".cusines-of-world",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        immediateRender: false,
+        ease: "none",
+      }
+    );
+    gsap.to(".culture", {
+      y: -window.innerHeight - 175 * (window.innerHeight / 1080),
+      scrollTrigger: {
+        trigger: ".cusines-of-world",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+      immediateRender: false,
+      ease: "none",
+    });
+    gsap.fromTo(
+      ".culdef",
+      { top: "45%" },
+      {
+        top: "-55vh",
+        scrollTrigger: {
+          trigger: ".cusines-of-world",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+    gsap.to(".cusines-of-world-title", {
+      bottom: 118 * (window.innerHeight / 1080),
+      scrollTrigger: {
+        trigger: ".cusines-of-world",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    });
   });
   return (
     <>
@@ -370,6 +465,107 @@ const Hero = () => {
             height: "150vh",
           }}
         ></div>
+        <div
+          className="food-is-culture-definition"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            className="culture-definition"
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "fixed",
+              left: 0,
+              top: 0,
+              fontSize: (27 * window.innerHeight) / 1080,
+            }}
+          >
+            <div
+              className="culdef"
+              style={{
+                width: (788 * window.innerWidth) / 1920,
+                marginLeft: "13.02vw",
+                position: "absolute",
+                top: "45%",
+              }}
+            >
+              <p>
+                Food is more deeply integrated into our life and culture than we
+                assume. Just like languages built with words, cuisines use
+                ingredients as vocabulary. Indian cuisine, for example, relies
+                on ingredients like cardamom, turmeric, and chilies. Preparation
+                methods act like verbs, shaping the dish's essence. Think of the
+                slow simmering of fragrant biryanis compared to the tandoori's
+                fiery smoky perfection. Flavors and techniques are the grammar,
+                creating a symphony on the plate. From the creamy kurmas to the
+                Jamuns.
+              </p>
+              <p>
+                A cuisine tells a story of regional traditions and cultural
+                heritage, all through the language of food.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="cusines-of-world"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "fixed",
+              top: 0,
+              left: 0,
+            }}
+          >
+            <div
+              className="cusines-of-world-title"
+              style={{
+                position: "absolute",
+                right: 177 * (window.innerWidth / 1920),
+                bottom: -window.innerHeight + 118 * (window.innerHeight / 1080),
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: (144 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Bold",
+                  margin: 0,
+                }}
+              >
+                Cuisines
+              </h3>
+              <h3
+                style={{
+                  fontSize: (89 * window.innerHeight) / 1080,
+                  fontFamily: "TTtravels Next Demibold Italic",
+                  margin: 0,
+                }}
+              >
+                of the{" "}
+                <span
+                  style={{
+                    fontSize: (144 * window.innerHeight) / 1080,
+                    fontFamily: "TTtravels Next Demibold Italic",
+                  }}
+                >
+                  World
+                </span>
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

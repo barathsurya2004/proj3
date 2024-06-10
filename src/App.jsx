@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { Context } from "./context";
 import { useProgress } from "@react-three/drei";
 import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
+import GlobeCanvas from "./pages/GlobeCanvas";
+import image from "./assets/Artboard 11.png";
 const App = () => {
   const { q_mark, loading } = useContext(Context);
   const [loadingFreze, setLoadingFreze] = useState(true);
@@ -67,20 +69,33 @@ const App = () => {
   });
   return (
     <>
-      <div
+      {/* <div
         className="loading-helper"
         style={{
           overflow: loadingFreze ? "hidden" : null,
         }}
-      >
-        <BackGround />
-        <div className="webgl-canvas">
-          <QuestionMarkCanvas />
-          <WhatIsFoodCanvas />
-        </div>
-        <Loader />
-        <AfterLoad />
+      > */}
+      {/* <BackGround /> */}
+      <div>
+        <img
+          src={image}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+          }}
+        />
       </div>
+      <div className="webgl-canvas">
+        <QuestionMarkCanvas />
+        <WhatIsFoodCanvas />
+        <GlobeCanvas />
+      </div>
+      <Loader />
+      <AfterLoad />
+      {/* </div> */}
     </>
   );
 };

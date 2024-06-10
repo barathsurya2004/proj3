@@ -23,15 +23,15 @@
             .topic{
                 position: fixed;
                 top: 50%;
-                transform: translateY(-50%);
+                transform: translateY(-29%);
                 margin-left: 13.02vw;
                 left: 100vw;
             }
 .love{
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-29%);
 }
 .beyond-time{
-    transform: translateY(-25%);
+    transform: translateY(-14%);
 }
