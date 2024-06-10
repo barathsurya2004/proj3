@@ -278,7 +278,7 @@ const Hero = () => {
       {
         bottom: window.innerHeight + 175 * (window.innerHeight / 1080),
         scrollTrigger: {
-          trigger: ".cusines-of-world",
+          trigger: ".cuisines-of-the-world",
           start: "top bottom",
           end: "top top",
           scrub: true,
@@ -290,7 +290,7 @@ const Hero = () => {
     gsap.to(".culture", {
       y: -window.innerHeight - 175 * (window.innerHeight / 1080),
       scrollTrigger: {
-        trigger: ".cusines-of-world",
+        trigger: ".cuisines-of-the-world",
         start: "top bottom",
         end: "top top",
         scrub: true,
@@ -304,7 +304,7 @@ const Hero = () => {
       {
         top: "-55vh",
         scrollTrigger: {
-          trigger: ".cusines-of-world",
+          trigger: ".cuisines-of-the-world",
           start: "top bottom",
           end: "top top",
           scrub: true,
@@ -313,16 +313,16 @@ const Hero = () => {
         immediateRender: false,
       }
     );
-    gsap.to(".cusines-of-world-title", {
+    gsap.to(".cuisines-of-the-world-title", {
       bottom: 118 * (window.innerHeight / 1080),
       scrollTrigger: {
-        trigger: ".cusines-of-world",
+        trigger: ".cuisines-of-the-world",
         start: "top bottom",
         end: "top top",
         scrub: true,
       },
     });
-    gsap.to(".cusines-of-world-title", {
+    gsap.to(".cuisines-of-the-world-title", {
       y: -50,
       opacity: 0,
       scrollTrigger: {
@@ -572,7 +572,7 @@ const Hero = () => {
           </div>
         </div>
         <div
-          className="cusines-of-world"
+          className="cuisines-of-the-world"
           style={{
             width: "100%",
             height: "150vh",
@@ -588,7 +588,7 @@ const Hero = () => {
             }}
           >
             <div
-              className="cusines-of-world-title"
+              className="cuisines-of-the-world-title"
               style={{
                 position: "absolute",
                 right: 177 * (window.innerWidth / 1920),

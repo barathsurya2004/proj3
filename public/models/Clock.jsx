@@ -5,13 +5,54 @@ Command: npx gltfjsx@6.2.18 clcok.glb
 
 import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export function ClockModel(props) {
   const group = useRef();
+  useGSAP(() => {
+    gsap.to(group.current.scale, {
+      x: 12,
+      y: 12,
+      z: 12,
+      duration: 0.001,
+      scrollTrigger: {
+        trigger: ".food-is-beyond-time",
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 12,
+        y: 12,
+        z: 12,
+      },
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.001,
+        scrollTrigger: {
+          trigger: ".food-is-culture",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+        immediateRender: false,
+      }
+    );
+  });
   const { nodes, materials, animations } = useGLTF("/models/clock.glb");
   const { actions } = useAnimations(animations, group);
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group
+      ref={group}
+      {...props}
+      dispose={null}
+      scale={0}
+      position={[3, -0.4, 0]}
+    >
       <group name="Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="Root">

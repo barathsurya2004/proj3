@@ -6,31 +6,158 @@ Command: npx gltfjsx@6.2.18 Earth.glb
 import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useControls } from "leva";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export function EarthModel(props) {
-  const { x, y, z, rotX, rotY, rotZ, scale } = useControls({
-    x: { value: 0, min: -5, max: 5, step: 0.1 },
-    y: { value: 0, min: -5, max: 5, step: 0.1 },
-    z: { value: 0, min: -5, max: 5, step: 0.1 },
-    scale: { value: 1, min: 0, max: 20, step: 0.05 },
-    rotX: { value: 0, min: -Math.PI, max: Math.PI, step: 0.1 },
-    rotY: { value: 0, min: -Math.PI, max: Math.PI, step: 0.1 },
-    rotZ: { value: 0, min: -Math.PI, max: Math.PI, step: 0.1 },
-  });
   const group = useRef();
+  useGSAP(() => {
+    gsap.to(group.current.scale, {
+      x: 6,
+      y: 6,
+      z: 6,
+      duration: 0.001,
+      scrollTrigger: {
+        trigger: ".food-is-culture",
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.to(group.current.position, {
+      x: -2.3,
+      scrollTrigger: {
+        trigger: ".cuisines-of-the-world",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 6,
+        y: 6,
+        z: 6,
+      },
+      {
+        x: 8.3,
+        y: 8.3,
+        z: 8.3,
+        scrollTrigger: {
+          trigger: ".cuisines-of-the-world",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.position,
+      {
+        x: -2.3,
+      },
+      {
+        x: 2.2,
+        y: 0.3,
+        scrollTrigger: {
+          trigger: ".cuisines-of-india",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 8.3,
+        y: 8.3,
+        z: 8.3,
+      },
+      {
+        x: 17.5,
+        y: 17.5,
+        z: 17.5,
+        scrollTrigger: {
+          trigger: ".cuisines-of-india",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.to(group.current.rotation, {
+      y: -0.6,
+      scrollTrigger: {
+        trigger: ".cuisines-of-india",
+        start: "top 80%",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+    gsap.fromTo(
+      group.current.position,
+      {
+        x: 2.2,
+        y: 0.3,
+      },
+      {
+        x: 2.2,
+        y: 0.69,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 17.5,
+        y: 17.5,
+        z: 17.5,
+      },
+      {
+        x: 28,
+        y: 28,
+        z: 28,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.rotation,
+      {
+        y: -0.6,
+      },
+      {
+        y: -0.63,
+        x: -0.25,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+  });
   const { nodes, materials, animations } = useGLTF("/models/Earth.glb");
   const { actions } = useAnimations(animations, group);
   return (
-    <group
-      ref={group}
-      {...props}
-      dispose={null}
-      position={[x, y, z]}
-      scale={scale}
-      rotation-x={rotX}
-      rotation-y={rotY}
-      rotation-z={rotZ}
-    >
+    <group ref={group} {...props} dispose={null} position={[3, 0, 0]} scale={0}>
       <ambientLight />
       <group name="Scene">
         <mesh
@@ -795,12 +922,9 @@ export function EarthModel(props) {
           material={materials["instances grid.001"]}
           scale={0.305}
         />
-        <mesh
-          name="wiree004"
-          geometry={nodes.wiree004.geometry}
-          material={materials["instances grid.001"]}
-          scale={0.299}
-        />
+        <mesh name="wiree004" geometry={nodes.wiree004.geometry} scale={0.299}>
+          <meshStandardMaterial color={0x000000} transparent opacity={0.3} />
+        </mesh>
       </group>
     </group>
   );

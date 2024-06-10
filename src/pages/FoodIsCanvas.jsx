@@ -2,6 +2,9 @@ import { Canvas } from "@react-three/fiber";
 import { HeartModel } from "../../public/models/Heart";
 import { PerspectiveCamera } from "@react-three/drei";
 import { TreasureMapModel } from "../../public/models/Treasure_map";
+import { ClockModel } from "../../public/models/Clock";
+import { ArtModel } from "../../public/models/Art";
+import { EarthModel } from "../../public/models/Earth";
 
 const FoodIsCanvas = () => {
   return (
@@ -23,7 +26,10 @@ const FoodIsCanvas = () => {
         <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
 
         <HeartModel />
+        <ArtModel />
         <TreasureMapModel />
+        <ClockModel />
+        <EarthModel />
       </Canvas>
     </div>
   );
