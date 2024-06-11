@@ -13,17 +13,25 @@ gsap.registerPlugin(ScrollTrigger);
 export function EarthModel(props) {
   const group = useRef();
   useGSAP(() => {
-    gsap.to(group.current.scale, {
-      x: 6,
-      y: 6,
-      z: 6,
-      duration: 0.001,
-      scrollTrigger: {
-        trigger: ".food-is-culture",
-        start: "top bottom",
-        toggleActions: "play none none reverse",
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
       },
-    });
+      {
+        x: 6,
+        y: 6,
+        z: 6,
+        duration: 0.001,
+        scrollTrigger: {
+          trigger: ".food-is-culture",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
     gsap.fromTo(
       group.current.scale,
       {
@@ -74,8 +82,98 @@ export function EarthModel(props) {
         scrollTrigger: {
           trigger: ".cuisines-of-india",
           start: "top 90%",
-          end: " top top",
-          scurb: 1,
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.position,
+      {
+        x: -2.3,
+        y: 0,
+      },
+      {
+        x: 2.3,
+        y: 0.3,
+        scrollTrigger: {
+          trigger: ".cuisines-of-india",
+          start: "top 90%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.rotation,
+      {
+        y: 0,
+      },
+      {
+        y: -0.6,
+        scrollTrigger: {
+          trigger: ".cuisines-of-india",
+          start: "top 90%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.scale,
+      {
+        x: 17.5,
+        y: 17.5,
+        z: 17.5,
+      },
+      {
+        x: 27.45,
+        y: 27.45,
+        z: 27.45,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 90%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.position,
+      {
+        x: 2.3,
+        y: 0.3,
+      },
+      {
+        x: 2.28,
+        y: 0.69,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 90%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      group.current.rotation,
+      {
+        y: -0.6,
+        x: 0,
+      },
+      {
+        y: -0.64,
+        x: -0.21,
+        scrollTrigger: {
+          trigger: ".cuisines-of-tn",
+          start: "top 90%",
+          end: "bottom bottom",
+          scrub: 1,
         },
         immediateRender: false,
       }

@@ -360,8 +360,8 @@ const Hero = () => {
         opacity: 0,
         scrollTrigger: {
           trigger: ".cuisines-of-tn",
-          start: "top bottom",
-          end: "top 50%",
+          start: "top 50%",
+          end: "top top",
           scrub: true,
         },
         immediateRender: false,
@@ -378,7 +378,7 @@ const Hero = () => {
         opacity: 1,
         scrollTrigger: {
           trigger: ".cuisines-of-tn",
-          start: "top 50%",
+          start: "top 50",
           end: "top top",
           scrub: true,
         },
@@ -575,7 +575,7 @@ const Hero = () => {
           className="cuisines-of-the-world"
           style={{
             width: "100%",
-            height: "150vh",
+            height: "100vh",
           }}
         >
           <div
@@ -627,11 +627,12 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <div className="scrub-time-helper" />
         <div
           className="cuisines-of-india"
           style={{
             width: "100%",
-            height: "150vh",
+            height: "100vh",
           }}
         >
           <div
@@ -682,11 +683,12 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <div className="scrub-time-helper" />
         <div
           className="cuisines-of-tn"
           style={{
             width: "100%",
-            height: "150vh",
+            height: "100vh",
           }}
         >
           <div
@@ -739,6 +741,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <div className="scrub-time-helper" />
       </div>
     </>
   );

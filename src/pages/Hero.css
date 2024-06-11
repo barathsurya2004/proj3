@@ -45,3 +45,7 @@
     left: -50vw;
     transform: translate(0, -50%);
 }
+.scrub-time-helper{
+    width: 100%;
+    height: 200vh;
+}
