@@ -95,7 +95,7 @@ export function EarthModel(props) {
         y: 0,
       },
       {
-        x: 2.3,
+        x: 2,
         y: 0.3,
         scrollTrigger: {
           trigger: ".cuisines-of-india",
@@ -145,7 +145,7 @@ export function EarthModel(props) {
     gsap.fromTo(
       group.current.position,
       {
-        x: 2.3,
+        x: 2,
         y: 0.3,
       },
       {
