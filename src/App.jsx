@@ -113,8 +113,8 @@ const App = () => {
       <div className="webgl-canvas">
         <QuestionMarkCanvas />
         <WhatIsFoodCanvas />
-        <GlobeCanvas />
         <FoodIsCanvas />
+        {/* <GlobeCanvas /> */}
       </div>
       <Loader />
       <AfterLoad />

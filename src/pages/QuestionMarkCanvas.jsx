@@ -28,15 +28,15 @@ const QuestionMarkCanvas = () => {
       className="q-mark canvas"
       style={{
         maskImage: `radial-gradient(circle at center left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) ${
-          10 + 85 * prog
-        }%, rgba(255,255,255,1) ${50 + 50 * prog}%, rgba(255,255,255,1) 100%)`,
+          20 + 70 * prog
+        }%, rgba(255,255,255,1) ${20 + 80 * prog}%, rgba(255,255,255,1) 100%)`,
       }}
     >
       <Canvas>
-        <ambientLight intensity={1} />
+        <ambientLight intensity={1.5} />
 
         <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
-        <pointLight intensity={20} color={"#FFEDDE"} position={[5, 3, 3]} />
+        <pointLight intensity={25} color={"#FFEDDE"} position={[5, 3, 3]} />
         <QMark />
       </Canvas>
     </div>
