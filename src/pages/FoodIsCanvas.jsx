@@ -4,7 +4,6 @@ import { PerspectiveCamera } from "@react-three/drei";
 import { TreasureMapModel } from "../../public/models/Treasure_map";
 import { ClockModel } from "../../public/models/Clock";
 import { ArtModel } from "../../public/models/Art";
-import { EarthModel } from "../../public/models/Earth";
 
 const FoodIsCanvas = () => {
   return (
@@ -29,7 +28,6 @@ const FoodIsCanvas = () => {
         <ArtModel />
         <TreasureMapModel />
         <ClockModel />
-        <EarthModel />
       </Canvas>
     </div>
   );

@@ -401,6 +401,26 @@ const Hero = () => {
         },
       }
     );
+    gsap.to(".globe-canvas", {
+      top: "-101vh",
+      scrollTrigger: {
+        trigger: ".globe-goes-up",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+      ease: "none",
+    });
+    gsap.to(".cuisines-of-tn-title", {
+      top: "-100vh",
+      scrollTrigger: {
+        trigger: ".globe-goes-up",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+      ease: "none",
+    });
   });
   return (
     <>
@@ -478,6 +498,7 @@ const Hero = () => {
                 height: "100vh",
                 width: "100%",
                 position: "fixed",
+                zIndex: 10,
                 top: 0,
                 display: "flex",
                 alignItems: "center",
@@ -556,6 +577,7 @@ const Hero = () => {
               width: "100%",
               height: "100vh",
               position: "fixed",
+              zIndex: 10,
               left: 0,
               top: 0,
               fontSize: (27 * window.innerHeight) / 1080,
@@ -600,8 +622,10 @@ const Hero = () => {
               width: "100%",
               height: "100vh",
               position: "fixed",
+              zIndex: 501,
               top: 0,
               left: 0,
+              pointerEvents: "none",
             }}
           >
             <div
@@ -645,10 +669,12 @@ const Hero = () => {
           </div>
         </div>
         <div className="scrub-time-helper" />
-        <div
+        {/* <div
           className="alpha-mask-for-cuisine"
           style={{
             position: "fixed",
+            zIndex: 501,
+            pointerEvents: "none",
             top: 0,
             left: 0,
             width: "100%",
@@ -657,7 +683,7 @@ const Hero = () => {
               "linear-gradient(90deg, rgba(0, 0, 0, 255) 0%, rgba(0,0,0,100) 25% , rgba(0,0,0,0)50% , rgba(0, 0, 0, 0) 100%",
             mixBlendMode: "darken",
           }}
-        />
+        /> */}
         <div
           className="cuisines-of-india"
           style={{
@@ -669,10 +695,12 @@ const Hero = () => {
             className="cuisines-of-india-title"
             style={{
               position: "fixed",
+              zIndex: 501,
               top: 0,
               left: 0,
               width: "100%",
               height: "100vh",
+              pointerEvents: "none",
             }}
           >
             <div
@@ -725,6 +753,8 @@ const Hero = () => {
             className="cuisines-of-tn-title"
             style={{
               position: "fixed",
+              pointerEvents: "none",
+              zIndex: 501,
               top: 0,
               left: 0,
               width: "100%",
@@ -772,6 +802,14 @@ const Hero = () => {
           </div>
         </div>
         <div className="scrub-time-helper" />
+        <div
+          className="globe-goes-up"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        />
+        <div className="face-container"></div>
       </div>
     </>
   );

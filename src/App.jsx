@@ -55,15 +55,36 @@ const App = () => {
         immediateRender: false,
       }
     );
-    gsap.to(".foods-canvas", {
-      opacity: 1,
-      duration: 0.1,
-      scrollTrigger: {
-        trigger: ".what-is-food",
-        start: "top bottom",
-        toggleActions: "play none none reverse",
+    gsap.fromTo(
+      ".foods-canvas",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.1,
+        scrollTrigger: {
+          trigger: ".what-is-food",
+          start: "top 120%",
+          toggleActions: "play none none reverse",
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".foods-canvas",
+      {
+        opacity: 1,
       },
-    });
+      {
+        opacity: 0,
+        duration: 0.1,
+        scrollTrigger: {
+          trigger: ".food-is-love",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+        immediateRender: false,
+      }
+    );
     const tl = gsap.timeline({
       repeat: -1,
     });
@@ -91,8 +112,8 @@ const App = () => {
       </div>
       <div className="webgl-canvas">
         <QuestionMarkCanvas />
-        {/* <WhatIsFoodCanvas /> */}
-        {/* <GlobeCanvas /> */}
+        <WhatIsFoodCanvas />
+        <GlobeCanvas />
         <FoodIsCanvas />
       </div>
       <Loader />

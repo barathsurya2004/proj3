@@ -13,6 +13,7 @@ import { useFrame } from "@react-three/fiber";
 gsap.registerPlugin(ScrollTrigger);
 export function EarthModel(props) {
   const group = useRef();
+  const [isHovered, setIsHovered] = useState(false);
   const [isRotating, setIsRotating] = useState(true);
   useGSAP(() => {
     gsap.fromTo(
@@ -64,6 +65,12 @@ export function EarthModel(props) {
         scrollTrigger: {
           trigger: ".cuisines-of-the-world",
           start: "top bottom",
+          onEnter: () => {
+            setIsHovered(false);
+          },
+          onEnterBack: () => {
+            setIsHovered(true);
+          },
           end: "bottom bottom",
           scrub: 1.5,
         },
@@ -84,6 +91,7 @@ export function EarthModel(props) {
         scrollTrigger: {
           trigger: ".cuisines-of-india",
           start: "top 90%",
+
           end: "bottom bottom",
           scrub: 1.5,
         },
@@ -105,7 +113,7 @@ export function EarthModel(props) {
           onEnter: () => {
             setIsRotating(false);
           },
-          onEnterBack: () => {
+          onLeaveBack: () => {
             setIsRotating(true);
           },
           end: "bottom bottom",
@@ -190,10 +198,10 @@ export function EarthModel(props) {
   });
   const rotRef = useRef();
   useFrame(() => {
-    if (isRotating) {
+    if (isRotating && !isHovered) {
       rotRef.current.rotation.y =
         (rotRef.current.rotation.y + 0.01) % (Math.PI * 2);
-    } else {
+    } else if (!isRotating) {
       gsap.to(
         rotRef.current.rotation,
 
@@ -202,14 +210,28 @@ export function EarthModel(props) {
         }
       );
     }
+
     // console.log(rotRef.current.rotation.y);
     // console.log(isRotating);
   }, [isRotating]);
+  const hoverRef = useRef();
   const { nodes, materials, animations } = useGLTF("/models/Earth.glb");
   const { actions } = useAnimations(animations, group);
   return (
     <group ref={group} {...props} dispose={null} position={[3, 0, 0]} scale={0}>
-      <group>
+      <group
+        ref={hoverRef}
+        onPointerEnter={() => {
+          setIsHovered(true);
+        }}
+        onPointerLeave={() => {
+          setIsHovered(false);
+        }}
+      >
+        <mesh scale={0.35}>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial transparent opacity={0} />
+        </mesh>
         <ambientLight />
         <group name="Scene" ref={rotRef}>
           <mesh
@@ -224,6 +246,10 @@ export function EarthModel(props) {
               material={materials["material.001"]}
               position={[-0.015, 0.051, 1.077]}
               scale={-3.412}
+              onPointerEnter={(e) => {
+                e.stopPropagation();
+                console.log(e);
+              }}
             />
             <mesh
               name="andra"
