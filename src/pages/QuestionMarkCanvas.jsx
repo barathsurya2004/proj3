@@ -27,8 +27,8 @@ const QuestionMarkCanvas = () => {
     <div
       className="q-mark canvas"
       style={{
-        maskImage: `linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) ${
-          10 + 90 * prog
+        maskImage: `radial-gradient(circle at center left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) ${
+          10 + 85 * prog
         }%, rgba(255,255,255,1) ${50 + 50 * prog}%, rgba(255,255,255,1) 100%)`,
       }}
     >
