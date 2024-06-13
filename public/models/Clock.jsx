@@ -54,7 +54,8 @@ export function ClockModel(props) {
     setHour(d.getHours());
     setMinute(d.getMinutes());
     hourHand.current.rotation.y = ((hour % 12) + minute / 60) * (Math.PI / 6);
-    minuteHand.current.rotation.y = minute * (Math.PI / 30);
+    minuteHand.current.rotation.y =
+      (-Math.PI * 18) / 180 + minute * (Math.PI / 30);
   });
   const { nodes, materials, animations } = useGLTF("/models/clock.glb");
   const { actions } = useAnimations(animations, group);

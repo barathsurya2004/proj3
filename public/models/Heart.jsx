@@ -55,35 +55,19 @@ export function HeartModel(props) {
   });
   useFrame(() => {
     group.current.rotation.y += 0.01;
+    // console.log(e);
+    onmousemove = (e) => {
+      gsap.to(hover.current.rotation, {
+        x: (e.clientY - window.innerHeight / 2) / 2000,
+        y: e.clientX / 2000,
+        duration: 0.1,
+      });
+    };
   });
   const { nodes, materials } = useGLTF("/models/heart.glb");
   return (
-    <group
-      onPointerMove={(e) => {
-        e.stopPropagation();
-        // e.target.style.cursor = "pointer";
-        console.log(e.pointer.x, e.pointer.y);
-        gsap.to(hover.current.rotation, {
-          x: -e.point.y / 10,
-          y: e.point.x / 10 - 0.5,
-          duration: 0.4,
-        });
-      }}
-      onPointerOut={(e) => {
-        gsap.to(hover.current.rotation, {
-          x: 0,
-          y: 0,
-          duration: 0.5,
-        });
-      }}
-      ref={hover}
-      position={[3, 0, 0]}
-    >
+    <group ref={hover} position={[3, 0, 0]}>
       <group ref={group} {...props} dispose={null} scale={0}>
-        <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={6.3}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshStandardMaterial color="#FF0000" transparent opacity={0} />
-        </mesh>
         {/* <axesHelper args={[5]} /> */}
         <mesh
           geometry={nodes.polySurface1.geometry}

@@ -22,8 +22,14 @@ const Loader = () => {
       {
         width: "100%",
         duration: 5,
+        onUpdate: () => {
+          window.onscroll = function () {
+            window.scrollTo(0, 0);
+          };
+        },
         onComplete: () => {
           setLoading(false);
+          window.onscroll = function () {};
         },
         ease: CustomEase.create("custom", "M0,0 C1,0 0.61873,1 1,1 "),
       }
