@@ -7,6 +7,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useFrame } from "@react-three/fiber";
 
 export function ArtModel(props) {
   const group = useRef();
@@ -43,34 +44,37 @@ export function ArtModel(props) {
       }
     );
   });
+  useFrame(() => [(group.current.rotation.y += 0.01)]);
   const { nodes, materials } = useGLTF("/models/art.glb");
   return (
     <group {...props} ref={group} dispose={null} scale={0} position={[3, 0, 0]}>
-      <mesh
-        geometry={nodes.cutensils_asian_turner_Cylinder024.geometry}
-        material={materials["_crayfishdiffuse.001"]}
-        position={[-0.713, -2.822, -0.27]}
-        rotation={[1.496, -0.324, -0.096]}
-      />
-      <mesh
-        geometry={nodes.lowpoly_spoon.geometry}
-        material={materials["Material.002"]}
-        position={[-0.249, 0.191, -0.465]}
-        rotation={[1.794, -1.268, -2.933]}
-        scale={[2.946, 0.052, 0.743]}
-      />
-      <mesh
-        geometry={nodes.cutensils_asian_turner_Cylinder001.geometry}
-        material={materials["Material.002"]}
-        position={[-1.085, -3.946, -0.102]}
-        rotation={[1.496, -0.324, -0.096]}
-      />
-      <mesh
-        geometry={nodes.cutensils_asian_turner_Cylinder002.geometry}
-        material={materials["Material.002"]}
-        position={[1.18, 2.863, -0.974]}
-        rotation={[1.496, -0.324, -0.096]}
-      />
+      <group>
+        <mesh
+          geometry={nodes.cutensils_asian_turner_Cylinder024.geometry}
+          material={materials["_crayfishdiffuse.001"]}
+          position={[-0.713, -2.822, -0.27]}
+          rotation={[1.496, -0.324, -0.096]}
+        />
+        <mesh
+          geometry={nodes.lowpoly_spoon.geometry}
+          material={materials["Material.002"]}
+          position={[-0.249, 0.191, -0.465]}
+          rotation={[1.794, -1.268, -2.933]}
+          scale={[2.946, 0.052, 0.743]}
+        />
+        <mesh
+          geometry={nodes.cutensils_asian_turner_Cylinder001.geometry}
+          material={materials["Material.002"]}
+          position={[-1.085, -3.946, -0.102]}
+          rotation={[1.496, -0.324, -0.096]}
+        />
+        <mesh
+          geometry={nodes.cutensils_asian_turner_Cylinder002.geometry}
+          material={materials["Material.002"]}
+          position={[1.18, 2.863, -0.974]}
+          rotation={[1.496, -0.324, -0.096]}
+        />
+      </group>
     </group>
   );
 }

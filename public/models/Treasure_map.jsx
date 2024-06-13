@@ -7,6 +7,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useFrame } from "@react-three/fiber";
 gsap.registerPlugin(useGSAP);
 export function TreasureMapModel(props) {
   const group = useRef();
@@ -51,46 +52,52 @@ export function TreasureMapModel(props) {
       }
     );
   });
+  useFrame(() => {
+    group.current.rotation.y += 0.01;
+    useFrame;
+  });
   const { nodes, materials } = useGLTF("/models/treasure_map.glb");
   return (
     <group {...props} ref={group} dispose={null} scale={0} position={[3, 0, 0]}>
-      <group rotation={[Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.VR_Map_Cube029_1.geometry} scale={1.2}>
-          <meshStandardMaterial transparent opacity={0.0} />
-        </mesh>
-        <mesh
-          geometry={nodes.VR_Map_Cube029_1.geometry}
-          castShadow
-          receiveShadow
-        >
-          <meshStandardMaterial
-            color={"#FFCC88"}
-            roughness={0.6}
-            metalness={0}
-          />
-        </mesh>
-        <mesh
-          geometry={nodes.VR_Map_Cube029_2.geometry}
-          castShadow
-          receiveShadow
-        >
-          <meshStandardMaterial
-            color={"#5A5A5A"}
-            roughness={0.6}
-            metalness={0}
-          />
-        </mesh>
-        <mesh
-          geometry={nodes.VR_Map_Cube029_3.geometry}
-          castShadow
-          receiveShadow
-        >
-          <meshStandardMaterial
-            color={"#FA8C7F"}
-            roughness={0.6}
-            metalness={0}
-          />
-        </mesh>
+      <group>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <mesh geometry={nodes.VR_Map_Cube029_1.geometry} scale={1.2}>
+            <meshStandardMaterial transparent opacity={0.0} />
+          </mesh>
+          <mesh
+            geometry={nodes.VR_Map_Cube029_1.geometry}
+            castShadow
+            receiveShadow
+          >
+            <meshStandardMaterial
+              color={"#FFCC88"}
+              roughness={0.6}
+              metalness={0}
+            />
+          </mesh>
+          <mesh
+            geometry={nodes.VR_Map_Cube029_2.geometry}
+            castShadow
+            receiveShadow
+          >
+            <meshStandardMaterial
+              color={"#5A5A5A"}
+              roughness={0.6}
+              metalness={0}
+            />
+          </mesh>
+          <mesh
+            geometry={nodes.VR_Map_Cube029_3.geometry}
+            castShadow
+            receiveShadow
+          >
+            <meshStandardMaterial
+              color={"#FA8C7F"}
+              roughness={0.6}
+              metalness={0}
+            />
+          </mesh>
+        </group>
       </group>
     </group>
   );

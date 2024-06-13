@@ -14,6 +14,7 @@ const FoodIsCanvas = () => {
         left: 0,
         width: "100%",
         height: "100vh",
+        zIndex: 500,
       }}
     >
       <Canvas>
@@ -23,7 +24,7 @@ const FoodIsCanvas = () => {
           position={[5, 4, 5]}
         />
         <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
-
+        <ambientLight intensity={0.5} />
         <HeartModel />
         <ArtModel />
         <TreasureMapModel />
