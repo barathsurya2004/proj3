@@ -75,6 +75,15 @@ const CircularText = ({ texts, radius }) => {
         width: "100%",
         height: "100vh",
         zIndex: zIndex,
+        maskImage: `linear-gradient(0deg, rgba(255,255,255,${
+          0.5 + 1 * change
+        }) 0%, rgba(255,255,255,${0.5 + 1 * change}) 0%, rgba(255,255,255,${
+          0.5 + 1 * change
+        }) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,${
+          1 + 0.5 * change
+        }) 55%, rgba(255,255,255,${0.5 + 1 * change}) 56%, rgba(255,255,255,${
+          0.5 + 1 * change
+        }) 100%)`,
       }}
     >
       <div className="circle-container" style={{}}>
