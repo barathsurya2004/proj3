@@ -35,7 +35,12 @@ const GlobeCanvas = () => {
       >
         <Canvas>
           <directionalLight position={[0, 0, 10]} intensity={3} />
-          <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
+          <PerspectiveCamera
+            makeDefault
+            zoom={1.3}
+            near={0.01}
+            position={[0, 0, 10]}
+          />
           <ambientLight intensity={5} />
           <EarthModel />
         </Canvas>

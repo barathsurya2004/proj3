@@ -11,6 +11,7 @@ import { useFrame } from "@react-three/fiber";
 
 export function ArtModel(props) {
   const group = useRef();
+  const hoverART = useRef();
   useGSAP(() => {
     gsap.to(group.current.scale, {
       x: 0.6,
@@ -44,11 +45,18 @@ export function ArtModel(props) {
       }
     );
   });
-  useFrame(() => [(group.current.rotation.y += 0.01)]);
+  useFrame((state) => {
+    group.current.rotation.y += 0.01;
+    gsap.to(hoverART.current.rotation, {
+      x: -state.pointer.y / 3,
+      y: state.pointer.x / 3,
+      duration: 0.1,
+    });
+  });
   const { nodes, materials } = useGLTF("/models/art.glb");
   return (
-    <group {...props} ref={group} dispose={null} scale={0} position={[3, 0, 0]}>
-      <group>
+    <group position={[3, 0, 0]} ref={hoverART}>
+      <group {...props} ref={group} dispose={null} scale={0}>
         <mesh
           geometry={nodes.cutensils_asian_turner_Cylinder024.geometry}
           material={materials["_crayfishdiffuse.001"]}

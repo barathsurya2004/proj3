@@ -11,7 +11,7 @@ import { useFrame } from "@react-three/fiber";
 gsap.registerPlugin(useGSAP);
 export function HeartModel(props) {
   const group = useRef();
-  const hover = useRef();
+  const hoverH = useRef();
   useGSAP(() => {
     gsap.fromTo(
       group.current.scale,
@@ -53,20 +53,19 @@ export function HeartModel(props) {
       }
     );
   });
-  useFrame(() => {
+  useFrame((state, delta) => {
     group.current.rotation.y += 0.01;
     // console.log(e);
-    onmousemove = (e) => {
-      gsap.to(hover.current.rotation, {
-        x: (e.clientY - window.innerHeight / 2) / 2000,
-        y: e.clientX / 2000,
-        duration: 0.1,
-      });
-    };
+    // console.log(state.pointer.x, state.pointer.y);
+    gsap.to(hoverH.current.rotation, {
+      x: -state.pointer.y / 3,
+      y: state.pointer.x / 3,
+      duration: 0.1,
+    });
   });
   const { nodes, materials } = useGLTF("/models/heart.glb");
   return (
-    <group ref={hover} position={[3, 0, 0]}>
+    <group ref={hoverH} position={[3, 0, 0]}>
       <group ref={group} {...props} dispose={null} scale={0}>
         {/* <axesHelper args={[5]} /> */}
         <mesh

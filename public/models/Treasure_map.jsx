@@ -11,6 +11,7 @@ import { useFrame } from "@react-three/fiber";
 gsap.registerPlugin(useGSAP);
 export function TreasureMapModel(props) {
   const group = useRef();
+  const hoverTM = useRef();
   useGSAP(() => {
     gsap.fromTo(
       group.current.scale,
@@ -52,14 +53,18 @@ export function TreasureMapModel(props) {
       }
     );
   });
-  useFrame(() => {
+  useFrame((state, delta) => {
     group.current.rotation.y += 0.01;
-    useFrame;
+    gsap.to(hoverTM.current.rotation, {
+      x: -state.pointer.y / 3,
+      y: state.pointer.x / 3,
+      duration: 0.1,
+    });
   });
   const { nodes, materials } = useGLTF("/models/treasure_map.glb");
   return (
-    <group {...props} ref={group} dispose={null} scale={0} position={[3, 0, 0]}>
-      <group>
+    <group ref={hoverTM} position={[3, 0, 0]}>
+      <group {...props} ref={group} dispose={null} scale={0}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh geometry={nodes.VR_Map_Cube029_1.geometry} scale={1.2}>
             <meshStandardMaterial transparent opacity={0.0} />

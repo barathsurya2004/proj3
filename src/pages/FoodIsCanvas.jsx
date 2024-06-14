@@ -4,6 +4,8 @@ import { PerspectiveCamera } from "@react-three/drei";
 import { TreasureMapModel } from "../../public/models/Treasure_map";
 import { ClockModel } from "../../public/models/Clock";
 import { ArtModel } from "../../public/models/Art";
+import { useEffect } from "react";
+import gsap from "gsap";
 
 const FoodIsCanvas = () => {
   return (

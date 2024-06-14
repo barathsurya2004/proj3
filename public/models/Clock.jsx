@@ -15,6 +15,7 @@ export function ClockModel(props) {
   const [minute, setMinute] = useState(0);
   const minuteHand = useRef();
   const hourHand = useRef();
+  const hoverC = useRef();
   useGSAP(() => {
     gsap.to(group.current.scale, {
       x: 12,
@@ -48,7 +49,7 @@ export function ClockModel(props) {
       }
     );
   });
-  useFrame(() => {
+  useFrame((state) => {
     group.current.rotation.y += 0.01;
     var d = new Date();
     setHour(d.getHours());
@@ -56,18 +57,17 @@ export function ClockModel(props) {
     hourHand.current.rotation.y = ((hour % 12) + minute / 60) * (Math.PI / 6);
     minuteHand.current.rotation.y =
       (-Math.PI * 18) / 180 + minute * (Math.PI / 30);
+    gsap.to(hoverC.current.rotation, {
+      x: -state.pointer.y / 3,
+      y: state.pointer.x / 3,
+      duration: 0.1,
+    });
   });
   const { nodes, materials, animations } = useGLTF("/models/clock.glb");
   const { actions } = useAnimations(animations, group);
   return (
-    <group
-      ref={group}
-      {...props}
-      dispose={null}
-      scale={0}
-      position={[3, -0.4, 0]}
-    >
-      <group name="Scene">
+    <group name="Scene" ref={hoverC} position={[3, -0.4, 0]}>
+      <group ref={group} {...props} dispose={null} scale={0}>
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="Root">
             <group name="Obj_Clock">

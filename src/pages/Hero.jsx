@@ -8,6 +8,8 @@ import CircularAnimation from "../components/CircularAnimation";
 import Card from "./Card";
 import { Context } from "../context";
 import Definition from "./Definition";
+import { Face } from "three/examples/jsm/Addons.js";
+import FaceCanvas from "./FaceCanvas";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -809,7 +811,9 @@ const Hero = () => {
             height: "100vh",
           }}
         />
-        <div className="face-container"></div>
+        <div className="face-container">
+          <FaceCanvas />
+        </div>
       </div>
     </>
   );
