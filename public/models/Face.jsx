@@ -14,82 +14,78 @@ export function FaceModel(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/face.glb");
   const { actions, names } = useAnimations(animations, group);
+
   const hoverMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 }); // Red when hovered
-  const defaultMaterial = new THREE.MeshStandardMaterial({ color: "black" }); // Green by default
-  // Create a reference to the mesh
+  const defaultMaterial = new THREE.MeshStandardMaterial({ color: "black" }); // Black by default
+
   const meshRef1 = useRef();
   const meshRef = useRef();
   const gltf = useLoader(GLTFLoader, "/models/face.glb");
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      paused: true,
-    });
-    tl.fromTo(
-      meshRef1.current.material.color,
-      {
-        r: 0,
-        g: 0,
-        b: 0,
-        duration: 0.1,
-      },
-      {
-        r: 1,
-        g: 0,
-        b: 0,
-        duration: 0.1,
-        immediateRender: false,
-      }
-    );
-    tl.fromTo(
-      meshRef.current.material.color,
-      {
-        r: 0,
-        g: 0,
-        b: 0,
-      },
-      { r: 1, g: 0, b: 0, duration: 0.1, immediateRender: false }
-    );
 
-    // Store the timeline in the mesh references
-    meshRef1.current.animation = tl;
-    meshRef.current.animation = tl;
-  });
+  // Setting default materials
+  if (meshRef.current) meshRef.current.material = defaultMaterial;
+  if (meshRef1.current) meshRef1.current.material = defaultMaterial;
+
   useFrame((state) => {
-    group.current.rotation.y = state.pointer.x / 5;
-    group.current.rotation.x = -state.pointer.y / 5;
-    // console.log(state);
-    meshRef.current.position.x = 2.104 + state.pointer.x / 1.5;
-    meshRef1.current.position.x = -2.724 + state.pointer.x / 1.5;
-    meshRef.current.position.y = 9.577 + state.pointer.y / 1.5;
-    meshRef1.current.position.y = 9.577 + state.pointer.y / 1.5;
-    // console.log(state.pointer.x / 2);
+    if (group.current) {
+      group.current.rotation.y = state.pointer.x / 5;
+      group.current.rotation.x = -state.pointer.y / 5;
+    }
+    if (meshRef.current) {
+      meshRef.current.position.x = 2.104 + state.pointer.x / 1.5;
+      meshRef.current.position.y = 9.577 + state.pointer.y / 1.5;
+    }
+    if (meshRef1.current) {
+      meshRef1.current.position.x = -2.724 + state.pointer.x / 1.5;
+      meshRef1.current.position.y = 9.577 + state.pointer.y / 1.5;
+    }
   });
 
   const handleOnHoverIn = () => {
-    names.map((name) => {
+    // Define and play GSAP animation for hover in
+    gsap.fromTo(
+      meshRef1.current.material.color,
+      { r: 0, g: 0, b: 0 },
+      { r: 1, g: 0, b: 0, duration: 0.1 }
+    );
+    gsap.fromTo(
+      meshRef.current.material.color,
+      { r: 0, g: 0, b: 0 },
+      { r: 1, g: 0, b: 0, duration: 0.1 }
+    );
+
+    names.forEach((name) => {
       const action = actions[name];
-      action.setLoop(THREE.LoopOnce); // Set the animation to play only once
-      action.reset(); // Reset the action to its initial state
-      action.clampWhenFinished = true; // Hold the final frame when finished
-      action.timeScale = 1.5; // Play forward
+      action.setLoop(THREE.LoopOnce);
+      action.reset();
+      action.clampWhenFinished = true;
+      action.timeScale = 1.5;
       action.play();
     });
-    meshRef1.current.animation.play();
-    meshRef.current.animation.play();
   };
 
   const handleOnHoverOut = () => {
-    names.map((name) => {
+    // Define and play GSAP animation for hover out
+    gsap.fromTo(
+      meshRef1.current.material.color,
+      { r: 1, g: 0, b: 0 },
+      { r: 0, g: 0, b: 0, duration: 0.1 }
+    );
+    gsap.fromTo(
+      meshRef.current.material.color,
+      { r: 1, g: 0, b: 0 },
+      { r: 0, g: 0, b: 0, duration: 0.1 }
+    );
+
+    names.forEach((name) => {
       const action = actions[name];
-      action.paused = true; // Pause the action to set time directly
-      action.time = action.getClip().duration; // Set the action time to the end
-      action.paused = false; // Unpause the action
-      action.timeScale = -1.5; // Play in reverse
-      action.clampWhenFinished = true; // Clamp when finished
+      action.paused = true;
+      action.time = action.getClip().duration;
+      action.paused = false;
+      action.timeScale = -1.5;
+      action.clampWhenFinished = true;
       action.play();
     });
-    meshRef1.current.animation.reverse();
-    meshRef.current.animation.reverse();
   };
 
   return (
