@@ -14,17 +14,34 @@ export function FaceModel(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/face.glb");
   const { actions, names } = useAnimations(animations, group);
+  const [blink, setBlink] = useState(true);
 
   const hoverMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 }); // Red when hovered
   const defaultMaterial = new THREE.MeshStandardMaterial({ color: "black" }); // Black by default
 
   const meshRef1 = useRef();
   const meshRef = useRef();
-  const gltf = useLoader(GLTFLoader, "/models/face.glb");
+  const eyebrowRefl = useRef();
+  const eyebrowRefr = useRef();
 
   // Setting default materials
-  if (meshRef.current) meshRef.current.material = defaultMaterial;
-  if (meshRef1.current) meshRef1.current.material = defaultMaterial;
+  useEffect(() => {
+    // Blink animation setup
+    const blinkTimeline = gsap.timeline({ repeat: -1, repeatDelay: 4.8 });
+    blinkTimeline
+      .to(meshRef.current.scale, { y: 0.1, duration: 0.1 })
+      .to(meshRef1.current.scale, { y: 0.1, duration: 0.1 }, "<")
+      .to(meshRef.current.scale, { y: 1.311, duration: 0.1 }, "+=0.1")
+      .to(meshRef1.current.scale, { y: 1.311, duration: 0.1 }, "<");
+
+    if (!blink) {
+      blinkTimeline.pause();
+    }
+
+    return () => {
+      blinkTimeline.kill();
+    };
+  }, [blink]);
 
   useFrame((state) => {
     if (group.current) {
@@ -42,17 +59,49 @@ export function FaceModel(props) {
   });
 
   const handleOnHoverIn = () => {
+    // Stop blink animation
+    setBlink(false);
+
     // Define and play GSAP animation for hover in
-    gsap.fromTo(
-      meshRef1.current.material.color,
-      { r: 0, g: 0, b: 0 },
-      { r: 1, g: 0, b: 0, duration: 0.1 }
-    );
-    gsap.fromTo(
-      meshRef.current.material.color,
-      { r: 0, g: 0, b: 0 },
-      { r: 1, g: 0, b: 0, duration: 0.1 }
-    );
+    const hoverInTimeline = gsap.timeline();
+    hoverInTimeline
+      .fromTo(
+        meshRef1.current.material.color,
+        {
+          r: 0,
+          g: 0,
+          b: 0,
+        },
+        {
+          r: 1,
+          g: 0,
+          b: 0,
+        }
+      )
+      .fromTo(
+        meshRef.current.material.color,
+        {
+          r: 0,
+          g: 0,
+          b: 0,
+        },
+        {
+          r: 1,
+          g: 0,
+          b: 0,
+        },
+        "<"
+      )
+      .to(
+        eyebrowRefl.current.rotation,
+        { z: -0.424 + 0.21, duration: 0.3 },
+        "<"
+      )
+      .to(
+        eyebrowRefr.current.rotation,
+        { z: -0.424 + 0.21, duration: 0.3 },
+        "<"
+      );
 
     names.forEach((name) => {
       const action = actions[name];
@@ -65,17 +114,20 @@ export function FaceModel(props) {
   };
 
   const handleOnHoverOut = () => {
+    // Start blink animation
+    setBlink(true);
+
     // Define and play GSAP animation for hover out
-    gsap.fromTo(
-      meshRef1.current.material.color,
-      { r: 1, g: 0, b: 0 },
-      { r: 0, g: 0, b: 0, duration: 0.1 }
-    );
-    gsap.fromTo(
-      meshRef.current.material.color,
-      { r: 1, g: 0, b: 0 },
-      { r: 0, g: 0, b: 0, duration: 0.1 }
-    );
+    const hoverOutTimeline = gsap.timeline();
+    hoverOutTimeline
+      .to(meshRef1.current.material.color, { r: 0, g: 0, b: 0, duration: 0.1 })
+      .to(
+        meshRef.current.material.color,
+        { r: 0, g: 0, b: 0, duration: 0.1 },
+        "<"
+      )
+      .to(eyebrowRefl.current.rotation, { z: -0.424, duration: 0.1 }, "<")
+      .to(eyebrowRefr.current.rotation, { z: -0.424, duration: 0.1 }, "<");
 
     names.forEach((name) => {
       const action = actions[name];
@@ -87,7 +139,6 @@ export function FaceModel(props) {
       action.play();
     });
   };
-
   return (
     <group
       ref={group}
@@ -125,6 +176,7 @@ export function FaceModel(props) {
                 material={materials.hair}
                 position={[-29.038, 204.55, -6.466]}
                 rotation={[0.032, -0.355, -0.424]}
+                ref={eyebrowRefl}
               />
             </group>
             <group
@@ -151,6 +203,7 @@ export function FaceModel(props) {
                 material={materials.hair}
                 position={[-29.038, 204.55, -6.466]}
                 rotation={[0.032, -0.355, -0.424]}
+                ref={eyebrowRefr}
               />
             </group>
             <group name="hair" position={[-17.638, 1070.655, -75.818]}>
