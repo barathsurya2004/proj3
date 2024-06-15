@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { CustomEase } from "gsap/all";
 import { useGSAP } from "@gsap/react";
+import { AnimaFinal } from "../../public/models/FinalAnim";
 gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(useGSAP);
 const WhatIsFoodCanvas = () => {
@@ -44,8 +45,8 @@ const WhatIsFoodCanvas = () => {
           color={"#FFEDDE"}
           position={[4, 3, 3]}
         />
-        <group dispose={null} scale={5} position={[3, 0, 0]}>
-          <AppleAnim />
+        <group dispose={null} scale={5} position={[3.5, 0, 0]}>
+          <AnimaFinal />
         </group>
       </Canvas>
     </div>
