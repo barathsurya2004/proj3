@@ -13,9 +13,9 @@ const FaceReact = () => {
       <img
         src={bolt}
         style={{
-          width: (576 * window.innerHeight) / 1080,
           position: "absolute",
-          top: 0,
+          width: (576 * window.innerHeight) / 1080,
+          top: (-58.15 * window.innerHeight) / 1080,
           transform: "translate(-50%, 0)",
           left: "50%",
           zIndex: 1,
@@ -27,7 +27,7 @@ const FaceReact = () => {
           position: "absolute",
           top: 0,
           left: 0,
-          width: "50%",
+          width: "48%",
           background: "#A693CC",
           height: "100%",
           maskImage: "linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))",
@@ -40,7 +40,7 @@ const FaceReact = () => {
           position: "absolute",
           top: 0,
           right: 0,
-          width: "50%",
+          width: "52%",
           background: "#CC7272",
           maskImage:
             "linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0))",
