@@ -60,6 +60,16 @@ export function FaceModel(props) {
       meshRef1.current.position.x = -2.724 + state.pointer.x / 1.5;
       meshRef1.current.position.y = 9.577 + state.pointer.y / 1.5;
     }
+    if (eyebrowRefl.current && blink) {
+      eyebrowRefl.current.rotation.z = -0.424 + state.pointer.y / 5;
+      eyebrowRefl.current.position.x = -29.038 + state.pointer.x;
+      eyebrowRefl.current.position.y = 204.55 + state.pointer.y * 2;
+    }
+    if (eyebrowRefr.current && blink) {
+      eyebrowRefr.current.rotation.z = -0.424 + state.pointer.y / 5;
+      eyebrowRefr.current.position.x = -29.038 + state.pointer.x;
+      eyebrowRefr.current.position.y = 204.55 + state.pointer.y * 2;
+    }
   });
 
   const handleOnHoverIn = () => {
@@ -85,8 +95,8 @@ export function FaceModel(props) {
 
     const hoverOutTimeline = gsap.timeline();
     hoverOutTimeline
-      .to(eyebrowRefl.current.rotation, { z: -0.424, duration: 0.1 }, "<")
-      .to(eyebrowRefr.current.rotation, { z: -0.424, duration: 0.1 }, "<");
+      .to(eyebrowRefl.current.rotation, { z: -0.424, duration: 0.3 }, "<")
+      .to(eyebrowRefr.current.rotation, { z: -0.424, duration: 0.3 }, "<");
 
     names.forEach((name) => {
       const action = actions[name];
