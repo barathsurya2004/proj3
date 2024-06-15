@@ -423,6 +423,89 @@ const Hero = () => {
       },
       ease: "none",
     });
+    gsap.fromTo(
+      ".yet-so-unique",
+      {
+        top: "150%",
+      },
+      {
+        top: "50%",
+        scrollTrigger: {
+          trigger: ".globe-goes-up",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".yet-so-unique",
+      {
+        top: "50%",
+      },
+      {
+        top: "40%",
+        scrollTrigger: {
+          trigger: ".yet-so-unique-content-trigger",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".yet-so-unique-content",
+      {
+        top: "150%",
+      },
+      {
+        top: "50%",
+        scrollTrigger: {
+          trigger: ".yet-so-unique-content-trigger",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".yet-so-unique",
+      {
+        top: "40%",
+      },
+      {
+        top: "-60%",
+        scrollTrigger: {
+          trigger: ".reading-space-yet-so-unique",
+          start: "top 50%",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".yet-so-unique-content",
+      {
+        top: "50%",
+      },
+      {
+        top: "-50%",
+        scrollTrigger: {
+          trigger: ".reading-space-yet-so-unique",
+          start: "top 50%",
+          end: "top top",
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
   });
   return (
     <>
@@ -806,6 +889,101 @@ const Hero = () => {
         <div className="scrub-time-helper" />
         <div
           className="globe-goes-up"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        />
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            className="yet-so-unique"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "fixed",
+              top: "150%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "100%",
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: "TTtravels Next Demibold",
+                fontSize: 89 * (window.innerHeight / 1080),
+                margin: 0,
+              }}
+            >
+              “They are so close, yet
+            </h2>
+            <h1
+              style={{
+                fontFamily: "TTtravels Next Demibold",
+                fontSize: 89 * (window.innerHeight / 1080),
+                margin: 0,
+              }}
+            >
+              SO UNIQUE”
+            </h1>
+          </div>
+        </div>
+        <div
+          className="yet-so-unique-content-trigger"
+          style={{
+            width: "100%",
+            height: "100vh",
+            position: "relative",
+            zIndex: 5,
+          }}
+        >
+          <div
+            className="yet-so-unique-content"
+            style={{
+              position: "fixed",
+              top: "150%",
+              left: "50%",
+              transform: "translate(-50%, 0%)",
+              width: 725 * (window.innerWidth / 1920),
+            }}
+          >
+            <p
+              style={{
+                fontSize: 27 * (window.innerHeight / 1080),
+                textAlign: "center",
+              }}
+            >
+              Cuisines are separated by many factors, yet here most boundaries
+              are blurred. Both the people and the place share many
+              similarities, but the food they eat is distinct.
+            </p>
+            <p
+              style={{
+                fontSize: 27 * (window.innerHeight / 1080),
+                textAlign: "center",
+              }}
+            >
+              When food is considered a cultural identity, understanding these
+              details and differences becomes more important than ever.
+            </p>
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: 27 * (window.innerHeight / 1080),
+              }}
+            >
+              Let’s find out more!
+            </p>
+          </div>
+        </div>
+        <div
+          className="reading-space-yet-so-unique"
           style={{
             width: "100%",
             height: "100vh",

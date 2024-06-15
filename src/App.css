@@ -13,6 +13,10 @@
   src: url('../public/fonts/TTtravels/TTTRAVELSNEXTDBOLDI.OTF');
 
 }
+@font-face {
+  font-family: 'TTtravels Next Demibold';
+  src: url("../public/fonts/TTtravels/TTTRAVELSNEXTDBOLD.OTF");
+}
 .canvas{
   position: absolute;
   width: 100%;
