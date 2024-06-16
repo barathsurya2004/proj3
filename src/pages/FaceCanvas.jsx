@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { Suspense } from "react";
+import { Face } from "../../public/models/Face1";
 gsap.registerPlugin(ScrollTrigger);
 const FaceCanvas = () => {
   useGSAP(() => {
@@ -44,10 +45,11 @@ const FaceCanvas = () => {
         <Canvas>
           <ambientLight intensity={1} />
           <directionalLight intensity={3} position={[10, 10, 10]} />
-          <OrthographicCamera makeDefault position={[0, 0, 10]} zoom={50} />
+          <OrthographicCamera makeDefault position={[0, 0, 20]} zoom={25} />
           {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} zoom={0.4} /> */}
           <Suspense fallback={null}>
-            <FaceModel />
+            {/* <FaceModel /> */}
+            <Face />
           </Suspense>
         </Canvas>
       </div>
