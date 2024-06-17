@@ -7,56 +7,22 @@ import chettiIcon from "../assets/chettisvg.svg";
 import chettiVote from "../assets/chettivote.svg";
 import gsap from "gsap";
 import { useState } from "react";
-
+import SplitType from "split-type";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 const FaceReact = () => {
   const styles = {
     para: {
       fontSize: (34 * window.innerHeight) / 1080,
       fontFamily: "TTtravels Next DemiBold",
       textAlign: "center",
-      lineHeight: 0.5,
+      wrap: "nowrap",
+      width: "100%",
+      fontKerning: "none",
+      margin: 0,
     },
   };
-  const [textPandi, setTextPandi] = useState(
-    <>
-      <p
-        style={{
-          ...styles.para,
-          color: "#BB8BE8",
-        }}
-      >
-        Pandiyanad
-      </p>
-      <p
-        style={{
-          ...styles.para,
-          color: "#BB8BE8",
-        }}
-      >
-        Cuisine
-      </p>
-    </>
-  );
-  const [textChetti, setTextChetti] = useState(
-    <>
-      <p
-        style={{
-          ...styles.para,
-          color: "#CC7272",
-        }}
-      >
-        Chettinad
-      </p>
-      <p
-        style={{
-          ...styles.para,
-          color: "#CC7272",
-        }}
-      >
-        Cuisine
-      </p>
-    </>
-  );
   const { hovered, setHovered } = useContext(Context);
   const [imagePandi, setImagePandi] = useState(pandiIcon);
   const [imageChetti, setImageChetti] = useState(chettiIcon);
@@ -93,78 +59,168 @@ const FaceReact = () => {
     }, 2000);
   };
   const handleMouseEnterPandi = () => {
-    setTextPandi(
-      <>
-        <p
-          style={{
-            ...styles.para,
-            color: "#BB8BE8",
-          }}
-        >
-          ~Vote~
-        </p>
-      </>
-    );
-  };
+    const tl = gsap.timeline();
+    const split = new SplitType(".pandi-text");
+    split.words.forEach((word) => {
+      word.style.display = "flex";
+      word.style.flexWrap = "nowrap";
+      word.style.justifyContent = "center";
+    });
+    split.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
 
+      char.style.color = "#BB8BE8";
+      char.style.display = "inline-block";
+    });
+    tl.to(split.chars, {
+      duration: 0.15,
+      y: -10,
+      opacity: 0,
+      stagger: 0.05,
+    });
+    const split2 = new SplitType(".pandi-vote");
+    gsap.to(".pandi-vote", { duration: 0.005, opacity: 1 });
+    split2.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#BB8BE8";
+      char.style.display = "inline-block";
+      char.style.opacity = 0;
+    });
+    tl.fromTo(
+      split2.chars,
+      {
+        y: 10,
+        opacity: 0,
+      },
+      {
+        duration: 0.5,
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+      },
+      "-=0.3"
+    );
+    // gsap.to(".pandi-vote", { duration: 0.5, opacity: 1 });
+  };
   const handleMouseLeavePandi = () => {
-    setTextPandi(
-      <>
-        <p
-          style={{
-            ...styles.para,
-            color: "#BB8BE8",
-          }}
-        >
-          Pandiyanad
-        </p>
-        <p
-          style={{
-            ...styles.para,
-            color: "#BB8BE8",
-          }}
-        >
-          Cuisine
-        </p>
-      </>
+    const tl = gsap.timeline();
+
+    const split2 = new SplitType(".pandi-vote");
+    split2.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#BB8BE8";
+      char.style.display = "inline-block";
+    });
+    tl.to(split2.chars, {
+      duration: 0.15,
+      y: 10,
+      opacity: 0,
+      stagger: 0.05,
+    });
+    const split = new SplitType(".pandi-text");
+    split.words.forEach((word) => {
+      word.style.display = "flex";
+      word.style.flexWrap = "nowrap";
+      word.style.justifyContent = "center";
+    });
+    split.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#BB8BE8";
+    });
+    tl.fromTo(
+      split.chars,
+      {
+        y: -10,
+        opacity: 0,
+      },
+      {
+        duration: 0.2,
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+      }
     );
   };
 
   const handleMouseEnterChetti = () => {
-    setTextChetti(
-      <>
-        <p
-          style={{
-            ...styles.para,
-            color: "#CC7272",
-          }}
-        >
-          ~Vote~
-        </p>
-      </>
+    const tl = gsap.timeline();
+    const split = new SplitType(".chetti-texts");
+    split.words.forEach((word) => {
+      word.style.display = "flex";
+      word.style.flexWrap = "nowrap";
+      word.style.justifyContent = "center";
+    });
+    split.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#CC7272";
+      char.style.display = "inline-block";
+    });
+    tl.to(split.chars, {
+      duration: 0.15,
+      y: -10,
+      opacity: 0,
+      stagger: 0.05,
+    });
+    const split2 = new SplitType(".chetti-vote");
+    gsap.to(".chetti-vote", { duration: 0.005, opacity: 1 });
+    split2.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#CC7272";
+      char.style.display = "inline-block";
+      char.style.opacity = 0;
+    });
+    tl.fromTo(
+      split2.chars,
+      {
+        y: 10,
+        opacity: 0,
+      },
+      {
+        duration: 0.5,
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+      },
+      "-=0.3"
     );
   };
-
   const handleMouseLeaveChetti = () => {
-    setTextChetti(
-      <>
-        <p
-          style={{
-            ...styles.para,
-            color: "#CC7272",
-          }}
-        >
-          Chettinad
-        </p>
-        <p
-          style={{
-            ...styles.para,
-            color: "#CC7272",
-          }}
-        >
-          Cuisine
-        </p>
-      </>
+    const tl = gsap.timeline();
+
+    const split2 = new SplitType(".chetti-vote");
+    split2.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#CC7272";
+      char.style.display = "inline-block";
+    });
+    tl.to(split2.chars, {
+      duration: 0.15,
+      y: 10,
+      opacity: 0,
+      stagger: 0.05,
+    });
+    const split = new SplitType(".chetti-texts");
+    split.words.forEach((word) => {
+      word.style.display = "flex";
+      word.style.flexWrap = "nowrap";
+      word.style.justifyContent = "center";
+    });
+    split.chars.forEach((char) => {
+      char.style.fontFamily = "TTtravels Next DemiBold";
+      char.style.color = "#CC7272";
+    });
+    tl.fromTo(
+      split.chars,
+      {
+        y: -10,
+        opacity: 0,
+      },
+      {
+        duration: 0.2,
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+      }
     );
   };
   return (
@@ -176,6 +232,24 @@ const FaceReact = () => {
         position: "relative",
       }}
     >
+      <div
+        className="bottom-text"
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          left: "50%",
+          transform: "translate(-50%, 0)",
+          color: "#FFF3DC",
+          fontSize: (55 * window.innerHeight) / 1080,
+          zIndex: 505,
+          fontFamily: "TTtravels Next DemiBold",
+          textAlign: "center",
+          textWrap: "nowrap",
+          pointerEvents: "none",
+        }}
+      >
+        Which one would you try first?
+      </div>
       <div
         className="react-cards"
         style={{
@@ -214,12 +288,69 @@ const FaceReact = () => {
               handleMouseLeavePandi();
             }}
           />
-          <p
-            className="pandi-text"
-            style={{ ...styles.para, color: "#BB8BE8" }}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+            }}
           >
-            {textPandi}
-          </p>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                top: 0,
+                left: 0,
+                display: "flex",
+                flexWrap: "nowrap",
+                flexDirection: "column",
+                zIndex: 505,
+              }}
+            >
+              <p
+                className="pandi-text"
+                style={{
+                  display: "flex",
+                  flexWrap: "nowrap",
+                  ...styles.para,
+                  color: "#BB8BE8",
+                }}
+              >
+                Pandiyanad
+              </p>
+              <p
+                className="pandi-text"
+                style={{
+                  ...styles.para,
+                  color: "#BB8BE8",
+                }}
+              >
+                Cuisine
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+
+                zIndex: 505,
+              }}
+            >
+              <p
+                className="pandi-vote"
+                style={{
+                  ...styles.para,
+                  color: "#BB8BE8",
+                  opacity: 0,
+                }}
+              >
+                ~Vote~
+              </p>
+            </div>
+          </div>
         </div>
         <div
           className="chetti-react-card"
@@ -249,7 +380,62 @@ const FaceReact = () => {
               handleMouseLeaveChetti();
             }}
           />
-          {textChetti}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexWrap: "nowrap",
+                flexDirection: "column",
+                alignItems: "center",
+                zIndex: 505,
+              }}
+            >
+              <p
+                className="chetti-texts"
+                style={{ ...styles.para, color: "#CC7272" }}
+              >
+                Chettinad
+              </p>
+              <p
+                className="chetti-texts"
+                style={{
+                  ...styles.para,
+                  color: "#CC7272",
+                }}
+              >
+                Cuisine
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                zIndex: 505,
+              }}
+            >
+              <p
+                className="chetti-vote"
+                style={{
+                  ...styles.para,
+                  color: "#CC7272",
+                  opacity: 0,
+                }}
+              >
+                ~Vote~
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <img
