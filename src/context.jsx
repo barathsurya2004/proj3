@@ -5,16 +5,21 @@ export const Context = createContext({
   setQMark: () => {},
   loading: true,
   setLoading: () => {},
+  hovered: false,
+  setHovered: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
   const [q_mark, setQMark] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [hovered, setHovered] = useState(false);
   const values = {
     q_mark,
     setQMark,
     loading,
     setLoading,
+    hovered,
+    setHovered,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
