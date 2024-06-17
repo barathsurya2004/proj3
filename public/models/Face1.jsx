@@ -14,7 +14,6 @@ export function Face(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/face1.glb");
   const { actions, names } = useAnimations(animations, group);
-  const [blink, setBlink] = useState(true);
 
   const hoverMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
   const defaultMaterial = new THREE.MeshStandardMaterial({ color: "black" });
@@ -37,16 +36,17 @@ export function Face(props) {
       .to(meshRef.current.scale, { y: 1.311, x: 0.786, duration: 0.1 }, "+=0.1")
       .to(meshRef1.current.scale, { y: 1.311, x: 0.786, duration: 0.1 }, "<");
 
-    if (blink) {
-      blinkTimeline.play();
-    } else {
+    if (hovered) {
+      meshRef.current.material.roughness = 1;
       blinkTimeline.pause();
+    } else {
+      blinkTimeline.play();
+      meshRef.current.material.roughness = 0.2;
     }
-    meshRef.current.material.roughness = 1;
     return () => {
       blinkTimeline.kill();
     };
-  }, [blink]);
+  }, [hovered]);
 
   useFrame((state) => {
     if (group.current) {
