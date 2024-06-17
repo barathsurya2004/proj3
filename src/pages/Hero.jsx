@@ -446,7 +446,7 @@ const Hero = () => {
         top: "50%",
       },
       {
-        top: "40%",
+        top: "30%",
         scrollTrigger: {
           trigger: ".yet-so-unique-content-trigger",
           start: "top bottom",
@@ -475,10 +475,10 @@ const Hero = () => {
     gsap.fromTo(
       ".yet-so-unique",
       {
-        top: "40%",
+        top: "30%",
       },
       {
-        top: "-60%",
+        top: "-70%",
         scrollTrigger: {
           trigger: ".reading-space-yet-so-unique",
           start: "top 50%",
@@ -975,7 +975,7 @@ const Hero = () => {
             <p
               style={{
                 textAlign: "center",
-                fontSize: 27 * (window.innerHeight / 1080),
+                fontSize: 51 * (window.innerHeight / 1080),
               }}
             >
               Let’s find out more!
@@ -989,6 +989,37 @@ const Hero = () => {
             height: "100vh",
           }}
         />
+        <div
+          className="shall-we"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "fixed",
+              top: 0,
+              left: 0,
+            }}
+          >
+            <h1
+              style={{
+                fontSize: (89 * window.innerHeight) / 1080,
+                fontFamily: "TTtravels Next Demibold",
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 10,
+              }}
+            >
+              Shall we ?
+            </h1>
+          </div>
+        </div>
         <div className="face-container">
           <FaceCanvas />
         </div>

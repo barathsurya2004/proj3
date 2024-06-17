@@ -73,7 +73,7 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split.chars, {
-      duration: 0.15,
+      duration: 0.1,
       y: -10,
       opacity: 0,
       stagger: 0.05,
@@ -93,7 +93,7 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.5,
+        duration: 0.1,
         y: 0,
         opacity: 1,
         stagger: 0.05,
@@ -112,7 +112,7 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split2.chars, {
-      duration: 0.15,
+      duration: 0.1,
       y: 10,
       opacity: 0,
       stagger: 0.05,
@@ -134,7 +134,7 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.2,
+        duration: 0.1,
         y: 0,
         opacity: 1,
         stagger: 0.05,
@@ -156,7 +156,7 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split.chars, {
-      duration: 0.15,
+      duration: 0.1,
       y: -10,
       opacity: 0,
       stagger: 0.05,
@@ -176,7 +176,7 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.5,
+        duration: 0.1,
         y: 0,
         opacity: 1,
         stagger: 0.05,
@@ -194,7 +194,7 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split2.chars, {
-      duration: 0.15,
+      duration: 0.1,
       y: 10,
       opacity: 0,
       stagger: 0.05,

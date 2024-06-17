@@ -7,12 +7,15 @@ export const Context = createContext({
   setLoading: () => {},
   hovered: false,
   setHovered: () => {},
+  mobile: false,
+  setMobile: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
   const [q_mark, setQMark] = useState(true);
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
+  const [mobile, setMobile] = useState(false);
   const values = {
     q_mark,
     setQMark,
@@ -20,6 +23,8 @@ export const ContextProvider = ({ children }) => {
     setLoading,
     hovered,
     setHovered,
+    mobile,
+    setMobile,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
