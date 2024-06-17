@@ -73,10 +73,10 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split.chars, {
-      duration: 0.03,
+      duration: 0.1,
       y: -10,
       opacity: 0,
-      stagger: 0.05,
+      stagger: 0.02,
     });
     const split2 = new SplitType(".pandi-vote");
     gsap.to(".pandi-vote", { duration: 0.005, opacity: 1 });
@@ -93,10 +93,10 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.05,
+        duration: 0.1,
         y: 0,
         opacity: 1,
-        stagger: 0.05,
+        stagger: 0.02,
       },
       "-=0.3"
     );
@@ -112,10 +112,10 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split2.chars, {
-      duration: 0.05,
+      duration: 0.1,
       y: 10,
       opacity: 0,
-      stagger: 0.05,
+      stagger: 0.02,
     });
     const split = new SplitType(".pandi-text");
     split.words.forEach((word) => {
@@ -134,10 +134,10 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.03,
+        duration: 0.1,
         y: 0,
         opacity: 1,
-        stagger: 0.05,
+        stagger: 0.02,
       }
     );
   };
@@ -156,10 +156,10 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split.chars, {
-      duration: 0.03,
+      duration: 0.1,
       y: -10,
       opacity: 0,
-      stagger: 0.05,
+      stagger: 0.02,
     });
     const split2 = new SplitType(".chetti-vote");
     gsap.to(".chetti-vote", { duration: 0.005, opacity: 1 });
@@ -176,10 +176,10 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.05,
+        duration: 0.1,
         y: 0,
         opacity: 1,
-        stagger: 0.05,
+        stagger: 0.02,
       },
       "-=0.3"
     );
@@ -194,10 +194,10 @@ const FaceReact = () => {
       char.style.display = "inline-block";
     });
     tl.to(split2.chars, {
-      duration: 0.05,
+      duration: 0.1,
       y: 10,
       opacity: 0,
-      stagger: 0.05,
+      stagger: 0.02,
     });
     const split = new SplitType(".chetti-texts");
     split.words.forEach((word) => {
@@ -216,10 +216,10 @@ const FaceReact = () => {
         opacity: 0,
       },
       {
-        duration: 0.03,
+        duration: 0.1,
         y: 0,
         opacity: 1,
-        stagger: 0.05,
+        stagger: 0.02,
       }
     );
   };
