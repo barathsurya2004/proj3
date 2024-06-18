@@ -10,6 +10,8 @@ import { Context } from "../context";
 import Definition from "./Definition";
 import { Face } from "three/examples/jsm/Addons.js";
 import FaceCanvas from "./FaceCanvas";
+import ShallWeAnim from "./ShallWeAnim";
+import Flag from "./Flag";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -503,6 +505,38 @@ const Hero = () => {
           scrub: true,
         },
         ease: "none",
+        immediateRender: false,
+      }
+    );
+    gsap.fromTo(
+      ".shall-we-title",
+      {
+        top: "150%",
+      },
+      {
+        top: "50%",
+        scrollTrigger: {
+          trigger: ".shall-we",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".shall-we-title",
+      {
+        top: "50%",
+      },
+      {
+        top: "-50%",
+        scrollTrigger: {
+          // markers: true,
+          trigger: ".shall-we-to-flag",
+          start: "top top",
+          end: "top -100%",
+          scrub: true,
+        },
         immediateRender: false,
       }
     );
@@ -1006,6 +1040,7 @@ const Hero = () => {
             }}
           >
             <h1
+              className="shall-we-title"
               style={{
                 fontSize: (89 * window.innerHeight) / 1080,
                 fontFamily: "TTtravels Next Demibold",
@@ -1019,6 +1054,10 @@ const Hero = () => {
               Shall we ?
             </h1>
           </div>
+        </div>
+        <div className="shall-we-to-flag">
+          <ShallWeAnim />
+          <Flag />
         </div>
         <div className="face-container">
           <FaceCanvas />
