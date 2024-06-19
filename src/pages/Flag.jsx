@@ -57,8 +57,6 @@ const Flag = () => {
       height: "300%",
       width: "50%",
       left: 0,
-      background:
-        "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 75%)",
     },
     flags: {
       position: "absolute",
@@ -93,9 +91,20 @@ const Flag = () => {
             left: 0,
           }}
         >
+          <img
+            style={{
+              ...styles.img,
+              left: "-24.8%",
+              background:
+                "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(134,112,160,0.1) 50%, rgba(255,255,255,0) 75%)",
+            }}
+            src={left}
+            alt=""
+          />
           <PandiFlag />
         </div>
       </div>
+
       <div
         className="chettinad-flag"
         style={{
@@ -131,8 +140,6 @@ const Flag = () => {
           ...styles.img,
           left: ` ${sliderValue - 25}%`,
           zIndex: 509,
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(211,173,98,0.1) 50%, rgba(255,255,255,0) 75%)",
         }}
         src={center}
         alt=""

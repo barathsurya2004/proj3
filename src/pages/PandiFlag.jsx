@@ -62,25 +62,17 @@ const PandiFlag = () => {
           height: "100%",
         }}
       >
-        <div
-          className="flag-img-container"
+        <img
+          src={pandiFlag}
+          alt=""
           style={{
-            position: "sticky",
-            top: "50%",
+            position: "absolute",
+            top: "50vh",
             transform: "translateY(-50%)",
+            right: 0,
+            height: 360 * (window.innerHeight / 1080),
           }}
-        >
-          <img
-            src={pandiFlag}
-            alt=""
-            style={{
-              position: "absolute",
-              right: 0,
-              transform: "translateY(-50%)",
-              height: 360 * (window.innerHeight / 1080),
-            }}
-          />
-        </div>
+        />
       </div>
       <div
         className="pandi-flag-content-actual"

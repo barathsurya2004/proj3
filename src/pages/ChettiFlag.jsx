@@ -64,25 +64,17 @@ const ChettiFlag = () => {
           height: "100%",
         }}
       >
-        <div
-          className="flag-img-container"
+        <img
+          src={chettiflag}
+          alt=""
           style={{
-            position: "sticky",
-            top: "50%",
+            position: "absolute",
+            left: 0,
+            top: "50vh",
             transform: "translateY(-50%)",
+            height: 360 * (window.innerHeight / 1080),
           }}
-        >
-          <img
-            src={chettiflag}
-            alt=""
-            style={{
-              position: "absolute",
-              left: 0,
-              transform: "translateY(-50%)",
-              height: 360 * (window.innerHeight / 1080),
-            }}
-          />
-        </div>
+        />
       </div>
       <div
         className="chetti-flag-content-actual"
