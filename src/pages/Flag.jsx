@@ -4,11 +4,14 @@ import left from "../assets/left-station.svg";
 import right from "../assets/right-station.svg";
 import button from "../assets/slider-button.svg";
 import gsap from "gsap";
+import PandiFlag from "./PandiFlag";
+import ChettiFlag from "./ChettiFlag";
 
 const Flag = () => {
   const [sliderValue, setSliderValue] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
-
+  const [overflowPandiyanad, setOverflowPandiyanad] = useState("hidden");
+  const [overflowChettinad, setOverflowChettinad] = useState("hidden");
   const handlePointerDown = () => {
     setIsDragging(true);
   };
@@ -17,10 +20,16 @@ const Flag = () => {
     setIsDragging(false);
     if (sliderValue < 40) {
       setSliderValue(5);
+      setOverflowChettinad("scroll");
+      setOverflowPandiyanad("hidden");
     } else if (sliderValue > 60) {
       setSliderValue(95);
+      setOverflowChettinad("hidden");
+      setOverflowPandiyanad("scroll");
     } else {
       setSliderValue(50);
+      setOverflowChettinad("hidden");
+      setOverflowPandiyanad("hidden");
     }
   };
 
@@ -57,7 +66,6 @@ const Flag = () => {
       top: 0,
       left: 0,
       zIndex: 510,
-      overflow: "scroll",
       scrollbarWidth: "none",
     },
     completeFlagContainer: {
@@ -75,6 +83,7 @@ const Flag = () => {
         style={{
           ...styles.flags,
           width: `${sliderValue}%`,
+          overflow: overflowPandiyanad,
         }}
       >
         <div
@@ -84,27 +93,7 @@ const Flag = () => {
             left: 0,
           }}
         >
-          <h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
-            accusamus deserunt quo dolorem inventore nemo culpa ipsum
-            perferendis quisquam rem vitae veniam totam, mollitia minus dolores
-            et? Repellat, ipsum qui! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Laudantium, tenetur. Error quasi repellat alias
-            quaerat incidunt sint necessitatibus ratione! Debitis doloremque
-            soluta corporis quisquam repudiandae ab! Consequuntur, ducimus
-            exercitationem? Soluta. Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Soluta exercitationem voluptates placeat numquam
-            ducimus voluptas corrupti veritatis explicabo est, a molestiae
-            nesciunt incidunt sunt deleniti dolore dignissimos minus laboriosam
-            illum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Sunt magnam dolorum quas quis voluptate suscipit beatae
-            necessitatibus. Perferendis deleniti, culpa officia assumenda
-            consequatur libero autem quaerat aspernatur. Ducimus, et accusamus!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi odit
-            dignissimos repudiandae, natus ipsam quisquam ad perferendis
-            quibusdam provident rerum alias commodi corporis quaerat voluptatem
-            reiciendis, esse voluptates doloribus modi.
-          </h1>
+          <PandiFlag />
         </div>
       </div>
       <div
@@ -113,6 +102,7 @@ const Flag = () => {
           ...styles.flags,
           left: `${sliderValue}%`,
           width: `${100 - sliderValue}%`,
+          overflow: overflowChettinad,
         }}
       >
         <div
@@ -123,16 +113,7 @@ const Flag = () => {
             right: 0,
           }}
         >
-          <h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
-            accusamus deserunt quo dolorem inventore nemo culpa ipsum
-            perferendis quisquam rem vitae veniam totam, mollitia minus dolores
-            et? Repellat, ipsum qui! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Laudantium, tenetur. Error quasi repellat alias
-            quaerat incidunt sint necessitatibus ratione! Debitis doloremque
-            soluta corporis quisquam repudiandae ab! Consequuntur, ducimus
-            exercitationem? Soluta.
-          </h1>
+          <ChettiFlag />
         </div>
       </div>
       <img
@@ -198,11 +179,13 @@ const Flag = () => {
                 alt=""
                 style={{
                   width: (100 * window.innerWidth) / 1920,
+                  padding: "auto 0",
                   position: "absolute",
                   left: `${sliderValue}%`,
                   top: "50%",
                   transform: "translate(-50%, -50%)",
                   pointerEvents: "none",
+                  cursor: "pointer",
                 }}
               />
             </div>
@@ -211,7 +194,7 @@ const Flag = () => {
             style={{
               opacity: 0,
               width: "100%",
-              zIndex: 511,
+              // height: "100vh",
             }}
             type="range"
             min="0"
