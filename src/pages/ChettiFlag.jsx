@@ -1,43 +1,202 @@
-import React from "react";
-
+import chettiflag from "../assets/chetti-flag.svg";
+import chettiIcon from "../assets/chettisvg.svg";
 const ChettiFlag = () => {
   return (
-    <div>
-      <h1>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure accusamus
-        deserunt quo dolorem inventore nemo culpa ipsum perferendis quisquam rem
-        vitae veniam totam, mollitia minus dolores et? Repellat, ipsum qui!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-        tenetur. Error quasi repellat alias quaerat incidunt sint necessitatibus
-        ratione! Debitis doloremque soluta corporis quisquam repudiandae ab!
-        Consequuntur, ducimus exercitationem? Soluta. Lorem ipsum dolor sit amet
-        consectetur, adipisicing elit. Soluta exercitationem voluptates placeat
-        numquam ducimus voluptas corrupti veritatis explicabo est, a molestiae
-        nesciunt incidunt sunt deleniti dolore dignissimos minus laboriosam
-        illum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-        magnam dolorum quas quis voluptate suscipit beatae necessitatibus.
-        Perferendis deleniti, culpa officia assumenda consequatur libero autem
-        quaerat aspernatur. Ducimus, et accusamus! Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Quasi odit dignissimos repudiandae, natus
-        ipsam quisquam ad perferendis quibusdam provident rerum alias commodi
-        corporis quaerat voluptatem reiciendis, esse voluptates doloribus modi.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sint iusto
-        sit ab, autem perferendis aut dignissimos inventore odit nisi. Esse
-        nesciunt architecto error asperiores recusandae ipsam omnis, doloremque
-        ea! Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-        nesciunt, aspernatur, maxime recusandae fugiat, esse alias tenetur
-        eligendi dolore necessitatibus illo nisi rerum voluptatibus dignissimos
-        dolorum perspiciatis quidem nemo architecto! Lorem ipsum dolor sit amet,
-        consectetur adipisicing elit. Minus suscipit beatae odio quaerat fuga a
-        voluptates illum vitae temporibus aliquid, laboriosam magnam ea omnis
-        explicabo fugiat hic quos velit quod? Lorem ipsum dolor sit, amet
-        consectetur adipisicing elit. Similique corrupti exercitationem
-        blanditiis deserunt ad obcaecati earum enim nobis tempore. Ab nisi et
-        dolorum voluptas expedita laudantium nam nesciunt quisquam laboriosam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed odit in eum
-        doloremque sequi vel incidunt fugit a excepturi unde! Accusamus
-        temporibus sapiente non quae perferendis cumque. Culpa, ea quae.
-      </h1>
+    <div
+      className="chetti-flag-content"
+      style={{
+        display: "flex",
+        alignItems: "flex-end",
+        position: "relative",
+        width: "90%",
+        marginLeft: "auto",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "110vh",
+          width: "50%",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <div
+            className="chetti-icon-container"
+            style={{
+              position: "absolute",
+              transform: "translateY(-100%)",
+              right: 0,
+            }}
+          >
+            <img
+              src={chettiIcon}
+              alt=""
+              style={{
+                height: 250 * (window.innerHeight / 1080),
+              }}
+            />
+          </div>
+          <h1
+            style={{
+              fontSize: (89 * window.innerHeight) / 1080,
+              fontFamily: "TTtravels Next DemiBold",
+              color: "#F07373",
+            }}
+          >
+            Chettinad
+            <br />
+            Cuisine
+          </h1>
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <div
+          className="flag-img-container"
+          style={{
+            position: "sticky",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <img
+            src={chettiflag}
+            alt=""
+            style={{
+              position: "absolute",
+              left: 0,
+              transform: "translateY(-50%)",
+              height: 360 * (window.innerHeight / 1080),
+            }}
+          />
+        </div>
+      </div>
+      <div
+        className="chetti-flag-content-actual"
+        style={{
+          width: "60%",
+          padding: "0 10%",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#F07373",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#F07373",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#F07373",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#F07373",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#F07373",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#F07373",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#F07373",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#F07373",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#F07373",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#F07373",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+      </div>
     </div>
   );
 };

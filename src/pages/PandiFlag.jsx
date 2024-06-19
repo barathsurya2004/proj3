@@ -21,12 +21,17 @@ const PandiFlag = () => {
           width: "50%",
         }}
       >
-        <div>
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
           <div
             className="pandi-icon-container"
             style={{
               position: "absolute",
-              top: "10%",
+              transform: "translateY(-100%)",
+              left: 0,
             }}
           >
             <img
@@ -84,26 +89,111 @@ const PandiFlag = () => {
           padding: "0 10%",
         }}
       >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
-        voluptate animi at eligendi quia iste laudantium, iusto placeat nisi
-        quod quidem a quibusdam, ipsa fugiat! Amet veritatis totam perspiciatis
-        similique. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-        ratione voluptates aspernatur dignissimos nihil explicabo eveniet vitae
-        sit architecto delectus inventore aut esse autem, earum perferendis,
-        laboriosam, ipsa blanditiis. Dignissimos? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Dolorum facilis debitis dicta saepe, omnis
-        iure voluptates provident sunt ducimus possimus delectus optio corporis
-        vitae enim veniam. Eaque aspernatur possimus corrupti? Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Magni obcaecati odio maiores
-        voluptate eaque incidunt neque reiciendis officia, nesciunt illo
-        corrupti sunt voluptatibus iste voluptates? Praesentium repudiandae
-        aspernatur optio autem!console.log() Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Nobis modi deleniti neque nisi, voluptates
-        alias quidem reprehenderit eligendi quod autem eum porro eveniet totam
-        illum dolor maiores natus minus dolorum. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Soluta tenetur, sint dolore facilis
-        recusandae ea amet eaque, exercitationem eos quo dolores voluptatem
-        mollitia, distinctio blanditiis accusamus officia cumque quam sequi.;
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#BB8BE8",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#BB8BE8",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#BB8BE8",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#BB8BE8",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#BB8BE8",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#BB8BE8",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#BB8BE8",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#BB8BE8",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
+        <h2
+          style={{
+            fontSize: (55 * window.innerHeight) / 1080,
+            fontFamily: "TTtravels Next DemiBold",
+            color: "#BB8BE8",
+          }}
+        >
+          History
+        </h2>
+        <p
+          style={{
+            fontSize: (27 * window.innerHeight) / 1080,
+            fontFamily: "Filson Pro Regular",
+            color: "#BB8BE8",
+          }}
+        >
+          Central Asian cuisine blends influences from its nomadic heritage,
+          featuring hearty dishes like plov (pilaf), kebabs, and bread. Dairy
+          products, mutton, and horse meat are staples, reflecting the region's
+          pastoral lifestyle.
+        </p>
       </div>
     </div>
   );
