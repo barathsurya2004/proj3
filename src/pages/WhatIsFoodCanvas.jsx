@@ -39,7 +39,7 @@ const WhatIsFoodCanvas = () => {
     >
       <Canvas>
         <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
         <directionalLight
           intensity={3}
           color={"#FFEDDE"}

@@ -1,6 +1,7 @@
 import left from "../assets/left.svg";
 import right from "../assets/right.svg";
 import center from "../assets/center.svg";
+import curve from "../assets/curve.svg";
 import { useGSAP } from "@gsap/react";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -33,6 +34,23 @@ const ShallWeAnim = () => {
           end: "bottom bottom",
           scrub: true,
         },
+      }
+    );
+    gsap.fromTo(
+      ".mask-helper-flag",
+      {
+        top: 0,
+      },
+      {
+        top: "-100%",
+        scrollTrigger: {
+          trigger: ".flag-container",
+          start: "top bottom",
+          end: `+=${window.innerHeight}`,
+          scrub: true,
+        },
+        ease: "none",
+        immediateRender: false,
       }
     );
   });
@@ -100,11 +118,13 @@ const ShallWeAnim = () => {
               alt=""
             />
             <img
-              src={center}
+              src={curve}
               style={{
-                ...styles.img,
-                left: "25%",
-                top: "-5%",
+                position: "absolute",
+                height: "200%",
+                width: "12%",
+                left: "49.8%",
+                top: "-70%",
                 zIndex: 3,
               }}
               alt=""
