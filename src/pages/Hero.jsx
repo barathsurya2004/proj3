@@ -533,10 +533,11 @@ const Hero = () => {
         scrollTrigger: {
           // markers: true,
           trigger: ".shall-we-to-flag",
-          start: "top top",
-          end: "top -100%",
+          start: "top 60%",
+          end: "top -100vh",
           scrub: true,
         },
+        ease: "none",
         immediateRender: false,
       }
     );

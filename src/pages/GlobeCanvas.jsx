@@ -1,18 +1,17 @@
-import { Canvas } from "@react-three/fiber";
-import { EarthModel } from "../../public/models/Earth";
-import { PerspectiveCamera } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import "./GlobeCanvas.css";
+import { Globe } from "../../public/models/Globe";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 gsap.registerPlugin(ScrollTrigger);
 
+const Diable = () => useFrame(() => null, 1000);
 const GlobeCanvas = () => {
   const divRef = useRef();
   const [progresss, setProgresss] = useState(1);
-
-  useGSAP(() => {});
 
   return (
     <div
@@ -34,15 +33,19 @@ const GlobeCanvas = () => {
         }}
       >
         <Canvas>
-          <directionalLight position={[0, 0, 10]} intensity={3} />
+          {/* <OrbitControls /> */}
+          {/* <Diable /> */}
+          <ambientLight intensity={2} />
+          <directionalLight intensity={3} position={[5, 10, 10]} />
+          {/* <directionalLight intensity={2} position={[-5, -10, -10]} /> */}
           <PerspectiveCamera
-            makeDefault
-            zoom={1.3}
-            near={0.01}
-            position={[0, 0, 10]}
+            makeDefault={true}
+            far={1000}
+            near={0.001}
+            fov={22.895}
+            position={[0, 0, 2.212]}
           />
-          <ambientLight intensity={5} />
-          <EarthModel />
+          <Globe />
         </Canvas>
       </div>
     </div>

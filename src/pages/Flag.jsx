@@ -8,6 +8,48 @@ import PandiFlag from "./PandiFlag";
 import ChettiFlag from "./ChettiFlag";
 
 const Flag = () => {
+  const path1 = (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="474 0 960.45 3000">
+      <defs>
+        <filter id="purple-glow" filterUnits="userSpaceOnUse">
+          <feFlood
+            result="flood"
+            flood-color="#bb8be8"
+            flood-opacity="0.1"
+          ></feFlood>
+          <feComposite
+            in="flood"
+            result="mask"
+            in2="SourceGraphic"
+            operator="in"
+          ></feComposite>
+          <feMorphology
+            in="mask"
+            result="dilated"
+            operator="dilate"
+            radius="150"
+          ></feMorphology>
+          <feGaussianBlur
+            in="dilated"
+            result="blurred"
+            stdDeviation="170"
+          ></feGaussianBlur>
+          <feMerge>
+            <feMergeNode in="blurred"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        fill="none"
+        stroke="#bb8be8"
+        stroke-width="17"
+        d="M480.225,0 L480.225,3392.025"
+        filter="url(#purple-glow)"
+      />
+    </svg>
+  );
+
   const [sliderValue, setSliderValue] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [overflowPandiyanad, setOverflowPandiyanad] = useState("hidden");
@@ -95,12 +137,11 @@ const Flag = () => {
             style={{
               ...styles.img,
               left: "-24.8%",
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(134,112,160,0.1) 50%, rgba(255,255,255,0) 75%)",
             }}
             src={left}
             alt=""
           />
+          {/* {path1} */}
           <PandiFlag />
         </div>
       </div>
@@ -122,19 +163,19 @@ const Flag = () => {
             right: 0,
           }}
         >
+          <img
+            style={{
+              ...styles.img,
+              stroke: "#bb8be8",
+              left: "74.8%",
+            }}
+            src={right}
+            alt=""
+          />
           <ChettiFlag />
         </div>
       </div>
-      <img
-        style={{
-          ...styles.img,
-          left: "-24.8%",
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(134,112,160,0.1) 50%, rgba(255,255,255,0) 75%)",
-        }}
-        src={left}
-        alt=""
-      />
+
       <img
         style={{
           ...styles.img,
@@ -144,17 +185,7 @@ const Flag = () => {
         src={center}
         alt=""
       />
-      <img
-        style={{
-          ...styles.img,
-          stroke: "#bb8be8",
-          left: "74.8%",
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(235,114,114,0.1) 50%, rgba(255,255,255,0) 75%)",
-        }}
-        src={right}
-        alt=""
-      />
+
       <div
         style={{
           position: "absolute",

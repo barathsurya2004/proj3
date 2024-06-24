@@ -114,7 +114,7 @@ const App = () => {
         <QuestionMarkCanvas />
         <WhatIsFoodCanvas />
         <FoodIsCanvas />
-        {/* <GlobeCanvas /> */}
+        <GlobeCanvas />
       </div>
       <Loader />
       <AfterLoad />
