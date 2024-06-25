@@ -12,6 +12,7 @@ import { Face } from "three/examples/jsm/Addons.js";
 import FaceCanvas from "./FaceCanvas";
 import ShallWeAnim from "./ShallWeAnim";
 import Flag from "./Flag";
+import CurrentSelection from "../components/CurrentSelection";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -737,6 +738,7 @@ const Hero = () => {
             height: "100vh",
           }}
         >
+          <CurrentSelection />
           <div
             style={{
               width: "100%",
@@ -789,21 +791,6 @@ const Hero = () => {
           </div>
         </div>
         <div className="scrub-time-helper" />
-        {/* <div
-          className="alpha-mask-for-cuisine"
-          style={{
-            position: "fixed",
-            zIndex: 501,
-            pointerEvents: "none",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100vh",
-            background:
-              "linear-gradient(90deg, rgba(0, 0, 0, 255) 0%, rgba(0,0,0,100) 25% , rgba(0,0,0,0)50% , rgba(0, 0, 0, 0) 100%",
-            mixBlendMode: "darken",
-          }}
-        /> */}
         <div
           className="cuisines-of-india"
           style={{

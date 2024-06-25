@@ -9,6 +9,8 @@ export const Context = createContext({
   setHovered: () => {},
   mobile: false,
   setMobile: () => {},
+  meshSelected: null,
+  setMeshSelected: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -16,6 +18,7 @@ export const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [mobile, setMobile] = useState(false);
+  const [meshSelected, setMeshSelected] = useState(null);
   const values = {
     q_mark,
     setQMark,
@@ -25,6 +28,8 @@ export const ContextProvider = ({ children }) => {
     setHovered,
     mobile,
     setMobile,
+    meshSelected,
+    setMeshSelected,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
