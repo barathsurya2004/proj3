@@ -4,13 +4,14 @@ Command: npx gltfjsx@6.2.18 Globe.gltf
 */
 
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useGLTF, PerspectiveCamera } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import { Context } from "../../src/context";
+import * as THREE from "three";
 gsap.registerPlugin(ScrollTrigger);
 export function Globe(props) {
   const group = useRef();
@@ -495,8 +496,6 @@ export function Globe(props) {
             />
           </group>
           <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
             onPointerEnter={(e) => {
               e.stopPropagation();
               setMeshSelected("Chola Nadu");
@@ -505,190 +504,132 @@ export function Globe(props) {
               setMeshSelected(null);
             }}
           >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol003"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol003_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol004"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol004_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol002"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol002_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol001"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol001_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol005"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol005_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
-          </group>
-          <group
-            position={[-0.015, 0.051, 1.077]}
-            scale={-3.412}
-            onPointerEnter={(e) => {
-              e.stopPropagation();
-              setMeshSelected("Chola Nadu");
-            }}
-            onPointerLeave={() => {
-              setMeshSelected(null);
-            }}
-          >
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol006"
-                ].geometry
-              }
-              material={materials["material.001"]}
-            />
-            <mesh
-              geometry={
-                nodes[
-                  "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol006_1"
-                ].geometry
-              }
-              material={materials.OutlineMaterial}
-            />
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol003"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol003_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol004"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol004_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol002"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol002_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol001"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol001_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol005"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol005_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
+            <group position={[-0.015, 0.051, 1.077]} scale={-3.412}>
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol006"
+                  ].geometry
+                }
+                material={materials["material.001"]}
+              />
+              <mesh
+                geometry={
+                  nodes[
+                    "chola-naduPchola-nadulchola-naduachola-nadunchola-naduechol006_1"
+                  ].geometry
+                }
+                material={materials.OutlineMaterial}
+              />
+            </group>
           </group>
           <group
             position={[-0.015, 0.051, 1.077]}
