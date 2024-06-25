@@ -10,8 +10,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Diable = () => useFrame(() => null, 1000);
 const GlobeCanvas = () => {
-  const divRef = useRef();
-  const [progresss, setProgresss] = useState(1);
+  const [zRef, setZRef] = useState(0);
+  const [change, setChange] = useState(0);
+  useGSAP(() => {
+    gsap.to(".globe-canvas", {
+      scrollTrigger: {
+        trigger: ".food-is-culture",
+        onEnter: () => {
+          setZRef(511);
+        },
+        onLeaveBack: () => {
+          setZRef(0);
+        },
+      },
+    });
+    gsap.to(".globe-canvas", {
+      scrollTrigger: {
+        trigger: ".cuisines-of-india",
+        start: "top bottom",
+        end: "top top",
+        onUpdate: (e) => {
+          setChange(e.progress);
+        },
+        scrub: true,
+      },
+    });
+  });
 
   return (
     <div
@@ -22,7 +46,7 @@ const GlobeCanvas = () => {
         left: 0,
         width: "100%",
         height: "100vh",
-        zIndex: 500,
+        zIndex: zRef,
       }}
     >
       <div
@@ -30,6 +54,9 @@ const GlobeCanvas = () => {
         style={{
           height: "100%",
           width: "100%",
+          maskImage: `linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) ${
+            15 * change
+          }%, rgba(255,255,255,1) ${50 * change}%, rgba(255,255,255,1) 100%)`,
         }}
       >
         <Canvas>
