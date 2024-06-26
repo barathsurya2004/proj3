@@ -341,6 +341,7 @@ export function Earth(props) {
         scale={0.35}
         onPointerEnter={() => {
           if (canSelect) {
+            setMeshSelected(null);
             setRotating(false);
           }
         }}
@@ -366,9 +367,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("American");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("American");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -398,9 +401,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Australian");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Australian");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -422,9 +427,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Bangala");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Bangala");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -446,9 +453,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("British");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("British");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -470,9 +479,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Central Africa");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Central Africa");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -494,9 +505,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Central Asia");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Central Asia");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -518,9 +531,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Central Euro");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Central Euro");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -542,9 +557,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chetti Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chetti Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -574,9 +591,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chinese");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chinese");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -598,9 +617,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -630,9 +651,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -662,9 +685,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -694,9 +719,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -726,9 +753,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -758,9 +787,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -790,9 +821,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -822,9 +855,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Circumpolar");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Circumpolar");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -846,9 +881,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East Africa");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East Africa");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -870,9 +907,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East Euro");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East Euro");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -894,9 +933,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -926,9 +967,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -958,9 +1001,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -990,9 +1035,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1022,9 +1069,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("France");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("France");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1046,9 +1095,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Greek");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Greek");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1070,9 +1121,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Iranian");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Iranian");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1094,9 +1147,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Irish");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Irish");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1118,9 +1173,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Italian");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Italian");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1142,9 +1199,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Japanese");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Japanese");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1166,9 +1225,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1198,9 +1259,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1230,9 +1293,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1262,9 +1327,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1294,9 +1361,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1326,9 +1395,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1358,9 +1429,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1390,9 +1463,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1422,9 +1497,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Korean");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Korean");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1446,9 +1523,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Mexican");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Mexican");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1470,9 +1549,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Middle East");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Middle East");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1494,9 +1575,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Najil Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Najil Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1526,9 +1609,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Najil Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Najil Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1558,9 +1643,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Najil Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Najil Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1590,9 +1677,11 @@ export function Earth(props) {
             scale={[-3.406, 3.406, 3.406]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Nepal");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Nepal");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1614,9 +1703,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North African");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North African");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1638,9 +1729,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1670,9 +1763,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1702,9 +1797,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1734,9 +1831,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1766,9 +1865,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1798,9 +1899,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1830,9 +1933,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1862,9 +1967,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1894,9 +2001,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1926,9 +2035,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1958,9 +2069,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -1990,9 +2103,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2022,9 +2137,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2054,9 +2171,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Pakistan");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Pakistan");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2078,9 +2197,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Pandiya Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Pandiya Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2110,9 +2231,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Pandiya Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Pandiya Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2142,9 +2265,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Pandiya Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Pandiya Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2174,9 +2299,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Papua");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Papua");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2198,9 +2325,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Nanjil Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Nanjil Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2230,9 +2359,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chola Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chola Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2262,9 +2393,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Kongu Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Kongu Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2294,9 +2427,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Chetti Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Chetti Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2326,9 +2461,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Pandiya Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Pandiya Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2358,9 +2495,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2382,9 +2521,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2406,9 +2547,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2438,9 +2581,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2470,9 +2615,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("North East India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("North East India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2502,9 +2649,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("East Africa");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("East Africa");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2540,9 +2689,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Portugal");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Portugal");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2564,9 +2715,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Rajastan");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Rajastan");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2588,9 +2741,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South American");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South American");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2612,9 +2767,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South African");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South African");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2636,9 +2793,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South East");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South East");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2660,9 +2819,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2692,9 +2853,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2724,9 +2887,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2756,9 +2921,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2788,9 +2955,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("South India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("South India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2820,9 +2989,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Spanish");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Spanish");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2844,9 +3015,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Sri Lanka");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Sri Lanka");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2868,9 +3041,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2900,9 +3075,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2932,9 +3109,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2964,9 +3143,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -2996,9 +3177,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -3028,9 +3211,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -3060,9 +3245,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Thondai Nadu");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Thondai Nadu");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -3092,9 +3279,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("Turkish");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("Turkish");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -3116,9 +3305,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("West India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("West India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();
@@ -3140,9 +3331,11 @@ export function Earth(props) {
             scale={[-3.412, 3.412, 3.412]}
             onPointerEnter={(e) => {
               e.stopPropagation();
-              if (canSelect) {
-                setMeshSelected("West India");
-              }
+              setTimeout(() => {
+                if (canSelect) {
+                  setMeshSelected("West India");
+                }
+              }, 500);
             }}
             onPointerLeave={(e) => {
               e.stopPropagation();

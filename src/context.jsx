@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
 export const Context = createContext({
   q_mark: true,
@@ -13,6 +13,7 @@ export const Context = createContext({
   setMeshSelected: () => {},
   canSelect: false,
   setCanSelect: () => {},
+  pointer: [0, 0],
 });
 
 export const ContextProvider = ({ children }) => {
@@ -22,6 +23,20 @@ export const ContextProvider = ({ children }) => {
   const [mobile, setMobile] = useState(false);
   const [meshSelected, setMeshSelected] = useState(null);
   const [canSelect, setCanSelect] = useState(false);
+  const [pointer, setPointer] = useState([0, 0]);
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    setPointer([clientX, clientY]);
+    console.log(pointer);
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   const values = {
     q_mark,
     setQMark,
@@ -35,6 +50,7 @@ export const ContextProvider = ({ children }) => {
     setMeshSelected,
     canSelect,
     setCanSelect,
+    pointer,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { Context } from "../context";
 import gsap from "gsap";
+import SvgMorphAnimation from "./SvgMorphAnimation";
 
 const CurrentSelection = () => {
   const { meshSelected } = useContext(Context);
@@ -35,11 +36,12 @@ const CurrentSelection = () => {
         top: 0,
         right: 0,
         zIndex: 520,
-        width: "40%",
+        width: "100%",
         height: "100vh",
         pointerEvents: "none",
       }}
     >
+      {meshSelected && <SvgMorphAnimation />}
       <div
         // Attach the ref to the animated element
         style={{
