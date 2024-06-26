@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 import "./GlobeCanvas.css";
 import { Globe } from "../../public/models/Globe";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Earth } from "../../public/models/Earth";
 gsap.registerPlugin(ScrollTrigger);
 
 const Diable = () => useFrame(() => null, 1000);
@@ -72,7 +73,8 @@ const GlobeCanvas = () => {
             fov={22.895}
             position={[0, 0, 2.212]}
           />
-          <Globe />
+          {/* <Globe /> */}
+          <Earth />
         </Canvas>
       </div>
     </div>
