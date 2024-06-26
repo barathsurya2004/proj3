@@ -15,6 +15,7 @@ const AlphaShaderMaterial = shaderMaterial(
   {
     uColor: new THREE.Color(0, 0.2, 0.4),
     uTime: 0,
+    ballPosition: new THREE.Vector3(),
   },
   // Vertex Shader
   glsl`
@@ -30,26 +31,33 @@ const AlphaShaderMaterial = shaderMaterial(
   `,
   // Fragment Shader
   glsl`
-varying vec3 vPos;
-varying vec2 vUv;
-varying vec3 vNormal;
-void main() {
-  // Calculate alpha based on the x position
- // Adjust range as necessary
-  vec3 viewDir = normalize(cameraPosition - vPos);
-  float fres = dot(viewDir, vNormal);
-
-  gl_FragColor = vec4(0.0,0.0,0.0,fres);
-}
-`
+  uniform vec3 ballPosition;
+  varying vec3 vPos;
+  varying vec2 vUv;
+  varying vec3 vNormal;
+  void main() {
+    vec3 viewDir = normalize(cameraPosition - vPos);
+    float fres = dot(viewDir, vNormal);
+    float dist = distance(ballPosition, vPos);
+    float alpha = smoothstep(0.0, 0.5, dist);
+    gl_FragColor = vec4(0.0, 0.0, 0.0, alpha * fres);
+  }
+  `
 );
 extend({ AlphaShaderMaterial });
+
 // Create the shader material with transparent property set to true
 export const Ball = () => {
   return (
-    <mesh position={[0, 0, 0]} scale={0.3}>
+    <mesh
+      position={[0, 0, 0]}
+      scale={0.3}
+      onPointerEnter={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <sphereGeometry args={[1, 32, 32]} />
-      <alphaShaderMaterial uColor={"hotpink"} transparent castShadows />
+      <alphaShaderMaterial uColor={"hotpink"} transparent castShadows blend />
     </mesh>
   );
 };
@@ -59,8 +67,10 @@ export function Earth(props) {
   const hoverRef = useRef();
   const [hovering, setHovering] = useState(true);
   const [rotating, setRotating] = useState(true);
-  const { meshSelected, setMeshSelected } = useContext(Context);
-
+  const [canStop, setCanStop] = useState(true);
+  const { meshSelected, setMeshSelected, canSelect, setCanSelect } =
+    useContext(Context);
+  const ballRef = useRef();
   useEffect(() => {
     console.log(meshSelected);
   }, [meshSelected]);
@@ -138,6 +148,12 @@ export function Earth(props) {
         x: -0.4,
         scrollTrigger: {
           trigger: ".cuisines-of-the-world",
+          onEnter: () => {
+            setCanSelect(true);
+          },
+          onLeaveBack: () => {
+            setCanSelect(false);
+          },
           start: "top bottom",
           end: "top top",
           scrub: true,
@@ -185,6 +201,12 @@ export function Earth(props) {
         x: 0.1,
         y: 0.06,
         scrollTrigger: {
+          onEnter: () => {
+            setCanStop(false);
+          },
+          onLeaveBack: () => {
+            setCanStop(true);
+          },
           trigger: ".cuisines-of-india",
           start: "top bottom",
           end: "top top",
@@ -315,6 +337,22 @@ export function Earth(props) {
   const { nodes, materials } = useGLTF("/models/Earth.gltf");
   return (
     <group {...props} dispose={null} ref={hoverRef} position={[0.4, 0, 0]}>
+      <mesh
+        scale={0.35}
+        onPointerEnter={() => {
+          if (canSelect) {
+            setRotating(false);
+          }
+        }}
+        onPointerLeave={() => {
+          if (canStop) {
+            setRotating(true);
+          }
+        }}
+      >
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshStandardMaterial transparent opacity={0.2} color={"#000"} />
+      </mesh>
       <Ball />
       <group ref={group}>
         <mesh
@@ -326,6 +364,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("American");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -348,6 +396,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Australian");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.australia_1.geometry}
@@ -362,6 +420,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Bangala");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.bangala_1.geometry}
@@ -376,6 +444,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("British");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.british_1.geometry}
@@ -390,6 +468,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Central Africa");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["central-africa"].geometry}
@@ -404,6 +492,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Central Asia");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["central-asia_1"].geometry}
@@ -418,6 +516,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Central Euro");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["central-euro_1"].geometry}
@@ -432,6 +540,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chetti Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -454,6 +572,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chinese");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.chinese_1.geometry}
@@ -468,6 +596,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -490,6 +628,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -512,6 +660,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -534,6 +692,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -556,6 +724,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -578,6 +756,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -600,6 +788,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -622,6 +820,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Circumpolar");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.circumpolar_1.geometry}
@@ -636,6 +844,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East Africa");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["east-africa"].geometry}
@@ -650,6 +868,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East Euro");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["east-euro_1"].geometry}
@@ -664,6 +892,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -686,6 +924,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -708,6 +956,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -730,6 +988,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -752,6 +1020,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("France");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.france_1.geometry}
@@ -766,6 +1044,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Greek");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.greek_1.geometry}
@@ -780,6 +1068,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Iranian");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.iranian_1.geometry}
@@ -794,6 +1092,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Irish");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.irish_1.geometry}
@@ -808,6 +1116,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Italian");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.italian_1.geometry}
@@ -822,6 +1140,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Japanese");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.japanese_1.geometry}
@@ -836,6 +1164,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -858,6 +1196,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -880,6 +1228,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -902,6 +1260,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -924,6 +1292,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -946,6 +1324,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -968,6 +1356,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -990,6 +1388,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1012,6 +1420,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Korean");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.korean_1.geometry}
@@ -1026,6 +1444,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Mexican");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.mexican_1.geometry}
@@ -1040,6 +1468,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Middle East");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["middle-east_1"].geometry}
@@ -1054,6 +1492,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Najil Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1076,6 +1524,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Najil Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1098,6 +1556,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Najil Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1120,6 +1588,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.406, 3.406, 3.406]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Nepal");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.nepal_1.geometry}
@@ -1134,6 +1612,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North African");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["north-african_1"].geometry}
@@ -1148,6 +1636,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1170,6 +1668,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1192,6 +1700,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1214,6 +1732,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1236,6 +1764,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1258,6 +1796,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1280,6 +1828,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1302,6 +1860,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1324,6 +1892,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1346,6 +1924,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1368,6 +1956,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1390,6 +1988,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1412,6 +2020,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1434,6 +2052,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Pakistan");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.pakistan_1.geometry}
@@ -1448,6 +2076,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Pandiya Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1470,6 +2108,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Pandiya Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1492,6 +2140,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Pandiya Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1514,6 +2172,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Papua");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.papua_1.geometry}
@@ -1528,6 +2196,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Nanjil Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1550,6 +2228,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chola Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1572,6 +2260,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Kongu Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1594,6 +2292,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Chetti Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1616,6 +2324,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Pandiya Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1638,6 +2356,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["north-east-india001"].geometry}
@@ -1652,6 +2380,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["north-east-india_1"].geometry}
@@ -1666,6 +2404,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1688,6 +2436,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1710,6 +2468,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("North East India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1732,6 +2500,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("East Africa");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["east-africa001"].geometry}
@@ -1760,6 +2538,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Portugal");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.portugal_1.geometry}
@@ -1774,6 +2562,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Rajastan");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.rajastan_1.geometry}
@@ -1788,6 +2586,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South American");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["south-american"].geometry}
@@ -1802,6 +2610,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South African");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["south-african_1"].geometry}
@@ -1816,6 +2634,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South East");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["south-east_1"].geometry}
@@ -1830,6 +2658,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1852,6 +2690,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1874,6 +2722,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1896,6 +2754,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1918,6 +2786,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("South India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1940,6 +2818,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Spanish");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.spanish_1.geometry}
@@ -1954,6 +2842,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Sri Lanka");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.srilanka_1.geometry}
@@ -1968,6 +2866,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -1990,6 +2898,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2012,6 +2930,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2034,6 +2962,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2056,6 +2994,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2078,6 +3026,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2100,6 +3058,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Thondai Nadu");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={
@@ -2122,6 +3090,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("Turkish");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes.turkish_1.geometry}
@@ -2136,6 +3114,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("West India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["west-india_1"].geometry}
@@ -2150,6 +3138,16 @@ export function Earth(props) {
             position={[-0.015, 0.051, 1.077]}
             rotation={[-Math.PI, 0, 0]}
             scale={[-3.412, 3.412, 3.412]}
+            onPointerEnter={(e) => {
+              e.stopPropagation();
+              if (canSelect) {
+                setMeshSelected("West India");
+              }
+            }}
+            onPointerLeave={(e) => {
+              e.stopPropagation();
+              setMeshSelected(null);
+            }}
           >
             <mesh
               geometry={nodes["west-india001_1"].geometry}

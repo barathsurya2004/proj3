@@ -66,6 +66,7 @@ const GlobeCanvas = () => {
           <ambientLight intensity={2} />
           <directionalLight intensity={3} position={[5, 10, 10]} />
           {/* <directionalLight intensity={2} position={[-5, -10, -10]} /> */}
+
           <PerspectiveCamera
             makeDefault={true}
             far={1000}

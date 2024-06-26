@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import anim from "../assets/final sline.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import AnimSVG from "../components/animSVG";
 gsap.registerPlugin(ScrollTrigger);
 
 const ShallWeAnim = () => {
@@ -20,7 +21,7 @@ const ShallWeAnim = () => {
 
   return (
     <div style={styles.container} className="anim-handler-flag">
-      <img src={anim} style={styles.img} className="anim-flag" alt="" />
+      <AnimSVG width={"100%"} height={"130%"} />
     </div>
   );
 };

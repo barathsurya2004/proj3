@@ -11,6 +11,8 @@ export const Context = createContext({
   setMobile: () => {},
   meshSelected: null,
   setMeshSelected: () => {},
+  canSelect: false,
+  setCanSelect: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -19,6 +21,7 @@ export const ContextProvider = ({ children }) => {
   const [hovered, setHovered] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [meshSelected, setMeshSelected] = useState(null);
+  const [canSelect, setCanSelect] = useState(false);
   const values = {
     q_mark,
     setQMark,
@@ -30,6 +33,8 @@ export const ContextProvider = ({ children }) => {
     setMobile,
     meshSelected,
     setMeshSelected,
+    canSelect,
+    setCanSelect,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
