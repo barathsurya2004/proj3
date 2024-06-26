@@ -14,6 +14,7 @@ export const Context = createContext({
   canSelect: false,
   setCanSelect: () => {},
   pointer: [0, 0],
+  down: false,
 });
 
 export const ContextProvider = ({ children }) => {
@@ -24,6 +25,7 @@ export const ContextProvider = ({ children }) => {
   const [meshSelected, setMeshSelected] = useState(null);
   const [canSelect, setCanSelect] = useState(false);
   const [pointer, setPointer] = useState([0, 0]);
+  const [down, setDown] = useState(false);
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event;
     setPointer([clientX, clientY]);
@@ -51,6 +53,8 @@ export const ContextProvider = ({ children }) => {
     canSelect,
     setCanSelect,
     pointer,
+    down,
+    setDown,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

@@ -1,13 +1,27 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../context";
 import gsap from "gsap";
 import SvgMorphAnimation from "./SvgMorphAnimation";
 
 const CurrentSelection = () => {
-  const { meshSelected } = useContext(Context);
+  const { meshSelected, down } = useContext(Context);
   // Ref for the container to animate
   const headingRef = useRef(null);
   const textRef = useRef(null);
+  const [position, setPosition] = useState({});
+  useEffect(() => {
+    if (down) {
+      setPosition({
+        bottom: "10%",
+        left: 167 * (window.innerWidth / 1920),
+      });
+    } else {
+      setPosition({
+        top: "0%",
+        right: "5%",
+      });
+    }
+  }, [down]);
   useEffect(() => {
     if (meshSelected) {
       // Reset the element's opacity to 0 to prepare for the fade-in animation
@@ -33,11 +47,11 @@ const CurrentSelection = () => {
     <div
       style={{
         position: "fixed",
-        top: 0,
-        right: 0,
         zIndex: 520,
         width: "100%",
         height: "100vh",
+        top: 0,
+        left: 0,
         pointerEvents: "none",
       }}
     >
@@ -46,8 +60,9 @@ const CurrentSelection = () => {
         // Attach the ref to the animated element
         style={{
           position: "absolute",
-          top: 10,
+          ...position,
           zIndex: 512,
+          width: "40%",
         }}
       >
         {meshSelected ? (

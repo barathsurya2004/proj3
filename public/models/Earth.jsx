@@ -68,7 +68,7 @@ export function Earth(props) {
   const [hovering, setHovering] = useState(true);
   const [rotating, setRotating] = useState(true);
   const [canStop, setCanStop] = useState(true);
-  const { meshSelected, setMeshSelected, canSelect, setCanSelect } =
+  const { meshSelected, setMeshSelected, canSelect, setCanSelect, setDown } =
     useContext(Context);
   const ballRef = useRef();
   useEffect(() => {
@@ -203,9 +203,11 @@ export function Earth(props) {
         scrollTrigger: {
           onEnter: () => {
             setCanStop(false);
+            setDown(true);
           },
           onLeaveBack: () => {
             setCanStop(true);
+            setDown(false);
           },
           trigger: ".cuisines-of-india",
           start: "top bottom",
