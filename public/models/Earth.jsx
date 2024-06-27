@@ -363,11 +363,11 @@ export function Earth(props) {
       const rotY = group.current.rotation.y;
 
       // Calculate new rotation values
-      let newRotX = (rotX + dy / 150) % (2 * Math.PI);
+      let newRotX = (rotX + dy / 50) % (2 * Math.PI);
 
       // Constrain newRotX between minRotX and maxRotX
       newRotX = Math.max(minRotX, Math.min(maxRotX, newRotX));
-      let newRotY = rotY + dx / 150;
+      let newRotY = rotY + dx / 50;
       // Apply the constrained rotation to x and the updated rotation to y
       gsap.to(group.current.rotation, {
         x: newRotX,

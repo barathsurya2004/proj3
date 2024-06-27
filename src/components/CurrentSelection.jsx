@@ -17,8 +17,8 @@ const CurrentSelection = () => {
       });
     } else {
       setPosition({
-        top: "0%",
-        right: "5%",
+        top: 170 * (window.innerHeight / 1080),
+        right: 0,
       });
     }
   }, [down]);
