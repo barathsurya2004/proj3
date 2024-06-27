@@ -79,9 +79,7 @@ export function Earth(props) {
     pointer,
   } = useContext(Context);
   const [initialMouse, setInitialMouse] = useState({ x: 0, y: 0 });
-  useEffect(() => {
-    console.log(meshSelected);
-  }, [meshSelected]);
+  const [dragging, setDragging] = useState(false);
   // const config = useControls({
   //   scale: {
   //     value: 1,
@@ -330,6 +328,16 @@ export function Earth(props) {
       }
     );
   });
+  useEffect(() => {
+    if (!globeClicked) {
+      gsap.to(group.current.rotation, {
+        y: 0,
+        x: 0,
+        ease: "elastic.out(1, 0.3)",
+        duration: 1,
+      });
+    }
+  }, [dragging]);
   useFrame((state, delta) => {
     // console.log(state);
     if (rotating) {
@@ -348,10 +356,24 @@ export function Earth(props) {
       const [x, y] = pointer;
       const dx = x - initialMouse.x;
       const dy = y - initialMouse.y;
+      const maxRotX = 45 * (Math.PI / 180); // 90 degrees in radians
+      const minRotX = -45 * (Math.PI / 180); // -90 degrees in radians
+
       const rotX = group.current.rotation.x;
       const rotY = group.current.rotation.y;
-      group.current.rotation.y = (rotY + dx / 150) % (2 * Math.PI);
-      group.current.rotation.x = (rotX + dy / 150) % (2 * Math.PI);
+
+      // Calculate new rotation values
+      let newRotX = (rotX + dy / 150) % (2 * Math.PI);
+
+      // Constrain newRotX between minRotX and maxRotX
+      newRotX = Math.max(minRotX, Math.min(maxRotX, newRotX));
+      let newRotY = rotY + dx / 150;
+      // Apply the constrained rotation to x and the updated rotation to y
+      gsap.to(group.current.rotation, {
+        x: newRotX,
+        y: newRotY,
+        duration: 0.5,
+      });
       setInitialMouse({ x: x, y: y });
     }
   });
@@ -369,6 +391,8 @@ export function Earth(props) {
         onPointerLeave={() => {
           if (canStop) {
             setRotating(true);
+            setGlobeClicked(false);
+            setDragging(false);
           }
         }}
         onPointerDown={(e) => {
@@ -376,6 +400,7 @@ export function Earth(props) {
           console.log(pointer);
           setInitialMouse({ x: x, y: y });
           setGlobeClicked(true);
+          setDragging(true);
         }}
         onPointerUp={() => {
           setGlobeClicked(false);

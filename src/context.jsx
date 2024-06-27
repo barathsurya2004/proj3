@@ -41,7 +41,11 @@ export const ContextProvider = ({ children }) => {
     };
   }, []);
   const setMeshSelected = (mesh) => {
-    setTimeout(() => setActiveMeshSelected(mesh), 500);
+    if (!globeClicked) {
+      setTimeout(() => setActiveMeshSelected(mesh), 500);
+    } else {
+      setActiveMeshSelected(null);
+    }
   };
   const values = {
     q_mark,
