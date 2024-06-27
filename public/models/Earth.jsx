@@ -331,7 +331,6 @@ export function Earth(props) {
   useEffect(() => {
     if (!globeClicked) {
       gsap.to(group.current.rotation, {
-        y: 0,
         x: 0,
         ease: "elastic.out(1, 0.3)",
         duration: 1,
