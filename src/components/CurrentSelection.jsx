@@ -12,7 +12,7 @@ const CurrentSelection = () => {
   useEffect(() => {
     if (down) {
       setPosition({
-        bottom: "10%",
+        bottom: 100 * (window.innerHeight / 1080),
         left: 167 * (window.innerWidth / 1920),
       });
     } else {
@@ -62,7 +62,7 @@ const CurrentSelection = () => {
           position: "absolute",
           ...position,
           zIndex: 512,
-          width: "40%",
+          width: 674 * (window.innerWidth / 1920),
         }}
       >
         {meshSelected ? (
