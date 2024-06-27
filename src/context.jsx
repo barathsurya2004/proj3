@@ -15,6 +15,8 @@ export const Context = createContext({
   setCanSelect: () => {},
   pointer: [0, 0],
   down: false,
+  globeClicked: false,
+  setGlobeClicked: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -22,14 +24,14 @@ export const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [meshSelected, setMeshSelected] = useState(null);
+  const [meshSelected, setActiveMeshSelected] = useState(null);
   const [canSelect, setCanSelect] = useState(false);
   const [pointer, setPointer] = useState([0, 0]);
   const [down, setDown] = useState(false);
+  const [globeClicked, setGlobeClicked] = useState(false);
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event;
     setPointer([clientX, clientY]);
-    console.log(pointer);
   };
 
   useEffect(() => {
@@ -38,7 +40,9 @@ export const ContextProvider = ({ children }) => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-
+  const setMeshSelected = (mesh) => {
+    setTimeout(() => setActiveMeshSelected(mesh), 500);
+  };
   const values = {
     q_mark,
     setQMark,
@@ -55,6 +59,8 @@ export const ContextProvider = ({ children }) => {
     pointer,
     down,
     setDown,
+    globeClicked,
+    setGlobeClicked,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
