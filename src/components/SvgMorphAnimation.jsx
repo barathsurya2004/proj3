@@ -5,39 +5,66 @@ import { Context } from "../context";
 const SvgMorphAnimation = () => {
   const containerRef = useRef(null);
   const lineRef = useRef(null);
-  const circleRef = useRef(null);
-  const endCircleRef = useRef(null); // Ref for the new end circle
   const { meshSelected, pointer, down } = useContext(Context);
+  const newLineRef = useRef(null);
   const downPosition = {
     x: 841 * (window.innerWidth / 1920),
     y: 730 * (window.innerHeight / 1080),
   };
   const upPosition = {
-    x: 1246 * (window.innerWidth / 1920),
+    x: 1200 * (window.innerWidth / 1920),
     y: 310 * (window.innerHeight / 1080),
   };
+
+  const circleRef = useRef(null);
   useEffect(() => {
     const container = containerRef.current;
     const line = lineRef.current;
-    const circle = circleRef.current;
-    const endCircle = endCircleRef.current; // Get the end circle
-
     const rect = container.getBoundingClientRect();
-    const x = pointer[0] - rect.left;
-    const y = pointer[1] - rect.top;
+    const cursorX = pointer[0] - rect.left;
+    const cursorY = pointer[1] - rect.top;
 
-    const position = down ? downPosition : upPosition; // Starting X of the line
-    const startX = position.x;
-    const startY = position.y;
-    const length = Math.hypot(x - startX, y - startY);
-    const angle = Math.atan2(y - startY, x - startX) * (180 / Math.PI);
+    const selectedPosition = down ? downPosition : upPosition;
+    const length = Math.hypot(
+      selectedPosition.x - cursorX,
+      selectedPosition.y - cursorY
+    );
+    const angle =
+      Math.atan2(selectedPosition.y - cursorY, selectedPosition.x - cursorX) *
+      (180 / Math.PI);
 
-    // Calculate end point of the line
-    const endX = startX + length * Math.cos((angle * Math.PI) / 180);
-    const endY = startY + length * Math.sin((angle * Math.PI) / 180);
-
-    gsap.set(line, { width: length, rotation: angle });
-    gsap.set(endCircle, { x: endX - startX, y: endY - startY }); // Position the end circle
+    gsap.set(line, {
+      rotation: angle,
+      x: cursorX,
+      y: cursorY,
+      transformOrigin: "0% 50%",
+    });
+    gsap.set(circleRef.current, {
+      x: cursorX,
+      y: cursorY,
+    });
+    const tl = gsap.timeline();
+    tl.fromTo(
+      line,
+      {
+        width: 0,
+      },
+      {
+        width: length,
+        duration: 0.5,
+        ease: "none",
+      }
+    ).fromTo(
+      newLineRef.current,
+      {
+        width: 0,
+      },
+      {
+        width: 674 * (window.innerWidth / 1920),
+        duration: 0.5,
+        ease: "none",
+      }
+    );
   }, [meshSelected, down]);
 
   return (
@@ -51,52 +78,37 @@ const SvgMorphAnimation = () => {
       }}
     >
       <div
-        ref={circleRef}
-        style={{
-          width: "0px",
-          height: "0px",
-          borderRadius: "50%",
-          position: "absolute",
-          left: down ? downPosition.x : upPosition.x,
-          top: down ? downPosition.y : upPosition.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      ></div>
-      <div
         ref={lineRef}
         style={{
           height: 5 * (window.innerWidth / 1920),
           backgroundColor: "#d3ad62",
           position: "absolute",
-          left: down ? downPosition.x : upPosition.x,
-          top: down ? downPosition.y : upPosition.y,
           transformOrigin: "left center",
         }}
       ></div>
       <div
-        ref={endCircleRef} // Reference for the new end circle
+        className="hori-line"
+        ref={newLineRef}
         style={{
-          width: 20 * (window.innerWidth / 1920),
-          height: 20 * (window.innerWidth / 1920),
+          top: down ? downPosition.y : upPosition.y,
+          left: down ? downPosition.x : upPosition.x,
+          height: 5 * (window.innerWidth / 1920),
+          transform: `rotate(${down ? 180 : 0}deg)`,
           backgroundColor: "#d3ad62",
-          borderRadius: "50%",
           position: "absolute",
-          left: down ? downPosition.x : upPosition.x, // Initial position, will be updated by gsap
-          top: down ? downPosition.y : upPosition.y, // Initial position, will be updated by gsap
-          transform: "translate(-50%, -50%)",
+          transformOrigin: "left center",
+          width: 674 * (window.innerWidth / 1920),
         }}
       ></div>
       <div
+        className="circle-hover"
+        ref={circleRef}
         style={{
-          height: 5 * (window.innerWidth / 1920),
+          width: 20 * (window.innerWidth / 1920),
+          height: 20 * (window.innerWidth / 1920),
+          borderRadius: "50%",
           backgroundColor: "#d3ad62",
-          position: "absolute",
-          left: down
-            ? downPosition.x - 674 * (window.innerWidth / 1920)
-            : upPosition.x,
-          top: down ? downPosition.y : upPosition.y,
-          transformOrigin: "right center",
-          width: 674 * (window.innerWidth / 1920),
+          transform: "translate(-50%, -50%)",
         }}
       ></div>
     </div>

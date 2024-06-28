@@ -28,6 +28,7 @@ const CurrentSelection = () => {
       gsap.set(headingRef.current, { opacity: 0, y: 20 });
       // Animate the element to fade in and move up slightly
       gsap.to(headingRef.current, {
+        delay: 0.5,
         opacity: 1,
         y: 0,
         duration: 0.5, // Animation duration in seconds
@@ -35,6 +36,7 @@ const CurrentSelection = () => {
       });
       gsap.set(textRef.current, { opacity: 0, y: -20 });
       gsap.to(textRef.current, {
+        delay: 0.5,
         opacity: 1,
         y: 0,
         duration: 0.5,
