@@ -51,7 +51,7 @@ const SvgMorphAnimation = () => {
       },
       {
         width: length,
-        duration: 0.5,
+        duration: 0.25,
         ease: "none",
       }
     ).fromTo(
@@ -61,7 +61,7 @@ const SvgMorphAnimation = () => {
       },
       {
         width: 674 * (window.innerWidth / 1920),
-        duration: 0.5,
+        duration: 0.25,
         ease: "none",
       }
     );

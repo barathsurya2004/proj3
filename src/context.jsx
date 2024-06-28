@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useContext, createContext, useState, useEffect } from "react";
 
 export const Context = createContext({
@@ -40,13 +41,29 @@ export const ContextProvider = ({ children }) => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
+  const debounceTimeoutRef = useRef();
+
   const setMeshSelected = (mesh) => {
-    if (!globeClicked) {
-      setTimeout(() => setActiveMeshSelected(mesh), 500);
-    } else {
+    if (mesh === null || globeClicked) {
+      // Clear any existing timeout
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+      // Set state to null immediately
       setActiveMeshSelected(null);
+    } else {
+      // Clear any existing timeout
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+      // Set a new timeout to update the state after 300ms (or any suitable delay)
+      debounceTimeoutRef.current = setTimeout(() => {
+        setActiveMeshSelected(mesh);
+      }, 300); // Adjust the delay as needed
     }
   };
+
   const values = {
     q_mark,
     setQMark,

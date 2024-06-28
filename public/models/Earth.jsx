@@ -399,6 +399,7 @@ export function Earth(props) {
             const [x, y] = pointer;
             console.log(pointer);
             setInitialMouse({ x: x, y: y });
+            setMeshSelected(null);
             setGlobeClicked(true);
             setDragging(true);
           }
