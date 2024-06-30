@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import image from "../assets/thunder.svg";
-import { Face } from "../../public/models/Face1";
 import { OrthographicCamera } from "@react-three/drei";
 import { Suspense } from "react";
+import { Face2 } from "../../public/models/Face2";
 
 const MobileLoader = () => {
   return (
@@ -17,7 +17,6 @@ const MobileLoader = () => {
         className="face-canvas"
         style={{
           height: "50vh",
-          width: "100%",
           display: "flex",
           justifyContent: "center",
         }}
@@ -29,7 +28,7 @@ const MobileLoader = () => {
           {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} zoom={0.4} /> */}
           <Suspense fallback={null}>
             {/* <FaceModel /> */}
-            <Face />
+            <Face2 />
           </Suspense>
         </Canvas>
       </div>
