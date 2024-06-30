@@ -38,7 +38,7 @@ const FaceCanvas = () => {
           height: "100vh",
           position: "fixed",
           top: "100vh",
-          zIndex: 700,
+          zIndex: 500,
           left: 0,
         }}
       >

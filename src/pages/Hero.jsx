@@ -14,6 +14,11 @@ import ShallWeAnim from "./ShallWeAnim";
 import Flag from "./Flag";
 import CurrentSelection from "../components/CurrentSelection";
 import EndingPage from "./EndingPage";
+import ThereIsMore from "./ThereIsMore";
+import Ingredients from "./Ingredients";
+import Procedure from "./Procedure";
+import Characteristics from "./Characteristics";
+import SharePage from "./SharePage";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -1047,6 +1052,56 @@ const Hero = () => {
         <div className="shall-we-to-flag">
           <ShallWeAnim />
           <Flag />
+        </div>
+        <div
+          className="there-is-more"
+          style={{
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          <ThereIsMore />
+        </div>
+        <div
+          className="ingredients-page"
+          style={{
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          <Ingredients />
+        </div>
+        <div
+          className="procedure-page"
+          style={{
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          <Procedure />
+        </div>
+        <div
+          className="characteristics-page"
+          style={{
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          <Characteristics />
+        </div>
+        <div
+          className="share-page"
+          style={{
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          <SharePage />
         </div>
         <div className="face-container">
           <FaceCanvas />
