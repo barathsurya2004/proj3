@@ -409,7 +409,7 @@ export function Earth(props) {
         }}
       >
         <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial transparent opacity={0.2} color={"#000"} />
+        <meshStandardMaterial transparent opacity={0} color={"#000"} />
       </mesh>
       <Ball />
       <group ref={group}>
