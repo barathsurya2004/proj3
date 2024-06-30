@@ -13,6 +13,7 @@ import FaceCanvas from "./FaceCanvas";
 import ShallWeAnim from "./ShallWeAnim";
 import Flag from "./Flag";
 import CurrentSelection from "../components/CurrentSelection";
+import EndingPage from "./EndingPage";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -1049,6 +1050,17 @@ const Hero = () => {
         </div>
         <div className="face-container">
           <FaceCanvas />
+        </div>
+        <div
+          className="ending-page"
+          style={{
+            width: "100%",
+            height: "100vh",
+            position: "relative",
+            zIndex: 100,
+          }}
+        >
+          <EndingPage />
         </div>
       </div>
     </>

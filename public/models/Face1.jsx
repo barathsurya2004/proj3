@@ -9,6 +9,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
 import { Context } from "../../src/context";
+import { useGSAP } from "@gsap/react";
 
 export function Face(props) {
   const group = useRef();
@@ -98,62 +99,22 @@ export function Face(props) {
     }
   }, [hovered, actions, names]);
 
-  // const handleOnHoverIn = () => {
-  //   // console.log(meshRef.current.material.color);
-  //   gsap.fromTo(
-  //     meshRef.current.material.color,
-  //     {
-  //       r: 0,
-  //       g: 0,
-  //       b: 0,
-  //     },
-  //     {
-  //       r: 1,
-  //       g: 0,
-  //       b: 0,
-  //       duration: 0.2,
-  //       immediateRender: false,
-  //     }
-  //   );
-  //   setBlink(false);
-  //   names.forEach((name) => {
-  //     const action = actions[name];
-  //     action.setLoop(THREE.LoopOnce);
-  //     action.reset();
-  //     action.clampWhenFinished = true;
-  //     action.timeScale = 1.5;
-  //     action.play();
-  //   });
-  // };
-
-  // const handleOnHoverOut = () => {
-  //   setBlink(true);
-  //   // console.log(meshRef.current.material);
-  //   gsap.fromTo(
-  //     meshRef.current.material.color,
-  //     {
-  //       r: 1,
-  //       g: 0,
-  //       b: 0,
-  //     },
-  //     {
-  //       r: 0,
-  //       g: 0,
-  //       b: 0,
-  //       duration: 0.2,
-  //       immediateRender: false,
-  //     }
-  //   );
-  //   names.forEach((name) => {
-  //     const action = actions[name];
-  //     action.paused = true;
-  //     action.time = action.getClip().duration;
-  //     action.paused = false;
-  //     action.timeScale = -1.5;
-  //     action.clampWhenFinished = true;
-  //     action.play();
-  //   });
-  // };
+  useGSAP(() => {
+    gsap.fromTo(
+      group.current.position,
+      { x: 0 },
+      {
+        x: -15,
+        scrollTrigger: {
+          trigger: ".ending-page",
+          start: "top bottom",
+          end: "top top",
+          toggleActions: "play none none reverse",
+          scrub: true,
+        },
+      }
+    );
+  });
 
   return (
     <group
