@@ -1,4 +1,7 @@
+import { Pepper } from "../../public/models/cards/Pepper";
+import { Tamarind } from "../../public/models/cards/Tamarind";
 import image from "../assets/share.svg";
+import CardsCanvas from "./CardsCanvas";
 
 const SharePage = () => {
   return (
@@ -125,7 +128,7 @@ const SharePage = () => {
         So many differences, yet complimentary.
       </h1>
       <div
-        className="pandi-ingredients"
+        className="pandi-share"
         style={{
           position: "absolute",
           top: 0,
@@ -133,9 +136,13 @@ const SharePage = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardsCanvas>
+          <Pepper />
+        </CardsCanvas>
+      </div>
       <div
-        className="chetti-ingredients"
+        className="chetti-share"
         style={{
           position: "absolute",
           top: 0,
@@ -143,7 +150,11 @@ const SharePage = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardsCanvas>
+          <Tamarind />
+        </CardsCanvas>
+      </div>
     </div>
   );
 };

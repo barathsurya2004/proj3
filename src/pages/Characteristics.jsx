@@ -1,3 +1,6 @@
+import CardHolder from "./CardHolder";
+import CardHolderC from "./CardsHolderC";
+
 const Characteristics = () => {
   return (
     <div
@@ -74,7 +77,7 @@ const Characteristics = () => {
         </svg>
       </div>
       <div
-        className="pandi-ingredients"
+        className="pandi-characteristics"
         style={{
           position: "absolute",
           top: 0,
@@ -82,7 +85,9 @@ const Characteristics = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolder />
+      </div>
       <div
         className="chetti-ingredients"
         style={{
@@ -92,7 +97,9 @@ const Characteristics = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolderC />
+      </div>
     </div>
   );
 };

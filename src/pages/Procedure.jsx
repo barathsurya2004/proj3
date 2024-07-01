@@ -1,3 +1,6 @@
+import CardHolder from "./CardHolder";
+import CardHolderC from "./CardsHolderC";
+
 const Procedure = () => {
   return (
     <div
@@ -74,7 +77,7 @@ const Procedure = () => {
         </svg>
       </div>
       <div
-        className="pandi-ingredients"
+        className="pandi-procedure"
         style={{
           position: "absolute",
           top: 0,
@@ -82,9 +85,11 @@ const Procedure = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolder />
+      </div>
       <div
-        className="chetti-ingredients"
+        className="chetti-procedure"
         style={{
           position: "absolute",
           top: 0,
@@ -92,7 +97,9 @@ const Procedure = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolderC />
+      </div>
     </div>
   );
 };

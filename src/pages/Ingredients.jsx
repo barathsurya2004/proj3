@@ -1,3 +1,5 @@
+import CardHolder from "./CardHolder";
+import CardHolderC from "./CardsHolderC";
 const Ingredients = () => {
   return (
     <div
@@ -82,7 +84,9 @@ const Ingredients = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolder />
+      </div>
       <div
         className="chetti-ingredients"
         style={{
@@ -92,7 +96,9 @@ const Ingredients = () => {
           width: "50%",
           height: "100vh",
         }}
-      ></div>
+      >
+        <CardHolderC />
+      </div>
     </div>
   );
 };
