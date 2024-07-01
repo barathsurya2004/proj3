@@ -8,12 +8,10 @@ import { shaderMaterial, useGLTF } from "@react-three/drei";
 import { extend } from "@react-three/fiber";
 import glsl from "glslify";
 const PanidyandShaderMaterial = shaderMaterial(
-  {
-    opacity: 1.0,
-  },
+  {},
 
   glsl`
-      varying vec3 vPosition;
+   varying vec3 vPosition;
 
       void main() {
         vPosition = position;
@@ -24,7 +22,7 @@ const PanidyandShaderMaterial = shaderMaterial(
     varying vec3 vPosition;
 
     void main() {
-      float opacity = vPosition.y +0.5;
+      float opacity =smoothstep(-1.0,1.0,vPosition.z*28.528);
       gl_FragColor = vec4(0.238, 0.162, 0.325, opacity);
     } 
   `
