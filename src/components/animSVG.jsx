@@ -14,7 +14,7 @@ const AnimSVG = (props) => {
         trigger: ".anim-handler-flag",
         start: "top 50%",
         end: "bottom bottom",
-        scrub: true,
+        scrub: 0.5,
       },
     });
     if (right && left && center && centerCurve) {

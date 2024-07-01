@@ -8,48 +8,6 @@ import PandiFlag from "./PandiFlag";
 import ChettiFlag from "./ChettiFlag";
 
 const Flag = () => {
-  const path1 = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="474 0 960.45 3000">
-      <defs>
-        <filter id="purple-glow" filterUnits="userSpaceOnUse">
-          <feFlood
-            result="flood"
-            flood-color="#bb8be8"
-            flood-opacity="0.1"
-          ></feFlood>
-          <feComposite
-            in="flood"
-            result="mask"
-            in2="SourceGraphic"
-            operator="in"
-          ></feComposite>
-          <feMorphology
-            in="mask"
-            result="dilated"
-            operator="dilate"
-            radius="150"
-          ></feMorphology>
-          <feGaussianBlur
-            in="dilated"
-            result="blurred"
-            stdDeviation="170"
-          ></feGaussianBlur>
-          <feMerge>
-            <feMergeNode in="blurred"></feMergeNode>
-            <feMergeNode in="SourceGraphic"></feMergeNode>
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        fill="none"
-        stroke="#bb8be8"
-        stroke-width="17"
-        d="M480.225,0 L480.225,3392.025"
-        filter="url(#purple-glow)"
-      />
-    </svg>
-  );
-
   const [sliderValue, setSliderValue] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [overflowPandiyanad, setOverflowPandiyanad] = useState("hidden");
@@ -95,7 +53,7 @@ const Flag = () => {
     },
     img: {
       position: "absolute",
-      top: "-100%",
+      // top: "-100%",
       height: "300%",
       width: "50%",
       left: 0,

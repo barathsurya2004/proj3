@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960.45 3000">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960.45 3000"
+  preserveAspectRatio="none"
+>
   <defs>
     <clipPath id="clip-left-half">
       <!-- This rectangle covers the left half of the SVG -->
