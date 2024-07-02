@@ -109,6 +109,7 @@ const CircularText = ({ texts, radius }) => {
                       radius + window.innerWidth * change
                     }px) `,
                     transformOrigin: `left center`,
+                    fontFamily: "TTtravels Next Demibold",
                     fontSize:
                       fontSize * window.innerHeight +
                       change * window.innerHeight * 0.05,

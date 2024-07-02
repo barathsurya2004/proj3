@@ -25,7 +25,9 @@
                 top: 50%;
                 transform: translateY(-29%);
                 margin-left: 13.02vw;
-                left: 100vw;
+                left: 27vw;
+                opacity: 0;
+                
             }
 .love{
     position: absolute;

@@ -6,7 +6,7 @@ const Procedure = () => {
     <div
       style={{
         position: "relative",
-        zIndex: 1,
+        zIndex: 500,
         overflow: "hidden",
       }}
     >

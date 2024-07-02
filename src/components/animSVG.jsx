@@ -21,8 +21,8 @@ const AnimSVG = (props) => {
       tl.fromTo(
         "#center-curve",
         {
-          strokeDasharray: centerCurve.getTotalLength(),
-          strokeDashoffset: centerCurve.getTotalLength(),
+          strokeDasharray: centerCurve.getTotalLength() + 5,
+          strokeDashoffset: centerCurve.getTotalLength() + 5,
         },
         {
           strokeDashoffset: 0,
@@ -32,8 +32,8 @@ const AnimSVG = (props) => {
         .fromTo(
           "#right",
           {
-            strokeDasharray: right.getTotalLength(),
-            strokeDashoffset: right.getTotalLength(),
+            strokeDasharray: right.getTotalLength() + 5,
+            strokeDashoffset: right.getTotalLength() + 5,
           },
           {
             strokeDashoffset: 0,
@@ -45,8 +45,8 @@ const AnimSVG = (props) => {
         .fromTo(
           "#left",
           {
-            strokeDasharray: left.getTotalLength(),
-            strokeDashoffset: left.getTotalLength(),
+            strokeDasharray: left.getTotalLength() + 5,
+            strokeDashoffset: left.getTotalLength() + 5,
           },
           {
             strokeDashoffset: 0,
@@ -59,8 +59,8 @@ const AnimSVG = (props) => {
         .fromTo(
           "#center",
           {
-            strokeDasharray: center.getTotalLength(),
-            strokeDashoffset: center.getTotalLength(),
+            strokeDasharray: center.getTotalLength() + 5,
+            strokeDashoffset: center.getTotalLength() + 5,
           },
           {
             strokeDashoffset: 0,

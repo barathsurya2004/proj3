@@ -7,13 +7,11 @@ const CardsCanvas = ({ children }) => {
       style={{
         width: "100%",
         height: "100%",
-        position: "relative",
-        zIndex: 510,
       }}
     >
       <Canvas>
         <ambientLight intensity={0.5} />
-        <OrbitControls />
+        <OrbitControls enableZoom={false} />
         {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
         <directionalLight position={[0, 0, 5]} intensity={1} />
         <OrthographicCamera makeDefault position={[0, 0, 10]} zoom={75} />

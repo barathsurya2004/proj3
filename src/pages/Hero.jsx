@@ -19,6 +19,7 @@ import Ingredients from "./Ingredients";
 import Procedure from "./Procedure";
 import Characteristics from "./Characteristics";
 import SharePage from "./SharePage";
+import Question from "./Question";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 const Hero = () => {
@@ -74,52 +75,7 @@ const Hero = () => {
         },
       }
     );
-    gsap.to(".question-text", {
-      opacity: 1,
-      left: 0,
-      scrollTrigger: {
-        trigger: ".question-trigger",
-        start: "top bottom",
-        end: "top center",
-        toggleActions: "play none none reverse",
-        scrub: true,
-      },
-    });
-    gsap.fromTo(
-      ".question-text",
-      {
-        opacity: 1,
-      },
-      {
-        opacity: 0.5,
-        top: "15.4351vh",
-        scrollTrigger: {
-          trigger: ".definition",
-          start: "top bottom",
-          end: "top top",
-          toggleActions: "play none none reverse",
-          scrub: true,
-        },
-        immediateRender: false,
-      }
-    );
-    gsap.fromTo(
-      ".question-text",
-      {
-        top: "15.4351vh",
-      },
-      {
-        top: "-84.5649vh",
-        scrollTrigger: {
-          trigger: ".food-is",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-        },
-        ease: "none",
-        immediateRender: false,
-      }
-    );
+
     gsap.to(".card-content", {
       bottom: 0,
       scrollTrigger: {
@@ -141,6 +97,7 @@ const Hero = () => {
     });
     gsap.to(".art", {
       left: 0,
+      opacity: 1,
       scrollTrigger: {
         trigger: ".food-is-art",
         start: "top bottom",
@@ -160,6 +117,7 @@ const Hero = () => {
     });
     gsap.to(".adventure", {
       left: 0,
+      opacity: 1,
       scrollTrigger: {
         trigger: ".food-is-adventure",
         start: "top bottom",
@@ -169,6 +127,7 @@ const Hero = () => {
     });
     gsap.to(".adventure", {
       x: -100,
+
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
@@ -179,6 +138,7 @@ const Hero = () => {
     });
     gsap.to(".beyond-time", {
       left: 0,
+      opacity: 1,
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
         start: "top bottom",
@@ -198,6 +158,7 @@ const Hero = () => {
     });
     gsap.to(".culture", {
       left: 0,
+      opacity: 1,
       scrollTrigger: {
         trigger: ".food-is-culture",
         start: "top bottom",
@@ -205,82 +166,59 @@ const Hero = () => {
         scrub: true,
       },
     });
-    gsap.fromTo(
-      ".definition-container",
-      {
-        y: "10vh",
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".definition",
-          start: "top 80%",
-          end: "top top",
-          scrub: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      ".definition-container",
-      {
-        y: 0,
-      },
-      {
-        y: "-100vh",
-        scrollTrigger: {
-          trigger: ".food-is",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-        },
-        ease: "none",
-      }
-    );
-    gsap.fromTo(
-      ".card-content",
-      {
-        bottom: 0,
-      },
-      {
-        bottom: 175 * (window.innerHeight / 1080),
-        scrollTrigger: {
-          trigger: ".food-is-culture-definition",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-        },
-        immediateRender: false,
-      }
-    );
-    gsap.to(".culture", {
-      y: -245 * (window.innerHeight / 1080),
+
+    const cultureTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".food-is-culture-definition",
         start: "top bottom",
         end: "top top",
         scrub: true,
       },
-      immediateRender: false,
     });
-    gsap.fromTo(
-      ".culture-definition",
-      {
-        opacity: 0,
-        y: 30,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".food-is-culture-definition",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
+    cultureTl
+      .fromTo(
+        ".culture-definition",
+        {
+          opacity: 0,
+          top: "150%",
         },
-      }
-    );
+        {
+          top: "20%",
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        ".culture",
+        {
+          top: "50%",
+        },
+        {
+          top: "30%",
+
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".card-content",
+        {
+          bottom: 0,
+        },
+        {
+          bottom: 175 * (window.innerHeight / 1080),
+          immediateRender: false,
+        },
+        "<"
+      )
+      .fromTo(
+        ".culture-definition",
+        {
+          top: "20%",
+        },
+        {
+          top: "0%",
+        },
+        "<"
+      );
     gsap.fromTo(
       ".card-content",
       {
@@ -299,7 +237,7 @@ const Hero = () => {
       }
     );
     gsap.to(".culture", {
-      y: -window.innerHeight - 175 * (window.innerHeight / 1080),
+      top: "-70vh",
       scrollTrigger: {
         trigger: ".cuisines-of-the-world",
         start: "top bottom",
@@ -363,11 +301,11 @@ const Hero = () => {
     gsap.fromTo(
       ".cuisines-of-india-title",
       {
-        x: 0,
+        y: 0,
         opacity: 1,
       },
       {
-        x: -50,
+        y: -50,
         opacity: 0,
         scrollTrigger: {
           trigger: ".cuisines-of-tn",
@@ -449,38 +387,48 @@ const Hero = () => {
         immediateRender: false,
       }
     );
-    gsap.fromTo(
-      ".yet-so-unique",
-      {
-        top: "50%",
+    const yetSoUniqueTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".yet-so-unique-content-trigger",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
       },
-      {
-        top: "30%",
-        scrollTrigger: {
-          trigger: ".yet-so-unique-content-trigger",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
+      ease: "none",
+    });
+    yetSoUniqueTl
+      .fromTo(
+        ".yet-so-unique-content",
+        {
+          top: "150%",
         },
-        immediateRender: false,
-      }
-    );
-    gsap.fromTo(
-      ".yet-so-unique-content",
-      {
-        top: "150%",
-      },
-      {
-        top: "50%",
-        scrollTrigger: {
-          trigger: ".yet-so-unique-content-trigger",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
+        {
+          top: "60%",
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".yet-so-unique",
+        {
+          top: "50%",
         },
-        immediateRender: false,
-      }
-    );
+        {
+          top: "30%",
+
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".yet-so-unique-content",
+        {
+          top: "60%",
+        },
+        {
+          top: "50%",
+          immediateRender: false,
+        },
+        "<"
+      );
     gsap.fromTo(
       ".yet-so-unique",
       {
@@ -611,47 +559,7 @@ const Hero = () => {
           }}
         ></div>
         <div className="wheel-burst"></div>
-        <div className="what-is-food">
-          <div
-            className="question-trigger"
-            style={{
-              width: "100%",
-              height: "100vh",
-            }}
-          >
-            <div
-              className="question"
-              style={{
-                height: "100vh",
-                width: "100%",
-                position: "fixed",
-                zIndex: 10,
-                top: 0,
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <h1
-                style={{
-                  marginLeft: (175 * window.innerWidth) / 1920,
-                  fontSize: (55 * window.innerHeight) / 1080,
-                }}
-                className="question-text"
-              >
-                What is food
-              </h1>
-            </div>
-          </div>
-        </div>
-        <div
-          className="definition"
-          style={{
-            width: "100%",
-            height: "100vh",
-          }}
-        >
-          <Definition />
-        </div>
+        <Question />
         <div className="buffer"></div>
         <div className="food-is">
           <Card />

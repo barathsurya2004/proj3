@@ -5,11 +5,12 @@ import { AppleAnim } from "../../public/models/Apple";
 
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { CustomEase } from "gsap/all";
+import { CustomEase, ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { AnimaFinal } from "../../public/models/FinalAnim";
 gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 const WhatIsFoodCanvas = () => {
   const [prog, setProg] = useState(0);
   useGSAP(() => {

@@ -11,7 +11,8 @@
     top: 50%;
     left: 50%;
 position: absolute;
-font-size: 5.095vh;
+/* font-size: 5.095vh; */
+font-family: "TTtravels Next Demibold";
 text-wrap: nowrap;
 white-space: nowrap;
 z-index: 2;

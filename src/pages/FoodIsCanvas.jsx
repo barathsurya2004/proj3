@@ -6,10 +6,13 @@ import { ClockModel } from "../../public/models/Clock";
 import { ArtModel } from "../../public/models/Art";
 import { useEffect } from "react";
 import gsap from "gsap";
-
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 const FoodIsCanvas = () => {
   return (
     <div
+      className="food-is-canvas"
       style={{
         position: "fixed",
         top: 0,

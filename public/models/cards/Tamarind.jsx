@@ -61,7 +61,7 @@ export function Tamarind(props) {
         position={[0, 0.616, 0]}
         rotation={[1.927, 0, 0]}
         scale={[0.054, 0.054, 0.035]}
-      />
+      ></mesh>
       <mesh
         geometry={nodes.Curve.geometry}
         material={materials.chetti1}
