@@ -32,7 +32,7 @@ const CircularAnimation = ({ words }) => {
             start: "center center",
             end: `+=${window.innerHeight * 2.96}`,
             toggleActions: "play none none reverse",
-            scrub: true,
+            scrub: 0.05,
           },
           immediateRender: false,
         }

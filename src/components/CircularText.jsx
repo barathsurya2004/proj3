@@ -35,7 +35,7 @@ const CircularText = ({ texts, radius }) => {
           trigger: ".draggable-circle",
           start: "top bottom",
           end: `+=${window.innerHeight * 1.6}`,
-          scrub: true,
+          scrub: 0.05,
           onLeave: () => {
             setZIndex(1000);
             setVisibleCount(texts.length);

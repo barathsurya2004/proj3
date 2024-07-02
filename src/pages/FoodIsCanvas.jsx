@@ -28,7 +28,7 @@ const FoodIsCanvas = () => {
           color={"#FFEDDE"}
           position={[5, 4, 5]}
         />
-        <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
+        <PerspectiveCamera makeDefault zoom={1.1} position={[-1, 0, 10]} />
         <ambientLight intensity={0.5} />
         <HeartModel />
         <ArtModel />

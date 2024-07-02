@@ -73,6 +73,7 @@ const GlobeCanvas = () => {
             near={0.001}
             fov={22.895}
             position={[0, 0, 2.212]}
+            zoom={0.9}
           />
           {/* <Globe /> */}
           <Earth />

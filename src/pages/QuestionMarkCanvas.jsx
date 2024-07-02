@@ -35,7 +35,7 @@ const QuestionMarkCanvas = () => {
       <Canvas>
         <ambientLight intensity={1.5} />
 
-        <PerspectiveCamera makeDefault zoom={1.3} position={[0, 0, 10]} />
+        <PerspectiveCamera makeDefault zoom={1.1} position={[-1, 0, 10]} />
         <pointLight intensity={25} color={"#FFEDDE"} position={[5, 3, 3]} />
         <QMark />
       </Canvas>

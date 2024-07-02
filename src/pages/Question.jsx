@@ -10,7 +10,7 @@ const Question = () => {
       left: 0,
       scrollTrigger: {
         trigger: ".question-trigger",
-        start: "top bottom",
+        start: "top 120%",
         end: "top center",
         toggleActions: "play none none reverse",
         scrub: true,
@@ -122,6 +122,7 @@ const Question = () => {
                 marginLeft: (175 * window.innerWidth) / 1920,
                 fontSize: (55 * window.innerHeight) / 1080,
                 fontFamily: "TTtravels Next Demibold",
+                transform: "translate(0% ,-100%)",
               }}
               className="question-text"
             >
