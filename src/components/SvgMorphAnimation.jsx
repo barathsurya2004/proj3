@@ -45,26 +45,39 @@ const SvgMorphAnimation = () => {
     });
     const tl = gsap.timeline();
     tl.fromTo(
-      line,
+      circleRef.current,
       {
-        width: 0,
+        opacity: 0,
+        scale: 0,
       },
       {
-        width: length,
+        opacity: 1,
+        scale: 1,
         duration: 0.25,
-        ease: "none",
       }
-    ).fromTo(
-      newLineRef.current,
-      {
-        width: 0,
-      },
-      {
-        width: 525 * (window.innerWidth / 1920),
-        duration: 0.25,
-        ease: "none",
-      }
-    );
+    )
+      .fromTo(
+        line,
+        {
+          width: 0,
+        },
+        {
+          width: length,
+          duration: 0.25,
+          ease: "none",
+        }
+      )
+      .fromTo(
+        newLineRef.current,
+        {
+          width: 0,
+        },
+        {
+          width: 525 * (window.innerWidth / 1920),
+          duration: 0.25,
+          ease: "none",
+        }
+      );
   }, [meshSelected, down]);
 
   return (

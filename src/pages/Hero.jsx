@@ -691,6 +691,7 @@ const Hero = () => {
                   transform: `translate(${(13 * window.innerWidth) / 1280}px,${
                     (20 * window.innerWidth) / 1280
                   }px)`,
+                  color: "#D3AD62",
                 }}
               >
                 Cuisines
@@ -703,6 +704,7 @@ const Hero = () => {
                   transform: `translate(${
                     (15 * window.innerWidth) / 1280
                   }px,0)`,
+                  color: "#D3AD62",
                 }}
               >
                 of the{" "}
@@ -710,6 +712,7 @@ const Hero = () => {
                   style={{
                     fontSize: (144 * window.innerHeight) / 1080,
                     fontFamily: "TTtravels Next Demibold Italic",
+                    color: "#D3AD62",
                   }}
                 >
                   World
@@ -752,6 +755,7 @@ const Hero = () => {
                   fontSize: (144 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Bold",
                   margin: 0,
+                  color: "#D3AD62",
                 }}
               >
                 Cuisines
@@ -764,6 +768,7 @@ const Hero = () => {
                   transform: `translate(0,${
                     -(35 * window.innerHeight) / 1280
                   }px`,
+                  color: "#D3AD62",
                 }}
               >
                 of
@@ -771,6 +776,7 @@ const Hero = () => {
                   style={{
                     fontSize: (144 * window.innerHeight) / 1080,
                     fontFamily: "TTtravels Next Demibold Italic",
+                    color: "#D3AD62",
                   }}
                 >
                   India
@@ -814,6 +820,7 @@ const Hero = () => {
                   fontSize: (144 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Demibold Italic",
                   margin: 0,
+                  color: "#D3AD62",
                 }}
               >
                 Tamil
@@ -823,6 +830,7 @@ const Hero = () => {
                   fontSize: (144 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Demibold Italic",
                   margin: 0,
+                  color: "#D3AD62",
                 }}
               >
                 Nadu's
@@ -832,6 +840,7 @@ const Hero = () => {
                   fontSize: (144 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Bold",
                   margin: 0,
+                  color: "#D3AD62",
                 }}
               >
                 Cuisines
@@ -1037,7 +1046,7 @@ const Hero = () => {
             width: "100%",
             height: "100vh",
             position: "relative",
-            zIndex: 100,
+            zIndex: 500,
           }}
         >
           <EndingPage />

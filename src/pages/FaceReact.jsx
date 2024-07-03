@@ -10,6 +10,7 @@ import { useState } from "react";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import EndingPage from "./EndingPage";
 gsap.registerPlugin(ScrollTrigger);
 const FaceReact = () => {
   const styles = {
