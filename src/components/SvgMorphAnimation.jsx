@@ -8,12 +8,12 @@ const SvgMorphAnimation = () => {
   const { meshSelected, pointer, down } = useContext(Context);
   const newLineRef = useRef(null);
   const downPosition = {
-    x: 841 * (window.innerWidth / 1920),
-    y: 730 * (window.innerHeight / 1080),
+    x: 701 * (window.innerWidth / 1920),
+    y: 725 * (window.innerHeight / 1080),
   };
   const upPosition = {
-    x: 1200 * (window.innerWidth / 1920),
-    y: 310 * (window.innerHeight / 1080),
+    x: 1225 * (window.innerWidth / 1920),
+    y: 230 * (window.innerHeight / 1080),
   };
 
   const circleRef = useRef(null);
@@ -60,7 +60,7 @@ const SvgMorphAnimation = () => {
         width: 0,
       },
       {
-        width: 674 * (window.innerWidth / 1920),
+        width: 525 * (window.innerWidth / 1920),
         duration: 0.25,
         ease: "none",
       }

@@ -12,13 +12,13 @@ const CurrentSelection = () => {
   useEffect(() => {
     if (down) {
       setPosition({
-        bottom: 100 * (window.innerHeight / 1080),
-        left: 167 * (window.innerWidth / 1920),
+        bottom: 413 * (window.innerHeight / 1080),
+        left: 173 * (window.innerWidth / 1920),
       });
     } else {
       setPosition({
         top: 170 * (window.innerHeight / 1080),
-        right: 0,
+        right: 95 * (window.innerWidth / 1280),
       });
     }
   }, [down]);
@@ -64,7 +64,7 @@ const CurrentSelection = () => {
           position: "absolute",
           ...position,
           zIndex: 512,
-          width: 674 * (window.innerWidth / 1920),
+          width: 525 * (window.innerWidth / 1920),
         }}
       >
         {meshSelected ? (
@@ -75,6 +75,10 @@ const CurrentSelection = () => {
               style={{
                 fontFamily: "TTtravels Next Bold",
                 fontSize: (55 * window.innerWidth) / 1920,
+                position: "absolute",
+                margin: 0,
+                bottom: (-40 * window.innerHeight) / 720,
+                left: 0,
               }}
             >
               {meshSelected}
@@ -83,6 +87,9 @@ const CurrentSelection = () => {
               ref={textRef}
               style={{
                 fontSize: (27 * window.innerWidth) / 1920,
+                position: "absolute",
+                top: (35 * window.innerHeight) / 720,
+                left: 0,
               }}
             >
               Central Asian cuisine blends influences from its nomadic heritage,

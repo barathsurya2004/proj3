@@ -627,7 +627,11 @@ const Hero = () => {
                 top: "45%",
               }}
             >
-              <p>
+              <p
+                style={{
+                  color: "#F2D8A0",
+                }}
+              >
                 Food is more deeply integrated into our life and culture than we
                 assume. Just like languages built with words, cuisines use
                 ingredients as vocabulary. Indian cuisine, for example, relies
@@ -638,7 +642,11 @@ const Hero = () => {
                 creating a symphony on the plate. From the creamy kurmas to the
                 Jamuns.
               </p>
-              <p>
+              <p
+                style={{
+                  color: "#F2D8A0",
+                }}
+              >
                 A cuisine tells a story of regional traditions and cultural
                 heritage, all through the language of food.
               </p>
@@ -675,20 +683,26 @@ const Hero = () => {
                 alignItems: "flex-end",
               }}
             >
-              <h3
+              <h1
                 style={{
                   fontSize: (144 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Bold",
                   margin: 0,
+                  transform: `translate(${(13 * window.innerWidth) / 1280}px,${
+                    (20 * window.innerWidth) / 1280
+                  }px)`,
                 }}
               >
                 Cuisines
-              </h3>
+              </h1>
               <h3
                 style={{
                   fontSize: (89 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Demibold Italic",
                   margin: 0,
+                  transform: `translate(${
+                    (15 * window.innerWidth) / 1280
+                  }px,0)`,
                 }}
               >
                 of the{" "}
@@ -747,6 +761,9 @@ const Hero = () => {
                   fontSize: (89 * window.innerHeight) / 1080,
                   fontFamily: "TTtravels Next Demibold Italic",
                   margin: 0,
+                  transform: `translate(0,${
+                    -(35 * window.innerHeight) / 1280
+                  }px`,
                 }}
               >
                 of
