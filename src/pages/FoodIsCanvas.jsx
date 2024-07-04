@@ -23,13 +23,27 @@ const FoodIsCanvas = () => {
       }}
     >
       <Canvas>
+        <PerspectiveCamera makeDefault zoom={1.1} position={[-0.7, 0, 10]} />
         <directionalLight
+          name="Sun"
           intensity={3}
-          color={"#FFEDDE"}
-          position={[5, 4, 5]}
+          decay={2}
+          color="#fff5b6"
+          position={[2.004, 0.211, 5.056]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <group position={[0, 0, -1]} />
+        </directionalLight>
+        <pointLight
+          name="Point"
+          intensity={5.1}
+          decay={2}
+          color="#fff5b6"
+          position={[4.109, 0.072, -5.18]}
+          rotation={[-Math.PI / 2, 0, 0]}
         />
-        <PerspectiveCamera makeDefault zoom={1.1} position={[-1, 0, 10]} />
-        <ambientLight intensity={0.5} />
+
+        <ambientLight intensity={0.3} />
         <HeartModel />
         <ArtModel />
         <TreasureMapModel />
