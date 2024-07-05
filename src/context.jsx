@@ -18,6 +18,8 @@ export const Context = createContext({
   down: false,
   globeClicked: false,
   setGlobeClicked: () => {},
+  mode: null,
+  setMode: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -30,6 +32,7 @@ export const ContextProvider = ({ children }) => {
   const [pointer, setPointer] = useState([0, 0]);
   const [down, setDown] = useState(false);
   const [globeClicked, setGlobeClicked] = useState(false);
+  const [mode, setMode] = useState(null);
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event;
     setPointer([clientX, clientY]);
@@ -82,6 +85,8 @@ export const ContextProvider = ({ children }) => {
     setDown,
     globeClicked,
     setGlobeClicked,
+    mode,
+    setMode,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

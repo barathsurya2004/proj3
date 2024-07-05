@@ -1,10 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { QMark } from "../../public/models/Q_mark";
 import { OrthographicCamera, PerspectiveCamera } from "@react-three/drei";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useState } from "react";
+import { BlendFunction } from "postprocessing";
 gsap.registerPlugin(ScrollTrigger);
 const QuestionMarkCanvas = () => {
   const [prog, setProg] = useState(0);
@@ -34,7 +36,13 @@ const QuestionMarkCanvas = () => {
     >
       <Canvas>
         <ambientLight intensity={1.5} />
-
+        <EffectComposer>
+          <Noise
+            premultiply
+            blendFunction={BlendFunction.SCREEN}
+            opacity={0.5}
+          />
+        </EffectComposer>
         <PerspectiveCamera makeDefault zoom={1.1} position={[-1, 0, 10]} />
         <pointLight intensity={25} color={"#FFEDDE"} position={[5, 3, 3]} />
         <QMark />

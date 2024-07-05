@@ -7,8 +7,6 @@ import CircularText from "../components/CircularText";
 import CircularAnimation from "../components/CircularAnimation";
 import Card from "./Card";
 import { Context } from "../context";
-import Definition from "./Definition";
-import { Face } from "three/examples/jsm/Addons.js";
 import FaceCanvas from "./FaceCanvas";
 import ShallWeAnim from "./ShallWeAnim";
 import Flag from "./Flag";
@@ -126,7 +124,7 @@ const Hero = () => {
       },
     });
     gsap.to(".adventure", {
-      x: -100,
+      left: -100,
 
       opacity: 0,
       scrollTrigger: {

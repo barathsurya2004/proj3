@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import close from "../assets/close.svg";
+import { Context } from "../context";
+
 const Gallery = () => {
+  const { mode, setMode } = useContext(Context);
   return (
     <div
       style={{
@@ -24,27 +29,202 @@ const Gallery = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          position: "relative",
         }}
       >
-        <h1
-          style={{
-            fontSize: (34 * window.innerWidth) / 1920,
-            color: "black",
-          }}
-        >
-          Photos from my journey to Pandiyand and Chettinad
-        </h1>
+        <div>
+          <h1
+            style={{
+              fontSize: (34 * window.innerWidth) / 1920,
+              color: "black",
+            }}
+          >
+            Photos from my journey to Pandiyand and Chettinad
+          </h1>
+          <div>
+            <img
+              src={close}
+              alt=""
+              style={{
+                width: 48.78 * (window.innerWidth / 1920),
+                height: 62.69 * (window.innerWidth / 1920),
+                position: "absolute",
+                top: 0,
+                right: 0,
+                transform: "translate(-100%, 25%)",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setMode(null);
+              }}
+            />
+          </div>
+        </div>
         <div
           className="photos-container"
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
             width: "100%",
             height: "100%",
-            backgroundColor: "black",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateRows: "repeat(2, 200px)",
+            backgroundColor: "bisque",
           }}
-        ></div>
+        >
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="photo"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

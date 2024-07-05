@@ -1,9 +1,11 @@
 import Footer from "../components/Footer";
 import image from "../assets/backToTop.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Gallery from "../components/Gallery";
+import { Context } from "../context";
+
 const EndingPage = () => {
-  const [mode, setMode] = useState(null);
+  const { mode, setMode } = useContext(Context);
   const styles = {
     h1: {
       fontSize: (55 * window.innerWidth) / 1920,

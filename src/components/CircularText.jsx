@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CircularText.css";
 import { Draggable, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
@@ -12,16 +12,43 @@ const CircularText = ({ texts, radius }) => {
   const [zIndex, setZIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(10);
   const [alphaMaskVisible, setAlphaMaskVisible] = useState(false);
+  const [indVisible, setIndVisible] = useState(null);
+  const prevIndVisibleRef = useRef();
+
+  useEffect(() => {
+    const prevIndVisible = prevIndVisibleRef.current;
+    // Animate the previous indVisible to opacity 0.3
+    if (prevIndVisible !== undefined && prevIndVisible !== indVisible) {
+      gsap.to(`.cir-text-${prevIndVisible}`, {
+        opacity: 0.3,
+        duration: 0.5,
+        ease: "power4",
+      });
+    }
+
+    // Animate the current indVisible to opacity 1
+    gsap.to(`.cir-text-${indVisible}`, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power4",
+    });
+
+    // Update the ref with the current indVisible for the next render
+    prevIndVisibleRef.current = indVisible;
+  }, [indVisible]);
 
   useGSAP(() => {
     Draggable.create("#drag", {
       type: "rotation",
       onDragEnd: () => {
         const rotation = gsap.getProperty("#drag", "rotation");
-        console.log(rotation);
         gsap.to("#drag", {
           rotation: rotation - (rotation % 12),
         });
+        let ind = Math.floor(
+          (30 - ((((rotation - (rotation % 12)) % 360) + 360) % 360) / 12) % 30
+        );
+        setIndVisible(ind);
       },
     });
     gsap.fromTo(
@@ -92,8 +119,15 @@ const CircularText = ({ texts, radius }) => {
             const angle = (index * 360) / texts.length;
             let fontSize = 0.05095;
             if (index > visibleCount) fontSize = "0";
+            // console.log(index);
             return (
-              <div className={`circle-text cir-text-${index}`} key={index}>
+              <div
+                className={`circle-text cir-text-${index}`}
+                key={index}
+                style={{
+                  opacity: 0.3,
+                }}
+              >
                 <div
                   style={{
                     transform: ` rotate(${angle}deg) translate(${
