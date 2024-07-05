@@ -12,18 +12,36 @@ const CircularAnimation = ({ words }) => {
     words.forEach((word, index) => {
       let wordElement = `.word1-${index}`;
       gsap.to(wordElement, {
-        opacity: 0,
+        opacity: 1,
         scrollTrigger: {
           trigger: wordElement,
-          start: "center center",
-          end: "center center",
+          start: "center 55%",
+          end: "center 50.5%",
           toggleActions: "play none none reverse",
         },
         duration: 0.001,
       });
+
+      gsap.fromTo(
+        wordElement,
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: wordElement,
+            start: "center center",
+            end: "center center",
+            toggleActions: "play none none reverse",
+          },
+          duration: 0.001,
+          immediateRender: false,
+        }
+      );
       let cWordElement = `.c-word1-${index}`;
       gsap.to(cWordElement, {
-        opacity: 1,
+        opacity: 0.3,
         scrollTrigger: {
           trigger: wordElement,
           start: "center center",

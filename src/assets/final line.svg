@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1938.03 6835.82">
+    <defs>
+        <style>
+            .cls-1,.cls-2,.cls-3,.cls-4,.cls-6{fill:none;}.cls-1{stroke:#eb7272;}.cls-1,.cls-2,.cls-4,.cls-6{stroke-miterlimit:10;}.cls-1,.cls-2,.cls-4{stroke-width:8px;}.cls-2{stroke:#bb8be8;}.cls-3,.cls-4,.cls-6{stroke:#d3ad62;}.cls-3,.cls-6{stroke-width:12px;}.cls-5{fill:#d3ad62;}</style>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_2-2" data-name="Layer 2">
+            <g id="main">
+                <path id="Group_3" data-name="Group 3" class="cls-1"
+                    d="M971.82,1334c5,722.66,966.81,516.56,961.24,1124.74,1,398,1,4377.09,1,4377.09" />
+            </g>
+            <g id="main-2" data-name="main">
+                <path id="Group_3-2" data-name="Group 3" class="cls-2"
+                    d="M966.21,1334C961.16,2056.65-.61,1850.55,5,2458.73c-1,398-1,4377.09-1,4377.09" />
+            </g>
+            <g id="Layer_1-2" data-name="Layer 1-2">
+                <path id="Group_1" data-name="Group 1" class="cls-3"
+                    d="M1227.49,709.64c-3.81,292.46-254.8,364.54-259.09,645.17" />
+            </g>
+            <path class="cls-4" d="M969.11,1347.48V6835.82" />
+            <path class="cls-5"
+                d="M1221.47,45.39V43.26c0-20.21,25.28-13.36,25.28-24.75,0-5-3.92-8.81-17.54-8.81S1211,14.33,1211,21v1.42h-12.11v-1.6c0-12.55,8.28-20.83,30-20.83,22.43,0,30,7.57,30,17.09,0,20.11-25.39,12.9-25.39,27.05v1.25Zm.43,12.72c0-3,2.23-5.18,5.61-5.18s5.55,2.16,5.55,5.18-2.16,5.11-5.55,5.11-5.61-2.16-5.61-5.11" />
+            <line class="cls-6" x1="1227.48" y1="42.62" x2="1227.48" y2="710.88" />
+        </g>
+    </g>
+</svg>

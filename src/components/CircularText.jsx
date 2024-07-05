@@ -83,11 +83,17 @@ const CircularText = ({ texts, radius }) => {
         end: "top top",
         onEnter: () => {
           setZIndex(0);
+          setIndVisible(null);
           setAlphaMaskVisible(true);
         },
         onLeaveBack: () => {
           setZIndex(800);
-          setIndVisible(3);
+          const rotation = gsap.getProperty("#drag", "rotation");
+          const ind = Math.floor(
+            (30 - ((((rotation - (rotation % 12)) % 360) + 360) % 360) / 12) %
+              30
+          );
+          setIndVisible(ind);
           setAlphaMaskVisible(false);
         },
         onUpdate: (progress) => {

@@ -82,6 +82,7 @@ const Hero = () => {
         end: "top top",
         scrub: true,
       },
+      ease: "none",
     });
     gsap.to(".love", {
       x: -100,
@@ -474,6 +475,7 @@ const Hero = () => {
           end: "top top",
           scrub: true,
         },
+        ease: "none",
       }
     );
     gsap.fromTo(
@@ -972,16 +974,17 @@ const Hero = () => {
             <h1
               className="shall-we-title"
               style={{
-                fontSize: (89 * window.innerHeight) / 1080,
+                fontSize: (86 * window.innerHeight) / 1080,
                 fontFamily: "TTtravels Next Demibold",
                 position: "fixed",
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, -50%)",
+                transform: "translate(-55%, -125%)",
                 zIndex: 10,
+                color: "#D3AD62",
               }}
             >
-              Shall we ?
+              Shall we
             </h1>
           </div>
         </div>
