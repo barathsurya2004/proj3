@@ -73,7 +73,7 @@ const AnimSvg = (props) => {
         },
         {
           strokeDashoffset: 0,
-          duration: 0.1,
+          duration: 0.15,
         }
       )
       .fromTo(
@@ -84,6 +84,7 @@ const AnimSvg = (props) => {
         },
         {
           strokeDashoffset: 0,
+          duration: 0.5,
         }
       )
       .fromTo(
@@ -94,6 +95,7 @@ const AnimSvg = (props) => {
         },
         {
           strokeDashoffset: 0,
+          duration: 0.5,
         },
         "<"
       )
@@ -105,6 +107,7 @@ const AnimSvg = (props) => {
         },
         {
           strokeDashoffset: 0,
+          duration: 0.5,
         },
         "<"
       );
@@ -117,7 +120,7 @@ const AnimSvg = (props) => {
         height: "500vh",
         position: "fixed",
         top: (320 * window.innerHeight) / 720,
-        zIndex: 1000,
+        zIndex: 10,
       }}
     >
       <svg

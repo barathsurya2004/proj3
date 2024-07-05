@@ -404,6 +404,7 @@ const Hero = () => {
         {
           top: "60%",
           immediateRender: false,
+          ease: "none",
         }
       )
       .fromTo(
@@ -413,7 +414,7 @@ const Hero = () => {
         },
         {
           top: "38%",
-
+          ease: "none",
           immediateRender: false,
         }
       )
@@ -424,6 +425,7 @@ const Hero = () => {
         },
         {
           top: "47%",
+          ease: "none",
           immediateRender: false,
         },
         "<"
@@ -952,7 +954,7 @@ const Hero = () => {
           className="reading-space-yet-so-unique"
           style={{
             width: "100%",
-            height: "100vh",
+            height: "50vh",
           }}
         />
         <div
