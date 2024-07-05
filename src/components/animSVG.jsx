@@ -10,6 +10,7 @@ const AnimSvg = (props) => {
     const center = document.getElementById("center");
     const centerCurve = document.getElementById("center-curve");
     const qMark = document.getElementById("qMark");
+    const maskAnim = document.getElementById("mask-rect");
     const qMarkToSplit = document.getElementById("qMark-to-split");
     gsap.fromTo(
       cont,
@@ -48,12 +49,23 @@ const AnimSvg = (props) => {
     const animTime = gsap.timeline({
       scrollTrigger: {
         trigger: ".anim-handler-flag",
-        start: "top top",
+        start: "top 50%",
         end: "bottom bottom",
         scrub: true,
       },
     });
     animTime
+      .fromTo(
+        maskAnim,
+        {
+          y: -105.39,
+        },
+        {
+          y: -5,
+          duration: 0.2,
+          ease: "none",
+        }
+      )
       .fromTo(
         qMarkToSplit,
         {
@@ -130,6 +142,21 @@ const AnimSvg = (props) => {
         width={"100%"}
         preserveAspectRatio="none"
       >
+        <defs>
+          <clipPath id="clip-path">
+            <rect x="1180" y="-105.39" width="125.28" height="102.13"></rect>
+          </clipPath>
+          <mask id="mask-for-elements">
+            <rect
+              id="mask-rect"
+              x={1180}
+              y={105.39}
+              width="125.28"
+              height="102.13"
+              fill="white"
+            />
+          </mask>
+        </defs>
         <g data-name="Layer 2">
           <path
             id="right"
@@ -184,6 +211,7 @@ const AnimSvg = (props) => {
             style={{
               fill: "#d3ad62",
             }}
+            mask="url(#mask-for-elements)"
           />
 
           <path

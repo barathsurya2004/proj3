@@ -40,7 +40,7 @@ const QuestionMarkCanvas = () => {
           <Noise
             premultiply
             blendFunction={BlendFunction.SCREEN}
-            opacity={0.5}
+            opacity={0.8}
           />
         </EffectComposer>
         <PerspectiveCamera makeDefault zoom={1.1} position={[-1, 0, 10]} />
