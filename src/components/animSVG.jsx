@@ -10,7 +10,7 @@ const AnimSvg = (props) => {
     const center = document.getElementById("center");
     const centerCurve = document.getElementById("center-curve");
     const qMark = document.getElementById("qMark");
-    const maskAnim = document.getElementById("mask-rect");
+    const maskAnim = document.getElementById("mask-qMark");
     const qMarkToSplit = document.getElementById("qMark-to-split");
     gsap.fromTo(
       cont,
@@ -58,10 +58,11 @@ const AnimSvg = (props) => {
       .fromTo(
         maskAnim,
         {
-          y: -105.39,
+          strokeDashoffset: 0,
+          strokeDasharray: maskAnim.getTotalLength(),
         },
         {
-          y: -5,
+          strokeDashoffset: maskAnim.getTotalLength(),
           duration: 0.2,
           ease: "none",
         }
@@ -144,16 +145,26 @@ const AnimSvg = (props) => {
       >
         <defs>
           <clipPath id="clip-path">
-            <rect x="1180" y="-105.39" width="125.28" height="102.13"></rect>
+            <path
+              transform="translate(1200,5)"
+              style={{
+                stroke: "black",
+                strokeWidth: 20,
+              }}
+              class="cls-2"
+              d="M31.53,68.88c-4.93-17-2.4-24.61,1.27-28.34,5.48-5.57,13.66-2.71,19.28-9.83,3.62-4.59,5.16-12,2.17-16.73S44.4,8.93,33.57,8.62c-9.76-.27-15-.42-19.4,3.45C8.11,17.42,8.42,26.29,8.55,28.41"
+            />
           </clipPath>
           <mask id="mask-for-elements">
-            <rect
-              id="mask-rect"
-              x={1180}
-              y={105.39}
-              width="125.28"
-              height="102.13"
-              fill="white"
+            <path
+              id="mask-qMark"
+              transform="translate(1199,0)"
+              style={{
+                stroke: "white",
+                strokeWidth: 20,
+              }}
+              class="cls-2"
+              d="M31.53,68.88c-4.93-17-2.4-24.61,1.27-28.34,5.48-5.57,13.66-2.71,19.28-9.83,3.62-4.59,5.16-12,2.17-16.73S44.4,8.93,33.57,8.62c-9.76-.27-15-.42-19.4,3.45C8.11,17.42,8.42,26.29,8.55,28.41"
             />
           </mask>
         </defs>
@@ -204,7 +215,15 @@ const AnimSvg = (props) => {
               fill: "none",
             }}
           />
-
+          {/* <path
+            transform="translate(1199,0)"
+            style={{
+              stroke: "#d3ad62",
+              strokeWidth: 20,
+            }}
+            class="cls-2"
+            d="M8.5,26.89s0-8.1,4.72-11.55C24,6.54,34.54,8.61,37.56,9c9.87,1.14,20.87,5.31,20.6,12.26-.28,7.33-6.13,9.48-19.4,16.46-2.92,1.54-4.94,4.8-6,7a14,14,0,0,0-1.15,7.78c.37,8.56.37,13.41,1,17.17"
+          /> */}
           <path
             id="qMark"
             d="M1221.47 45.39v-2.13c0-20.21 25.28-13.36 25.28-24.75 0-5-3.92-8.81-17.54-8.81S1211 14.33 1211 21v1.42h-12.11v-1.6c0-12.55 8.28-20.83 30-20.83 22.43 0 30 7.57 30 17.09 0 20.11-25.39 12.9-25.39 27.05v1.25Zm.43 12.72c0-3 2.23-5.18 5.61-5.18s5.55 2.16 5.55 5.18-2.16 5.11-5.55 5.11-5.61-2.16-5.61-5.11"
