@@ -411,7 +411,7 @@ const Hero = () => {
           top: "50%",
         },
         {
-          top: "30%",
+          top: "38%",
 
           immediateRender: false,
         }
@@ -422,7 +422,7 @@ const Hero = () => {
           top: "60%",
         },
         {
-          top: "50%",
+          top: "47%",
           immediateRender: false,
         },
         "<"
@@ -430,7 +430,7 @@ const Hero = () => {
     gsap.fromTo(
       ".yet-so-unique",
       {
-        top: "30%",
+        top: "38%",
       },
       {
         top: "-70%",
@@ -447,10 +447,10 @@ const Hero = () => {
     gsap.fromTo(
       ".yet-so-unique-content",
       {
-        top: "50%",
+        top: "47%",
       },
       {
-        top: "-50%",
+        top: "-53%",
         scrollTrigger: {
           trigger: ".reading-space-yet-so-unique",
           start: "top 50%",
@@ -870,15 +870,17 @@ const Hero = () => {
               position: "fixed",
               top: "150%",
               left: "50%",
-              transform: "translate(-50%, -50%)",
+              transform: "translate(-50%, -52.5%)",
               width: "100%",
+              height: "100vh",
             }}
           >
             <h2
               style={{
                 fontFamily: "TTtravels Next Demibold",
-                fontSize: 89 * (window.innerHeight / 1080),
+                fontSize: 86 * (window.innerHeight / 1080),
                 margin: 0,
+                color: "#D3AD62",
               }}
             >
               “They are so close, yet
@@ -886,8 +888,10 @@ const Hero = () => {
             <h1
               style={{
                 fontFamily: "TTtravels Next Demibold",
-                fontSize: 89 * (window.innerHeight / 1080),
+                fontSize: 86 * (window.innerHeight / 1080),
+                lineHeight: 1,
                 margin: 0,
+                color: "#D3AD62",
               }}
             >
               SO UNIQUE”

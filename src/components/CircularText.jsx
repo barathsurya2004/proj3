@@ -65,9 +65,11 @@ const CircularText = ({ texts, radius }) => {
           scrub: 0.05,
           onLeave: () => {
             setZIndex(1000);
+            setIndVisible(3);
             setVisibleCount(texts.length);
           },
           onEnterBack: () => {
+            setIndVisible(null);
             setZIndex(10);
             setVisibleCount(10);
           },
@@ -85,6 +87,7 @@ const CircularText = ({ texts, radius }) => {
         },
         onLeaveBack: () => {
           setZIndex(800);
+          setIndVisible(3);
           setAlphaMaskVisible(false);
         },
         onUpdate: (progress) => {
