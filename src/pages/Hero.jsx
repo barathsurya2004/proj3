@@ -990,6 +990,13 @@ const Hero = () => {
             </h1>
           </div>
         </div>
+        <div
+          className="qMark-melt"
+          style={{
+            width: "100%",
+            height: "50vh",
+          }}
+        ></div>
         <div className="shall-we-to-flag">
           <ShallWeAnim />
           <Flag />

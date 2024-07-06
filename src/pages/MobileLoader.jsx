@@ -3,7 +3,8 @@ import image from "../assets/thunder.svg";
 import { OrthographicCamera } from "@react-three/drei";
 import { Suspense } from "react";
 import { Face2 } from "../../public/models/Face2";
-
+import ref from "../assets/delete/Artboard 1_1.png";
+import "./MobileCont.css";
 const MobileLoader = () => {
   return (
     <div
@@ -11,20 +12,44 @@ const MobileLoader = () => {
         position: "relative",
         width: "100%",
         height: "100vh",
+        overflow: "hidden",
       }}
     >
       <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <img
+          src={ref}
+          alt=""
+          style={{
+            width: "100%",
+            height: "100vh",
+            objectFit: "cover",
+            opacity: 0.3,
+          }}
+        />
+      </div>
+      <div
         className="face-canvas"
         style={{
-          height: "50vh",
+          height: "100vh",
+          width: "100%",
           display: "flex",
           justifyContent: "center",
+          position: "absolute",
+          zIndex: 5,
         }}
       >
         <Canvas>
           <ambientLight intensity={1} />
           <directionalLight intensity={3} position={[10, 10, 10]} />
-          <OrthographicCamera makeDefault position={[0, 0, 20]} zoom={15} />
+          <OrthographicCamera makeDefault position={[0, -10, 20]} zoom={20} />
           {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} zoom={0.4} /> */}
           <Suspense fallback={null}>
             {/* <FaceModel /> */}
@@ -34,67 +59,81 @@ const MobileLoader = () => {
       </div>
       <div
         style={{
+          position: "absolute",
+          top: "7.5%",
+          left: 0,
+
           display: "flex",
           flexDirection: "column",
-          justifyContent: "start",
+          justifyContent: "center",
           alignItems: "center",
-          height: "50vh",
+          height: "100vh",
           padding: "0 20%",
           width: "100%",
+          zIndex: 1,
         }}
       >
         <h1
           style={{
-            fontSize: (42 * window.innerWidth) / 1920,
-            fontFamily: "TTtravels Next Bold",
+            fontFamily: "TTtravels Next DemiBold",
             textAlign: "center",
+            whiteSpace: "nowrap",
           }}
         >
           Thank you for visiting!
         </h1>
-        <p
+        <div
           style={{
-            fontSize: (16 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            textAlign: "center",
-            margin: "0 10%",
+            width: "100%",
           }}
         >
-          This website is designed for Leisure Viewing on Larger Screens. If you
-          have a laptop, desktop, or external monitor nearby, grab them to
-          completely experience and interact with this website.
-        </p>
-        <p
-          style={{
-            fontSize: (16 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            textAlign: "center",
-            margin: "0 10%",
-          }}
-        >
-          If you don't have these devices nearby and want to visit later, thank
-          you again!
-        </p>
-        <p
-          style={{
-            fontSize: (16 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            textAlign: "center",
-            margin: "0 10%",
-          }}
-        >
-          Click here to copy the link to this website and save it for later.
-        </p>
+          <p
+            style={{
+              fontFamily: "Filson Pro Regular",
+              textAlign: "center",
+            }}
+          >
+            This website is designed for Leisure Viewing on Larger Screens. If
+            you have a laptop, desktop, or external monitor nearby, grab them to
+            completely experience and interact with this website.
+          </p>
+          <p
+            style={{
+              fontFamily: "Filson Pro Regular",
+              textAlign: "center",
+            }}
+          >
+            If you don't have these devices nearby and want to visit later,
+            thank you again!
+          </p>
+          <p
+            style={{
+              fontFamily: "Filson Pro Regular",
+              textAlign: "center",
+            }}
+          >
+            Click here to copy the link to this website and save it for later.
+          </p>
+        </div>
       </div>
       <div
         className="footer"
         style={{
           position: "absolute",
-          bottom: 0,
           width: "100%",
         }}
       >
+        <p
+          style={{
+            fontFamily: "Filson Pro Regular",
+            textAlign: "center",
+          }}
+        >
+          © 2024 Sudhesh Venkatachalam | Disclaimer
+        </p>
+        <hr className="footer-line" />
         <div
+          className="footer-content"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -103,7 +142,6 @@ const MobileLoader = () => {
         >
           <p
             style={{
-              fontSize: (14.16 * window.innerWidth) / 1920,
               fontFamily: "Filson Pro Regular",
             }}
           >
@@ -112,36 +150,18 @@ const MobileLoader = () => {
           <img
             src={image}
             style={{
-              width: (15 * window.innerWidth) / 1920,
-              height: (25 * window.innerWidth) / 1920,
               margin: "0 10px",
             }}
             alt=""
           />
           <p
             style={{
-              fontSize: (14.16 * window.innerWidth) / 1920,
               fontFamily: "Filson Pro Regular",
             }}
           >
             Developed by Barath Surya
           </p>
         </div>
-        <hr
-          style={{
-            width: "80%",
-            margin: "0 auto",
-          }}
-        />
-        <p
-          style={{
-            fontSize: (14.16 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            textAlign: "center",
-          }}
-        >
-          © 2024 Sudhesh Venkatachalam | Disclaimer
-        </p>
       </div>
     </div>
   );

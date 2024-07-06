@@ -29,27 +29,20 @@ const AnimSvg = (props) => {
         ease: "none",
       }
     );
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".anim-handler-flag",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-    tl.to(".animSvg-container", {
-      top: 0,
-      duration: 0.1,
-      ease: "none",
-    }).to(".animSvg-container", {
+    gsap.to(".animSvg-container", {
       top: -cont.getBoundingClientRect().height,
-      duration: 1,
+      scrollTrigger: {
+        trigger: ".shall-we-to-flag",
+        start: "top 60%",
+        end: "73% top",
+        scrub: 0.05,
+      },
       ease: "none",
     });
     const animTime = gsap.timeline({
       scrollTrigger: {
         trigger: ".anim-handler-flag",
-        start: "top 50%",
+        start: "top bottom",
         end: "bottom bottom",
         scrub: true,
       },
@@ -63,7 +56,7 @@ const AnimSvg = (props) => {
         },
         {
           strokeDashoffset: maskAnim.getTotalLength(),
-          duration: 0.2,
+          duration: 0.145,
           ease: "none",
         }
       )
