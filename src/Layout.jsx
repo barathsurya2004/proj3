@@ -5,12 +5,16 @@ import MobileLoader from "./pages/MobileLoader";
 
 const Layout = () => {
   const [mobile, setMobile] = useState(
-    window.innerWidth / window.innerHeight < 1.66
+    window.innerWidth / window.innerHeight < 1.66 ||
+      window.innerWidth / window.innerHeight > 2.2
   );
   const [prevMobile, setPrevMobile] = useState(mobile);
 
   const handleResize = () => {
-    setMobile(window.innerWidth / window.innerHeight < 1.66);
+    setMobile(
+      window.innerWidth / window.innerHeight < 1.66 ||
+        window.innerWidth / window.innerHeight > 2.2
+    );
   };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
