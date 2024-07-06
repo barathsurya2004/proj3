@@ -8,6 +8,7 @@ import "./MobileCont.css";
 const MobileLoader = () => {
   return (
     <div
+      className="mobile-container"
       style={{
         position: "relative",
         width: "100%",
@@ -58,6 +59,7 @@ const MobileLoader = () => {
         </Canvas>
       </div>
       <div
+        className="mobile-container"
         style={{
           position: "absolute",
           top: "7.5%",

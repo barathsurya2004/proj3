@@ -1,7 +1,7 @@
-h1{
+.mobile-container h1{
     font-size: 38px;
 }
-p{
+.mobile-container p{
     font-size: 16px;
 }
 .footer {
@@ -26,10 +26,10 @@ p{
 }
 
 @media  (max-width: 768px) {
-    h1{
+    .mobile-container h1{
         font-size: 32px;
     }
-    p{
+    .mobile-container p{
         font-size: 13px;
     }
     .footer {
@@ -49,10 +49,10 @@ p{
     
 }
 @media (max-width: 500px) {
-    h1{
+   .mobile-container h1{
         font-size: 23px;
     }
-    p{
+   .mobile-container p{
         font-size: 9px;
     }
     .footer p{

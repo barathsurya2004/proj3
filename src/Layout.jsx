@@ -4,14 +4,15 @@ import { Context } from "./context";
 import MobileLoader from "./pages/MobileLoader";
 
 const Layout = () => {
-  const [mobile, setMobile] = useState(window.innerWidth < 1000);
+  const [mobile, setMobile] = useState(
+    window.innerWidth / window.innerHeight < 1.66
+  );
   const [prevMobile, setPrevMobile] = useState(mobile);
 
+  const handleResize = () => {
+    setMobile(window.innerWidth / window.innerHeight < 1.66);
+  };
   useEffect(() => {
-    const handleResize = () => {
-      setMobile(window.innerWidth < 1000);
-    };
-
     window.addEventListener("resize", handleResize);
 
     // Clean up the event listener when the component unmounts
