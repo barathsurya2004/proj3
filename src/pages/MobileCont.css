@@ -56,7 +56,8 @@ p{
         font-size: 9px;
     }
     .footer p{
-        font-size: 10px;
+        font-size: 9px;
+        margin: 0;
     }
     .footer-content img{
         width: 10px;
