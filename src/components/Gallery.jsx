@@ -80,7 +80,7 @@ const Gallery = () => {
             }}
           >
             <img
-              src="https://picsum.photos/200/300"
+              src="https://picsum.photos/250/300"
               alt=""
               style={{
                 width: "100%",
