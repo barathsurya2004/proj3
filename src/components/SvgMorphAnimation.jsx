@@ -53,7 +53,7 @@ const SvgMorphAnimation = () => {
       {
         opacity: 1,
         scale: 1,
-        duration: 0.25,
+        duration: 0.15,
       }
     )
       .fromTo(

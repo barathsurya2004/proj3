@@ -46,11 +46,15 @@ const CircularText = ({ texts, radius }) => {
       type: "rotation",
       onDragEnd: () => {
         const rotation = gsap.getProperty("#drag", "rotation");
+
         gsap.to("#drag", {
-          rotation: rotation - (rotation % 12),
+          rotation: rotation - 6 - ((rotation - 6) % 12),
         });
         let ind = Math.floor(
-          (30 - ((((rotation - (rotation % 12)) % 360) + 360) % 360) / 12) % 30
+          (30 -
+            ((((rotation - 6 - ((rotation - 6) % 12)) % 360) + 360) % 360) /
+              12) %
+            30
         );
         setIndVisible(ind);
       },

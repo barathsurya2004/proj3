@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { Suspense, useContext, useState } from "react";
 import close from "../assets/close.svg";
 import { Context } from "../context";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const Gallery = () => {
-  const { mode, setMode } = useContext(Context);
+  const { mode, setMode, photos } = useContext(Context);
+  const [currentSelection, setCurrentSelection] = useState(null);
+
+  useGSAP(() => {});
   return (
     <div
       style={{
@@ -61,168 +65,84 @@ const Gallery = () => {
           </div>
         </div>
         <div
-          className="photos-container"
           style={{
             width: "100%",
             height: "100%",
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridTemplateRows: "repeat(2, 200px)",
             backgroundColor: "bisque",
+            display: "flex",
+            justifyContent: "space-between",
+            overflow: "scroll",
           }}
         >
           <div
-            className="photo"
+            className="current-selection"
             style={{
-              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "0%",
               height: "100%",
-              backgroundColor: "white",
+              paddingRight: 5,
+              overflow: "hidden",
             }}
           >
             <img
-              src="https://picsum.photos/250/300"
-              alt=""
+              src={currentSelection}
+              alt="Current selection"
               style={{
                 width: "100%",
                 height: "100%",
+                objectFit: "cover",
               }}
             />
           </div>
           <div
-            className="photo"
+            className="photos-grid-container"
             style={{
+              margin: 0,
               width: "100%",
               height: "100%",
-              backgroundColor: "white",
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "5px",
+              gridTemplateRows: `repeat(${Math.ceil(photos.length / 4)}, 1fr)`,
+              overflow: "scroll",
             }}
           >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-          <div
-            className="photo"
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
+            {photos.map((photo, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  aspectRatio: "1/1",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setCurrentSelection(photo.url);
+                  gsap.to(".photos-grid-container", {
+                    width: "55%",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    ease: "power4.inOut",
+                  });
+                  gsap.to(".current-selection", {
+                    width: "45%",
+                    ease: "power4.inOut",
+                  });
+                }}
+              >
+                <img
+                  src={photo.url}
+                  alt={photo.alt}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

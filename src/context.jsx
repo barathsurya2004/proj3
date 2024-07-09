@@ -20,6 +20,7 @@ export const Context = createContext({
   setGlobeClicked: () => {},
   mode: null,
   setMode: () => {},
+  photos: [],
 });
 
 export const ContextProvider = ({ children }) => {
@@ -67,6 +68,65 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  const photos = [
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+    {
+      url: "https://picsum.photos/id/54/200/300",
+      alt: "random1",
+    },
+  ];
+
   const values = {
     q_mark,
     setQMark,
@@ -87,6 +147,7 @@ export const ContextProvider = ({ children }) => {
     setGlobeClicked,
     mode,
     setMode,
+    photos,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

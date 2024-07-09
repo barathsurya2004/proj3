@@ -36,7 +36,7 @@ const BackGround = () => {
   });
   return (
     <>
-      {/* <div className="vid-helper" /> */}
+      <div className="vid-helper" />
       {/* <div
         className="guide"
         style={{
