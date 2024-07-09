@@ -18,7 +18,11 @@ const CircularText = ({ texts, radius }) => {
   useEffect(() => {
     const prevIndVisible = prevIndVisibleRef.current;
     // Animate the previous indVisible to opacity 0.3
-    if (prevIndVisible !== undefined && prevIndVisible !== indVisible) {
+    if (
+      prevIndVisible !== undefined &&
+      prevIndVisible !== indVisible &&
+      !alphaMaskVisible
+    ) {
       gsap.to(`.cir-text-${prevIndVisible}`, {
         opacity: 0.3,
         duration: 0.5,
@@ -57,7 +61,7 @@ const CircularText = ({ texts, radius }) => {
         rotation: 45,
       },
       {
-        rotation: -36,
+        rotation: -36.4,
         scrollTrigger: {
           trigger: ".draggable-circle",
           start: "top bottom",
@@ -82,11 +86,14 @@ const CircularText = ({ texts, radius }) => {
         start: "top bottom",
         end: "top top",
         onEnter: () => {
-          setZIndex(0);
           setIndVisible(null);
           setAlphaMaskVisible(true);
+          const dragWheel = document.getElementById("drag");
+          dragWheel.style.pointerEvents = "none";
         },
         onLeaveBack: () => {
+          const dragWheel = document.getElementById("drag");
+          dragWheel.style.pointerEvents = "auto";
           setZIndex(800);
           const rotation = gsap.getProperty("#drag", "rotation");
           const ind = Math.floor(
@@ -95,6 +102,9 @@ const CircularText = ({ texts, radius }) => {
           );
           setIndVisible(ind);
           setAlphaMaskVisible(false);
+        },
+        onLeave: () => {
+          setZIndex(0);
         },
         onUpdate: (progress) => {
           setChange(progress.progress);
@@ -106,7 +116,7 @@ const CircularText = ({ texts, radius }) => {
     <div
       style={{
         position: "fixed",
-        top: (-26 * window.innerHeight) / 1080,
+        top: (0 * window.innerHeight) / 1080,
         left: 0,
         width: "100%",
         height: "100vh",
@@ -122,6 +132,8 @@ const CircularText = ({ texts, radius }) => {
             width: `${radius * 5}px `,
             height: `${radius * 5}px`,
             left: ` ${(-2364 * window.innerWidth) / 1920}px`,
+            // left: 0,
+            // top: 0,
           }}
         >
           {texts.map((text, index) => {
@@ -134,7 +146,7 @@ const CircularText = ({ texts, radius }) => {
                 className={`circle-text cir-text-${index}`}
                 key={index}
                 style={{
-                  opacity: 0.3,
+                  opacity: 0.3 + 1 * change,
                 }}
               >
                 <div
@@ -146,7 +158,7 @@ const CircularText = ({ texts, radius }) => {
                     fontFamily: "TTtravels Next Demibold",
                     fontSize:
                       fontSize * window.innerHeight +
-                      change * window.innerHeight * 0.05,
+                      change * window.innerHeight * 0.1,
                   }}
                 >
                   {text}

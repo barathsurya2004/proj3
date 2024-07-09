@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./CircularAnimation.css";
@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const CircularAnimation = ({ words }) => {
   const radius = 725;
   const margin = 3;
+
   useGSAP(() => {
     words.forEach((word, index) => {
       let wordElement = `.word1-${index}`;
@@ -15,11 +16,11 @@ const CircularAnimation = ({ words }) => {
         opacity: 1,
         scrollTrigger: {
           trigger: wordElement,
-          start: "center 55%",
+          start: "center 60%",
           end: "center 50.5%",
           toggleActions: "play none none reverse",
         },
-        duration: 0.001,
+        duration: 0.01,
       });
 
       gsap.fromTo(
@@ -92,8 +93,8 @@ const CircularAnimation = ({ words }) => {
             position: "relative",
             width: "100%",
             transformOrigin: `${
-              (-(radius - 175) * window.innerWidth) / 1920
-            }px center`,
+              (-(radius - 174) * window.innerWidth) / 1920
+            }px 50%`,
             height: "100%",
           }}
         >
@@ -125,7 +126,7 @@ const CircularAnimation = ({ words }) => {
           key={index}
           className={`word1 word1-${index}`}
           style={{
-            margin: `${margin}vh 0`,
+            margin: `${margin - 1}vh 0`,
           }}
         >
           <div className="word-cont">{word}</div>

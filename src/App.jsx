@@ -91,35 +91,35 @@ const App = () => {
   });
   return (
     <>
-      {/* <div
+      <div
         className="loading-helper"
         style={{
           overflow: loadingFreze ? "hidden" : null,
         }}
-      > */}
-      {/* <BackGround /> */}
-      <div>
-        <img
-          src={image}
-          style={{
-            position: "fixed",
-            top: 0,
-            opacity: 0.5,
-            left: 0,
-            width: "100%",
-            height: "100vh",
-          }}
-        />
+      >
+        <BackGround />
+        <div>
+          <img
+            src={image}
+            style={{
+              position: "fixed",
+              top: 0,
+              opacity: 0.5,
+              left: 0,
+              width: "100%",
+              height: "100vh",
+            }}
+          />
+        </div>
+        <div className="webgl-canvas">
+          <QuestionMarkCanvas />
+          <WhatIsFoodCanvas />
+          <FoodIsCanvas />
+          <GlobeCanvas />
+        </div>
+        <Loader />
+        <AfterLoad />
       </div>
-      <div className="webgl-canvas">
-        <QuestionMarkCanvas />
-        <WhatIsFoodCanvas />
-        <FoodIsCanvas />
-        <GlobeCanvas />
-      </div>
-      <Loader />
-      <AfterLoad />
-      {/* </div> */}
     </>
   );
 };

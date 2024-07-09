@@ -36,8 +36,8 @@ const BackGround = () => {
   });
   return (
     <>
-      <div className="vid-helper" />
-      <div
+      {/* <div className="vid-helper" /> */}
+      {/* <div
         className="guide"
         style={{
           position: "fixed",
@@ -50,7 +50,7 @@ const BackGround = () => {
         }}
       >
         <img src={image} alt="guide" style={{ width: "100%", margin: 0 }} />
-      </div>
+      </div> */}
       <video
         disablePictureInPicture
         disableRemotePlayback

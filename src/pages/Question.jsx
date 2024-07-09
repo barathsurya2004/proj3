@@ -10,7 +10,7 @@ const Question = () => {
       left: 0,
       scrollTrigger: {
         trigger: ".question-trigger",
-        start: "top 120%",
+        start: "top 160%",
         end: "top center",
         toggleActions: "play none none reverse",
         scrub: true,
@@ -31,7 +31,7 @@ const Question = () => {
           top: "100%",
         },
         {
-          top: "25%",
+          top: "35%",
           ease: "none",
         }
       )
@@ -39,7 +39,7 @@ const Question = () => {
       .fromTo(
         ".definition-container",
         {
-          top: "25%",
+          top: "35%",
         },
         {
           top: "-1%",

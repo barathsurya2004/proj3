@@ -178,12 +178,10 @@ const Hero = () => {
       .fromTo(
         ".culture-definition",
         {
-          opacity: 0,
           top: "150%",
         },
         {
           top: "20%",
-          opacity: 1,
         }
       )
       .fromTo(
@@ -192,7 +190,7 @@ const Hero = () => {
           top: "50%",
         },
         {
-          top: "30%",
+          top: "33%",
 
           immediateRender: false,
         }
@@ -203,7 +201,7 @@ const Hero = () => {
           bottom: 0,
         },
         {
-          bottom: 175 * (window.innerHeight / 1080),
+          bottom: 170 * (window.innerHeight / 1080),
           immediateRender: false,
         },
         "<"
@@ -214,7 +212,8 @@ const Hero = () => {
           top: "20%",
         },
         {
-          top: "0%",
+          top: "1%",
+          immediateRender: false,
         },
         "<"
       );

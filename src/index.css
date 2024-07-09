@@ -2,8 +2,11 @@ body,html {
   margin: 0;
   padding: 0;
   background-color: #000000;
+  /* scroll-behavior: smooth; */
+
 }
 *{
+  /* scroll-behavior: smooth; */
   box-sizing: border-box;
      color: #F2D8A0;
   font-family: 'Filson Pro Regular';
@@ -16,4 +19,7 @@ body,html {
 svg{
   height: 100%;
   position: absolute;
+}
+.hero-container{
+  scroll-behavior: smooth;
 }

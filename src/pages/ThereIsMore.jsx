@@ -1,7 +1,7 @@
 const ThereIsMore = () => {
   return (
     <div
-      className="footer"
+      className="there's-more-container"
       style={{
         position: "relative",
         zIndex: 1,
