@@ -64,7 +64,7 @@ const Footer = () => {
           whiteSpace: "nowrap",
         }}
       >
-        Built by Barath Surya
+        Developed by Barath Surya
       </p>
     </div>
   );

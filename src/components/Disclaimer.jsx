@@ -35,7 +35,6 @@ const Disclaimer = () => {
           justifyContent: "space-around",
           padding: "2%",
           alignItems: "center",
-          justifyContent: "center",
           position: "relative",
           border: "5px solid #D3AD62",
         }}
@@ -69,7 +68,6 @@ const Disclaimer = () => {
             style={{
               width: 48.78 * (window.innerWidth / 1920),
               height: 62.69 * (window.innerWidth / 1920),
-              transform: "translate(-100%, 25%)",
               cursor: "pointer",
             }}
           />

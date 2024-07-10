@@ -30,6 +30,9 @@ const Gallery = () => {
           width: (1494.583 * window.innerWidth) / 1920,
           height: (747.47 * window.innerHeight) / 1080,
           // background: "#D3AD62",
+          mixBlendMode: "luminosity",
+          // background:
+          // "linear-gradient(0deg, rgba(89,71,49,0.8) 0%, rgba(89,71,49,0.5) 100%)",
           opacity: 1,
           borderRadius: (40 * window.innerWidth) / 1280,
           overflow: "hidden",
@@ -95,7 +98,6 @@ const Gallery = () => {
               alignItems: "center",
               width: "0",
               height: "100%",
-              paddingRight: 5,
               overflow: "hidden",
             }}
           >
@@ -133,7 +135,9 @@ const Gallery = () => {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  setCurrentSelection(photo.url);
+                  setCurrentSelection(
+                    "https://picsum.photos/id/" + (index + 10) + "/200/200"
+                  );
                   gsap.to(".photos-grid-container", {
                     width: "55%",
                     gridTemplateColumns: "repeat(3, 1fr)",
@@ -141,12 +145,13 @@ const Gallery = () => {
                   });
                   gsap.to(".current-selection", {
                     width: "45%",
+                    paddingRight: "5px",
                     ease: "power4.inOut",
                   });
                 }}
               >
                 <img
-                  src={photo.url}
+                  src={"https://picsum.photos/id/" + (index + 10) + "/200/200"}
                   alt={photo.alt}
                   style={{
                     width: "100%",
