@@ -3,6 +3,7 @@ import image from "../assets/backToTop.svg";
 import { useContext, useState } from "react";
 import Gallery from "../components/Gallery";
 import { Context } from "../context";
+import Contact from "../components/Contact";
 
 const EndingPage = () => {
   const { mode, setMode } = useContext(Context);
@@ -85,6 +86,7 @@ const EndingPage = () => {
       </div>
       <div
         style={{
+          padding: "9% 0 0 0",
           width: (700 * window.innerWidth) / 1920,
           display: "flex",
           flexDirection: "column",
@@ -93,6 +95,7 @@ const EndingPage = () => {
           height: "100%",
           pointerEvents: "none",
           margin: "0 0 0 50%",
+          opacity: mode == null ? 1 : 0,
         }}
       >
         <h2
@@ -152,12 +155,17 @@ const EndingPage = () => {
           position: "absolute",
           width: "100%",
           height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // backgroundColor: "rgba(0, 0, 0, 0.5)",
           top: 0,
           left: 0,
-          paddingTop: (20 * window.innerHeight) / 720,
+          paddingTop: (40 * window.innerHeight) / 720,
         }}
       >
         {mode == "Gallery" ? <Gallery /> : null}
+        {mode == "Contact" ? <Contact /> : null}
       </div>
     </div>
   );

@@ -104,7 +104,7 @@ export function Face(props) {
       group.current.position,
       { x: 0 },
       {
-        x: -15,
+        x: -11,
         scrollTrigger: {
           trigger: ".ending-page",
           start: "top bottom",
