@@ -19,6 +19,7 @@ const Gallery = () => {
         justifyContent: "center",
         alignItems: "center",
         margin: 0,
+        zIndex: 510,
       }}
     >
       <div

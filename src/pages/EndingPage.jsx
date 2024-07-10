@@ -12,7 +12,7 @@ const EndingPage = () => {
       fontSize: (55 * window.innerWidth) / 1920,
       fontFamily: "TTtravels Next Bold",
       position: "relative",
-      zIndex: 510,
+      zIndex: 450,
       cursor: "pointer",
     },
   };
@@ -35,7 +35,6 @@ const EndingPage = () => {
 
           width: "100%",
           position: "absolute",
-          zIndex: 510,
           top: (17 * window.innerHeight) / 720,
         }}
       >
@@ -43,6 +42,7 @@ const EndingPage = () => {
           style={{
             ...styles.h1,
             opacity: mode == null || mode == "Map" ? 1 : 0.5,
+            zIndex: 510,
           }}
           onClick={() => {
             setMode("Map");
@@ -54,6 +54,7 @@ const EndingPage = () => {
           style={{
             ...styles.h1,
             opacity: mode == null || mode == "Journal" ? 1 : 0.5,
+            zIndex: 510,
           }}
           onClick={() => {
             setMode("Journal");
@@ -65,6 +66,7 @@ const EndingPage = () => {
           style={{
             ...styles.h1,
             opacity: mode == null || mode == "Gallery" ? 1 : 0.5,
+            zIndex: 510,
           }}
           onClick={() => {
             setMode("Gallery");
@@ -76,6 +78,7 @@ const EndingPage = () => {
           style={{
             ...styles.h1,
             opacity: mode == null || mode == "Contact" ? 1 : 0.5,
+            zIndex: 510,
           }}
           onClick={() => {
             setMode("Contact");

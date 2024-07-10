@@ -9,6 +9,7 @@ const Contact = () => {
     <div
       className="contact-container"
       style={{
+        position: "relative",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -21,7 +22,6 @@ const Contact = () => {
 
         borderRadius: (40 * window.innerWidth) / 1920,
         border: "solid 5px #D3AD62",
-        position: "relative",
       }}
     >
       <div
@@ -36,6 +36,7 @@ const Contact = () => {
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
+          zIndex: 510,
         }}
         onClick={() => {
           setMode(null);

@@ -1059,7 +1059,6 @@ const Hero = () => {
             width: "100%",
             height: "100vh",
             position: "relative",
-            zIndex: 500,
           }}
         >
           <EndingPage />
