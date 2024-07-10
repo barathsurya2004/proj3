@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import image from "../assets/thunder.svg";
+import { Context } from "../context";
 
 const Footer = () => {
+  const { mode, setMode } = useContext(Context);
   return (
     <div
       style={{
@@ -19,6 +22,11 @@ const Footer = () => {
           fontFamily: "Filson Pro Regular",
           margin: "0 20px",
           whiteSpace: "nowrap",
+          cursor: "pointer",
+          zIndex: 510,
+        }}
+        onClick={() => {
+          setMode("Disclaimer");
         }}
       >
         © 2024 Sudhesh Venkatachalam | Disclaimer.

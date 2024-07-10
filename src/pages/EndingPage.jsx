@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import Gallery from "../components/Gallery";
 import { Context } from "../context";
 import Contact from "../components/Contact";
+import Map from "../components/Map";
+import Disclaimer from "../components/Disclaimer";
 
 const EndingPage = () => {
   const { mode, setMode } = useContext(Context);
@@ -169,6 +171,8 @@ const EndingPage = () => {
       >
         {mode == "Gallery" ? <Gallery /> : null}
         {mode == "Contact" ? <Contact /> : null}
+        {mode == "Map" ? <Map /> : null}
+        {mode == "Disclaimer" ? <Disclaimer /> : null}
       </div>
     </div>
   );

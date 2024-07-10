@@ -13,13 +13,15 @@ const Gallery = () => {
       style={{
         position: "absolute",
         width: "100%",
+        top: 0,
+        left: 0,
         height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         margin: 0,
-        zIndex: 510,
+        zIndex: 500,
       }}
     >
       <div
@@ -27,7 +29,7 @@ const Gallery = () => {
         style={{
           width: (1494.583 * window.innerWidth) / 1920,
           height: (747.47 * window.innerHeight) / 1080,
-          background: "#D3AD62",
+          // background: "#D3AD62",
           opacity: 1,
           borderRadius: (40 * window.innerWidth) / 1280,
           overflow: "hidden",
@@ -35,9 +37,19 @@ const Gallery = () => {
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
+          border: "5px solid #D3AD62",
         }}
       >
-        <div>
+        <div
+          style={{
+            width: "100%",
+            height: "10%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#D3AD62",
+          }}
+        >
           <h1
             style={{
               fontSize: (34 * window.innerWidth) / 1920,
@@ -69,7 +81,7 @@ const Gallery = () => {
           style={{
             width: "100%",
             height: "100%",
-            backgroundColor: "bisque",
+            // backgroundColor: "bisque",
             display: "flex",
             justifyContent: "space-between",
             overflow: "scroll",
@@ -81,7 +93,7 @@ const Gallery = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              width: "0%",
+              width: "0",
               height: "100%",
               paddingRight: 5,
               overflow: "hidden",
@@ -89,7 +101,7 @@ const Gallery = () => {
           >
             <img
               src={currentSelection}
-              alt="Current selection"
+              // alt="Current selection"
               style={{
                 width: "100%",
                 height: "100%",
