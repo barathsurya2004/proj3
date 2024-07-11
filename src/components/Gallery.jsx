@@ -3,6 +3,8 @@ import close from "../assets/close.svg";
 import { Context } from "../context";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
 const Gallery = () => {
   const { mode, setMode, photos } = useContext(Context);
   const [currentSelection, setCurrentSelection] = useState(null);
@@ -102,17 +104,18 @@ const Gallery = () => {
             }}
           >
             <img
-              src={currentSelection}
-              // alt="Current selection"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
+              src={
+                currentSelection
+                  ? currentSelection
+                  : "https://picsum.photos/id/10/200/200"
+              }
+              style={{ width: "100%", height: "100%" }}
+              alt=""
             />
           </div>
           <div
             className="photos-grid-container"
+            id="p-g-c"
             style={{
               margin: 0,
               width: "100%",
@@ -126,6 +129,7 @@ const Gallery = () => {
           >
             {photos.map((photo, index) => (
               <div
+                className="images"
                 key={index}
                 style={{
                   display: "flex",
@@ -134,15 +138,26 @@ const Gallery = () => {
                   aspectRatio: "1/1",
                   cursor: "pointer",
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   setCurrentSelection(
                     "https://picsum.photos/id/" + (index + 10) + "/200/200"
                   );
-                  gsap.to(".photos-grid-container", {
-                    width: "55%",
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    ease: "power4.inOut",
+                  const ele = document.querySelector(".photos-grid-container");
+                  const state = Flip.getState(
+                    ".photos-grid-container, .images"
+                  );
+                  ele.style.gridTemplateColumns = "repeat(3, 1fr)";
+                  ele.style.width = "55%";
+                  Flip.from(state, {
+                    absolute: true,
+                    duration: 0.5,
+                    ease: "power1.inOut",
                   });
+                  // gsap.to(".photos-grid-container", {
+                  //   width: "55%",
+                  //   gridTemplateColumns: "repeat(3, 1fr)",
+                  //   ease: "power4.inOut",
+                  // });
                   gsap.to(".current-selection", {
                     width: "45%",
                     paddingRight: "5px",
