@@ -15,7 +15,7 @@ export function Face(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/face1.glb");
   const { actions, names } = useAnimations(animations, group);
-
+  const { pointer } = useContext(Context);
   const hoverMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
   const defaultMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
@@ -50,17 +50,20 @@ export function Face(props) {
   }, [hovered]);
 
   useFrame((state) => {
+    // console.log(pointer);
+    const xPos = pointer[0] / window.innerWidth - 0.5;
+    const yPos = pointer[1] / window.innerHeight - 0.5;
     if (group.current) {
-      group.current.rotation.y = state.pointer.x / 5;
-      group.current.rotation.x = -state.pointer.y / 5;
+      group.current.rotation.y = xPos / 3;
+      group.current.rotation.x = yPos / 3;
     }
     if (meshRef.current) {
-      meshRef.current.position.x = 2.104 + state.pointer.x / 1.8;
-      meshRef.current.position.y = 9.4 + state.pointer.y / 1.8;
+      meshRef.current.position.x = 2.104 + xPos;
+      meshRef.current.position.y = 9.4 - yPos;
     }
     if (meshRef1.current) {
-      meshRef1.current.position.x = -2.724 + state.pointer.x / 1.8;
-      meshRef1.current.position.y = 9.4 + state.pointer.y / 1.8;
+      meshRef1.current.position.x = -2.724 + xPos;
+      meshRef1.current.position.y = 9.4 - yPos;
     }
   });
   const animationPlayedRef = useRef(false);
@@ -104,7 +107,7 @@ export function Face(props) {
       group.current.position,
       { x: 0 },
       {
-        x: -11,
+        x: -12.5,
         scrollTrigger: {
           trigger: ".ending-page",
           start: "top bottom",

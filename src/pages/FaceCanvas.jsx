@@ -46,7 +46,7 @@ const FaceCanvas = () => {
         <Canvas>
           <ambientLight intensity={1} />
           <directionalLight intensity={3} position={[10, 10, 10]} />
-          <OrthographicCamera makeDefault position={[0, 0, 20]} zoom={25} />
+          <OrthographicCamera makeDefault position={[0, 0, 20]} zoom={22} />
           {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} zoom={0.4} /> */}
           <Suspense fallback={null}>
             {/* <FaceModel /> */}

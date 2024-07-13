@@ -36,9 +36,8 @@ const Contact = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "end",
-        width: (1500 * window.innerWidth) / 1920,
-        height: (750 * window.innerHeight) / 1080,
-        // backgroundColor: "white",
+        width: (1494.583 * window.innerWidth) / 1920,
+        height: (747.47 * window.innerHeight) / 1080,
         background:
           " linear-gradient(0deg, rgba(89,71,49,0.5) 0%, rgba(89,71,49,0.3) 100%)",
 
