@@ -14,6 +14,11 @@ const Question = () => {
         end: "top center",
         toggleActions: "play none none reverse",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "power1.inOut",
+        },
       },
     });
     const questionTl = gsap.timeline({
@@ -22,6 +27,11 @@ const Question = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "power1.inOut",
+        },
       },
     });
     questionTl
@@ -72,6 +82,11 @@ const Question = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "power1.inOut",
+          },
         },
         immediateRender: false,
         ease: "none",
@@ -89,6 +104,11 @@ const Question = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "power1.inOut",
+          },
         },
         ease: "none",
         immediateRender: false,

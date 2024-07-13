@@ -21,6 +21,11 @@ export function QMark(props) {
         start: "top 80%",
         end: "top 30%",
         scrub: 0.5,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "power1.inOut",
+        },
       },
     });
     tl.to(qMarkPos.current.position, {

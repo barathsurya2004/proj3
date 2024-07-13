@@ -92,6 +92,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top 80%",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".art", {
@@ -102,6 +107,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".art", {
@@ -112,6 +122,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top 80%",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".adventure", {
@@ -122,6 +137,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".adventure", {
@@ -133,6 +153,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top 80%",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".beyond-time", {
@@ -143,6 +168,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".beyond-time", {
@@ -153,6 +183,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top 80%",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     gsap.to(".culture", {
@@ -163,6 +198,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
 
@@ -172,6 +212,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
     });
     cultureTl
@@ -229,6 +274,11 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         immediateRender: false,
         ease: "none",
@@ -241,6 +291,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
       immediateRender: false,
       ease: "none",
@@ -345,6 +400,11 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: 0.5,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
       }
     );
@@ -355,6 +415,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
       ease: "none",
     });
@@ -365,6 +430,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
       ease: "none",
     });
@@ -380,6 +450,11 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         ease: "none",
         immediateRender: false,
@@ -391,6 +466,11 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          ease: "none",
+        },
       },
       ease: "none",
     });
@@ -441,6 +521,11 @@ const Hero = () => {
           start: "top 50%",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 2,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         ease: "none",
         immediateRender: false,

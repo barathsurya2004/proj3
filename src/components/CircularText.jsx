@@ -71,6 +71,11 @@ const CircularText = ({ texts, radius }) => {
           start: "top bottom",
           end: `+=${window.innerHeight * 1.6}`,
           scrub: 0.05,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "power1.inOut",
+          },
           onLeave: () => {
             setZIndex(1000);
             setIndVisible(3);
@@ -89,6 +94,13 @@ const CircularText = ({ texts, radius }) => {
         trigger: ".wheel-burst",
         start: "top bottom",
         end: "top top",
+        scrub: 0.05,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.1, max: 1 },
+          delay: 0,
+          ease: "power1.inOut",
+        },
         onEnter: () => {
           setIndVisible(null);
           setAlphaMaskVisible(true);

@@ -193,6 +193,11 @@ export function Earth(props) {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         immediateRender: false,
       }
@@ -219,6 +224,11 @@ export function Earth(props) {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         immediateRender: false,
       }
@@ -287,6 +297,11 @@ export function Earth(props) {
           start: "top bottom",
           end: "top top",
           scrub: true,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.1, max: 1 },
+            ease: "none",
+          },
         },
         immediateRender: false,
       }
