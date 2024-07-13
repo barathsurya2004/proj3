@@ -1,4 +1,4 @@
-import { Suspense, useContext, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import close from "../assets/close.svg";
 import { Context } from "../context";
 import { useGSAP } from "@gsap/react";
@@ -8,15 +8,43 @@ gsap.registerPlugin(Flip);
 const Gallery = () => {
   const { mode, setMode, photos } = useContext(Context);
   const [currentSelection, setCurrentSelection] = useState(null);
-
-  useGSAP(() => {});
+  const [opened, setOpened] = useState(false);
+  useEffect(() => {
+    if (mode === "Gallery") {
+      gsap.fromTo(
+        ".gallery",
+        {
+          y: "100vh",
+        },
+        {
+          y: 0,
+          duration: 0.5,
+          ease: "power4.inOut",
+        }
+      );
+    } else {
+      gsap.to(".gallery", {
+        y: "100vh",
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+      setTimeout(() => {
+        const ele = document.querySelector(".photos-grid-container");
+        const view = document.querySelector(".current-selection");
+        ele.style.gridTemplateColumns = "repeat(4, 1fr)";
+        ele.style.width = "100%";
+        view.style.width = "0";
+        view.style.paddingRight = "0";
+        setOpened(false);
+      }, 500);
+    }
+  }, [mode]);
   return (
     <div
+      className="gallery"
       style={{
         position: "absolute",
         width: "100%",
-        top: 0,
-        left: 0,
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -139,6 +167,7 @@ const Gallery = () => {
                   cursor: "pointer",
                 }}
                 onClick={(e) => {
+                  setOpened(true);
                   setCurrentSelection(
                     "https://picsum.photos/id/" + (index + 10) + "/200/200"
                   );

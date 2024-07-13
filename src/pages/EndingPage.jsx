@@ -6,7 +6,8 @@ import { Context } from "../context";
 import Contact from "../components/Contact";
 import Map from "../components/Map";
 import Disclaimer from "../components/Disclaimer";
-
+import gsap from "gsap";
+import goto from "../assets/goto.svg";
 const EndingPage = () => {
   const { mode, setMode } = useContext(Context);
   const styles = {
@@ -53,16 +54,127 @@ const EndingPage = () => {
           Places to go
         </h1>
         <h1
+          className="journal"
           style={{
             ...styles.h1,
             opacity: mode == null || mode == "Journal" ? 1 : 0.5,
             zIndex: 510,
+            position: "relative",
+            boxSizing: "content-box",
           }}
           onClick={() => {
             setMode("Journal");
           }}
+          onPointerEnter={() => {
+            const journal = document.querySelector(".journal");
+            gsap.to(journal, {
+              duration: 0.2,
+              transform: "translate(-30px, 0)",
+            });
+            const icon = document.querySelector(".journal-icon");
+            gsap.fromTo(
+              icon,
+              {
+                opacity: 0,
+                right: 35,
+              },
+              {
+                duration: 0.2,
+                right: -35,
+                opacity: 1,
+              }
+            );
+            const element = document.querySelector(".journal-underLine");
+            const cont = document.querySelector(".journal-underLine-cont");
+            cont.style.justifyContent = "flex-start";
+            gsap.to(element, {
+              duration: 0.5,
+              width: "100%",
+            });
+          }}
+          onPointerLeave={() => {
+            const journal = document.querySelector(".journal");
+            gsap.to(journal, {
+              duration: 0.2,
+              transform: "translate(0, 0)",
+            });
+            const icon = document.querySelector(".journal-icon");
+            gsap.fromTo(
+              icon,
+              {
+                opacity: 1,
+                right: -35,
+              },
+              {
+                duration: 0.2,
+                right: 35,
+                opacity: 0,
+              }
+            );
+            const element = document.querySelector(".journal-underLine");
+            const cont = document.querySelector(".journal-underLine-cont");
+            cont.style.justifyContent = "flex-end";
+            gsap.to(element, {
+              duration: 0.5,
+              width: "0%",
+            });
+          }}
         >
-          Journal
+          <span
+            style={{
+              fontSize: (55 * window.innerWidth) / 1920,
+              fontFamily: "TTtravels Next Bold",
+              zIndex: 450,
+              cursor: "pointer",
+              paddingRight: 0,
+              boxSizing: "content-box",
+            }}
+            className="journal-text"
+          >
+            Journal
+          </span>
+          <span
+            className="journal-icon"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: 0,
+              transform: "translate(0, -50%)",
+              opacity: 0,
+            }}
+          >
+            <img
+              src={goto}
+              alt=""
+              style={{
+                width: (40 * window.innerWidth) / 1920,
+                height: (40 * window.innerWidth) / 1920,
+              }}
+            />
+          </span>
+          <span
+            className="journal-underLine-cont"
+            style={{
+              display: "flex",
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: 2 + (0.3 * window.innerHeight) / 1080,
+            }}
+          >
+            <span
+              className="journal-underLine"
+              style={{
+                display: "block",
+                bottom: 0,
+                left: 0,
+                width: "0%",
+                height: 1 + (0.3 * window.innerHeight) / 1080,
+                backgroundColor: "#D9A404",
+              }}
+            />
+          </span>
         </h1>
         <h1
           style={{
@@ -167,12 +279,14 @@ const EndingPage = () => {
           top: 0,
           left: 0,
           paddingTop: (40 * window.innerHeight) / 720,
+          // opacity: 0.5,
+          overflow: "hidden",
         }}
       >
-        {mode == "Gallery" ? <Gallery /> : null}
-        {mode == "Contact" ? <Contact /> : null}
-        {mode == "Map" ? <Map /> : null}
-        {mode == "Disclaimer" ? <Disclaimer /> : null}
+        <Gallery />
+        <Map />
+        <Disclaimer />
+        <Contact />
       </div>
     </div>
   );

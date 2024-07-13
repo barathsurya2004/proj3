@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../context";
 import close from "../assets/close.svg";
+import gsap from "gsap";
 const Map = () => {
   const { mode, setMode } = useContext(Context);
   const places = [
@@ -45,8 +46,30 @@ const Map = () => {
       location: "Dindigul",
     },
   ];
+  useEffect(() => {
+    if (mode === "Map") {
+      gsap.fromTo(
+        ".map",
+        {
+          y: "100vh",
+        },
+        {
+          y: 0,
+          duration: 0.5,
+          ease: "power4.inOut",
+        }
+      );
+    } else {
+      gsap.to(".map", {
+        y: "100vh",
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+    }
+  }, [mode]);
   return (
     <div
+      className="map"
       style={{
         width: "100%",
         height: "100%",
@@ -56,10 +79,11 @@ const Map = () => {
         alignItems: "center",
         margin: 0,
         zIndex: 500,
+        position: "absolute",
       }}
     >
       <div
-        className="gallery-container"
+        className="map-container"
         style={{
           width: (1494.583 * window.innerWidth) / 1920,
           height: (747.47 * window.innerHeight) / 1080,

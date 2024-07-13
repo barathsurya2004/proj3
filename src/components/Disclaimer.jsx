@@ -1,11 +1,34 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import close from "../assets/close contact.svg";
 import { Context } from "../context";
+import gsap from "gsap";
 
 const Disclaimer = () => {
   const { mode, setMode } = useContext(Context);
+  useEffect(() => {
+    if (mode === "Disclaimer") {
+      gsap.fromTo(
+        ".dis",
+        {
+          y: "100vh",
+        },
+        {
+          y: 0,
+          duration: 0.5,
+          ease: "power4.inOut",
+        }
+      );
+    } else {
+      gsap.to(".dis", {
+        y: "100vh",
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+    }
+  }, [mode]);
   return (
     <div
+      className="dis"
       style={{
         position: "absolute",
         top: 0,

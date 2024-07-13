@@ -1,10 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import close from "../assets/close contact.svg";
 import { Context } from "../context";
 import mail from "../assets/mail.svg";
 import linkedin from "../assets/linkedin.svg";
+import gsap from "gsap";
 const Contact = () => {
   const { mode, setMode } = useContext(Context);
+  useEffect(() => {
+    if (mode === "Contact") {
+      gsap.fromTo(
+        ".contact-container",
+        {
+          y: "100vh",
+        },
+        {
+          y: 0,
+          duration: 0.5,
+          ease: "power4.inOut",
+        }
+      );
+    } else {
+      gsap.to(".contact-container", {
+        y: "100vh",
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+    }
+  }, [mode]);
   return (
     <div
       className="contact-container"
