@@ -91,12 +91,13 @@ const Hero = () => {
         trigger: ".food-is-art",
         start: "top bottom",
         end: "top 80%",
-        scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
+        scrub: 0.1,
+        // snap: {
+        //   snapTo: 1,
+        //   duration: { min: 0.1, max: 1 },
+        //   ease: "power1.in",
+        //   delay: 0,
+        // },
       },
     });
     gsap.to(".art", {
@@ -106,27 +107,23 @@ const Hero = () => {
         trigger: ".food-is-art",
         start: "top bottom",
         end: "top top",
-        scrub: true,
+        scrub: 0.1,
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },
-          ease: "none",
+          ease: "power1.in",
+          delay: 0,
         },
       },
     });
     gsap.to(".art", {
-      x: -100,
+      left: -10,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-adventure",
         start: "top bottom",
         end: "top 80%",
-        scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
+        scrub: 0.1,
       },
     });
     gsap.to(".adventure", {
@@ -136,28 +133,24 @@ const Hero = () => {
         trigger: ".food-is-adventure",
         start: "top bottom",
         end: "top top",
-        scrub: true,
+        scrub: 0.1,
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },
-          ease: "none",
+          ease: "power1.in",
+          delay: 0,
         },
       },
     });
     gsap.to(".adventure", {
-      left: -100,
+      left: -10,
 
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-beyond-time",
         start: "top bottom",
         end: "top 80%",
-        scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
+        scrub: 0.1,
       },
     });
     gsap.to(".beyond-time", {
@@ -167,27 +160,23 @@ const Hero = () => {
         trigger: ".food-is-beyond-time",
         start: "top bottom",
         end: "top top",
-        scrub: true,
+        scrub: 0.1,
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },
-          ease: "none",
+          ease: "power1.in",
+          delay: 0,
         },
       },
     });
     gsap.to(".beyond-time", {
-      x: -100,
+      left: -10,
       opacity: 0,
       scrollTrigger: {
         trigger: ".food-is-culture",
         start: "top bottom",
         end: "top 80%",
-        scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
+        scrub: 0.1,
       },
     });
     gsap.to(".culture", {
@@ -197,11 +186,12 @@ const Hero = () => {
         trigger: ".food-is-culture",
         start: "top bottom",
         end: "top top",
-        scrub: true,
+        scrub: 0.1,
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },
-          ease: "none",
+          ease: "power1.in",
+          delay: 0,
         },
       },
     });
@@ -211,11 +201,13 @@ const Hero = () => {
         trigger: ".food-is-culture-definition",
         start: "top bottom",
         end: "top top",
-        scrub: true,
+        scrub: 0.1,
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },
-          ease: "none",
+          ease: "power1.in",
+          delay: 0,
+          inertia: false,
         },
       },
     });

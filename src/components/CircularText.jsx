@@ -70,11 +70,13 @@ const CircularText = ({ texts, radius }) => {
           trigger: ".draggable-circle",
           start: "top bottom",
           end: `+=${window.innerHeight * 1.6}`,
-          scrub: 0.05,
+          scrub: 0.1,
           snap: {
             snapTo: 1,
             duration: { min: 0.1, max: 1 },
-            ease: "power1.inOut",
+            ease: "power1.in",
+            delay: 0,
+            inertia: false,
           },
           onLeave: () => {
             setZIndex(1000);
@@ -96,7 +98,7 @@ const CircularText = ({ texts, radius }) => {
         end: "top top",
         scrub: 0.05,
         snap: {
-          snapTo: 1,
+          snapTo: 2,
           duration: { min: 0.1, max: 1 },
           delay: 0,
           ease: "power1.inOut",
