@@ -111,100 +111,117 @@ const Gallery = () => {
           </div>
         </div>
         <div
+          className="gallery-content"
           style={{
             width: "100%",
-            height: "100%",
-            // backgroundColor: "bisque",
-            display: "flex",
-            justifyContent: "space-between",
-            overflow: "scroll",
+            height: "90%",
+            padding: "5px",
           }}
         >
           <div
-            className="current-selection"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "0",
-              height: "100%",
-              overflow: "hidden",
-            }}
-          >
-            <img
-              src={
-                currentSelection
-                  ? currentSelection
-                  : "https://picsum.photos/id/10/200/200"
-              }
-              style={{ width: "100%", height: "100%" }}
-              alt=""
-            />
-          </div>
-          <div
-            className="photos-grid-container"
-            id="p-g-c"
-            style={{
-              margin: 0,
               width: "100%",
               height: "100%",
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: "5px",
-              gridTemplateRows: `repeat(${Math.ceil(photos.length / 4)}, 1fr)`,
+              // backgroundColor: "bisque",
+              display: "flex",
+              justifyContent: "space-between",
               overflow: "scroll",
+              borderBottomLeftRadius: (33 * window.innerWidth) / 1280,
+              borderBottomRightRadius: (33 * window.innerWidth) / 1280,
             }}
           >
-            {photos.map((photo, index) => (
-              <div
-                className="images"
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  aspectRatio: "1/1",
-                  cursor: "pointer",
-                }}
-                onClick={(e) => {
-                  setOpened(true);
-                  setCurrentSelection(
-                    "https://picsum.photos/id/" + (index + 10) + "/200/200"
-                  );
-                  const ele = document.querySelector(".photos-grid-container");
-                  const state = Flip.getState(
-                    ".photos-grid-container, .images"
-                  );
-                  ele.style.gridTemplateColumns = "repeat(3, 1fr)";
-                  ele.style.width = "55%";
-                  Flip.from(state, {
-                    absolute: true,
-                    duration: 0.5,
-                    ease: "power1.inOut",
-                  });
-                  // gsap.to(".photos-grid-container", {
-                  //   width: "55%",
-                  //   gridTemplateColumns: "repeat(3, 1fr)",
-                  //   ease: "power4.inOut",
-                  // });
-                  gsap.to(".current-selection", {
-                    width: "45%",
-                    paddingRight: "5px",
-                    ease: "power4.inOut",
-                  });
-                }}
-              >
-                <img
-                  src={"https://picsum.photos/id/" + (index + 10) + "/200/200"}
-                  alt={photo.alt}
+            <div
+              className="current-selection"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "0",
+                height: "100%",
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src={
+                  currentSelection
+                    ? currentSelection
+                    : "https://picsum.photos/id/10/200/200"
+                }
+                style={{ width: "100%", height: "100%" }}
+                alt=""
+              />
+            </div>
+            <div
+              className="photos-grid-container"
+              id="p-g-c"
+              style={{
+                margin: 0,
+                width: "100%",
+                height: "100%",
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: "5px",
+                gridTemplateRows: `repeat(${Math.ceil(
+                  photos.length / 4
+                )}, 1fr)`,
+                overflow: "scroll",
+              }}
+            >
+              {photos.map((photo, index) => (
+                <div
+                  className="images"
+                  key={index}
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    aspectRatio: "1/1",
+                    cursor: "pointer",
                   }}
-                />
-              </div>
-            ))}
+                  onClick={(e) => {
+                    setOpened(true);
+                    setCurrentSelection(
+                      "https://picsum.photos/id/" + (index + 10) + "/200/200"
+                    );
+                    const ele = document.querySelector(
+                      ".photos-grid-container"
+                    );
+                    const state = Flip.getState(
+                      ".photos-grid-container, .images"
+                    );
+                    ele.style.gridTemplateColumns = "repeat(3, 1fr)";
+                    ele.style.width = "55%";
+                    Flip.from(state, {
+                      absolute: true,
+                      duration: 0.5,
+                      ease: "power1.inOut",
+                    });
+                    // gsap.to(".photos-grid-container", {
+                    //   width: "55%",
+                    //   gridTemplateColumns: "repeat(3, 1fr)",
+                    //   ease: "power4.inOut",
+                    // });
+                    gsap.to(".current-selection", {
+                      width: "45%",
+                      paddingRight: "5px",
+                      ease: "power4.inOut",
+                    });
+                  }}
+                >
+                  <img
+                    src={
+                      "https://picsum.photos/id/" + (index + 10) + "/200/200"
+                    }
+                    alt={photo.alt}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

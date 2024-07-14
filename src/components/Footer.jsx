@@ -26,23 +26,20 @@ const Footer = () => {
           whiteSpace: "nowrap",
           cursor: "pointer",
           zIndex: 510,
+          textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
         }}
         onPointerEnter={() => {
-          const element = document.querySelector(".disclaimer-underLine");
-          const cont = document.querySelector(".disclaimer-underLine-cont");
-          cont.style.justifyContent = "flex-start";
+          const element = document.querySelector(".disclaimer-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "100%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,1)",
           });
         }}
         onPointerLeave={() => {
-          const element = document.querySelector(".disclaimer-underLine");
-          const cont = document.querySelector(".disclaimer-underLine-cont");
-          cont.style.justifyContent = "flex-end";
+          const element = document.querySelector(".disclaimer-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "0%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
           });
         }}
         onClick={() => {
@@ -50,29 +47,6 @@ const Footer = () => {
         }}
       >
         © 2024 Sudhesh Venkatachalam | Disclaimer.
-        <span
-          className="disclaimer-underLine-cont"
-          style={{
-            display: "flex",
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: 1 + (0.3 * window.innerHeight) / 1080,
-          }}
-        >
-          <span
-            className="disclaimer-underLine"
-            style={{
-              display: "block",
-              bottom: 0,
-              left: 0,
-              width: "0%",
-              height: 1 + (0.3 * window.innerHeight) / 1080,
-              backgroundColor: "#D9A404",
-            }}
-          />
-        </span>
       </p>
 
       <hr
@@ -82,6 +56,7 @@ const Footer = () => {
         }}
       />
       <p
+        className="designed-text"
         style={{
           fontSize: (20 * window.innerWidth) / 1920,
           fontFamily: "Filson Pro Regular",
@@ -90,23 +65,20 @@ const Footer = () => {
           position: "relative",
           cursor: "pointer",
           zIndex: 510,
+          textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
         }}
         onPointerEnter={() => {
-          const element = document.querySelector(".designed-underLine");
-          const cont = document.querySelector(".designed-underLine-cont");
-          cont.style.justifyContent = "flex-start";
+          const element = document.querySelector(".designed-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "100%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,1)",
           });
         }}
         onPointerLeave={() => {
-          const element = document.querySelector(".designed-underLine");
-          const cont = document.querySelector(".designed-underLine-cont");
-          cont.style.justifyContent = "flex-end";
+          const element = document.querySelector(".designed-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "0%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
           });
         }}
         onClick={() => {
@@ -114,29 +86,6 @@ const Footer = () => {
         }}
       >
         Designed by Sudhesh Venkatachalam
-        <span
-          className="designed-underLine-cont"
-          style={{
-            display: "flex",
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: 1 + (0.3 * window.innerHeight) / 1080,
-          }}
-        >
-          <span
-            className="designed-underLine"
-            style={{
-              display: "block",
-              bottom: 0,
-              left: 0,
-              width: "0%",
-              height: 1 + (0.3 * window.innerHeight) / 1080,
-              backgroundColor: "#D9A404",
-            }}
-          />
-        </span>
       </p>
       <img
         src={image}
@@ -148,6 +97,7 @@ const Footer = () => {
         }}
       />
       <p
+        className="developed-text"
         style={{
           fontSize: (20 * window.innerWidth) / 1920,
           fontFamily: "Filson Pro Regular",
@@ -156,50 +106,24 @@ const Footer = () => {
           position: "relative",
           cursor: "pointer",
           zIndex: 510,
+          textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
         }}
         onPointerEnter={() => {
-          const element = document.querySelector(".developed-underLine");
-          const cont = document.querySelector(".developed-underLine-cont");
-          cont.style.justifyContent = "flex-start";
+          const element = document.querySelector(".developed-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "100%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,1)",
           });
         }}
         onPointerLeave={() => {
-          const element = document.querySelector(".developed-underLine");
-          const cont = document.querySelector(".developed-underLine-cont");
-          cont.style.justifyContent = "flex-end";
+          const element = document.querySelector(".developed-text");
           gsap.to(element, {
             duration: 0.5,
-            width: "0%",
+            textDecoration: "underline 0.1em solid rgb(211, 173, 98,0)",
           });
         }}
       >
         Developed by Barath Surya
-        <span
-          className="developed-underLine-cont"
-          style={{
-            display: "flex",
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: 1 + (0.3 * window.innerHeight) / 1080,
-          }}
-        >
-          <span
-            className="developed-underLine"
-            style={{
-              display: "block",
-              bottom: 0,
-              left: 0,
-              width: "0%",
-              height: 1 + (0.3 * window.innerHeight) / 1080,
-              backgroundColor: "#D9A404",
-            }}
-          />
-        </span>
       </p>
     </div>
   );

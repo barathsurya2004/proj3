@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import image from "../assets/backToTop.svg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Gallery from "../components/Gallery";
 import { Context } from "../context";
 import Contact from "../components/Contact";
@@ -8,8 +8,26 @@ import Map from "../components/Map";
 import Disclaimer from "../components/Disclaimer";
 import gsap from "gsap";
 import goto from "../assets/goto.svg";
+import Restart from "../components/Restart";
 const EndingPage = () => {
   const { mode, setMode } = useContext(Context);
+  useEffect(() => {
+    if (mode !== null) {
+      gsap.to(".about-content", {
+        delay: 0.2,
+        duration: 0.2,
+        maskImage:
+          "linear-gradient(0deg, rgba(0,0,0,0.0) 80%, rgba(0,0,0,1) 80%, rgba(0,0,0,1) 100%)",
+      });
+    } else {
+      gsap.to(".about-content", {
+        delay: 0.2,
+        duration: 0.2,
+        maskImage:
+          "linear-gradient(0deg, rgba(0,0,0,0.0) -20%, rgba(0,0,0,1) -20%, rgba(0,0,0,1) 100%)",
+      });
+    }
+  }, [mode]);
   const styles = {
     h1: {
       fontSize: (55 * window.innerWidth) / 1920,
@@ -84,12 +102,10 @@ const EndingPage = () => {
                 opacity: 1,
               }
             );
-            const element = document.querySelector(".journal-underLine");
-            const cont = document.querySelector(".journal-underLine-cont");
-            cont.style.justifyContent = "flex-start";
+            const element = document.querySelector(".journal-text");
             gsap.to(element, {
-              duration: 0.5,
-              width: "100%",
+              duration: 0.2,
+              textDecoration: "underline 2px solid rgb(211, 173, 98,1)",
             });
           }}
           onPointerLeave={() => {
@@ -111,16 +127,14 @@ const EndingPage = () => {
                 opacity: 0,
               }
             );
-            const element = document.querySelector(".journal-underLine");
-            const cont = document.querySelector(".journal-underLine-cont");
-            cont.style.justifyContent = "flex-end";
+            const element = document.querySelector(".journal-text");
             gsap.to(element, {
-              duration: 0.5,
-              width: "0%",
+              duration: 0.2,
+              textDecoration: "underline 2px solid rgb(211, 173, 98,0)",
             });
           }}
         >
-          <span
+          <p
             style={{
               fontSize: (55 * window.innerWidth) / 1920,
               fontFamily: "TTtravels Next Bold",
@@ -128,11 +142,13 @@ const EndingPage = () => {
               cursor: "pointer",
               paddingRight: 0,
               boxSizing: "content-box",
+              margin: 0,
+              textDecoration: "underline 2px solid rgb(211, 173, 98,0)",
             }}
             className="journal-text"
           >
             Journal
-          </span>
+          </p>
           <span
             className="journal-icon"
             style={{
@@ -149,29 +165,6 @@ const EndingPage = () => {
               style={{
                 width: (40 * window.innerWidth) / 1920,
                 height: (40 * window.innerWidth) / 1920,
-              }}
-            />
-          </span>
-          <span
-            className="journal-underLine-cont"
-            style={{
-              display: "flex",
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: 2 + (0.3 * window.innerHeight) / 1080,
-            }}
-          >
-            <span
-              className="journal-underLine"
-              style={{
-                display: "block",
-                bottom: 0,
-                left: 0,
-                width: "0%",
-                height: 1 + (0.3 * window.innerHeight) / 1080,
-                backgroundColor: "#D9A404",
               }}
             />
           </span>
@@ -202,54 +195,63 @@ const EndingPage = () => {
         </h1>
       </div>
       <div
+        className="about-content"
         style={{
-          padding: "9% 0 0 0",
-          width: (700 * window.innerWidth) / 1920,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          width: "100%",
           height: "100%",
-          pointerEvents: "none",
-          margin: "0 0 0 50%",
-          opacity: mode == null ? 1 : 0,
+          maskImage:
+            "linear-gradient(0deg, rgba(0,0,0,0.0) -20%%, rgba(0,0,0,1) -20%, rgba(0,0,0,1) 100%)",
         }}
       >
-        <h2
+        <div
           style={{
-            fontSize: (50 * window.innerWidth) / 1920,
-            fontFamily: "TTtravels Next Bold",
-            margin: "0 auto 0 0",
+            padding: "9% 0 0 0",
+            width: (700 * window.innerWidth) / 1920,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            pointerEvents: "none",
+            margin: "0 0 0 50%",
           }}
         >
-          About this website
-        </h2>
-        <p
-          style={{
-            fontSize: (27 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            marginBottom: (15 * window.innerWidth) / 1920,
-          }}
-        >
-          This website was created by Sudhesh Venkatachalam for Project_3 in
-          Semester 6 as part of the Bachelor's of Design program at IIT
-          Hyderabad, under the guidance of Dr. Saurav Khuttiya Deori.
-        </p>
-        <p
-          style={{
-            fontSize: (27 * window.innerWidth) / 1920,
-            fontFamily: "Filson Pro Regular",
-            margin: 0,
-          }}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-          doloribus commodi sint, nulla, pariatur nihil incidunt itaque quidem
-          dicta obcaecati quae veritatis dolore vitae, temporibus eaque tempora
-          minus illo natus. Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Perspiciatis, eligendi dolor? At quia nesciunt voluptate
-          reiciendis eos rerum autem, dolore quibusdam corrupti vitae, magnam
-          deserunt minima pariatur mollitia saepe incidunt.
-        </p>
+          <h2
+            style={{
+              fontSize: (50 * window.innerWidth) / 1920,
+              fontFamily: "TTtravels Next Bold",
+              margin: "0 auto 0 0",
+            }}
+          >
+            About this website
+          </h2>
+          <p
+            style={{
+              fontSize: (27 * window.innerWidth) / 1920,
+              fontFamily: "Filson Pro Regular",
+              marginBottom: (15 * window.innerWidth) / 1920,
+            }}
+          >
+            This website was created by Sudhesh Venkatachalam for Project_3 in
+            Semester 6 as part of the Bachelor's of Design program at IIT
+            Hyderabad, under the guidance of Dr. Saurav Khuttiya Deori.
+          </p>
+          <p
+            style={{
+              fontSize: (27 * window.innerWidth) / 1920,
+              fontFamily: "Filson Pro Regular",
+              margin: 0,
+            }}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+            doloribus commodi sint, nulla, pariatur nihil incidunt itaque quidem
+            dicta obcaecati quae veritatis dolore vitae, temporibus eaque
+            tempora minus illo natus. Lorem, ipsum dolor sit amet consectetur
+            adipisicing elit. Perspiciatis, eligendi dolor? At quia nesciunt
+            voluptate reiciendis eos rerum autem, dolore quibusdam corrupti
+            vitae, magnam deserunt minima pariatur mollitia saepe incidunt.
+          </p>
+        </div>
       </div>
       <div>
         <Footer />
@@ -264,7 +266,7 @@ const EndingPage = () => {
           height: (57 * window.innerHeight) / 1080,
         }}
       >
-        <img src={image} alt="" />
+        <Restart />
       </div>
       <div
         className="overLay"

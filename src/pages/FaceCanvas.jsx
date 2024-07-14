@@ -6,10 +6,27 @@ import { FaceModel } from "../../public/models/Face";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { Suspense } from "react";
+import { Suspense, useContext, useEffect, useRef, useState } from "react";
 import { Face } from "../../public/models/Face1";
+import { Context } from "../context";
 gsap.registerPlugin(ScrollTrigger);
+
 const FaceCanvas = () => {
+  const [num, setNum] = useState(0);
+  const { mode } = useContext(Context);
+  useEffect(() => {
+    if (mode == "Map" || mode == "Gallery") {
+      gsap.to(".face-model", {
+        maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${80}%, rgba(0,0,0,1) ${80}%, rgba(0,0,0,1) 100%)`,
+        ease: "power4.inOut",
+      });
+    } else {
+      gsap.to(".face-model", {
+        maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${-20}%, rgba(0,0,0,1) ${-20}%, rgba(0,0,0,1) 100%)`,
+        ease: "power4.inOut",
+      });
+    }
+  }, [mode]);
   useGSAP(() => {
     gsap.fromTo(
       ".face-model",
@@ -39,7 +56,9 @@ const FaceCanvas = () => {
           position: "fixed",
           top: "100vh",
           zIndex: 500,
-
+          maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${
+            num * 100
+          }%, rgba(0,0,0,1) ${num * 100}%, rgba(0,0,0,1) 100%)`,
           left: 0,
         }}
       >

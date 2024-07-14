@@ -202,6 +202,7 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: 0.1,
+
         snap: {
           snapTo: 1,
           duration: { min: 0.1, max: 1 },

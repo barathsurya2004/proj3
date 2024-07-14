@@ -1,0 +1,8 @@
+.under-line{
+  color: inherit;
+  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+  transition: text-decoration-color 0.3s;
+}
+.under-line:hover{
+  text-decoration-color: rgba(0, 1, 0, 1);
+}
