@@ -31,7 +31,6 @@ const Contact = () => {
     <div
       className="contact-container"
       style={{
-        position: "relative",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -43,6 +42,7 @@ const Contact = () => {
 
         borderRadius: (40 * window.innerWidth) / 1920,
         border: "solid 5px #D3AD62",
+        zIndex: 500,
       }}
     >
       <div
@@ -57,7 +57,7 @@ const Contact = () => {
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
-          zIndex: 510,
+          zIndex: 505,
         }}
         onClick={() => {
           setMode(null);
@@ -92,6 +92,10 @@ const Contact = () => {
               fontSize: (27 * window.innerWidth) / 1920,
               color: "#DDD4C7",
               margin: 25,
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              window.open("mailto:sudheshimself@gmail.com");
             }}
           >
             <img
@@ -109,6 +113,12 @@ const Contact = () => {
               fontSize: (27 * window.innerWidth) / 1920,
               color: "#DDD4C7",
               margin: 25,
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              window.open(
+                "https://www.linkedin.com/in/sudhesh-venkatachalam-492b66205/"
+              );
             }}
           >
             <img

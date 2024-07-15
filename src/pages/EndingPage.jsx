@@ -80,32 +80,27 @@ const EndingPage = () => {
             position: "relative",
             boxSizing: "content-box",
           }}
-          onClick={() => {
-            setMode("Journal");
-          }}
           onPointerEnter={() => {
             const journal = document.querySelector(".journal");
             gsap.to(journal, {
               duration: 0.2,
-              transform: "translate(-30px, 0)",
+              transform: `translate(-${(30 * window.innerWidth) / 1920}px, 0)`,
             });
             const icon = document.querySelector(".journal-icon");
             gsap.fromTo(
               icon,
               {
-                opacity: 0,
-                right: 35,
+                x: (-50 * window.innerWidth) / 1920,
               },
               {
                 duration: 0.2,
-                right: -35,
-                opacity: 1,
+                x: (0 * window.innerWidth) / 1920,
               }
             );
             const element = document.querySelector(".journal-text");
             gsap.to(element, {
               duration: 0.2,
-              textDecoration: "underline 2px solid rgb(211, 173, 98,1)",
+              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,1)",
             });
           }}
           onPointerLeave={() => {
@@ -118,19 +113,17 @@ const EndingPage = () => {
             gsap.fromTo(
               icon,
               {
-                opacity: 1,
-                right: -35,
+                x: (0 * window.innerWidth) / 1920,
               },
               {
                 duration: 0.2,
-                right: 35,
-                opacity: 0,
+                x: (-50 * window.innerWidth) / 1920,
               }
             );
             const element = document.querySelector(".journal-text");
             gsap.to(element, {
               duration: 0.2,
-              textDecoration: "underline 2px solid rgb(211, 173, 98,0)",
+              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,0)",
             });
           }}
         >
@@ -143,28 +136,36 @@ const EndingPage = () => {
               paddingRight: 0,
               boxSizing: "content-box",
               margin: 0,
-              textDecoration: "underline 2px solid rgb(211, 173, 98,0)",
+              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,0)",
             }}
             className="journal-text"
+            onClick={() => {
+              window.open(
+                "https://docs.google.com/document/d/1MxeVLD4xwetsegp7Z-tDFOHF92_dnOQMNT-o1GEMZWQ/edit?usp=sharing",
+                "_blank"
+              );
+            }}
           >
             Journal
           </p>
           <span
-            className="journal-icon"
             style={{
               position: "absolute",
               top: "50%",
               right: 0,
-              transform: "translate(0, -50%)",
-              opacity: 0,
+              transform: "translate(120%, -50%)",
+              opacity: 1,
+              clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)",
             }}
           >
             <img
+              className="journal-icon"
               src={goto}
               alt=""
               style={{
                 width: (40 * window.innerWidth) / 1920,
                 height: (40 * window.innerWidth) / 1920,
+                transform: "translateX(-50px)",
               }}
             />
           </span>
@@ -262,8 +263,8 @@ const EndingPage = () => {
           position: "absolute",
           bottom: (100 * window.innerHeight) / 1080,
           right: (100 * window.innerWidth) / 1920,
-          width: (57 * window.innerWidth) / 1920,
-          height: (57 * window.innerHeight) / 1080,
+          width: (60 * window.innerWidth) / 1920,
+          height: (60 * window.innerHeight) / 1080,
         }}
       >
         <Restart />

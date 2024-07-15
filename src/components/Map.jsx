@@ -105,7 +105,7 @@ const Map = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            height: "12%",
+            height: "10%",
             backgroundColor: "#D3AD62",
             position: "relative",
           }}
@@ -121,8 +121,9 @@ const Map = () => {
           <div
             style={{
               position: "absolute",
-              top: (20 * window.innerWidth) / 1920,
-              right: (25 * window.innerWidth) / 1920,
+              right: 0,
+              top: "50%",
+              transform: "translate(-75%, -45%)",
               width: (50 * window.innerWidth) / 1920,
               height: (50 * window.innerWidth) / 1920,
               display: "flex",
@@ -141,7 +142,7 @@ const Map = () => {
           className="content-holder"
           style={{
             width: "100%",
-            height: "88%",
+            height: "90%",
             display: "flex",
             overflow: "auto",
           }}

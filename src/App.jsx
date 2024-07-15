@@ -97,7 +97,7 @@ const App = () => {
           overflow: loadingFreze ? "hidden" : null,
         }}
       >
-        <BackGround />
+        {/* <BackGround /> */}
         <div>
           <img
             src={image}

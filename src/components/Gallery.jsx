@@ -1,4 +1,4 @@
-import { Suspense, useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useRef, useState } from "react";
 import close from "../assets/close.svg";
 import { Context } from "../context";
 import { useGSAP } from "@gsap/react";
@@ -9,6 +9,9 @@ const Gallery = () => {
   const { mode, setMode, photos } = useContext(Context);
   const [currentSelection, setCurrentSelection] = useState(null);
   const [opened, setOpened] = useState(false);
+  const [fullscreen, setFullscreen] = useState(null);
+  const [indexSelected, setIndexSelected] = useState(null);
+  const prevIndexRef = useRef();
   useEffect(() => {
     if (mode === "Gallery") {
       gsap.fromTo(
@@ -35,10 +38,33 @@ const Gallery = () => {
         ele.style.width = "100%";
         view.style.width = "0";
         view.style.paddingRight = "0";
+        setIndexSelected(null);
+        gsap.set(prevIndexRef.current, {
+          opacity: 1,
+        });
+        prevIndexRef.current = undefined;
         setOpened(false);
       }, 500);
     }
   }, [mode]);
+  useEffect(() => {
+    if (prevIndexRef.current !== undefined) {
+      // Revert the opacity of the previous index back to 1
+      gsap.to(prevIndexRef.current, {
+        opacity: 1,
+        duration: 0.2,
+      });
+    }
+
+    // Set the opacity of the newly selected index to 0.3
+    gsap.to(indexSelected, {
+      opacity: 0.3,
+      duration: 0.2,
+    });
+
+    // Update the previous index reference
+    prevIndexRef.current = indexSelected;
+  }, [indexSelected]);
   return (
     <div
       className="gallery"
@@ -54,6 +80,53 @@ const Gallery = () => {
         zIndex: 500,
       }}
     >
+      <div
+        className="fullscreen-viewer"
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          background: "rgba(0, 0, 0, 0.7)",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 1000,
+          display: fullscreen ? "flex" : "none",
+        }}
+      >
+        <div
+          className="current-image-fullscreen"
+          style={{
+            width: "80%",
+            height: "80%",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            className="close-fullscreen"
+            style={{
+              position: "absolute",
+              top: "10%",
+              right: "-5%",
+              color: "white",
+              cursor: "pointer",
+              fontSize: 24,
+            }}
+            onClick={() => {
+              setFullscreen(false);
+            }}
+          >
+            X
+          </div>
+          <img
+            src={currentSelection}
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            alt=""
+          />
+        </div>
+      </div>
       <div
         className="gallery-container"
         style={{
@@ -81,6 +154,7 @@ const Gallery = () => {
             justifyContent: "center",
             alignItems: "center",
             background: "#D3AD62",
+            position: "relative",
           }}
         >
           <h1
@@ -99,9 +173,9 @@ const Gallery = () => {
                 width: 48.78 * (window.innerWidth / 1920),
                 height: 62.69 * (window.innerWidth / 1920),
                 position: "absolute",
-                top: 0,
+                top: "50%",
                 right: 0,
-                transform: "translate(-100%, 25%)",
+                transform: "translate(-75%, -40%)",
                 cursor: "pointer",
               }}
               onClick={() => {
@@ -115,7 +189,7 @@ const Gallery = () => {
           style={{
             width: "100%",
             height: "90%",
-            padding: "5px",
+            padding: 7 * (window.innerWidth / 1920),
           }}
         >
           <div
@@ -147,7 +221,7 @@ const Gallery = () => {
                     ? currentSelection
                     : "https://picsum.photos/id/10/200/200"
                 }
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 alt=""
               />
             </div>
@@ -160,7 +234,7 @@ const Gallery = () => {
                 height: "100%",
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "5px",
+                gap: 7 * (window.innerWidth / 1920),
                 gridTemplateRows: `repeat(${Math.ceil(
                   photos.length / 4
                 )}, 1fr)`,
@@ -169,7 +243,7 @@ const Gallery = () => {
             >
               {photos.map((photo, index) => (
                 <div
-                  className="images"
+                  className={`images images-${index}`}
                   key={index}
                   style={{
                     display: "flex",
@@ -179,38 +253,43 @@ const Gallery = () => {
                     cursor: "pointer",
                   }}
                   onClick={(e) => {
-                    setOpened(true);
                     setCurrentSelection(
-                      "https://picsum.photos/id/" + (index + 10) + "/200/200"
+                      "https://picsum.photos/id/" + (index + 10) + "/1920/1080"
                     );
-                    const ele = document.querySelector(
-                      ".photos-grid-container"
-                    );
-                    const state = Flip.getState(
-                      ".photos-grid-container, .images"
-                    );
-                    ele.style.gridTemplateColumns = "repeat(3, 1fr)";
-                    ele.style.width = "55%";
-                    Flip.from(state, {
-                      absolute: true,
-                      duration: 0.5,
-                      ease: "power1.inOut",
-                    });
-                    // gsap.to(".photos-grid-container", {
-                    //   width: "55%",
-                    //   gridTemplateColumns: "repeat(3, 1fr)",
-                    //   ease: "power4.inOut",
-                    // });
-                    gsap.to(".current-selection", {
-                      width: "45%",
-                      paddingRight: "5px",
-                      ease: "power4.inOut",
-                    });
+
+                    if (!opened) {
+                      const ele = document.querySelector(
+                        ".photos-grid-container"
+                      );
+                      const state = Flip.getState(
+                        ".photos-grid-container, .images"
+                      );
+                      ele.style.gridTemplateColumns = "repeat(3, 1fr)";
+                      ele.style.width = "55%";
+                      Flip.from(state, {
+                        absolute: true,
+                        duration: 0.5,
+                        ease: "power1.inOut",
+                      }).then(() => {
+                        setIndexSelected(`.images-${index}`);
+                      });
+                      gsap.to(".current-selection", {
+                        width: "45%",
+                        paddingRight: 7 * (window.innerWidth / 1920),
+                        ease: "power4.inOut",
+                      });
+                    } else {
+                      setIndexSelected(`.images-${index}`);
+                    }
+                    setOpened(true);
+                  }}
+                  onDoubleClick={() => {
+                    setFullscreen(true);
                   }}
                 >
                   <img
                     src={
-                      "https://picsum.photos/id/" + (index + 10) + "/200/200"
+                      "https://picsum.photos/id/" + (index + 10) + "/1920/1080"
                     }
                     alt={photo.alt}
                     style={{

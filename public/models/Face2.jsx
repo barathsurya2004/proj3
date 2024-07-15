@@ -23,7 +23,23 @@ export function Face2(props) {
   const meshRef = useRef();
   const eyebrowRefl = useRef();
   const eyebrowRefr = useRef();
+  const ori = useRef();
   const { hovered, setHovered } = useContext(Context);
+
+  useEffect(() => {
+    if (!window.DeviceOrientationEvent) {
+      console.log("DeviceOrientation is not supported");
+      return;
+    }
+    const handleOrientation = (event) => {
+      ori.current = event;
+    };
+    window.addEventListener("deviceorientation", handleOrientation);
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
+  }, []);
+
   useEffect(() => {
     const blinkTimeline = gsap.timeline({
       repeat: -1,
@@ -50,9 +66,10 @@ export function Face2(props) {
   }, [hovered]);
 
   useFrame((state) => {
+    const { alpha, gamma, beta } = ori.current;
     if (group.current) {
-      group.current.rotation.y = state.pointer.x / 5;
-      group.current.rotation.x = -state.pointer.y / 5;
+      group.current.rotation.y = 0 / 180;
+      group.current.rotation.x = (beta - 90) / 120;
     }
     if (meshRef.current) {
       meshRef.current.position.x = 2.104 + state.pointer.x / 1.8;

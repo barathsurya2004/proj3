@@ -57,7 +57,8 @@ export const Ball = () => {
       }}
     >
       <sphereGeometry args={[1, 32, 32]} />
-      <alphaShaderMaterial uColor={"hotpink"} transparent castShadows blend />
+      <alphaShaderMaterial uColor={"hotpink"} transparent />
+      {/* <meshStandardMaterial color={"white"} transparent /> */}
     </mesh>
   );
 };
