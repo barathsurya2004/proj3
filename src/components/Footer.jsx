@@ -74,21 +74,7 @@ const Footer = () => {
           whiteSpace: "nowrap",
           cursor: "pointer",
           zIndex: 510,
-          textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
-        }}
-        onPointerEnter={() => {
-          const element = document.querySelector(".disclaimer-text");
-          gsap.to(element, {
-            duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,1)",
-          });
-        }}
-        onPointerLeave={() => {
-          const element = document.querySelector(".disclaimer-text");
-          gsap.to(element, {
-            duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
-          });
+          color: "#AF9F8C",
         }}
         onClick={() => {
           setMode("Disclaimer");
@@ -103,6 +89,7 @@ const Footer = () => {
           width: "100%",
           marginLeft: (25 * window.innerWidth) / 1920,
           marginRight: (25 * window.innerWidth) / 1920,
+          color: "#AF9F8C",
         }}
       />
       <p
@@ -115,6 +102,7 @@ const Footer = () => {
           cursor: "pointer",
           zIndex: 510,
           textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+          color: "#AF9F8C",
         }}
         onPointerEnter={() => {
           const element = document.querySelector(".designed-text");
@@ -156,6 +144,7 @@ const Footer = () => {
           cursor: "pointer",
           zIndex: 510,
           textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+          color: "#AF9F8C",
         }}
         onPointerEnter={() => {
           const element = document.querySelector(".developed-text");
