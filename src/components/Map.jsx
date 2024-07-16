@@ -207,6 +207,7 @@ const Map = () => {
                       margin: 0,
                       marginLeft: "5%",
                       marginBottom: 10,
+                      fontWeight: 200,
                     }}
                   >
                     {place.food}•{place.location}

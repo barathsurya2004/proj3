@@ -285,7 +285,7 @@ const EndingPage = () => {
           // backgroundColor: "rgba(0, 0, 0, 0.5)",
           top: 0,
           left: 0,
-          paddingTop: fullscreen === null ? 0 : (40 * window.innerHeight) / 720,
+          paddingTop: (40 * window.innerHeight) / 720,
           // opacity: 0.5,
           overflow: "hidden",
           zIndex: 501,
