@@ -8,6 +8,7 @@ const Footer = () => {
   useEffect(() => {
     if (mode === null || mode === "Disclaimer") {
       gsap.to(".disclaimer-text", {
+        delay: 0.2,
         opacity: 1,
         duration: 0.2,
       });
@@ -19,18 +20,22 @@ const Footer = () => {
     }
     if (mode === null) {
       gsap.to(".designed-text", {
+        delay: 0.2,
         opacity: 1,
         duration: 0.2,
       });
       gsap.to(".developed-text", {
+        delay: 0.2,
         opacity: 1,
         duration: 0.2,
       });
       gsap.to(".thunder", {
+        delay: 0.2,
         opacity: 1,
         duration: 0.2,
       });
       gsap.to(".sep-line", {
+        delay: 0.2,
         opacity: 1,
         duration: 0.2,
       });
@@ -63,6 +68,7 @@ const Footer = () => {
         alignItems: "center",
         paddingLeft: (85 * window.innerWidth) / 1920,
         paddingRight: (85 * window.innerWidth) / 1920,
+        zIndex: mode === null ? 510 : 450,
       }}
     >
       <p
@@ -73,8 +79,8 @@ const Footer = () => {
           fontFamily: "Filson Pro Regular",
           whiteSpace: "nowrap",
           cursor: "pointer",
-          zIndex: 510,
           color: "#AF9F8C",
+          zIndex: mode === null ? 510 : 450,
         }}
         onClick={() => {
           setMode("Disclaimer");
@@ -83,13 +89,14 @@ const Footer = () => {
         © 2024 Sudhesh Venkatachalam | Disclaimer
       </p>
 
-      <hr
+      <div
         className="sep-line"
         style={{
           width: "100%",
           marginLeft: (25 * window.innerWidth) / 1920,
           marginRight: (25 * window.innerWidth) / 1920,
-          color: "#AF9F8C",
+          height: 0.75,
+          backgroundColor: "#AF9F8C",
         }}
       />
       <p
@@ -100,22 +107,22 @@ const Footer = () => {
           whiteSpace: "nowrap",
           position: "relative",
           cursor: "pointer",
-          zIndex: 510,
-          textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+          textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
           color: "#AF9F8C",
+          zIndex: mode === null ? 510 : 450,
         }}
         onPointerEnter={() => {
           const element = document.querySelector(".designed-text");
           gsap.to(element, {
             duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,1)",
+            textDecoration: "underline 0.1vh solid rgba(175, 159, 140,1)",
           });
         }}
         onPointerLeave={() => {
           const element = document.querySelector(".designed-text");
           gsap.to(element, {
             duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+            textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
           });
         }}
         onClick={() => {
@@ -142,22 +149,22 @@ const Footer = () => {
           whiteSpace: "nowrap",
           position: "relative",
           cursor: "pointer",
-          zIndex: 510,
-          textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+          textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
           color: "#AF9F8C",
+          zIndex: mode === null ? 510 : 450,
         }}
         onPointerEnter={() => {
           const element = document.querySelector(".developed-text");
           gsap.to(element, {
             duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,1)",
+            textDecoration: "underline 0.1vh solid rgba(175, 159, 140,1)",
           });
         }}
         onPointerLeave={() => {
           const element = document.querySelector(".developed-text");
           gsap.to(element, {
             duration: 0.5,
-            textDecoration: "underline 0.2vh solid rgba(242, 216, 160,0)",
+            textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
           });
         }}
       >

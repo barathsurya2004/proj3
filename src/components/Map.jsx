@@ -95,7 +95,8 @@ const Map = () => {
           alignItems: "center",
           overflow: "hidden",
           position: "relative",
-          border: "5px solid #D3AD62",
+          outline: `${(5 * window.innerHeight) / 720}px solid #D3AD62`,
+          outlineOffset: `-${(1 * window.innerHeight) / 720}px`,
         }}
       >
         <div
@@ -114,6 +115,7 @@ const Map = () => {
             style={{
               fontSize: (36 * window.innerWidth) / 1920,
               color: "black",
+              fontWeight: 200,
             }}
           >
             Interview in chettinad
@@ -176,11 +178,24 @@ const Map = () => {
           >
             {places.map((place, index) => {
               return (
-                <div className="place" key={index}>
+                <div
+                  className="place"
+                  key={index}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <h1
                     style={{
                       fontSize: (34 * window.innerWidth) / 1920,
                       color: "#DDD4C7",
+                      marginLeft: "5%",
+                      marginTop: 10,
+                      marginBottom: 10,
+                      fontWeight: 200,
                     }}
                   >
                     {place.name}
@@ -189,18 +204,30 @@ const Map = () => {
                     style={{
                       color: "#CEB9A5",
                       fontSize: (27 * window.innerWidth) / 1920,
+                      margin: 0,
+                      marginLeft: "5%",
+                      marginBottom: 10,
                     }}
                   >
                     {place.food}•{place.location}
                   </p>
-                  <hr
+                  <div
                     style={{
-                      // width: "80%",
-                      height: 1,
-                      backgroundColor: "#AF9F8C",
-                      border: "none",
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
-                  />
+                  >
+                    <hr
+                      style={{
+                        width: "90%",
+                        height: 1,
+                        backgroundColor: "#AF9F8C",
+                        border: "none",
+                      }}
+                    />
+                  </div>
                 </div>
               );
             })}

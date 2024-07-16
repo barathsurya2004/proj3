@@ -88,14 +88,28 @@ const Contact = () => {
         </h2>
         <div>
           <p
+            className="contact-email"
             style={{
               fontSize: (27 * window.innerWidth) / 1920,
               color: "#DDD4C7",
               margin: 25,
               cursor: "pointer",
+              textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
             }}
             onClick={() => {
               window.open("mailto:sudheshimself@gmail.com");
+            }}
+            onPointerEnter={() => {
+              gsap.to(".contact-email", {
+                textDecoration: "underline 0.1vh solid #DDD4C7",
+                duration: 0.2,
+              });
+            }}
+            onPointerLeave={() => {
+              gsap.to(".contact-email", {
+                textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
+                duration: 0.2,
+              });
             }}
           >
             <img
@@ -109,16 +123,30 @@ const Contact = () => {
             sudheshimself@gmail.com
           </p>
           <p
+            className="contact-linkedin"
             style={{
               fontSize: (27 * window.innerWidth) / 1920,
               color: "#DDD4C7",
               margin: 25,
               cursor: "pointer",
+              textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
             }}
             onClick={() => {
               window.open(
                 "https://www.linkedin.com/in/sudhesh-venkatachalam-492b66205/"
               );
+            }}
+            onPointerEnter={() => {
+              gsap.to(".contact-linkedin", {
+                textDecoration: "underline 0.1vh solid #DDD4C7",
+                duration: 0.2,
+              });
+            }}
+            onPointerLeave={() => {
+              gsap.to(".contact-linkedin", {
+                textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
+                duration: 0.2,
+              });
             }}
           >
             <img

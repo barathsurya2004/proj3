@@ -10,7 +10,7 @@ import gsap from "gsap";
 import goto from "../assets/goto.svg";
 import Restart from "../components/Restart";
 const EndingPage = () => {
-  const { mode, setMode } = useContext(Context);
+  const { mode, setMode, fullscreen } = useContext(Context);
   useEffect(() => {
     if (mode !== null) {
       gsap.to(".about-content", {
@@ -57,6 +57,7 @@ const EndingPage = () => {
           width: "100%",
           position: "absolute",
           top: (17 * window.innerHeight) / 720,
+          opacity: fullscreen ? 0 : 1,
         }}
       >
         <h1
@@ -100,7 +101,7 @@ const EndingPage = () => {
             const element = document.querySelector(".journal-text");
             gsap.to(element, {
               duration: 0.2,
-              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,1)",
+              textDecoration: "underline rgba(242, 216, 160,1)",
             });
           }}
           onPointerLeave={() => {
@@ -123,7 +124,7 @@ const EndingPage = () => {
             const element = document.querySelector(".journal-text");
             gsap.to(element, {
               duration: 0.2,
-              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,0)",
+              textDecoration: "underline rgba(242, 216, 160,0)",
             });
           }}
         >
@@ -136,7 +137,7 @@ const EndingPage = () => {
               paddingRight: 0,
               boxSizing: "content-box",
               margin: 0,
-              textDecoration: "underline 0.4vh solid rgba(242, 216, 160,0)",
+              textDecoration: "underline rgba(242, 216, 160,0)",
             }}
             className="journal-text"
             onClick={() => {
@@ -231,6 +232,7 @@ const EndingPage = () => {
               fontSize: (27 * window.innerWidth) / 1920,
               fontFamily: "Filson Pro Regular",
               marginBottom: (15 * window.innerWidth) / 1920,
+              color: "#DDD4C7",
             }}
           >
             This website was created by Sudhesh Venkatachalam for Project_3 in
@@ -242,6 +244,7 @@ const EndingPage = () => {
               fontSize: (27 * window.innerWidth) / 1920,
               fontFamily: "Filson Pro Regular",
               margin: 0,
+              color: "#DDD4C7",
             }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
@@ -269,6 +272,7 @@ const EndingPage = () => {
       >
         <Restart />
       </div>
+
       <div
         className="overLay"
         style={{
@@ -281,9 +285,10 @@ const EndingPage = () => {
           // backgroundColor: "rgba(0, 0, 0, 0.5)",
           top: 0,
           left: 0,
-          paddingTop: (40 * window.innerHeight) / 720,
+          paddingTop: fullscreen === null ? 0 : (40 * window.innerHeight) / 720,
           // opacity: 0.5,
           overflow: "hidden",
+          zIndex: 501,
         }}
       >
         <Gallery />
