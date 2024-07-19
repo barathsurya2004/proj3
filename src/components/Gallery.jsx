@@ -14,6 +14,9 @@ const Gallery = () => {
   // const [fullscreen, setFullscreen] = useState(null);
   const [indexSelected, setIndexSelected] = useState(null);
   const prevIndexRef = useRef();
+  const fullref = useRef(fullscreen);
+  fullref.current = fullscreen;
+
   useEffect(() => {
     if (mode === "Gallery") {
       const cont = document.querySelector(".photos-grid-container");
@@ -93,11 +96,25 @@ const Gallery = () => {
         }}
       >
         <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            padding: 25,
+            zIndex: 490,
+          }}
+          onClick={() => {
+            setMode(null);
+          }}
+        />
+        <div
           className="gallery-container"
           style={{
             width: (1494.583 * window.innerWidth) / 1920,
-            height: (747.47 * window.innerHeight) / 1080,
-            borderRadius: (40 * window.innerWidth) / 1280,
+            height: (737.47 * window.innerHeight) / 1080,
+            borderRadius: (30 * window.innerWidth) / 1280,
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
@@ -106,6 +123,7 @@ const Gallery = () => {
             outline: `${(5 * window.innerHeight) / 720}px solid #D3AD62`,
             outlineOffset: -1 * ((1 * window.innerHeight) / 720),
             // background: "#D3AD62",
+            zIndex: 500,
           }}
         >
           <div
@@ -138,8 +156,8 @@ const Gallery = () => {
                   height: 62.69 * (window.innerWidth / 1920),
                   position: "absolute",
                   top: "50%",
-                  right: 0,
-                  transform: "translate(-75%, -40%)",
+                  right: (30 * window.innerWidth) / 1920,
+                  transform: "translate(0%, -40%)",
                   cursor: "pointer",
                 }}
                 onClick={() => {
@@ -166,8 +184,8 @@ const Gallery = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 overflow: "scroll",
-                borderBottomLeftRadius: (40 * window.innerWidth) / 1280,
-                borderBottomRightRadius: (40 * window.innerWidth) / 1280,
+                borderBottomLeftRadius: (30 * window.innerWidth) / 1280,
+                borderBottomRightRadius: (30 * window.innerWidth) / 1280,
               }}
             >
               <div
@@ -182,6 +200,32 @@ const Gallery = () => {
                 }}
                 onDoubleClick={() => {
                   setFullscreen(true);
+                }}
+                onClick={() => {
+                  console.log(fullref.current);
+                  setTimeout(() => {
+                    if (!fullref.current) {
+                      const state = Flip.getState(
+                        ".photos-grid-container, .images"
+                      );
+                      const ele = document.querySelector(
+                        ".photos-grid-container"
+                      );
+                      const view = document.querySelector(".current-selection");
+                      ele.style.gridTemplateColumns = "repeat(4, 1fr)";
+                      ele.style.width = "100%";
+                      view.style.width = "0";
+                      view.style.paddingRight = "0";
+                      Flip.from(state, {
+                        absolute: true,
+                        duration: 0.5,
+                        ease: "power1.inOut",
+                      }).then(() => {
+                        setIndexSelected(null);
+                        setOpened(false);
+                      });
+                    }
+                  }, 250);
                 }}
               >
                 <img
@@ -218,55 +262,59 @@ const Gallery = () => {
                       cursor: "pointer",
                     }}
                     onClick={(e) => {
-                      setCurrentSelection(photo.url);
-                      if (prevIndexRef.current === `.images-${index}`) {
-                        const state = Flip.getState(
-                          ".photos-grid-container, .images"
-                        );
-                        const ele = document.querySelector(
-                          ".photos-grid-container"
-                        );
-                        const view =
-                          document.querySelector(".current-selection");
-                        ele.style.gridTemplateColumns = "repeat(4, 1fr)";
-                        ele.style.width = "100%";
-                        view.style.width = "0";
-                        view.style.paddingRight = "0";
-                        Flip.from(state, {
-                          absolute: true,
-                          duration: 0.5,
-                          ease: "power1.inOut",
-                        }).then(() => {
-                          setIndexSelected(null);
-                          setOpened(false);
-                        });
-                        return;
-                      }
-                      if (!opened) {
-                        const ele = document.querySelector(
-                          ".photos-grid-container"
-                        );
-                        const state = Flip.getState(
-                          ".photos-grid-container, .images"
-                        );
-                        ele.style.gridTemplateColumns = "repeat(3, 1fr)";
-                        ele.style.width = "55%";
-                        Flip.from(state, {
-                          absolute: true,
-                          duration: 0.5,
-                          ease: "power1.inOut",
-                        }).then(() => {
-                          setIndexSelected(`.images-${index}`);
-                        });
-                        gsap.to(".current-selection", {
-                          width: "45%",
-                          paddingRight: 5 * (window.innerWidth / 1920),
-                          ease: "power4.inOut",
-                        });
-                      } else {
-                        setIndexSelected(`.images-${index}`);
-                      }
-                      setOpened(true);
+                      setTimeout(() => {
+                        if (!fullref.current) {
+                          setCurrentSelection(photo.url);
+                          if (prevIndexRef.current === `.images-${index}`) {
+                            const state = Flip.getState(
+                              ".photos-grid-container, .images"
+                            );
+                            const ele = document.querySelector(
+                              ".photos-grid-container"
+                            );
+                            const view =
+                              document.querySelector(".current-selection");
+                            ele.style.gridTemplateColumns = "repeat(4, 1fr)";
+                            ele.style.width = "100%";
+                            view.style.width = "0";
+                            view.style.paddingRight = "0";
+                            Flip.from(state, {
+                              absolute: true,
+                              duration: 0.5,
+                              ease: "power1.inOut",
+                            }).then(() => {
+                              setIndexSelected(null);
+                              setOpened(false);
+                            });
+                            return;
+                          }
+                          if (!opened) {
+                            const ele = document.querySelector(
+                              ".photos-grid-container"
+                            );
+                            const state = Flip.getState(
+                              ".photos-grid-container, .images"
+                            );
+                            ele.style.gridTemplateColumns = "repeat(3, 1fr)";
+                            ele.style.width = "55%";
+                            Flip.from(state, {
+                              absolute: true,
+                              duration: 0.5,
+                              ease: "power1.inOut",
+                            }).then(() => {
+                              setIndexSelected(`.images-${index}`);
+                            });
+                            gsap.to(".current-selection", {
+                              width: "45%",
+                              paddingRight: 5 * (window.innerWidth / 1920),
+                              ease: "power4.inOut",
+                            });
+                          } else {
+                            setIndexSelected(`.images-${index}`);
+                          }
+                          setOpened(true);
+                        }
+                      }, 100);
                     }}
                     onDoubleClick={() => {
                       setFullscreen(true);

@@ -1,29 +1,42 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../context";
 import arrow from "../assets/arrowBase.svg";
 import useDoubleClick from "use-double-click";
-
+import gsap from "gsap";
+import { Draggable } from "gsap/all";
+gsap.registerPlugin(Draggable);
 const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
   const { fullscreen, setFullscreen, pointer } = useContext(Context);
-  const pointerRef = useRef();
   const [zooming, setZooming] = useState(false);
-  const clickRef = useRef();
-  useDoubleClick({
-    onSingleClick: (e) => {
-      if (!zooming) {
-        setFullscreen(false);
-      }
-    },
-    onDoubleClick: (e) => {
-      setZooming(!zooming);
-      if (zooming) {
-      } else {
-      }
-      console.log(zooming);
-    },
-    ref: clickRef,
-    latency: 250,
-  });
+  const zoomRef = useRef(zooming);
+  zoomRef.current = zooming;
+  const clickTimeoutRef = useRef();
+  useEffect(() => {
+    Draggable.create(".overflow-container", {
+      type: "x",
+      // bounds: document.querySelector(".fullscreen-carousel"),
+      bounds: {
+        minX: 0,
+        maxX: (-photos.length * (100 * window.innerWidth)) / 1920,
+      },
+      onDrag: () => {
+        console.log(document.querySelector(".fullscreen-carousel").offsetWidth);
+      },
+    });
+    Draggable.create(".current-image-fullscreen", {
+      type: "x,y",
+      zIndexBoost: false,
+      bounds: document.querySelector(".fullscreen-viewer"),
+      onDrag: () => {
+        console.log("dragging");
+      },
+    });
+    gsap.to(".current-image-fullscreen", {
+      x: 0,
+      y: 0,
+    });
+  }, []);
+
   return (
     <div
       className="fullscreen-viewer"
@@ -55,10 +68,17 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
           style={{
             position: "absolute",
             top: "50%",
-            left: "1%",
+            left: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            width: (100 * window.innerWidth) / 1920,
             zIndex: 1000,
             transform: "translateY(-50%)",
             cursor: "pointer",
+            background: "linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0))",
+            opacity: 0.1,
           }}
           onClick={() => {
             const index = photos.findIndex(
@@ -69,6 +89,22 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
             } else {
               setcurrentSelection(photos[index - 1].url);
             }
+          }}
+          onPointerEnter={() => {
+            gsap.to(".left-arrow", {
+              duration: 0.2,
+              opacity: 1,
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0))",
+            });
+          }}
+          onPointerLeave={() => {
+            gsap.to(".left-arrow", {
+              duration: 0.2,
+              opacity: 0.1,
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0))",
+            });
           }}
         >
           <img
@@ -85,10 +121,17 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
           style={{
             position: "absolute",
             top: "50%",
-            right: "1%",
+            height: "100%",
+            display: "flex",
+            right: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            width: (100 * window.innerWidth) / 1920,
             zIndex: 1000,
             transform: "translateY(-50%)",
             cursor: "pointer",
+            background: "linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0))",
+            opacity: 0.1,
           }}
           onClick={() => {
             const index = photos.findIndex(
@@ -99,6 +142,22 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
             } else {
               setcurrentSelection(photos[index + 1].url);
             }
+          }}
+          onPointerEnter={() => {
+            gsap.to(".right-arrow", {
+              duration: 0.2,
+              opacity: 1,
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.5))",
+            });
+          }}
+          onPointerLeave={() => {
+            gsap.to(".right-arrow", {
+              duration: 0.2,
+              opacity: 0.1,
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0))",
+            });
           }}
         >
           <img
@@ -115,18 +174,42 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
       <div
         className="current-image-fullscreen"
         style={{
-          width: "100%",
+          // width: "150%",
           height: "100%",
           position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          padding: `0 ${(0 * window.innerWidth) / 1280}px`,
+          aspectRatio: "16/9",
         }}
-        ref={clickRef}
+        onDoubleClick={() => {
+          clearTimeout(clickTimeoutRef.current);
+          setZooming(!zooming);
+          gsap.to(".current-image-fullscreen", {
+            duration: 0.3,
+            height: zooming ? "150%" : "100%",
+          });
+          gsap.to(".current-image-fullscreen", {
+            x: 0,
+            y: 0,
+          });
+        }}
+        onClick={() => {
+          clickTimeoutRef.current = setTimeout(() => {
+            if (zoomRef.current === zooming) {
+              setFullscreen(false);
+            }
+          }, 300);
+        }}
       >
         <img
           src={currentSelection}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
           alt=""
         />
       </div>
@@ -135,7 +218,7 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         style={{
           position: "absolute",
           bottom: 10,
-          height: "10%",
+          height: (150 * window.innerWidth) / 1920,
           overflowX: "scroll",
           overflowY: "hidden",
           width: "100vw",
@@ -154,8 +237,8 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
               <div
                 key={index}
                 style={{
-                  width: (200 * window.innerWidth) / 1920,
-                  height: (200 * window.innerWidth) / 1920,
+                  minWidth: (150 * window.innerWidth) / 1920,
+                  minHeight: (150 * window.innerWidth) / 1920,
                   margin: "0 5px",
                   cursor: "pointer",
                 }}
@@ -166,7 +249,8 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
                 <img
                   src={photo.url}
                   style={{
-                    width: (200 * window.innerWidth) / 1920,
+                    width: "100%",
+                    height: "100%",
                     objectFit: "cover",
                   }}
                   alt=""
