@@ -97,8 +97,8 @@ const App = () => {
           overflow: loadingFreze ? "hidden" : null,
         }}
       >
-        {/* <BackGround /> */}
-        <div>
+        <BackGround />
+        {/* <div>
           <img
             src={image}
             style={{
@@ -110,7 +110,7 @@ const App = () => {
               height: "100vh",
             }}
           />
-        </div>
+        </div> */}
         <div className="webgl-canvas">
           <QuestionMarkCanvas />
           <WhatIsFoodCanvas />

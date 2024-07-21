@@ -36,19 +36,6 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
       y: 0,
     });
   }, []);
-  useEffect(() => {
-    if (!zooming) {
-      gsap.to(".fullscreen-carousel", {
-        y: "100%",
-        duration: 0.5,
-      });
-    } else {
-      gsap.to(".fullscreen-carousel", {
-        y: 0,
-        duration: 0.5,
-      });
-    }
-  }, [zooming, fullscreen]);
 
   return (
     <div

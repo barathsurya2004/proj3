@@ -8,6 +8,32 @@
   </head>
   <body>
     <div id="root"></div>
+    <div
+      id="grain"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      "
+    ></div>
+    <script src="https://cdn.jsdelivr.net/npm/grained@0.0.2/grained.min.js"></script>
+    <script>
+      var options = {
+        animate: true,
+        patternWidth: 400,
+        patternHeight: 500,
+        grainOpacity: 0.13,
+        grainDensity: 2.8,
+        grainWidth: 1.2,
+        grainHeight: 1.2,
+      };
+
+      grained("#grain", options);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

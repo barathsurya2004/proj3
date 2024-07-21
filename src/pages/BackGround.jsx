@@ -51,24 +51,7 @@ const BackGround = () => {
       >
         <img src={image} alt="guide" style={{ width: "100%", margin: 0 }} />
       </div> */}
-      <video
-        disablePictureInPicture
-        disableRemotePlayback
-        className="back-vid"
-        src="/grain_export.mp4"
-        autoPlay
-        loop
-        muted
-      />
-      <video
-        className="fore-vid"
-        disableRemotePlayback
-        disablePictureInPicture
-        src="/grain_export.mp4"
-        autoPlay
-        loop
-        muted
-      />
+
       <div className="bg-container">
         <div className="horizontal-lines">
           {Array.from({ length: hori }, (item, index) => (

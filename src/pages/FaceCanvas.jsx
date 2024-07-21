@@ -49,7 +49,7 @@ const FaceCanvas = () => {
       ".face-model",
       { left: "50%" },
       {
-        left: "27.5%",
+        left: "28.5%",
         scrollTrigger: {
           trigger: ".ending-page",
           start: "top bottom",
