@@ -36,6 +36,19 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
       y: 0,
     });
   }, []);
+  useEffect(() => {
+    if (!zooming) {
+      gsap.to(".fullscreen-carousel", {
+        y: "100%",
+        duration: 0.5,
+      });
+    } else {
+      gsap.to(".fullscreen-carousel", {
+        y: 0,
+        duration: 0.5,
+      });
+    }
+  }, [zooming, fullscreen]);
 
   return (
     <div
@@ -48,7 +61,6 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         height: "100%",
         background: "rgba(0, 0, 0, 0.7)",
         justifyContent: "center",
-        alignItems: "center",
         zIndex: 1000,
         display: fullscreen ? "flex" : "none",
       }}
@@ -175,11 +187,11 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         className="current-image-fullscreen"
         style={{
           // width: "150%",
-          height: "100%",
+          height: ((1080 - 120) * window.innerHeight) / 1080,
           position: "relative",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          // alignItems: "center",
           padding: `0 ${(0 * window.innerWidth) / 1280}px`,
           aspectRatio: "16/9",
         }}
@@ -188,7 +200,9 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
           setZooming(!zooming);
           gsap.to(".current-image-fullscreen", {
             duration: 0.3,
-            height: zooming ? "150%" : "100%",
+            height: zooming
+              ? "150%"
+              : ((1080 - 120) * window.innerHeight) / 1080,
           });
           gsap.to(".current-image-fullscreen", {
             x: 0,
@@ -204,9 +218,9 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         }}
       >
         <img
+          className="current-image-fullscreen"
           src={currentSelection}
           style={{
-            width: "100%",
             height: "100%",
             objectFit: "cover",
           }}
@@ -217,8 +231,8 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         className="fullscreen-carousel"
         style={{
           position: "absolute",
-          bottom: 10,
-          height: (150 * window.innerWidth) / 1920,
+          bottom: 0,
+          height: (120 * window.innerWidth) / 1920,
           overflowX: "scroll",
           overflowY: "hidden",
           width: "100vw",
@@ -237,9 +251,9 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
               <div
                 key={index}
                 style={{
-                  minWidth: (150 * window.innerWidth) / 1920,
-                  minHeight: (150 * window.innerWidth) / 1920,
-                  margin: "0 5px",
+                  minWidth: (120 * window.innerWidth) / 1920,
+                  minHeight: (120 * window.innerWidth) / 1920,
+                  margin: "0 2.5px",
                   cursor: "pointer",
                 }}
                 onClick={() => {

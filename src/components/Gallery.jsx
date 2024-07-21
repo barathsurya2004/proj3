@@ -74,6 +74,7 @@ const Gallery = () => {
     // Update the previous index reference
     prevIndexRef.current = indexSelected;
   }, [indexSelected]);
+
   return (
     <>
       <FullScreen

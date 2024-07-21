@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import image from "../assets/backToTop.svg";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Gallery from "../components/Gallery";
 import { Context } from "../context";
 import Contact from "../components/Contact";
@@ -9,10 +9,15 @@ import Disclaimer from "../components/Disclaimer";
 import gsap from "gsap";
 import goto from "../assets/goto.svg";
 import Restart from "../components/Restart";
+import restart from "../assets/new_icon.json";
+import Lottie from "lottie-react";
 const EndingPage = () => {
   const { mode, setMode, fullscreen } = useContext(Context);
+  const animRef = useRef(null);
+
   useEffect(() => {
     if (mode !== null) {
+      document.body.style.overflow = "hidden";
       gsap.to(".about-content", {
         delay: 0.2,
         duration: 0.2,
@@ -20,6 +25,7 @@ const EndingPage = () => {
           "linear-gradient(0deg, rgba(0,0,0,0.0) 80%, rgba(0,0,0,1) 80%, rgba(0,0,0,1) 100%)",
       });
     } else {
+      document.body.style.overflow = "auto";
       gsap.to(".about-content", {
         delay: 0.2,
         duration: 0.2,
@@ -27,7 +33,12 @@ const EndingPage = () => {
           "linear-gradient(0deg, rgba(0,0,0,0.0) -20%, rgba(0,0,0,1) -20%, rgba(0,0,0,1) 100%)",
       });
     }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [mode]);
+
   const styles = {
     h1: {
       fontSize: (55 * window.innerWidth) / 1920,
@@ -45,6 +56,7 @@ const EndingPage = () => {
         height: "100%",
         display: "flex",
         flexDirection: "column",
+        overflow: "hidden",
       }}
     >
       <div
@@ -264,13 +276,81 @@ const EndingPage = () => {
         className="back-to-top"
         style={{
           position: "absolute",
-          bottom: (100 * window.innerHeight) / 1080,
-          right: (100 * window.innerWidth) / 1920,
-          width: (60 * window.innerWidth) / 1920,
-          height: (60 * window.innerHeight) / 1080,
+          right: (80 * window.innerWidth) / 1920,
+          bottom: (80 * window.innerHeight) / 1080,
+          zIndex: mode == null ? 550 : 450,
+          margin: 0,
+          display: "flex",
         }}
       >
-        <Restart />
+        <div
+          style={{
+            margin: 0,
+            padding: 0,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            transform: "translate(-100%, 0%)",
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          }}
+        >
+          <p
+            className="back-to-top-text"
+            style={{
+              fontSize: (50 * window.innerWidth) / 1920,
+              fontFamily: "TTtravels Next Bold",
+              color: "#DDD4C7",
+              transform: "translate(100%, -50%)",
+            }}
+          >
+            Restart
+          </p>
+        </div>
+        <div
+          style={{
+            width: (100 * window.innerWidth) / 1920,
+            height: (100 * window.innerHeight) / 1080,
+            margin: 0,
+          }}
+        >
+          <Lottie
+            animationData={restart}
+            loop={true}
+            lottieRef={animRef}
+            style={{
+              height: "100%",
+              margin: 0,
+              cursor: "pointer",
+            }}
+            autoPlay={false}
+            onPointerEnter={() => {
+              animRef.current.play();
+              gsap.fromTo(
+                ".back-to-top-text",
+                {
+                  x: "100%",
+                },
+                {
+                  duration: 0.5,
+                  x: 0,
+                }
+              );
+            }}
+            onPointerLeave={() => {
+              animRef.current.stop();
+              gsap.fromTo(
+                ".back-to-top-text",
+                {
+                  x: 0,
+                },
+                {
+                  duration: 0.2,
+                  x: "100%",
+                }
+              );
+            }}
+          />
+        </div>
       </div>
 
       <div

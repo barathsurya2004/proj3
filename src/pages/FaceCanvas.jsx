@@ -17,7 +17,7 @@ const FaceCanvas = () => {
   useEffect(() => {
     if (mode == "Map" || mode == "Gallery") {
       gsap.to(".face-model", {
-        maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${80}%, rgba(0,0,0,1) ${80}%, rgba(0,0,0,1) 100%)`,
+        maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${100}%, rgba(0,0,0,1) ${100}%, rgba(0,0,0,1) 100%)`,
         ease: "power4.inOut",
       });
     } else {
@@ -30,9 +30,9 @@ const FaceCanvas = () => {
   useGSAP(() => {
     gsap.fromTo(
       ".face-model",
-      { top: "100vh" },
+      { top: "150vh" },
       {
-        top: 0,
+        top: "50vh",
         scrollTrigger: {
           trigger: ".face-container",
           start: "top bottom",
@@ -44,6 +44,21 @@ const FaceCanvas = () => {
         immediateRender: false,
       }
     );
+
+    gsap.fromTo(
+      ".face-model",
+      { left: "50%" },
+      {
+        left: "27.5%",
+        scrollTrigger: {
+          trigger: ".ending-page",
+          start: "top bottom",
+          end: "top top",
+          toggleActions: "play none none reverse",
+          scrub: true,
+        },
+      }
+    );
   });
   return (
     <>
@@ -51,15 +66,16 @@ const FaceCanvas = () => {
       <div
         className="face-model"
         style={{
-          width: "100%",
-          height: "100vh",
+          height: "60vh",
+          width: "40%",
           position: "fixed",
-          top: "100vh",
-          zIndex: 500,
+          top: "150vh",
+          zIndex: mode == "Contact" ? 510 : 500,
           maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${
             num * 100
           }%, rgba(0,0,0,1) ${num * 100}%, rgba(0,0,0,1) 100%)`,
-          left: 0,
+          left: "50%",
+          transform: "translate(-50%,-50%)",
         }}
       >
         <Canvas>

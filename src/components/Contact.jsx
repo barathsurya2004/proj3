@@ -32,7 +32,7 @@ const Contact = () => {
       className="contact-container"
       style={{
         position: "relative",
-        zIndex: 500,
+        zIndex: 100,
         width: "100%",
         height: "100%",
         display: "flex",
@@ -48,7 +48,6 @@ const Contact = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          zIndex: 499,
         }}
         onClick={() => {
           setMode(null);
@@ -67,8 +66,8 @@ const Contact = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "end",
-          zIndex: 500,
           position: "relative",
+          zIndex: 0,
         }}
       >
         <div
@@ -83,7 +82,6 @@ const Contact = () => {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
-            zIndex: 505,
           }}
           onClick={() => {
             setMode(null);

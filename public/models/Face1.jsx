@@ -102,23 +102,6 @@ export function Face(props) {
     }
   }, [hovered, actions, names]);
 
-  useGSAP(() => {
-    gsap.fromTo(
-      group.current.position,
-      { x: 0 },
-      {
-        x: -12.5,
-        scrollTrigger: {
-          trigger: ".ending-page",
-          start: "top bottom",
-          end: "top top",
-          toggleActions: "play none none reverse",
-          scrub: true,
-        },
-      }
-    );
-  });
-
   return (
     <group
       ref={group}
