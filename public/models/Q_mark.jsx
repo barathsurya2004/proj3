@@ -7,7 +7,7 @@ import React, { useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
 import { useFrame } from "@react-three/fiber";
 gsap.registerPlugin(ScrollTrigger);
 export function QMark(props) {
@@ -23,13 +23,12 @@ export function QMark(props) {
         scrub: 0.5,
         snap: {
           snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "power1.inOut",
+          delay: 0,
         },
       },
     });
     tl.to(qMarkPos.current.position, {
-      x: 1.0,
+      x: 2.0,
       y: -0.5,
       duration: 1,
     }).to(qMarkPos.current.position, {
@@ -65,6 +64,13 @@ export function QMark(props) {
         onLeaveBack: () => setRotation(false),
       },
     });
+    gsap.to(null, {
+      scrollTrigger: {
+        trigger: ".scroll-move-start",
+        start: "top 80%",
+        end: "top 30%",
+      },
+    });
   });
   useFrame(() => {
     if (rotation) {
@@ -87,12 +93,7 @@ export function QMark(props) {
   });
   const { nodes, materials } = useGLTF("/models/q_mark.glb");
   return (
-    <group
-      {...props}
-      ref={qMarkPos}
-      dispose={null}
-      position={[-0.65, -1.25, 0]}
-    >
+    <group {...props} ref={qMarkPos} dispose={null} position={[1.75, -2.4, 0]}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.025} ref={qMarkScale}>
         <mesh
           geometry={nodes.svgMeshShape3.geometry}

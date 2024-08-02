@@ -193,13 +193,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-the-world",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-          },
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -225,13 +219,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-india",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-          },
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -261,7 +249,7 @@ export function Earth(props) {
           },
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -279,7 +267,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-india",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -299,13 +287,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-tn",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-          },
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -323,7 +305,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-tn",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
+          scrub: true,
         },
         immediateRender: false,
       }
@@ -341,7 +323,7 @@ export function Earth(props) {
           trigger: ".cuisines-of-tn",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
+          scrub: true,
         },
         immediateRender: false,
       }

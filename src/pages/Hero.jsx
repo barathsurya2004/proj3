@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./Hero.css";
-import { CustomEase, ScrollTrigger } from "gsap/all";
+import { CustomEase, ScrollToPlugin, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CircularText from "../components/CircularText";
@@ -20,40 +20,11 @@ import SharePage from "./SharePage";
 import Question from "./Question";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
+gsap.registerPlugin(ScrollToPlugin);
 const Hero = () => {
   const [radius, setRadius] = useState(725);
   const { q_mark, setQMark } = useContext(Context);
-  useEffect(() => {
-    const tl = gsap.timeline();
-    tl.fromTo(
-      ".white-flash",
-      {
-        opacity: 0,
-      },
-      {
-        delay: 5,
-        opacity: 1,
-        duration: 0.03,
-        ease: CustomEase.create("custom", "M0,0 C0.5,0 0.5,1 1,1 "),
-      }
-    )
-      .to(".white-flash", {
-        opacity: 0,
-        duration: 0.03,
-        ease: CustomEase.create("custom", "M0,0 C0.5,0 0.5,1 1,1"),
-      })
-      .to(".white-flash", {
-        opacity: 1,
-        delay: 0.01,
-        duration: 0.03,
-        ease: CustomEase.create("custom", "M0,0 C0.5,0 0.5,1 1,1"),
-      })
-      .to(".white-flash", {
-        opacity: 0,
-        duration: 0.03,
-        ease: CustomEase.create("custom", "M0,0 C0.5,0 0.5,1 1,1"),
-      });
-  }, []);
+
   useGSAP(() => {
     gsap.fromTo(
       ".hero-content",
@@ -75,7 +46,7 @@ const Hero = () => {
     );
 
     gsap.to(".card-content", {
-      bottom: 0,
+      bottom: "0",
       scrollTrigger: {
         trigger: ".food-is",
         start: "top 80%",
@@ -84,22 +55,19 @@ const Hero = () => {
       },
       ease: "none",
     });
-    gsap.to(".love", {
-      x: -100,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: ".food-is-art",
-        start: "top bottom",
-        end: "top 80%",
-        scrub: 0.1,
-        // snap: {
-        //   snapTo: 1,
-        //   duration: { min: 0.1, max: 1 },
-        //   ease: "power1.in",
-        //   delay: 0,
-        // },
-      },
-    });
+    gsap.fromTo(
+      ".love",
+      { opacity: 1 },
+      {
+        opacity: 0,
+        duration: 0.01,
+        scrollTrigger: {
+          trigger: ".food-is-art",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
     gsap.to(".art", {
       left: 0,
       opacity: 1,
@@ -267,11 +235,6 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "none",
-          },
         },
         immediateRender: false,
         ease: "none",
@@ -284,11 +247,6 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
       },
       immediateRender: false,
       ease: "none",
@@ -393,11 +351,6 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: 0.5,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "none",
-          },
         },
       }
     );
@@ -408,11 +361,6 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
       },
       ease: "none",
     });
@@ -423,11 +371,6 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
       },
       ease: "none",
     });
@@ -443,11 +386,6 @@ const Hero = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "none",
-          },
         },
         ease: "none",
         immediateRender: false,
@@ -459,11 +397,6 @@ const Hero = () => {
         start: "top bottom",
         end: "top top",
         scrub: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "none",
-        },
       },
       ease: "none",
     });
@@ -579,10 +512,20 @@ const Hero = () => {
   return (
     <>
       <div className="hero-container">
-        <div className="white-flash" />
-        <div className="hero-content">
+        <div className="hero-content snap">
           <div className="alignn">
-            <p>
+            <h1
+              style={{
+                color: "#D3AD62",
+              }}
+            >
+              food
+            </h1>
+            <p
+              style={{
+                fontSize: 27 * (window.innerHeight / 1080),
+              }}
+            >
               Food is something we consume and interact with every day. We
               typically eat every 4-6 hours, enjoying a variety of foods. We
               have emotional connections to certain meals; many times, we crave
@@ -592,26 +535,32 @@ const Hero = () => {
               hunger strikes again. This cycle of consumption, repeats itself
               tirelessly, every single meal, every single day!
             </p>
-            <p>Apart from all this, is there more to food</p>
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: (34 * window.innerHeight) / 1080,
+                marginTop: (60 * window.innerHeight) / 1080,
+              }}
+            >
+              Apart from all this, is there more to food
+            </p>
           </div>
         </div>
-        <div className="scroll-move-start">
-          <div>
-            <CircularAnimation
-              words={[
-                "Is food the same for all",
-                "Is food only for the body",
-                "Do food have habits",
-                "Is food geo-taggeed",
-                "Does food influence life",
-                "Does food have mood",
-                "Whats a meal and a feast",
-                "What is good food for you",
-                "Where is your food from",
-                "Does food have history",
-              ]}
-            />
-          </div>
+        <div className="scroll-move-start snap">
+          <CircularAnimation
+            words={[
+              "Is food the same for all",
+              "Is food only for the body",
+              "Do food have habits",
+              "Is food geo-taggeed",
+              "Does food influence life",
+              "Does food have mood",
+              "Whats a meal and a feast",
+              "What is good food for you",
+              "Where is your food from",
+              "Does food have history",
+            ]}
+          />
         </div>
         <div className="draggable-circle">
           <CircularText
@@ -639,7 +588,6 @@ const Hero = () => {
         ></div>
         <div className="wheel-burst"></div>
         <Question />
-        <div className="buffer"></div>
         <div className="food-is">
           <Card />
         </div>
@@ -996,6 +944,9 @@ const Hero = () => {
               left: "50%",
               transform: "translate(-50%, 0%)",
               width: 725 * (window.innerWidth / 1920),
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
             <p
@@ -1012,6 +963,7 @@ const Hero = () => {
               style={{
                 fontSize: 27 * (window.innerHeight / 1080),
                 textAlign: "center",
+                width: "80%",
               }}
             >
               When food is considered a cultural identity, understanding these
@@ -1031,7 +983,7 @@ const Hero = () => {
           className="reading-space-yet-so-unique"
           style={{
             width: "100%",
-            height: "50vh",
+            height: "25vh",
           }}
         />
         <div
@@ -1078,6 +1030,7 @@ const Hero = () => {
           <ShallWeAnim />
           <Flag />
         </div>
+
         <div
           className="there-is-more"
           style={{
@@ -1119,28 +1072,64 @@ const Hero = () => {
           <Characteristics />
         </div>
         <div
-          className="share-page"
+          className="last-pages"
           style={{
-            width: "100%",
-            height: "100vh",
-            overflow: "hidden",
-          }}
-        >
-          <SharePage />
-        </div>
-        <div className="face-container">
-          <FaceCanvas />
-        </div>
-        <div
-          className="ending-page"
-          style={{
-            width: "100%",
-            height: "100vh",
             position: "relative",
+            top: 0,
+            left: 0,
           }}
         >
-          <EndingPage />
+          <div
+            className="share-page"
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "100vh",
+              overflow: "hidden",
+              top: 0,
+              left: 0,
+            }}
+          >
+            <SharePage />
+          </div>
+          <div
+            style={{
+              height: "50vh",
+              width: "100%",
+            }}
+          ></div>
+          <div className="face-container">
+            <FaceCanvas />
+          </div>
+          <div
+            className="ending-page"
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              // zIndex: 500,
+            }}
+          >
+            <EndingPage />
+          </div>
         </div>
+
+        <div
+          className="voting-helper-page"
+          style={{
+            height: "110vh",
+            width: "100%",
+          }}
+        ></div>
+        <div
+          className="ending-page-helper"
+          style={{
+            height: "100vh",
+            width: "100%",
+          }}
+        ></div>
       </div>
     </>
   );

@@ -44,6 +44,7 @@ const Procedure = () => {
           fontFamily: "TTtravels Next DemiBold",
           textAlign: "center",
           margin: (25 * window.innerHeight) / 1080,
+          color: "#D3AD62",
         }}
       >
         Procedure

@@ -30,35 +30,46 @@ const FaceCanvas = () => {
   useGSAP(() => {
     gsap.fromTo(
       ".face-model",
-      { top: "150vh" },
       {
-        top: "50vh",
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 0.2,
         scrollTrigger: {
-          trigger: ".face-container",
+          trigger: ".voting-helper-page",
           start: "top bottom",
-          end: "top top",
           toggleActions: "play none none reverse",
-          scrub: true,
         },
-        ease: "none",
-        immediateRender: false,
       }
     );
-
-    gsap.fromTo(
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".ending-page-helper",
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+    tl.fromTo(
       ".face-model",
-      { left: "50%" },
       {
-        left: "28.5%",
-        scrollTrigger: {
-          trigger: ".ending-page",
-          start: "top bottom",
-          end: "top top",
-          toggleActions: "play none none reverse",
-          scrub: true,
-        },
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+        duration: 0.2,
       }
-    );
+    )
+      .to(".face-model", {
+        x: "-25vw",
+        duration: 0.01,
+      })
+      .to(".face-model", {
+        opacity: 1,
+        duration: 0.2,
+      });
   });
   return (
     <>
@@ -69,7 +80,8 @@ const FaceCanvas = () => {
           height: "60vh",
           width: "40%",
           position: "fixed",
-          top: "150vh",
+          display: "none",
+          top: "50vh",
           zIndex: mode == "Contact" ? 510 : 500,
           maskImage: `linear-gradient(0deg, rgba(0,0,0,0.0) ${
             num * 100

@@ -16,16 +16,29 @@
     justify-content: center;
     font-size: 2.5vh;
     align-items: center;
+    padding-bottom: 7vh;
+ }
+ .hero-content h1{
+    font-family: "TTtravels Next Bold";
+    font-size: 21.166vh;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 3vh;
  }
  .alignn{
     width: 93.083vh;
  }
 .hero-content p{
-    margin-bottom: 0.4629vh;
+    /* margin-bottom: 0.4629vh; */
+    margin: 0;
+    width: 100%;
+    /* color:#D3AD62; */
+
+    text-align: center;
 }
 .scroll-move-start{
     position: relative;
-    height: 245.370vh;
+    height: 130vh;
     width: 100%;
 }
 .draggable-circle{
@@ -37,7 +50,7 @@
 .wheel-burst{
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 60vh;
 }
 .question h1 {
     position: absolute;
@@ -49,3 +62,4 @@
     width: 100%;
     height: 200vh;
 }
+

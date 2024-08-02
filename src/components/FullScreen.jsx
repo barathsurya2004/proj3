@@ -174,13 +174,12 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         className="current-image-fullscreen"
         style={{
           // width: "150%",
-          height: ((1080 - 120) * window.innerHeight) / 1080,
+          height: ((1080 - 130) * window.innerHeight) / 1080,
           position: "relative",
           display: "flex",
           justifyContent: "center",
           // alignItems: "center",
-          padding: `0 ${(0 * window.innerWidth) / 1280}px`,
-          aspectRatio: "16/9",
+          // aspectRatio: "16/9",
         }}
         onDoubleClick={() => {
           clearTimeout(clickTimeoutRef.current);
@@ -189,7 +188,7 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
             duration: 0.3,
             height: zooming
               ? "150%"
-              : ((1080 - 120) * window.innerHeight) / 1080,
+              : ((1080 - 130) * window.innerHeight) / 1080,
           });
           gsap.to(".current-image-fullscreen", {
             x: 0,
@@ -219,7 +218,7 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
         style={{
           position: "absolute",
           bottom: 0,
-          height: (120 * window.innerWidth) / 1920,
+          height: (120 * window.innerHeight) / 1080,
           overflowX: "scroll",
           overflowY: "hidden",
           width: "100vw",
@@ -238,8 +237,8 @@ const FullScreen = ({ currentSelection, photos, setcurrentSelection }) => {
               <div
                 key={index}
                 style={{
-                  minWidth: (120 * window.innerWidth) / 1920,
-                  minHeight: (120 * window.innerWidth) / 1920,
+                  minWidth: (120 * window.innerHeight) / 1080,
+                  minHeight: (120 * window.innerHeight) / 1080,
                   margin: "0 2.5px",
                   cursor: "pointer",
                 }}

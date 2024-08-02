@@ -22,12 +22,6 @@ const Question = () => {
         start: "top bottom",
         end: "top top",
         scrub: 0.1,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.1, max: 1 },
-          ease: "power1.in",
-          delay: 0,
-        },
       },
     });
     questionTl
@@ -77,14 +71,9 @@ const Question = () => {
           trigger: ".food-is",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-          },
+          scrub: true,
         },
+
         immediateRender: false,
         ease: "none",
       }
@@ -100,13 +89,7 @@ const Question = () => {
           trigger: ".food-is",
           start: "top bottom",
           end: "top top",
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-          },
+          scrub: true,
         },
         ease: "none",
         immediateRender: false,
@@ -158,13 +141,6 @@ const Question = () => {
       >
         <Definition />
       </div>
-      <div
-        className="reading-space"
-        style={{
-          width: "100%",
-          height: "20vh",
-        }}
-      ></div>
     </>
   );
 };

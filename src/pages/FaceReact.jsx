@@ -224,13 +224,55 @@ const FaceReact = () => {
       }
     );
   };
+  useGSAP(() => {
+    gsap.fromTo(
+      ".face-reacting-page",
+      { display: "none", opacity: 0 },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 0.2,
+        scrollTrigger: {
+          trigger: ".voting-helper-page",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+        ease: "none",
+      }
+    );
+    gsap.fromTo(
+      ".face-reacting-page",
+      {
+        display: "block",
+        opacity: 1,
+      },
+      {
+        display: "none",
+        opacity: 0,
+        duration: 0.2,
+        scrollTrigger: {
+          trigger: ".ending-page-helper",
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+  });
   return (
     <div
+      className="face-reacting-page"
       style={{
         width: "100%",
         height: "100vh",
         overflow: "hidden",
-        position: "relative",
+        position: "fixed",
+        top: "0vh",
+        left: 0,
+        zIndex: 500,
+        // display: "none",
+        opacity: 0,
       }}
     >
       <div

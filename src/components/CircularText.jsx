@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./CircularText.css";
-import { Draggable, ScrollTrigger } from "gsap/all";
+import { Draggable, ScrollToPlugin, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(Draggable);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 const CircularText = ({ texts, radius }) => {
   radius = (window.innerWidth * radius) / 1920;
   const [change, setChange] = useState(0);
@@ -65,19 +66,12 @@ const CircularText = ({ texts, radius }) => {
         rotation: 45,
       },
       {
-        rotation: -36.4,
+        rotation: 0,
         scrollTrigger: {
           trigger: ".draggable-circle",
-          start: "top bottom",
-          end: `+=${window.innerHeight * 1.6}`,
-          scrub: 0.1,
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.1, max: 1 },
-            ease: "power1.in",
-            delay: 0,
-            inertia: false,
-          },
+          start: "top 15%",
+          duration: 1,
+          toggleActions: "play none none reverse",
           onLeave: () => {
             setZIndex(1000);
             setIndVisible(3);
@@ -91,18 +85,39 @@ const CircularText = ({ texts, radius }) => {
         },
       }
     );
+    gsap.fromTo(
+      "#drag",
+      {
+        rotation: 0,
+      },
+      {
+        rotation: -36.2,
+        scrollTrigger: {
+          trigger: ".draggable-circle",
+          start: "top 15%",
+          scrub: true,
+          onLeave: () => {
+            setZIndex(1000);
+            setIndVisible(3);
+            setVisibleCount(texts.length);
+          },
+          onEnterBack: () => {
+            setIndVisible(null);
+            setZIndex(10);
+            setVisibleCount(10);
+          },
+        },
+        immediateRender: false,
+        ease: "none",
+      }
+    );
+
     gsap.to("#drag", {
       scrollTrigger: {
         trigger: ".wheel-burst",
         start: "top bottom",
         end: "top top",
         scrub: 0.05,
-        snap: {
-          snapTo: 2,
-          duration: { min: 0.1, max: 1 },
-          delay: 0,
-          ease: "power1.inOut",
-        },
         onEnter: () => {
           setIndVisible(null);
           setAlphaMaskVisible(true);
@@ -121,6 +136,7 @@ const CircularText = ({ texts, radius }) => {
           setIndVisible(ind);
           setAlphaMaskVisible(false);
         },
+
         onLeave: () => {
           setZIndex(0);
         },
@@ -128,6 +144,8 @@ const CircularText = ({ texts, radius }) => {
           setChange(progress.progress);
         },
       },
+      ease: "power1.in",
+      onComplete: () => {},
     });
   });
   return (
@@ -176,7 +194,7 @@ const CircularText = ({ texts, radius }) => {
                     fontFamily: "TTtravels Next Demibold",
                     fontSize:
                       fontSize * window.innerHeight +
-                      change * window.innerHeight * 0.1,
+                      change * window.innerHeight * 0.09,
                   }}
                 >
                   {text}

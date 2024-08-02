@@ -13,7 +13,7 @@ const ThereIsMore = () => {
     >
       <div
         style={{
-          height: (175 * window.innerHeight) / 1080,
+          height: (305 * window.innerHeight) / 1080,
           margin: 0,
           width: "100%",
           overflow: "hidden",
@@ -41,11 +41,11 @@ const ThereIsMore = () => {
       </div>
       <p
         style={{
-          fontSize: (55 * window.innerWidth) / 1920,
+          fontSize: (27 * window.innerWidth) / 1920,
           fontFamily: "TTtravels Next DemiBold",
           textAlign: "center",
           margin: (25 * window.innerHeight) / 1080,
-          maxWidth: (1332 * window.innerWidth) / 1920,
+          maxWidth: (1005 * window.innerWidth) / 1920,
         }}
       >
         On top of their rich history, diverse cultures, and widespread
@@ -86,6 +86,7 @@ const ThereIsMore = () => {
           fontFamily: "TTtravels Next DemiBold",
           textAlign: "center",
           margin: (25 * window.innerHeight) / 1080,
+          color: "#D3AD62",
         }}
       >
         THERE’S MORE!
@@ -94,7 +95,7 @@ const ThereIsMore = () => {
         style={{
           margin: 0,
           width: "100%",
-          height: (400 * window.innerHeight) / 1080,
+          height: (500 * window.innerHeight) / 1080,
           overflow: "hidden",
           position: "relative",
         }}

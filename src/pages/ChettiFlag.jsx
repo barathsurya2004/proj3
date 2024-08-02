@@ -19,8 +19,9 @@ const ChettiFlag = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "110vh",
+          // height: "110vh",
           width: "50%",
+          paddingTop: 300 * (window.innerHeight / 1080),
         }}
       >
         <div
@@ -33,6 +34,7 @@ const ChettiFlag = () => {
             style={{
               position: "absolute",
               transform: "translateY(-100%)",
+              top: 0,
               right: 0,
             }}
           >
@@ -71,7 +73,7 @@ const ChettiFlag = () => {
             position: "absolute",
             left: 0,
             top: "50vh",
-            transform: "translateY(-50%)",
+            // transform: "translateY(-50%)",
             height: 360 * (window.innerHeight / 1080),
           }}
         />

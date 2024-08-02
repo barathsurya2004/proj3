@@ -1,10 +1,10 @@
 import { Pepper } from "../../public/models/cards/Pepper";
 import CardsCanvas from "./CardsCanvas";
 import leftButton from "../assets/prevNotPossible.svg";
-import rightButton from "../assets/nextPossible.svg";
+import button from "../assets/nextPossible.svg";
 import activePage from "../assets/pagiCurrent.svg";
 import inactivePage from "../assets/pagiInactive.svg";
-
+import gsap from "gsap";
 const CardHolder = () => {
   return (
     <>
@@ -18,11 +18,26 @@ const CardHolder = () => {
         }}
       >
         <img
-          src={leftButton}
+          src={button}
           style={{
             width: (24 * window.innerWidth) / 1920,
+            transform: "rotate(180deg)",
+            opacity: 0.3,
+            cursor: "pointer",
           }}
           alt=""
+          onPointerEnter={(e) => {
+            gsap.to(e.target, {
+              opacity: 1,
+              duration: 0.2,
+            });
+          }}
+          onPointerLeave={(e) => {
+            gsap.to(e.target, {
+              opacity: 0.3,
+              duration: 0.2,
+            });
+          }}
         />
       </div>
       <CardsCanvas>
@@ -38,11 +53,25 @@ const CardHolder = () => {
         }}
       >
         <img
-          src={rightButton}
+          src={button}
           style={{
             width: (24 * window.innerWidth) / 1920,
+            opacity: 0.3,
+            cursor: "pointer",
           }}
           alt=""
+          onPointerEnter={(e) => {
+            gsap.to(e.target, {
+              opacity: 1,
+              duration: 0.2,
+            });
+          }}
+          onPointerLeave={(e) => {
+            gsap.to(e.target, {
+              opacity: 0.3,
+              duration: 0.2,
+            });
+          }}
         />
       </div>
       <div

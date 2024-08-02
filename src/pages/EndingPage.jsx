@@ -11,6 +11,7 @@ import goto from "../assets/goto.svg";
 import Restart from "../components/Restart";
 import restart from "../assets/new_icon.json";
 import Lottie from "lottie-react";
+import { useGSAP } from "@gsap/react";
 const EndingPage = () => {
   const { mode, setMode, fullscreen } = useContext(Context);
   const animRef = useRef(null);
@@ -48,8 +49,32 @@ const EndingPage = () => {
       cursor: "pointer",
     },
   };
+  useGSAP(() => {
+    gsap.fromTo(
+      ".ending-ahh-page",
+      { display: "none", opacity: 0 },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 0.2,
+        scrollTrigger: {
+          trigger: ".ending-page-helper",
+          start: "top bottom",
+          end: "top top",
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+            document.querySelector(".ending-page").style.zIndex = 510;
+          },
+          onLeaveBack: () => {
+            document.querySelector(".ending-page").style.zIndex = 50;
+          },
+        },
+      }
+    );
+  });
   return (
     <div
+      className="ending-ahh-page"
       style={{
         position: "relative",
         width: "100%",
@@ -57,6 +82,7 @@ const EndingPage = () => {
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
+        zIndex: 510,
       }}
     >
       <div
@@ -269,7 +295,15 @@ const EndingPage = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div
+        style={{
+          position: "absolute",
+          // zIndex: 501,
+          width: "100%",
+          bottom: 0,
+          left: 0,
+        }}
+      >
         <Footer />
       </div>
       <div
@@ -281,6 +315,14 @@ const EndingPage = () => {
           zIndex: mode == null ? 550 : 450,
           margin: 0,
           display: "flex",
+          alignItems: "center",
+        }}
+        onClick={() => {
+          gsap.to(window, {
+            duration: 4,
+            scrollTo: 0,
+            ease: "power4.inOut",
+          });
         }}
       >
         <div
@@ -290,7 +332,7 @@ const EndingPage = () => {
             position: "absolute",
             top: 0,
             left: 0,
-            transform: "translate(-100%, 0%)",
+            transform: "translate(-100%, 25%)",
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
           }}
         >
@@ -299,8 +341,8 @@ const EndingPage = () => {
             style={{
               fontSize: (50 * window.innerWidth) / 1920,
               fontFamily: "TTtravels Next Bold",
-              color: "#DDD4C7",
-              transform: "translate(100%, -50%)",
+              transform: "translate(100%, 0%)",
+              margin: 0,
             }}
           >
             Restart
@@ -314,15 +356,15 @@ const EndingPage = () => {
           }}
         >
           <Lottie
+            autoPlay={false}
             animationData={restart}
-            loop={true}
             lottieRef={animRef}
+            loop={true}
             style={{
               height: "100%",
               margin: 0,
               cursor: "pointer",
             }}
-            autoPlay={false}
             onPointerEnter={() => {
               animRef.current.play();
               gsap.fromTo(

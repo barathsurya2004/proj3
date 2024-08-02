@@ -6,7 +6,9 @@ import button from "../assets/slider-button.svg";
 import gsap from "gsap";
 import PandiFlag from "./PandiFlag";
 import ChettiFlag from "./ChettiFlag";
-
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 const Flag = () => {
   const [sliderValue, setSliderValue] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -43,11 +45,48 @@ const Flag = () => {
       slider.removeEventListener("pointerup", handlePointerUp);
     };
   }, [sliderValue]);
-
+  useGSAP(() => {
+    gsap.to(".slider-controller", {
+      top: "50%",
+      scrollTrigger: {
+        trigger: ".flag-container",
+        start: "top bottom",
+        end: "top top",
+        scrub: 0.01,
+        onEnter: () => {
+          setSliderValue(50);
+        },
+        onEnterBack: () => {
+          setSliderValue(50);
+        },
+      },
+      ease: "none",
+    });
+    gsap.fromTo(
+      ".slider-controller",
+      {
+        top: "50%",
+      },
+      {
+        top: "-50%",
+        scrollTrigger: {
+          trigger: ".flag-container",
+          start: "bottom bottom",
+          end: "bottom top ",
+          scrub: 0.01,
+          onEnter: () => {
+            setSliderValue(50);
+          },
+        },
+        ease: "none",
+        immediateRender: false,
+      }
+    );
+  });
   const styles = {
     container: {
       width: "100%",
-      height: "110vh",
+      height: "220vh",
       position: "relative",
       overflow: "hidden",
     },
@@ -81,7 +120,7 @@ const Flag = () => {
         style={{
           ...styles.flags,
           width: `${sliderValue}%`,
-          overflow: overflowPandiyanad,
+          overflow: "hidden",
         }}
       >
         <div
@@ -110,7 +149,7 @@ const Flag = () => {
           ...styles.flags,
           left: `${sliderValue}%`,
           width: `${100 - sliderValue}%`,
-          overflow: overflowChettinad,
+          overflow: "hidden",
         }}
       >
         <div
@@ -154,9 +193,10 @@ const Flag = () => {
         }}
       >
         <div
+          className="slider-controller"
           style={{
-            position: "absolute",
-            top: "50%",
+            position: "fixed",
+            top: "150%",
             left: "50%",
             width: "100%",
             transform: "translate(-50%,-50%)",

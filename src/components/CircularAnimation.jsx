@@ -95,7 +95,7 @@ const CircularAnimation = ({ words }) => {
             transformOrigin: `${
               (-(radius - 174) * window.innerWidth) / 1920
             }px 50%`,
-            height: "100%",
+            height: "100vh",
           }}
         >
           {words.map((word, index) => (
@@ -109,7 +109,7 @@ const CircularAnimation = ({ words }) => {
                 fontSize: "5.0925vh",
                 left: -((radius - 170) * window.innerWidth) / 1920,
                 transform: `rotate(${
-                  index * (360 / (words.length * 3))
+                  index * (370 / (words.length * 3))
                 }deg) translate(${
                   (radius * window.innerWidth) / 1920
                 }px, -50%) `,
@@ -127,6 +127,7 @@ const CircularAnimation = ({ words }) => {
           className={`word1 word1-${index}`}
           style={{
             margin: `${margin - 1}vh 0`,
+            // marginBottom: "2.5vh",
           }}
         >
           <div className="word-cont">{word}</div>

@@ -34,7 +34,7 @@ const AnimSvg = (props) => {
       scrollTrigger: {
         trigger: ".shall-we-to-flag",
         start: "top 60%",
-        end: "73% top",
+        end: "58% top",
         scrub: 0.05,
       },
       ease: "none",

@@ -1,11 +1,26 @@
+import { useGSAP } from "@gsap/react";
 import { Pepper } from "../../public/models/cards/Pepper";
 import { Tamarind } from "../../public/models/cards/Tamarind";
 import image from "../assets/share.svg";
 import CardsCanvas from "./CardsCanvas";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 const SharePage = () => {
+  useGSAP(() => {
+    gsap.to(".sharing-page", {
+      opacity: 0,
+      duration: 0.2,
+      scrollTrigger: {
+        trigger: ".voting-helper-page",
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
   return (
     <div
+      className="sharing-page"
       style={{
         position: "relative",
         zIndex: 500,
@@ -68,6 +83,7 @@ const SharePage = () => {
             fontFamily: "TTtravels Next DemiBold",
             textAlign: "center",
             margin: (25 * window.innerHeight) / 1080,
+            color: "#D3AD62",
           }}
         >
           Share
@@ -123,6 +139,7 @@ const SharePage = () => {
           width: (950 * window.innerWidth) / 1920,
           marginLeft: "auto",
           marginRight: "auto",
+          color: "#D3AD62",
         }}
       >
         So many differences, yet complimentary.

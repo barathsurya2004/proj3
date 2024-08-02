@@ -167,6 +167,9 @@ const Footer = () => {
             textDecoration: "underline 0.1vh solid rgba(175, 159, 140,0)",
           });
         }}
+        onClick={() => {
+          window.open("https://bsurya.netlify.app/");
+        }}
       >
         Developed by Barath Surya
       </p>
