@@ -20,22 +20,21 @@ import SharePage from "./SharePage";
 import Question from "./Question";
 import Lottie from "lottie-react";
 import animationData from "../assets/new_scroll.json";
+import img1 from "../assets/food (1).svg";
+import img2 from "../assets/food (2).svg";
+import img3 from "../assets/food (3).svg";
+import img4 from "../assets/food (4).svg";
+import img5 from "../assets/food (5).svg";
+import img6 from "../assets/food (6).svg";
+import img7 from "../assets/food (7).svg";
+import img8 from "../assets/food (8).svg";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(ScrollToPlugin);
 const Hero = () => {
   const [radius, setRadius] = useState(725);
   const { q_mark, setQMark, setMeshSelected } = useContext(Context);
-  const foods = [
-    "src/assets/food (1).svg",
-    "src/assets/food (2).svg",
-    "src/assets/food (3).svg",
-    "src/assets/food (4).svg",
-    "src/assets/food (5).svg",
-    "src/assets/food (6).svg",
-    "src/assets/food (7).svg",
-    "src/assets/food (8).svg",
-  ];
+  const foods = [img1, img2, img3, img4, img5, img6, img7, img8];
   useGSAP(() => {
     gsap.fromTo(
       ".hero-content",
