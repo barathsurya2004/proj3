@@ -1257,7 +1257,7 @@ const Hero = () => {
           className="info-text-trigger"
           style={{
             width: "100%",
-            height: "100vh",
+            height: "150vh",
           }}
         >
           <div
@@ -1517,7 +1517,7 @@ const Hero = () => {
           </div>
           <div
             style={{
-              height: "50vh",
+              height: "10vh",
               width: "100%",
             }}
           ></div>
