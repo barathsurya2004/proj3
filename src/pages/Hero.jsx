@@ -831,6 +831,7 @@ const Hero = () => {
           end: "top top",
           scrub: true,
         },
+        immediateRender: false,
       }
     );
   });
