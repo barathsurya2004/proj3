@@ -9,14 +9,14 @@ body,html {
    box-sizing: border-box;
      color: #F2D8A0;
   font-family: 'Filson Pro Regular';
-  /* scrollbar-width: none;
-  -ms-overflow-style: none; */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0;
   background: transparent;
   display: none;
-} */
+}
 #root{
   width: 100%;
   height: 100%;
