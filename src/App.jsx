@@ -11,7 +11,6 @@ import { Context } from "./context";
 import { useProgress } from "@react-three/drei";
 import WhatIsFoodCanvas from "./pages/WhatIsFoodCanvas";
 import GlobeCanvas from "./pages/GlobeCanvas";
-import image from "./assets/delete/Artboard 2.png";
 import FoodIsCanvas from "./pages/FoodIsCanvas";
 const App = () => {
   const { q_mark, loading } = useContext(Context);

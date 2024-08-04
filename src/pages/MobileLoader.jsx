@@ -3,7 +3,6 @@ import image from "../assets/thunder.svg";
 import { OrthographicCamera } from "@react-three/drei";
 import { Suspense } from "react";
 import { Face2 } from "../../public/models/Face2";
-import ref from "../assets/delete/Artboard 1_1.png";
 import "./MobileCont.css";
 const MobileLoader = () => {
   return (
