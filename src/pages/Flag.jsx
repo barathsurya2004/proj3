@@ -89,6 +89,7 @@ const Flag = () => {
       height: "220vh",
       position: "relative",
       overflow: "hidden",
+      marginTop: "-200vh",
     },
     img: {
       position: "absolute",

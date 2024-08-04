@@ -16,7 +16,7 @@
     justify-content: center;
     font-size: 2.5vh;
     align-items: center;
-    padding-bottom: 7vh;
+    position: relative;
  }
  .hero-content h1{
     font-family: "TTtravels Next Bold";

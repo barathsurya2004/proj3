@@ -43,7 +43,7 @@ const AnimSvg = (props) => {
       scrollTrigger: {
         trigger: ".anim-handler-flag",
         start: "top bottom",
-        end: "bottom bottom",
+        end: "bottom 150%",
         scrub: true,
       },
     });
@@ -117,6 +117,21 @@ const AnimSvg = (props) => {
         },
         "<"
       );
+    gsap.fromTo(
+      ".animSvg-container",
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+        duration: 0.01,
+        scrollTrigger: {
+          trigger: ".flag-container",
+          start: "top top",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
   });
   return (
     <div

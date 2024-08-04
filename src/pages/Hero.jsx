@@ -18,13 +18,24 @@ import Procedure from "./Procedure";
 import Characteristics from "./Characteristics";
 import SharePage from "./SharePage";
 import Question from "./Question";
+import Lottie from "lottie-react";
+import animationData from "../assets/new_scroll.json";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(ScrollToPlugin);
 const Hero = () => {
   const [radius, setRadius] = useState(725);
-  const { q_mark, setQMark } = useContext(Context);
-
+  const { q_mark, setQMark, setMeshSelected } = useContext(Context);
+  const foods = [
+    "src/assets/food (1).svg",
+    "src/assets/food (2).svg",
+    "src/assets/food (3).svg",
+    "src/assets/food (4).svg",
+    "src/assets/food (5).svg",
+    "src/assets/food (6).svg",
+    "src/assets/food (7).svg",
+    "src/assets/food (8).svg",
+  ];
   useGSAP(() => {
     gsap.fromTo(
       ".hero-content",
@@ -508,19 +519,385 @@ const Hero = () => {
         immediateRender: false,
       }
     );
+    const foodsChangetl = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 0,
+    });
+    foodsChangetl
+      .fromTo(
+        ".food-0",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-0",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          delay: 5,
+          opacity: 0,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-1",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-1",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-2",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-2",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-3",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-3",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          x: -30,
+          duration: 0.5,
+          delay: 5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-4",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-4",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-5",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-5",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-6",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-6",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          x: -30,
+          delay: 5,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-7",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-7",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-8",
+        {
+          opacity: 0,
+          x: 30,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      )
+      .fromTo(
+        ".food-8",
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          delay: 5,
+          x: -30,
+          duration: 0.5,
+          immediateRender: false,
+        }
+      );
+    gsap.to(null, {
+      scrollTrigger: {
+        trigger: ".chettinad-pointer-trigger",
+        start: "top bottom",
+        onEnter: () => {
+          setMeshSelected("Chettinad");
+        },
+        onLeaveBack: () => {
+          setMeshSelected(null);
+        },
+      },
+    });
+    gsap.to(null, {
+      scrollTrigger: {
+        trigger: ".pandiyanad-pointer-trigger",
+        start: "top bottom",
+        onEnter: () => {
+          setMeshSelected("Pandiyanad");
+        },
+        onLeaveBack: () => {
+          setMeshSelected("Chettiand");
+        },
+      },
+    });
+    gsap.to(null, {
+      scrollTrigger: {
+        trigger: ".pandiyanad-pointer-trigger",
+        start: "bottom bottom",
+        onEnter: () => {
+          setMeshSelected(null);
+        },
+        onLeaveBack: () => {
+          setMeshSelected("Pandiyanad");
+        },
+      },
+    });
+    gsap.fromTo(
+      ".info-scroll-text-trigger",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".info-text-trigger",
+          start: "top bottom",
+          end: "top 80%",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".info-scroll-text-trigger",
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".info-text-trigger",
+          start: "top 30%",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
   });
   return (
     <>
       <div className="hero-container">
         <div className="hero-content snap">
-          <div className="alignn">
-            <h1
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              left: 0,
+              width: "100%",
+              height: "95vh",
+            }}
+          >
+            <Lottie
+              animationData={animationData}
               style={{
-                color: "#D3AD62",
+                height: "100%",
+              }}
+            />
+          </div>
+          <div
+            className="alignn"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                width: 679 * (window.innerWidth / 1920),
+                height: 170 * (window.innerHeight / 1080),
+                position: "relative",
+                marginBottom: 125 * (window.innerHeight / 1080),
               }}
             >
-              food
-            </h1>
+              {foods.map((food, index) => {
+                return (
+                  <div
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      // alignItems: "center",
+                      position: "absolute",
+                      transform: index == 6 ? "translateY(25%)" : 0,
+                    }}
+                  >
+                    <img
+                      className={`food-${index}`}
+                      key={index}
+                      src={food}
+                      alt="food"
+                      style={{
+                        height: "100%",
+                        opacity: 0,
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
             <p
               style={{
                 fontSize: 27 * (window.innerHeight / 1080),
@@ -876,6 +1253,52 @@ const Hero = () => {
           </div>
         </div>
         <div className="scrub-time-helper" />
+        <div
+          className="info-text-trigger"
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            className="info-scroll-text-trigger"
+            style={{
+              position: "fixed",
+              zIndex: 501,
+              top: 660 * (window.innerHeight / 1080),
+              left: 175 * (window.innerWidth / 1920),
+            }}
+          >
+            <p
+              style={{
+                fontSize: 27 * (window.innerHeight / 1080),
+                maxWidth: 854 * (window.innerWidth / 1920),
+              }}
+            >
+              Among the cuisines of Tamil Nadu, Chettinad and Pandiyanad present
+              a unique scenario. Despite being just 60 kilometers apart, they
+              offer completely different tastes and experiences. They epitomize
+              diversity and serve as a prime example of how two cuisines can be
+              so distinct, despite their geographical proximity and other shared
+              factors.
+            </p>
+          </div>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+          className="chettinad-pointer-trigger"
+        ></div>
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+          className="pandiyanad-pointer-trigger"
+        ></div>
+
         <div
           className="globe-goes-up"
           style={{

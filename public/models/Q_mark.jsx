@@ -18,19 +18,15 @@ export function QMark(props) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".scroll-move-start",
-        start: "top 80%",
+        start: "top bottom",
         end: "top 30%",
-        scrub: 0.5,
-        snap: {
-          snapTo: 1,
-          delay: 0,
-        },
+        scrub: 0.1,
       },
     });
     tl.to(qMarkPos.current.position, {
-      x: 2.0,
-      y: -0.5,
-      duration: 1,
+      x: 1.75,
+      y: 0,
+      duration: 7,
     }).to(qMarkPos.current.position, {
       x: 3,
       y: -3,
@@ -93,7 +89,7 @@ export function QMark(props) {
   });
   const { nodes, materials } = useGLTF("/models/q_mark.glb");
   return (
-    <group {...props} ref={qMarkPos} dispose={null} position={[1.75, -2.4, 0]}>
+    <group {...props} ref={qMarkPos} dispose={null} position={[1.75, -2.5, 0]}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.025} ref={qMarkScale}>
         <mesh
           geometry={nodes.svgMeshShape3.geometry}
