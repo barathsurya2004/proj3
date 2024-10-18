@@ -23,22 +23,33 @@ export function Face2(props) {
   const meshRef = useRef();
   const eyebrowRefl = useRef();
   const eyebrowRefr = useRef();
-  const ori = useRef();
   const { hovered, setHovered } = useContext(Context);
-
+  // const ori = useRef();
+  const [ori, setOri] = useState(0);
+  const handleOrientation = (event) => {
+    setOri(event.beta);
+    console.log("running");
+  };
   useEffect(() => {
-    if (!window.DeviceOrientationEvent) {
-      console.log("DeviceOrientation is not supported");
-      return;
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleOrientation, true);
     }
-    const handleOrientation = (event) => {
-      ori.current = event;
-    };
-    window.addEventListener("deviceorientation", handleOrientation);
-    return () => {
-      window.removeEventListener("deviceorientation", handleOrientation);
-    };
   }, []);
+
+  useFrame((state) => {
+    if (group.current) {
+      group.current.rotation.y = 0 / 180;
+      group.current.rotation.x = (ori - 90) / 120;
+    }
+    if (meshRef.current) {
+      meshRef.current.position.x = 2.104 + state.pointer.x / 1.8;
+      meshRef.current.position.y = 9.4 + state.pointer.y / 1.8;
+    }
+    if (meshRef1.current) {
+      meshRef1.current.position.x = -2.724 + state.pointer.x / 1.8;
+      meshRef1.current.position.y = 9.4 + state.pointer.y / 1.8;
+    }
+  });
 
   useEffect(() => {
     const blinkTimeline = gsap.timeline({
@@ -65,21 +76,6 @@ export function Face2(props) {
     };
   }, [hovered]);
 
-  useFrame((state) => {
-    const { alpha, gamma, beta } = ori.current;
-    if (group.current) {
-      group.current.rotation.y = 0 / 180;
-      group.current.rotation.x = (beta - 90) / 120;
-    }
-    if (meshRef.current) {
-      meshRef.current.position.x = 2.104 + state.pointer.x / 1.8;
-      meshRef.current.position.y = 9.4 + state.pointer.y / 1.8;
-    }
-    if (meshRef1.current) {
-      meshRef1.current.position.x = -2.724 + state.pointer.x / 1.8;
-      meshRef1.current.position.y = 9.4 + state.pointer.y / 1.8;
-    }
-  });
   const animationPlayedRef = useRef(false);
   useEffect(() => {
     if (hovered && !animationPlayedRef.current) {

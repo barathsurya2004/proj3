@@ -298,7 +298,6 @@ const EndingPage = () => {
       <div
         style={{
           position: "absolute",
-          // zIndex: 501,
           width: "100%",
           bottom: 0,
           left: 0,

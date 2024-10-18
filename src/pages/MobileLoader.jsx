@@ -25,7 +25,7 @@ const MobileLoader = () => {
         }}
       >
         <img
-          src={ref}
+          // src={ref}
           alt=""
           style={{
             width: "100%",
